@@ -1,0 +1,6 @@
+[submodule "htdocs/AWML"]
+	path = htdocs/AWML
+	url = https://github.com/DeutscheSoft/AWML.git
+[submodule "htdocs/aux-widgets"]
+	path = htdocs/aux-widgets
+	url = https://github.com/DeutscheSoft/aux-widgets.git
