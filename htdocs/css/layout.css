@@ -16,3 +16,14 @@
   grid-area: navigation;
   border: 1px solid red;
 }
+
+#root > #canvas {
+  grid-area: canvas;
+  width: 100%;
+  height: 100%;
+}
+
+aes70-object-template {
+  display: inline-block;
+  border: 1px solid blue;
+}
