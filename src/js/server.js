@@ -24,7 +24,50 @@ const httpOptions = {
   htdocs: argv.htdocs || './htdocs',
 };
 
+function parseDestination(str)
+{
+  const tmp = str.split(':');
+
+  let protocol;
+  let port;
+  let host;
+
+  switch (tmp.length) {
+  case 2:
+    host = tmp[0];
+    port = parseInt(tmp[1]);
+    protocol = 'tcp';
+    break;
+  case 3:
+    protocol = tmp[0];
+    host = tmp[1];
+    port = parseInt(tmp[2]);
+    break;
+  default:
+    throw new TypeError('Failed to parse destination: ' + str);
+  }
+
+  if (isNaN(port) || port < 0 || port > 0xffff)
+    throw new TypeError('Invalid port in destination: ' + str);
+
+  return {
+    protocol,
+    port,
+    host,
+    name: host + '_' + port,
+    source: 'manual',
+  };
+}
+
 const destinations = new Map();
+
+argv._.forEach((arg) => {
+  const destination = parseDestination(arg);
+
+  console.log('Using manual destination: %o', destination);
+
+  destinations.set(destination.name, destination);
+});
 
 start(httpOptions, destinations).then(
   () => {

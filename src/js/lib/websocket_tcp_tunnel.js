@@ -17,20 +17,23 @@ class WebSocketTCPTunnel extends Events {
     this.socket = socket;
     this.closed = false;
 
-    websocket.on('close', () => { this._onWebSocketClosed(); });
-    socket.on('close', () => { this._onSocketClosed(); });
+    websocket.on('close', () => this._onWebSocketClosed());
+    socket.on('close', () => this._onSocketClosed());
+    socket.on('data', (buf) => this._onSocketData(buf));
+    websocket.on('message', (data) => this._onWebSocketData(data));
   }
 
   _onWebSocketClosed() {
     this.close();
   }
 
-  _onWebSocketMessage(data) {
+  _onWebSocketData(data) {
     if (typeof data === 'string') {
       this.emit('error', new TypeError('Received unexpected TEST frame.'));
       this.close();
       return;
     }
+    console.log('WebSocket -> Socket %d bytes.', data.length);
     this.socket.write(data);
   }
 
@@ -39,6 +42,7 @@ class WebSocketTCPTunnel extends Events {
   }
 
   _onSocketData(buffer) {
+    console.log('Socket -> WebSocket %d bytes.', buffer.length);
     this.websocket.send(buffer);
   }
 
@@ -51,23 +55,31 @@ class WebSocketTCPTunnel extends Events {
   }
 }
 
-export function connectTCPTunnel(wss, request, socket, head, connectOptions) {
+export function connectTCPTunnel(connectOptions, getWebSocket) {
   return new Promise((resolve, reject) => {
-      const onConnectionError = (err) => {
+      const onConnectError = (err) => {
         reject(err);
-        socket.destroy();
       };
 
-      const tcpConnection = createConnection(connectionOptions, () => {
-        tcpConnection.off('error', onError);
+      let tcpConnection;
 
-        // TODO: can this fail? Can the TCP connection be closed in the
-        // meantime?
-        wss.handleUpgrade(request, socket, head, (ws) => {
-          resolve(new WebSocketTCPTunnel(ws, tcpConnection));
-        });
+      tcpConnection = createConnection(connectOptions, async () => {
+        // websocket was closed
+        tcpConnection.off('error', onConnectError);
+
+        const ws = await getWebSocket();
+
+        if (tcpConnection.readyState !== 'open') {
+          // connection has been lost while getting websocket
+          ws.close();
+          reolve(null);
+        } else {
+          const tunnel = new WebSocketTCPTunnel(ws, tcpConnection);
+
+          resolve(tunnel);
+          }
       });
 
-      tcpConnection.on('error', onError);
+      tcpConnection.on('error', onConnectError);
   });
 }
