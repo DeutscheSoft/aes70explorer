@@ -1,6 +1,7 @@
 # Installation
 
       npm ci
+      git submodule update --init
 
 # Running
 
