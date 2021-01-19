@@ -1,24 +1,32 @@
 import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_base.js';
 import { callUnsubscribe } from '../utils.js';
+import { findTemplateComponent } from '../template_components.js';
 
 class AES70ObjectTemplate extends PrefixComponentBase {
   constructor() {
     super();
-    this._cloneNode = document.createElement('awml-clone');
-    this._cloneNode.fetch = true;
-    this._cloneNode.setAttribute('debug', '');
+    this._cloneNode = null;
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.style.display = null;
     this.setAttribute('src', '');
-    this.appendChild(this._cloneNode);
   }
 
   _valueReceived(o) {
-    this._cloneNode.className = o.ClassName;
-    this._cloneNode.template = '/templates/' + o.ClassName + '.html';
+    if (this._cloneNode !== null) {
+      this._cloneNode.remove();
+      this._cloneNode = null;
+    }
+
+    const tagName = findTemplateComponent(o);
+
+    if (!tagName)
+      return;
+
+    this._cloneNode = document.createElement(tagName);
+    this.appendChild(this._cloneNode);
   }
 }
 
