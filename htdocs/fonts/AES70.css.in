@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "[name]";
+  font-style: normal;
+  font-weight: normal;
+  src: url("[name].ttf") format("truetype");
+}
