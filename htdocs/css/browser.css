@@ -1,0 +1,281 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+tr:nth-child(odd) {
+  background: var(--background-row-odd);
+}
+tr:nth-child(even) {
+  background: var(--background-row-even);
+}
+td {
+  padding: 5px;
+}
+
+hr {
+  border: 1px inset var(--color-fade);
+  margin: 32px;
+}
+
+a {
+  color: var(--link-color);
+}
+a:hover {
+  color: var(--link-hover-color);
+}
+a:visited {
+  color: var(--link-visited-color);
+}
+
+body,
+html {
+  background: var(--background) !important;
+  color: var(--color) !important;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  font-family: PragatiNarrow, sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 480px;
+  min-height: 400px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+#root {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  grid-template-columns: auto 1fr 96px;
+  grid-template-rows: 1fr 200px;
+  grid-template-areas:
+      "navigation canvas sidebar"
+      "navigation settings sidebar";
+}
+
+
+#root > aes70-navigation {
+  grid-area: navigation;
+  min-width: 256px;
+  
+  background: var(--background-dark);
+  background-image: url('../img/DeusO Logo.svg');
+  background-position: bottom left;
+  background-size: 128px 20px;
+  background-repeat: no-repeat;
+  
+  text-align: left;
+}
+
+#root > aes70-navigation .aux-label {
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 8px;
+    align-items: center;
+}
+#root > aes70-navigation .aux-label > .aux-icon {
+    font-size: var(--font-size-icon-list);
+    padding-right: 8px;
+}
+
+#root > aes70-navigation .head {
+    background: var(--background);
+}
+
+
+
+#root > aes70-navigation > aes70-device {
+    
+}
+#root > aes70-navigation > aes70-device > .head {
+    display: grid;
+    grid-template-areas: 'icon name host'
+                         'icon name port';
+    background: var(--background);
+    grid-template-rows: 20px 20px;
+    grid-template-columns: 40px 1fr auto;
+}
+#root > aes70-navigation > aes70-device > .head > .icon {
+    grid-area: icon;
+    font-size: var(--font-size-icon-list);
+    margin: 6px;
+}
+#root > aes70-navigation > aes70-device > .head > .name {
+    grid-area: name;
+    overflow: hidden;
+    text-overflow: ellipsize;
+    font-size: var(--font-size-large);
+}
+#root > aes70-navigation > aes70-device > .head > .host,
+#root > aes70-navigation > aes70-device > .head > .port {
+    font-size: var(--font-size-small);
+    line-height: var(--font-size-small);
+    height: auto;
+    justify-self: end;
+}
+#root > aes70-navigation > aes70-device > .head > .host {
+    grid-area: host;
+    align-self: end;
+}
+#root > aes70-navigation > aes70-device > .head > .port {
+    grid-area: port;
+    align-self: start;
+}
+
+#root > aes70-navigation > aes70-device > aes70-block-children {
+    padding-right: 8px;
+}
+
+
+#root > aes70-navigation aes70-block {
+    display: block;
+}
+
+#root > aes70-navigation aes70-block-children {
+    padding-left: 32px;
+    display: block;
+}
+
+#root > #canvas {
+  grid-area: canvas;
+}

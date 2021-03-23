@@ -1,3 +1,13 @@
+@charset "UTF-8";
+@import url('./theme.css');
 @import url('./aux.css');
-@import url('./layout.css');
 @import url('./widgets.css');
+@import url('./browser.css');
+
+@import '../aux-widgets/styles/fonts/Oswald-Regular.css';
+@import '../aux-widgets/styles/fonts/PragatiNarrow-Regular.css';
+
+@import '../aux-widgets/styles/fonts/AUXIcons.css';
+@import '../aux-widgets/styles/fonts/AUXShapes.css';
+
+@import '../fonts/AES70.css';
