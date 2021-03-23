@@ -3,7 +3,14 @@ import { DynamicValue } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe } from '../utils.js';
 
 function renderTemplate(info) {
-  return `<aux-label label='${info.name}'></aux-label>`;
+  return `
+<div class='head'>
+  <aux-label class='name' label='${info.name}'></aux-label>
+  <aux-icon class='icon' icon='device'></aux-icon>
+  <aux-label class='host' label='${info.host}'></aux-label>
+  <aux-label class='port' label='${info.port}'></aux-label>
+</div>
+`;
 }
 
 class AES70Device extends BaseComponent {
