@@ -5,5 +5,9 @@
   src: url("AES70Browser.ttf") format("truetype");
 }
 
-.aux-icon.ipaddress::before    { font-family: 'AES70Browser'; content: '񗍄'; }
-.aux-icon.ip::before           { font-family: 'AES70Browser'; content: '񗍄'; }
+.aux-icon.ipaddress::before      { font-family: 'AES70Browser'; content: '񗍄'; }
+.aux-icon.ip::before             { font-family: 'AES70Browser'; content: '񗍄'; }
+.aux-icon.muted::before          { font-family: 'AES70Browser'; content: '񗍅'; }
+.aux-icon.unmuted::before        { font-family: 'AES70Browser'; content: '񗍆'; }
+.aux-icon.polarity::before       { font-family: 'AES70Browser'; content: '񗍇'; }
+.aux-icon.phase::before          { font-family: 'AES70Browser'; content: '񗍇'; }

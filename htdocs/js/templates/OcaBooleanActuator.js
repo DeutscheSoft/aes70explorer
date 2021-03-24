@@ -20,10 +20,7 @@ class OcaBooleanActuatorTemplate extends TemplateComponent.fromString(template) 
     ];
   }
   static match(o) {
-    return [
-      'OcaBooleanActuator',
-      'OcaMute',
-    ].indexOf(o.ClassName) >= 0;
+    return o.ClassName === 'OcaBooleanActuator';
   }
 }
 

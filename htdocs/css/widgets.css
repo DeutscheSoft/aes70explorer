@@ -7,3 +7,31 @@ aes70-object-template {
 aes70-template-ocagaintemplate {
   
 }
+
+
+aes70-template-ocamutetemplate > .aux-toggle {
+  padding-left: var(--aux-button-paddinghorizontal);
+}
+aes70-template-ocamutetemplate > .aux-toggle::before {
+  content: none !important;
+}
+aes70-template-ocamutetemplate > .aux-toggle > .aux-icon {
+  font-size: 20px;
+}
+aes70-template-ocamutetemplate > .aux-toggle.aux-active > .aux-icon {
+  color: var(--color-accent);
+}
+
+
+aes70-template-ocapolaritytemplate > .aux-toggle {
+  padding-left: var(--aux-button-paddinghorizontal);
+}
+aes70-template-ocapolaritytemplate > .aux-toggle::before {
+  content: none !important;
+}
+aes70-template-ocapolaritytemplate > .aux-toggle > .aux-icon {
+  font-size: 20px;
+}
+aes70-template-ocapolaritytemplate > .aux-toggle.aux-active > .aux-icon {
+  color: var(--color-accent);
+}
