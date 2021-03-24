@@ -1,17 +1,33 @@
-import { BaseComponent } from '../../AWML/src/components/base_component.js';
-import { DynamicValue } from '../../AWML/src/index.pure.js';
+import { DynamicValue, TemplateComponent } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe } from '../utils.js';
 
 const template = `
-  <aux-label>
-    <awml-option name=label type=bind readonly src='/Role'></aux-option>
-  </aux-label>
+<div class=head (click)={{ this.onHeadClick }}>
+  <aux-icon icon=ocablock class=icon></aux-icon>
+  <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
+</div>
 `;
 
-class AES70Block extends BaseComponent {
+class AES70Block extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this._open = DynamicValue.from(false);
+    
+    this.onHeadClick = (ev) => {
+      this.open = !this.open;
+      ev.preventDefault();
+      ev.stopPropagation();
+      return false;
+    }
+    
+    this.labelBindings = [
+      {
+        name: 'label',
+        src: '/Role',
+      }
+    ]
+    
+    this._subscribe();
   }
 
   connectedCallback() {
@@ -31,16 +47,7 @@ class AES70Block extends BaseComponent {
   }
 
   _subscribe() {
-    const info = this.info; 
     let blockNode = null;
-
-    this.innerHTML = template;
-    this.querySelector('aux-label').addEventListener('click', (ev) => {
-      this.open = !this.open;
-      ev.preventDefault();
-      ev.stopPropagation();
-      return false;
-    });
 
     const sub = this._open.subscribe((isOpen) => {
       if (isOpen === !!blockNode) return;
