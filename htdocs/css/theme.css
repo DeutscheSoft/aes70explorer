@@ -7,6 +7,7 @@
   --font-size-huge: 22px;
   
   --font-size-icon-list: 26px;
+  --font-size-button-icon: 32px;
   
   --line-height: 1.2em;
   
@@ -22,7 +23,7 @@
   
   --color: #ffffff;
   --color-dark: #87878B;
-  --color-fade: #6e707e; /*#3e404e;*/
+  --color-fade: #4e505e; /*#6e707e;*/
   --color-accent: #ff6600;
   --color-contrast: var(--background-dark);
   --color-warn: #a31a83;

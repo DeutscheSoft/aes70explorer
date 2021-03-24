@@ -3,6 +3,7 @@
 :root {
   --aux-button-paddinghorizontal: 16px;
   --aux-fader-handleheight: 56px;
+  --aux-fader-gridgap: 4px;
   --aux-scale-labelmarginvertical: 2px;
   --aux-scale-minwidth: 28px;
   --aux-meter-size: 4px;
@@ -24,6 +25,19 @@
   background: var(--button-active-background);
 }
 
+
+
+.aux-circular {
+  
+}
+.aux-circular > .aux-base {
+  fill: var(--background-dark);
+  stroke: var(--background-dark);
+  stroke-width: 1px;
+}
+.aux-circular > .aux-value {
+  fill: var(--color-accent);
+}
 
 
 .aux-fader.aux-horizontal {

@@ -2,6 +2,10 @@ aes70-object-template {
   display: inline-block;
 }
 
+aes70-object-template > * {
+  display: block;
+}
+
 
 
 aes70-template-ocagaintemplate {
@@ -34,4 +38,35 @@ aes70-template-ocapolaritytemplate > .aux-toggle > .aux-icon {
 }
 aes70-template-ocapolaritytemplate > .aux-toggle.aux-active > .aux-icon {
   color: var(--color-accent);
+}
+
+
+aes70-template-ocauint8actuatortemplate > .aux-valueknob {
+  display: block;
+  margin-top: var(--line-height);
+  margin-bottom: var(--line-height);
+}
+aes70-template-ocauint8actuatortemplate > .aux-valueknob > .aux-label {
+  position: absolute;
+  top: calc(var(--line-height) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+}
+aes70-template-ocauint8actuatortemplate > .aux-valueknob > .aux-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+aes70-template-ocauint8actuatortemplate > .aux-button {
+  background: none;
+  color: var(--color-fade);
+  padding: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+aes70-template-ocauint8actuatortemplate > .aux-button > .aux-icon {
+  font-size: var(--font-size-button-icon);
 }
