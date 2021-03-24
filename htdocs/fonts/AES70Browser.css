@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "AES70Browser";
+  font-style: normal;
+  font-weight: normal;
+  src: url("AES70Browser.ttf") format("truetype");
+}
+
+.aux-icon.ipaddress::before    { font-family: 'AES70Browser'; content: '񗍄'; }
+.aux-icon.ip::before           { font-family: 'AES70Browser'; content: '񗍄'; }
