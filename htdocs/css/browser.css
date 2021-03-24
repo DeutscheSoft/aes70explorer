@@ -255,11 +255,12 @@ aes70-device > .head {
 }
 aes70-device > .head > .icon {
   font-size: 32px;
+  opacity: 0.33;
 }
 aes70-device > .head > .ip {
   grid-area: ip;
-  font-size: var(--font-size);
-  opacity: 0.5;
+  font-size: var(--font-size-large);
+  opacity: 0.33;
 }
 aes70-device > .head > .name {
   grid-area: name;
@@ -273,7 +274,7 @@ aes70-device > .head > .port {
   line-height: var(--font-size-small);
   height: auto;
   justify-self: end;
-  opacity: 0.5;
+  opacity: 0.33;
 }
 aes70-device > .head > .host {
   grid-area: host;
