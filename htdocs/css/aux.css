@@ -11,10 +11,15 @@
 .aux-button {
     background: var(--button-background);
     color: var(--button-color);
+    border-radius: var(--border-radius);
+    transition: all var(--transition);
+}
+.aux-button:hover {
+    color: var(--button-hover-color);
 }
 .aux-button.aux-active {
-    background: var(--button-active-background);
     color: var(--button-active-color);
+    background: var(--button-active-background);
 }
 
 
@@ -29,10 +34,10 @@
 }
 .aux-fader.aux-vertical > .aux-track {
     background: var(--fader-track-vertical-background);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
 }
 .aux-fader > .aux-track > .aux-handle {
-    border-radius: 4px;
+    border-radius: var(--border-radius);
 }
 .aux-fader.aux-horizontal > .aux-track > .aux-handle {
     background: var(--fader-handle-background);

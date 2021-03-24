@@ -10,6 +10,9 @@
     
     --line-height: 1.2em;
     
+    --border-radius: 3px;
+    
+    --transition: 0.33s;
     
     --background: #232635;
     --background-fade: #181921;
@@ -19,8 +22,9 @@
     
     --color: #ffffff;
     --color-dark: #87878B;
-    --color-fade: #3e404e;
+    --color-fade: #6e707e; /*#3e404e;*/
     --color-accent: #ff6600;
+    --color-contrast: var(--background-dark);
     --color-warn: #a31a83;
     --color-ok: #17f575;
     
@@ -32,10 +36,11 @@
     --link-visited-color: var(--color-warn);
     
     
-    --button-background: var(--background-fade);
-    --button-color: #6e707e;
-    --button-active-background: var(--background-dark);
-    --button-active-color: var(--color-accent);
+    --button-background: var(--background-dark);
+    --button-color: var(--color-fade);
+    --button-hover-color: var(--color);
+    --button-active-background: var(--color-accent); /*linear-gradient(to bottom, var(--color-accent) 0, var(--color-warn) 100%);*/
+    --button-active-color: var(--color-contrast);
     
     --fader-track-horizontal-background: repeating-linear-gradient(to right, black 0px, black 1px, transparent 1.001px, transparent 2px);
     --fader-track-vertical-background: repeating-linear-gradient(to bottom, black 0px, black 1px, transparent 1.001px, transparent 2px);
