@@ -1,62 +1,62 @@
 :root {
     
-    --font-size-tiny: 9px;
-    --font-size-small: 11px;
-    --font-size: 14px;
-    --font-size-large: 18px;
-    --font-size-huge: 22px;
-    
-    --font-size-icon-list: 26px;
-    
-    --line-height: 1.2em;
-    
-    --border-radius: 3px;
-    
-    --transition: 0.33s;
-    
-    --background: #232635;
-    --background-fade: #181921;
-    --background-dark: #101012;
-    --background-even: #0d0d0e;
-    --background-odd: #121214;
-    
-    --color: #ffffff;
-    --color-dark: #87878B;
-    --color-fade: #6e707e; /*#3e404e;*/
-    --color-accent: #ff6600;
-    --color-contrast: var(--background-dark);
-    --color-warn: #a31a83;
-    --color-ok: #17f575;
-    
-    --color-shadow: rgba(0, 0, 0, 0.8);
-    
-    
-    --link-color: var(--color-accent);
-    --link-hover-color: var(--color);
-    --link-visited-color: var(--color-warn);
-    
-    
-    --button-background: var(--background-dark);
-    --button-color: var(--color);
-    --button-hover-background: var(--background-dark);
-    --button-hover-color: var(--color-accent);
-    --button-active-background: var(--color-accent);
-    --button-active-color: var(--color-contrast);
-    
-    --fader-track-horizontal-background: repeating-linear-gradient(to right, black 0px, black 1px, transparent 1.001px, transparent 2px);
-    --fader-track-vertical-background: repeating-linear-gradient(to bottom, black 0px, black 1px, transparent 1.001px, transparent 2px);
-    --fader-handle-horizontal-background: linear-gradient(to right, #e9deff 0%, #858585 11%, #e3e3ff 50%, #ffffff 89%, #5e5154 100%);
-    --fader-handle-vertical-background: linear-gradient(to bottom, #e9deff 0%, #858585 11%, #e3e3ff 50%, #ffffff 89%, #5e5154 100%);
-    --fader-handle-bar: var(--color-accent);
-    --fader-handle-shadow: 0 3px 8px var(--color-shadow);
-    
-    --toggle-background: var(--background-fade);
-    --toggle-color: var(--color-fade);
-    --toggle-hover-background: var(--background-dark);
-    --toggle-hover-color: var(--color);
-    --toggle-active-background: var(--background-dark);
-    --toggle-active-color: var(--color);
-    --toggle-indicator: var(--color-fade);
-    --toggle-hover-indicator: var(--color);
-    --toggle-active-indicator: var(--color-accent);
+  --font-size-tiny: 9px;
+  --font-size-small: 11px;
+  --font-size: 14px;
+  --font-size-large: 18px;
+  --font-size-huge: 22px;
+  
+  --font-size-icon-list: 26px;
+  
+  --line-height: 1.2em;
+  
+  --border-radius: 3px;
+  
+  --transition: 0.33s;
+  
+  --background: #232635;
+  --background-fade: #181921;
+  --background-dark: #101012;
+  --background-even: #0d0d0e;
+  --background-odd: #121214;
+  
+  --color: #ffffff;
+  --color-dark: #87878B;
+  --color-fade: #6e707e; /*#3e404e;*/
+  --color-accent: #ff6600;
+  --color-contrast: var(--background-dark);
+  --color-warn: #a31a83;
+  --color-ok: #17f575;
+  
+  --color-shadow: rgba(0, 0, 0, 0.8);
+  
+  
+  --link-color: var(--color-accent);
+  --link-hover-color: var(--color);
+  --link-visited-color: var(--color-warn);
+  
+  
+  --button-background: var(--background-dark);
+  --button-color: var(--color);
+  --button-hover-background: var(--background-dark);
+  --button-hover-color: var(--color-accent);
+  --button-active-background: var(--color-accent);
+  --button-active-color: var(--color-contrast);
+  
+  --fader-track-horizontal-background: repeating-linear-gradient(to right, black 0px, black 1px, transparent 1.001px, transparent 2px);
+  --fader-track-vertical-background: repeating-linear-gradient(to bottom, black 0px, black 1px, transparent 1.001px, transparent 2px);
+  --fader-handle-horizontal-background: linear-gradient(to right, #e9deff 0%, #858585 11%, #e3e3ff 50%, #ffffff 89%, #5e5154 100%);
+  --fader-handle-vertical-background: linear-gradient(to bottom, #e9deff 0%, #858585 11%, #e3e3ff 50%, #ffffff 89%, #5e5154 100%);
+  --fader-handle-bar: var(--color-accent);
+  --fader-handle-shadow: 0 3px 8px var(--color-shadow);
+  
+  --toggle-background: var(--background-fade);
+  --toggle-color: var(--color-fade);
+  --toggle-hover-background: var(--background-dark);
+  --toggle-hover-color: var(--color);
+  --toggle-active-background: var(--background-dark);
+  --toggle-active-color: var(--color);
+  --toggle-indicator: var(--color-fade);
+  --toggle-hover-indicator: var(--color);
+  --toggle-active-indicator: var(--color-accent);
 }
