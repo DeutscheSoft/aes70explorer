@@ -147,6 +147,10 @@ a:visited {
   color: var(--link-visited-color);
 }
 
+* {
+  position: relative;
+}
+
 body,
 html {
   background: var(--background) !important;
@@ -255,12 +259,12 @@ aes70-device > .head {
 }
 aes70-device > .head > .icon {
   font-size: 32px;
-  opacity: 0.33;
+  color: var(--color-fade);
 }
 aes70-device > .head > .ip {
   grid-area: ip;
   font-size: var(--font-size-large);
-  opacity: 0.33;
+  color: var(--color-fade);
 }
 aes70-device > .head > .name {
   grid-area: name;
@@ -274,7 +278,7 @@ aes70-device > .head > .port {
   line-height: var(--font-size-small);
   height: auto;
   justify-self: end;
-  opacity: 0.33;
+  color: var(--color-fade);
 }
 aes70-device > .head > .host {
   grid-area: host;
@@ -310,7 +314,7 @@ aes70-block {
   display: block;
 }
 aes70-block > .head {
-  background: rgba(255, 255, 255, 0.075);
+  background: rgba(255, 255, 255, 0.066);
   border-bottom: 1px solid black;
 }
 aes70-block > .head > .label {
