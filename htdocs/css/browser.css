@@ -254,7 +254,7 @@ aes70-device > .head {
   grid-template-columns: 40px 1fr auto;
 }
 aes70-device > .head > .icon {
-  color: var(--color-accent);
+  font-size: 32px;
 }
 aes70-device > .head > .ip {
   grid-area: ip;
