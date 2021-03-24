@@ -1,29 +1,38 @@
-import { BaseComponent } from '../../AWML/src/components/base_component.js';
-import { collectPrefix } from '../../AWML/src/index.pure.js';
-import { callUnsubscribe } from '../utils.js';
+import { collectPrefix, TemplateComponent } from '../../AWML/src/index.pure.js';
 import { addToCanvas } from '../layout.js';
 
 const template = `
-  <div>
-    <aux-label>
-      <awml-option name=label type=bind readonly src='/Role'></aux-option>
-    </aux-label> (<aux-label>
-      <awml-option name=label type=bind readonly src='' transform-receive='(o) => o.ClassName'></aux-option>
-    </aux-label>)
-  </div>
+<div class=head (dblclick)={{ this.onHeadDblClick }}>
+  <aux-icon %bind={{this.iconBindings}} class=icon></aux-icon>
+  <aux-label %bind={{this.labelBindings}} class=label></aux-label>
+  <aux-label %bind={{this.classBindings}} class=class></aux-label>
+</div>
 `;
 
-class AES70Object extends BaseComponent {
+class AES70Object extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this._templateNode = null;
+    this.iconBindings = [{
+      src: '',
+      name: 'icon',
+      transformReceive: v=>v.ClassName.toLowerCase(),
+    }];
+    this.labelBindings = [{
+      src: '/Role',
+      name: 'label',
+    }];
+    this.classBindings = [{
+      src: '',
+      name: 'label',
+      transformReceive: v=>v.ClassName,
+    }];
+    this.onHeadDblClick = (e) => {
+      if (this._templateNode) return; 
+      const node = this._createTemplateNode();
+      this._templateNode = addToCanvas(node);
+    }
   }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.style.display = null;
-  }
-
   _createTemplateNode() {
     const node = document.createElement('aes70-object-template');
 
@@ -33,19 +42,14 @@ class AES70Object extends BaseComponent {
   }
 
   _subscribe() {
-    this.innerHTML = template;
-
-    this.querySelector('div').addEventListener('dblclick', () => {
-      if (this._templateNode) return; 
-
-      const node = this._createTemplateNode();
-
-      this._templateNode = addToCanvas(node);
-    });
-
     return () => {
       while (this.lastChild) this.lastChild.remove();
     };
+  }
+  
+  connectedCallback() {
+    super.connectedCallback();
+    this.style.display = null;
   }
 }
 
