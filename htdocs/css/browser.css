@@ -215,12 +215,12 @@ aes70-navigation {
 }
 
 aes70-navigation .head {
-  height: 40px;
+  height: 36px;
   display: grid;
   grid-template-areas:
     "icon label";
   grid-template-columns: 40px 1fr;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--background);
   cursor: pointer;
   user-select: none;
 }
@@ -250,7 +250,7 @@ aes70-device > .head {
   grid-template-areas: 'icon name host'
                        'icon name port';
   background: var(--background);
-  grid-template-rows: 20px 20px;
+  grid-template-rows: 1fr 1fr;
   grid-template-columns: 40px 1fr auto;
 }
 aes70-device > .head > .icon {
@@ -303,7 +303,17 @@ aes70-device > aes70-block-children {
 aes70-block {
   display: block;
 }
+aes70-block > .head {
+  background: rgba(255, 255, 255, 0.075);
+  border-bottom: 1px solid black;
+}
+aes70-block > .head > .label {
+  
+}
 aes70-block > .head > .icon {
+/*
+  color: var(--color-accent);
+*/
   opacity: 0.33;
 }
 
