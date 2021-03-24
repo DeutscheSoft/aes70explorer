@@ -15,12 +15,13 @@
     transition: all var(--transition);
 }
 .aux-button:hover {
-    color: var(--button-hover-color);
+    color: var(--button-hover-indicator);
 }
 .aux-button.aux-active {
     color: var(--button-active-color);
     background: var(--button-active-background);
 }
+
 
 
 .aux-fader.aux-horizontal {
@@ -72,6 +73,36 @@
 .aux-scale > .aux-max,
 .aux-scale > .aux-min {
     transform: none !important;
+}
+
+
+.aux-toggle {
+    padding-left: 4px;
+    background: var(--toggle-background);
+    color: var(--toggle-color);
+}
+.aux-toggle:hover {
+    background: var(--toggle-hover-background);
+    color: var(--toggle-hover-color);
+}
+.aux-toggle.aux-active {
+    background: var(--toggle-hover-background);
+    color: var(--toggle-hover-color);
+}
+.aux-toggle::before {
+    content: "";
+    background: var(--toggle-indicator);
+    transition: all var(--transition);
+    width: 3px;
+    height: 100%;
+    border-radius: 2px;
+    margin-right: var(--aux-button-paddinghorizontal);
+}
+.aux-toggle:hover::before {
+    background: var(--toggle-hover-indicator);
+}
+.aux-toggle.aux-active::before {
+    background: var(--toggle-active-indicator);
 }
 
 

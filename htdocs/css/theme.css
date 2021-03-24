@@ -37,9 +37,10 @@
     
     
     --button-background: var(--background-dark);
-    --button-color: var(--color-fade);
-    --button-hover-color: var(--color);
-    --button-active-background: var(--color-accent); /*linear-gradient(to bottom, var(--color-accent) 0, var(--color-warn) 100%);*/
+    --button-color: var(--color);
+    --button-hover-background: var(--background-dark);
+    --button-hover-color: var(--color-accent);
+    --button-active-background: var(--color-accent);
     --button-active-color: var(--color-contrast);
     
     --fader-track-horizontal-background: repeating-linear-gradient(to right, black 0px, black 1px, transparent 1.001px, transparent 2px);
@@ -49,5 +50,13 @@
     --fader-handle-bar: var(--color-accent);
     --fader-handle-shadow: 0 3px 8px var(--color-shadow);
     
-    
+    --toggle-background: var(--background-fade);
+    --toggle-color: var(--color-fade);
+    --toggle-hover-background: var(--background-dark);
+    --toggle-hover-color: var(--color);
+    --toggle-active-background: var(--background-dark);
+    --toggle-active-color: var(--color);
+    --toggle-indicator: var(--color-fade);
+    --toggle-hover-indicator: var(--color);
+    --toggle-active-indicator: var(--color-accent);
 }
