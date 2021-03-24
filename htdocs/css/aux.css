@@ -5,6 +5,8 @@
   --aux-fader-handleheight: 56px;
   --aux-scale-labelmarginvertical: 2px;
   --aux-scale-minwidth: 28px;
+  --aux-meter-size: 4px;
+  --aux-meter-gridgap: 4px;
 }
 
 
@@ -67,13 +69,20 @@
   height: 2px;
   margin-top: -1px;
 }
-
-
-
-.aux-scale > .aux-max,
-.aux-scale > .aux-min {
+.aux-fader > .aux-scale > .aux-max,
+.aux-fader > .aux-scale > .aux-min {
   transform: none !important;
 }
+
+
+
+.aux-meter.aux-vertical {
+  min-height: 256px;
+}
+.aux-meter > .aux-bar > .aux-mask {
+  opacity: 0.66;
+}
+
 
 
 .aux-toggle {

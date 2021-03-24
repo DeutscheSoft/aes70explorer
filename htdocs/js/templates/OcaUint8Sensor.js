@@ -6,13 +6,12 @@ const colorMid = '#8b06a5';
 const colorMin = '#280062';
 
 const template = `
-<awml-option sync type=bind src='/Role' name=Role readonly></awml-option>
 <aux-levelmeter
-  style='height: 200px;'
   falling=100
   show_value=true
   value.format='sprintf:%.1f'
   foreground='black'
+  %bind={{ this.meterBindings }}
   >
 </aux-levelmeter>
 `;
@@ -20,6 +19,7 @@ const template = `
 class OcaUint8SensorTemplate extends TemplateComponent.fromString(template) {
   constructor() {
     super();
+    this.Role;
     this.meterBindings = [
       {
         src: '/Role',
@@ -38,9 +38,9 @@ class OcaUint8SensorTemplate extends TemplateComponent.fromString(template) {
         name: 'max',
       },
       {
-        src: '/Reading/Min,/Reading/Max',
+        src: ['/Reading/Min','/Reading/Max'],
         name: 'gradient',
-        transformReceive: (arr) => {
+        transformReceive: function (arr) {
           const [min, max] = arr;
           let grad = {};
           grad[String(min)] = colorMin;
