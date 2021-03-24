@@ -193,89 +193,145 @@ html {
 }
 
 
-#root > aes70-navigation {
+#sidebar {
+  grid-area: sidebar;
+  min-width: 96px;
+  background: var(--background-dark);
+}
+
+
+/* NAVIGATION */
+
+
+aes70-navigation {
   grid-area: navigation;
   min-width: 256px;
-  
   background: var(--background-dark);
   background-image: url('../img/DeusO Logo.svg');
   background-position: bottom left;
   background-size: 128px 20px;
   background-repeat: no-repeat;
-  
   text-align: left;
 }
 
-#root > aes70-navigation .aux-label {
-    height: 40px;
-    line-height: 40px;
-    margin: 0;
-    padding: 0 8px;
-    align-items: center;
+aes70-navigation .head {
+  height: 40px;
+  display: grid;
+  grid-template-areas:
+    "icon label";
+  grid-template-columns: 40px 1fr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  user-select: none;
 }
-#root > aes70-navigation .aux-label > .aux-icon {
-    font-size: var(--font-size-icon-list);
-    padding-right: 8px;
+aes70-navigation .aux-label {
+  margin: 0;
+  padding: 0 4px;
+  align-items: center;
+  align-self: center;
+  grid-area: label;
 }
-
-#root > aes70-navigation .head {
-    background: var(--background);
-}
-
-
-
-#root > aes70-navigation > aes70-device {
-    
-}
-#root > aes70-navigation > aes70-device > .head {
-    display: grid;
-    grid-template-areas: 'icon name host'
-                         'icon name port';
-    background: var(--background);
-    grid-template-rows: 20px 20px;
-    grid-template-columns: 40px 1fr auto;
-}
-#root > aes70-navigation > aes70-device > .head > .icon {
-    grid-area: icon;
-    font-size: var(--font-size-icon-list);
-    margin: 6px;
-}
-#root > aes70-navigation > aes70-device > .head > .name {
-    grid-area: name;
-    overflow: hidden;
-    text-overflow: ellipsize;
-    font-size: var(--font-size-large);
-}
-#root > aes70-navigation > aes70-device > .head > .host,
-#root > aes70-navigation > aes70-device > .head > .port {
-    font-size: var(--font-size-small);
-    line-height: var(--font-size-small);
-    height: auto;
-    justify-self: end;
-}
-#root > aes70-navigation > aes70-device > .head > .host {
-    grid-area: host;
-    align-self: end;
-}
-#root > aes70-navigation > aes70-device > .head > .port {
-    grid-area: port;
-    align-self: start;
-}
-
-#root > aes70-navigation > aes70-device > aes70-block-children {
-    padding-right: 8px;
+aes70-navigation .icon {
+  grid-area: icon;
+  font-size: var(--font-size-icon-list);
+  margin: 0px;
+  grid-area: icon;
 }
 
 
-#root > aes70-navigation aes70-block {
-    display: block;
+
+/* DEVICE */
+
+aes70-device {
+  
+}
+aes70-device > .head {
+  display: grid;
+  grid-template-areas: 'icon name host'
+                       'icon name port';
+  background: var(--background);
+  grid-template-rows: 20px 20px;
+  grid-template-columns: 40px 1fr auto;
+}
+aes70-device > .head > .icon {
+  
+}
+aes70-device > .head > .name {
+  grid-area: name;
+  overflow: hidden;
+  text-overflow: ellipsize;
+  font-size: var(--font-size-large);
+}
+aes70-device > .head > .host,
+aes70-device > .head > .port {
+  font-size: var(--font-size-small);
+  line-height: var(--font-size-small);
+  height: auto;
+  justify-self: end;
+  opacity: 0.5;
+}
+aes70-device > .head > .host {
+  grid-area: host;
+  align-self: end;
+}
+aes70-device > .head > .port {
+  grid-area: port;
+  align-self: start;
+}
+aes70-device > .head > .port::before {
+  content: ":";
 }
 
-#root > aes70-navigation aes70-block-children {
-    padding-left: 32px;
-    display: block;
+
+/* BLOCK CHILDREN */
+
+aes70-block-children {
+  padding-left: 16px;
+  display: block;
 }
 
-#root > #canvas {
+aes70-device > aes70-block-children {
+/*
+  padding-right: 8px;
+*/
+}
+
+
+
+/* BLOCK */
+
+aes70-block {
+  display: block;
+}
+aes70-block > .head > .icon {
+  opacity: 0.33;
+}
+
+/* OBJECT */
+
+aes70-object > .head {
+  display: grid;
+  grid-template-areas:
+    "icon label"
+    "icon class";
+}
+
+aes70-object > .head > .icon {
+  grid-area: icon;
+}
+aes70-object > .head > .label {
+  align-self: end;
+}
+aes70-object > .head > .class {
+  grid-area: class;
+  font-size: var(--font-size-tiny);
+  opacity: 0.5;
+  align-self: start;
+}
+
+
+/* CANVAS */ 
+
+#canvas {
   grid-area: canvas;
 }
