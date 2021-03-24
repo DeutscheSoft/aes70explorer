@@ -1,15 +1,14 @@
-import { BaseComponent } from '../../AWML/src/components/base_component.js';
+import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { Devices } from '../devices.js';
 import { forEachAsync } from '../utils.js';
 
-class AES70Navigation extends BaseComponent {
-  connectedCallback() {
-    super.connectedCallback();
-    this.style.display = null;
-  }
+const template = ``;
 
-  _subscribe() {
-    return forEachAsync(
+class AES70Navigation extends TemplateComponent.fromString(template) {
+  constructor() {
+    super();
+    
+    forEachAsync(
       Devices,
       (info) => {
         const element = document.createElement('aes70-device');
