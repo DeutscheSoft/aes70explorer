@@ -247,14 +247,15 @@ aes70-device {
 }
 aes70-device > .head {
   display: grid;
-  grid-template-areas: 'icon name host'
-                       'icon name port';
+  grid-template-areas: 'icon name ip host'
+                       'icon name ip port';
   background: var(--background);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 40px 1fr auto;
 }
-aes70-device > .head > .icon {
-  
+aes70-device > .head > .ip {
+  grid-area: ip;
+  font-size: var(--font-size);
 }
 aes70-device > .head > .name {
   grid-area: name;

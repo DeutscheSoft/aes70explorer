@@ -3,8 +3,9 @@ import { callUnsubscribe } from '../utils.js';
 
 const template = `
 <div class='head' (click)={{ this.onHeadClick }}>
-  <aux-label class='name' label='{{ this.info.name }}'></aux-label>
   <aux-icon class='icon' icon='ocadevice'></aux-icon>
+  <aux-label class='name' label='{{ this.info.name }}'></aux-label>
+  <aux-icon class='ip' icon='ip'></aux-icon>
   <aux-label class='host' label='{{ this.info.host }}'></aux-label>
   <aux-label class='port' label='{{ this.info.port }}'></aux-label>
 </div>
