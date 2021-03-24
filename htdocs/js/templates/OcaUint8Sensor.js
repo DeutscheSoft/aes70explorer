@@ -19,7 +19,6 @@ const template = `
 class OcaUint8SensorTemplate extends TemplateComponent.fromString(template) {
   constructor() {
     super();
-    this.Role;
     this.meterBindings = [
       {
         src: '/Role',
@@ -36,6 +35,10 @@ class OcaUint8SensorTemplate extends TemplateComponent.fromString(template) {
       {
         src: '/Reading/Max',
         name: 'max',
+      },
+      {
+        src: '/Reading/Min',
+        name: 'base',
       },
       {
         src: ['/Reading/Min','/Reading/Max'],
