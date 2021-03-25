@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateComponent } from '../template_components.js';
+import { registerTemplateControl } from '../template_components.js';
 
 const colorMax = '#ff6600';
 const colorMid = '#8b06a5';
@@ -16,7 +16,7 @@ const template = `
 </aux-levelmeter>
 `;
 
-class OcaUint8SensorTemplate extends TemplateComponent.fromString(template) {
+class OcaUint8SensorControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.meterBindings = [
@@ -59,4 +59,4 @@ class OcaUint8SensorTemplate extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateComponent(OcaUint8SensorTemplate);
+registerTemplateControl(OcaUint8SensorControl);

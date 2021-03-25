@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateComponent } from '../template_components.js';
+import { registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-fader
@@ -9,7 +9,7 @@ const template = `
 </aux-fader>
 `;
 
-class OcaGainTemplate extends TemplateComponent.fromString(template) {
+class OcaGainControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.faderBindings = [
@@ -36,4 +36,4 @@ class OcaGainTemplate extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateComponent(OcaGainTemplate);
+registerTemplateControl(OcaGainControl);

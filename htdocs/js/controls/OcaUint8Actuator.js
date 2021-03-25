@@ -1,5 +1,5 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { registerTemplateComponent } from '../template_components.js';
+import { registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-valueknob #knob
@@ -54,7 +54,7 @@ const knobPresets = {
     show_labels: true,
 }
     
-class OcaUint8ActuatorTemplate extends TemplateComponent.fromString(template) {
+class OcaUint8ActuatorControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.knobPresets = DynamicValue.fromConstant(knobPresets);
@@ -105,4 +105,4 @@ class OcaUint8ActuatorTemplate extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateComponent(OcaUint8ActuatorTemplate);
+registerTemplateControl(OcaUint8ActuatorControl);

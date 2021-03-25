@@ -1,0 +1,73 @@
+aes70-object-control {
+  display: inline-block;
+}
+
+aes70-object-control > * {
+  display: block;
+}
+
+
+
+aes70-template-ocagaincontrol {
+  
+}
+
+
+aes70-template-ocamutecontrol > .aux-toggle {
+  padding-left: var(--aux-button-paddinghorizontal);
+}
+aes70-template-ocamutecontrol > .aux-toggle::before {
+  content: none !important;
+}
+aes70-template-ocamutecontrol > .aux-toggle > .aux-icon {
+  font-size: 20px;
+}
+aes70-template-ocamutecontrol > .aux-toggle.aux-active > .aux-icon {
+  color: var(--color-accent);
+}
+
+
+aes70-template-ocapolaritycontrol > .aux-toggle {
+  padding-left: var(--aux-button-paddinghorizontal);
+}
+aes70-template-ocapolaritycontrol > .aux-toggle::before {
+  content: none !important;
+}
+aes70-template-ocapolaritycontrol > .aux-toggle > .aux-icon {
+  font-size: 20px;
+}
+aes70-template-ocapolaritycontrol > .aux-toggle.aux-active > .aux-icon {
+  color: var(--color-accent);
+}
+
+
+aes70-template-ocauint8actuatorcontrol > .aux-valueknob {
+  display: block;
+  margin-top: var(--line-height);
+  margin-bottom: var(--line-height);
+}
+aes70-template-ocauint8actuatorcontrol > .aux-valueknob > .aux-label {
+  position: absolute;
+  top: calc(var(--line-height) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+}
+aes70-template-ocauint8actuatorcontrol > .aux-valueknob > .aux-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+aes70-template-ocauint8actuatorcontrol > .aux-button {
+  background: none;
+  color: var(--color-fade);
+  padding: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+aes70-template-ocauint8actuatorcontrol > .aux-button > .aux-icon {
+  font-size: var(--font-size-button-icon);
+}

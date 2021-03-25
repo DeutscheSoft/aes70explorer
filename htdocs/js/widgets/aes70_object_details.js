@@ -1,8 +1,8 @@
 import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_base.js';
 import { callUnsubscribe } from '../utils.js';
-import { findTemplateComponent } from '../template_components.js';
+import { findTemplateDetails } from '../template_components.js';
 
-class AES70ObjectTemplate extends PrefixComponentBase {
+class AES70ObjectDetails extends PrefixComponentBase {
   constructor() {
     super();
     this._cloneNode = null;
@@ -20,7 +20,7 @@ class AES70ObjectTemplate extends PrefixComponentBase {
       this._cloneNode = null;
     }
 
-    const tagName = findTemplateComponent(o);
+    const tagName = findTemplateDetails(o);
 
     if (!tagName)
       return;
@@ -30,4 +30,4 @@ class AES70ObjectTemplate extends PrefixComponentBase {
   }
 }
 
-customElements.define('aes70-object-template', AES70ObjectTemplate);
+customElements.define('aes70-object-details', AES70ObjectDetails);

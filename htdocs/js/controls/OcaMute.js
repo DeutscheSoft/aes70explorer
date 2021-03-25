@@ -1,11 +1,11 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateComponent } from '../template_components.js';
+import { registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-toggle icon=unmuted icon_active=muted %bind={{ this.faderBindings }}></aux-toggle>
 `;
 
-class OcaMuteTemplate extends TemplateComponent.fromString(template) {
+class OcaMuteControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.faderBindings = [
@@ -27,4 +27,4 @@ class OcaMuteTemplate extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateComponent(OcaMuteTemplate);
+registerTemplateControl(OcaMuteControl);

@@ -5,7 +5,8 @@ const template = `
 <div class='head' (click)={{ this.onHeadClick }}>
   <aux-icon class='icon' icon='ocadevice'></aux-icon>
   <aux-label class='name' label='{{ this.info.name }}'></aux-label>
-  <aux-icon class='ip' icon='ip'></aux-icon>
+  <aux-icon class='ihost' icon='ip'></aux-icon>
+  <aux-icon class='iport' icon='port'></aux-icon>
   <aux-label class='host' label='{{ this.info.host }}'></aux-label>
   <aux-label class='port' label='{{ this.info.port }}'></aux-label>
 </div>
@@ -26,7 +27,7 @@ class AES70Device extends TemplateComponent.fromString(template) {
 
   set info(info) {
     this._info = info;
-    
+    console.log(info)
     // @Arne: gibt es im TemplateComponent nicht?
     //this._resubscribe();
     //
