@@ -226,6 +226,7 @@ html {
 
 #canvas {
   grid-area: canvas;
+  overflow: auto;
 }
 
 
