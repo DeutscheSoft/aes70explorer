@@ -6,7 +6,8 @@
   --font-size-large: 18px;
   --font-size-huge: 22px;
   
-  --font-size-icon-list: 26px;
+  --font-size-list-icon: 26px;
+  --font-size-list-action: 22px;
   --font-size-button-icon: 32px;
   
   --line-height: 1.2em;

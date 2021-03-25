@@ -13,3 +13,6 @@
 .aux-icon.phase::before          { font-family: 'AES70Browser'; content: '񗍇'; }
 .aux-icon.edit::before           { font-family: 'AES70Browser'; content: '񗍈'; }
 .aux-icon.port::before           { font-family: 'AES70Browser'; content: '񗍉'; }
+.aux-icon.puzzle::before         { font-family: 'AES70Browser'; content: '񗍊'; }
+.aux-icon.trash::before          { font-family: 'AES70Browser'; content: '񗍋'; }
+.aux-icon.confirm::before        { font-family: 'AES70Browser'; content: '񗍌'; }

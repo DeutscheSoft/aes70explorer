@@ -276,7 +276,7 @@ aes70-navigation .aux-label {
 }
 aes70-navigation .icon {
   grid-area: icon;
-  font-size: var(--font-size-icon-list);
+  font-size: var(--font-size-list-icon);
   margin: 0px;
   grid-area: icon;
 }
@@ -315,6 +315,7 @@ aes70-device > .head > .port {
   line-height: var(--font-size-small);
   height: auto;
   justify-self: end;
+  padding: 0;
 }
 aes70-device > .head > .host {
   grid-area: host;
@@ -328,7 +329,7 @@ aes70-device > .head > .port {
 }
 aes70-device > .head > .ihost,
 aes70-device > .head > .iport {
-  font-size: var(--font-size);
+  font-size: var(--font-size-small);
   margin: 0;
 }
 aes70-device > .head > .ihost {
@@ -371,19 +372,47 @@ aes70-block > .head > .icon {
 aes70-object > .head {
   display: grid;
   grid-template-areas:
-    "icon label"
-    "icon class";
+    "icon label action"
+    "icon class action";
 }
-
+aes70-object:last-of-type > .head {
+  border-bottom: none;
+}
 aes70-object > .head > .icon {
   grid-area: icon;
 }
 aes70-object > .head > .label {
   align-self: end;
 }
+aes70-object > .head.hascontrol > .label {
+  color: var(--color-accent);
+}
 aes70-object > .head > .class {
   grid-area: class;
   font-size: var(--font-size-tiny);
   opacity: 0.5;
   align-self: start;
+}
+aes70-object > .head > .aux-button {
+  background: none;
+  margin: 0;
+  padding: 0 4px;
+  height: auto;
+}
+aes70-object > .head > .aux-button > .aux-icon {
+  font-size: var(--font-size-list-action);
+}
+aes70-object > .head > .add,
+aes70-object > .head > .remove {
+  grid-area: action;
+}
+aes70-object > .head > .add {
+  color: var(--color-fade);
+}
+aes70-object > .head > .remove {
+  
+}
+aes70-object > .head > .remove:hover,
+aes70-object > .head > .remove.aux-active {
+  color: var(--color-accent);
 }
