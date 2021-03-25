@@ -27,7 +27,6 @@ class AES70Device extends TemplateComponent.fromString(template) {
 
   set info(info) {
     this._info = info;
-    console.log(info)
     // @Arne: gibt es im TemplateComponent nicht?
     //this._resubscribe();
     //
