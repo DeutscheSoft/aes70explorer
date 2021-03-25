@@ -9,7 +9,7 @@ const template = `
 <aux-levelmeter
   falling=100
   show_value=true
-  value.format='sprintf:%.1f'
+  value.format='sprintf:%.2f'
   foreground='black'
   %bind={{ this.meterBindings }}
   >

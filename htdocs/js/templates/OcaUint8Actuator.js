@@ -4,7 +4,7 @@ import { registerTemplateComponent } from '../template_components.js';
 const template = `
 <aux-valueknob #knob
   knob.presets={{ this.knobPresets }}
-  value.format='sprintf:%.1f'
+  value.format='sprintf:%.2f'
   knob.show_hand=false
   %bind={{ this.knobBindings }}
   >
