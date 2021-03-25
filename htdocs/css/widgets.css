@@ -66,6 +66,7 @@ aes70-template-ocauint8actuatortemplate > .aux-button {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  margin: 0;
 }
 aes70-template-ocauint8actuatortemplate > .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon);

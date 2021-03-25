@@ -197,6 +197,24 @@ html {
 }
 
 
+/* LOGO */
+
+#logo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 256px;
+  height: 38px;
+  opacity: 0.2;
+/*
+  transform-origin: bottom left;
+  transform:  translate(100%, 0%) rotate(-90deg);
+*/
+}
+
+
+/* SIDEBAR */
+
 #sidebar {
   grid-area: sidebar;
   min-width: 96px;
@@ -204,18 +222,39 @@ html {
 }
 
 
-/* NAVIGATION */
+/* CANVAS */ 
 
+#canvas {
+  grid-area: canvas;
+}
+
+
+/* INFOBOX */
+
+#infobox {
+  
+}
+
+
+/* NAVIGATION */
 
 aes70-navigation {
   grid-area: navigation;
   min-width: 256px;
+  height: 100%;
   background: var(--background-dark);
-  background-image: url('../img/DeusO Logo.svg');
-  background-position: bottom left;
-  background-size: 128px 20px;
-  background-repeat: no-repeat;
   text-align: left;
+  overflow: hidden;
+}
+
+aes70-navigation > .scroller {
+  position: absolute;
+  overflow: scroll;
+  top: 0;
+  left: 0;
+  bottom: calc(-1 * var(--aux-scrollbar-size));
+  right: calc(-1 * var(--aux-scrollbar-size));
+  margin: 0;
 }
 
 aes70-navigation .head {
@@ -243,7 +282,6 @@ aes70-navigation .icon {
 }
 
 
-
 /* DEVICE */
 
 aes70-device {
@@ -256,6 +294,9 @@ aes70-device > .head {
   background: var(--background);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 40px 1fr auto;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 aes70-device > .head > .icon {
   font-size: 32px;
@@ -300,13 +341,6 @@ aes70-block-children {
   display: block;
 }
 
-aes70-device > aes70-block-children {
-/*
-  padding-right: 8px;
-*/
-}
-
-
 
 /* BLOCK */
 
@@ -321,11 +355,9 @@ aes70-block > .head > .label {
   
 }
 aes70-block > .head > .icon {
-/*
-  color: var(--color-accent);
-*/
   opacity: 0.33;
 }
+
 
 /* OBJECT */
 
@@ -347,11 +379,4 @@ aes70-object > .head > .class {
   font-size: var(--font-size-tiny);
   opacity: 0.5;
   align-self: start;
-}
-
-
-/* CANVAS */ 
-
-#canvas {
-  grid-area: canvas;
 }

@@ -2,7 +2,9 @@ import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { Devices } from '../devices.js';
 import { forEachAsync } from '../utils.js';
 
-const template = ``;
+const template = `
+<div #scroller class=scroller></div>
+`;
 
 class AES70Navigation extends TemplateComponent.fromString(template) {
   constructor() {
@@ -15,7 +17,7 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
 
         element.info = info;
 
-        this.appendChild(element);
+        this.scroller.appendChild(element);
 
         return () => {
           element.remove();
