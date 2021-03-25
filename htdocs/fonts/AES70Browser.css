@@ -16,3 +16,4 @@
 .aux-icon.puzzle::before         { font-family: 'AES70Browser'; content: '񗍊'; }
 .aux-icon.trash::before          { font-family: 'AES70Browser'; content: '񗍋'; }
 .aux-icon.confirm::before        { font-family: 'AES70Browser'; content: '񗍌'; }
+.aux-icon.kill::before           { font-family: 'AES70Browser'; content: '񗍍'; }

@@ -2,8 +2,31 @@ aes70-object-control {
   display: inline-block;
 }
 
+aes70-object-control.scaffold::before {
+  content: "񗍍";
+  font-size: 64px;
+  font-family: AES70Browser;
+  color: var(--color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  animation: scaffold infinite 1s;
+}
+aes70-object-control.scaffold > * {
+  opacity: 0.2;
+}
+@keyframes scaffold {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 aes70-object-control > * {
   display: block;
+  transition: opacity var(--transition);
 }
 
 

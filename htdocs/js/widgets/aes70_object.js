@@ -16,7 +16,9 @@ const template = `
     class=remove
     icon=trash
     icon_confirm=confirm
-    (confirmed)={{ this.onRemoveClicked }}
+    (confirmed)={{ this.onRemoveConfirmed }}
+    (click)={{ this.onRemoveClicked }}
+    (canceled)={{ this.onRemoveCanceled }}
     %if={{ !!this._controlNode }}
   ></aux-confirmbutton>
 </div>
@@ -50,12 +52,20 @@ class AES70Object extends TemplateComponent.fromString(template) {
       this._classesSet.add('hascontrol');
       this.setClasses();
     }
-    this.onRemoveClicked = (e) => {
+    this.onRemoveConfirmed = (e) => {
       if (!this._controlNode) return;
       this._controlNode.remove(); 
       this._controlNode = null;
       this._classesSet.delete('hascontrol');
       this.setClasses();
+    }
+    this.onRemoveClicked = (e) => {
+      if (!this._controlNode) return;
+      this._controlNode.classList.add('scaffold');
+    }
+    this.onRemoveCanceled = (e) => {
+      if (!this._controlNode) return;
+      this._controlNode.classList.remove('scaffold');
     }
   }
   _createControlNode() {
