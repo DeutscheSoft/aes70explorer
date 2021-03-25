@@ -356,14 +356,14 @@ aes70-block {
   display: block;
 }
 aes70-block > .head {
-  background: rgba(255, 255, 255, 0.066);
+  background: var(--background-fade);
   border-bottom: 1px solid black;
 }
 aes70-block > .head > .label {
   
 }
 aes70-block > .head > .icon {
-  opacity: 0.33;
+  color: var(--color-fade);
 }
 
 
