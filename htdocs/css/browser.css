@@ -289,22 +289,18 @@ aes70-device {
 }
 aes70-device > .head {
   display: grid;
-  grid-template-areas: 'icon name ip host'
-                       'icon name ip port';
+  grid-template-areas: 'icon name ihost host'
+                       'icon name iport port';
   background: var(--background);
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 40px 1fr auto;
+  grid-gap: 4px;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 aes70-device > .head > .icon {
   font-size: 32px;
-  color: var(--color-fade);
-}
-aes70-device > .head > .ip {
-  grid-area: ip;
-  font-size: var(--font-size-large);
   color: var(--color-fade);
 }
 aes70-device > .head > .name {
@@ -319,18 +315,29 @@ aes70-device > .head > .port {
   line-height: var(--font-size-small);
   height: auto;
   justify-self: end;
-  color: var(--color-fade);
 }
 aes70-device > .head > .host {
   grid-area: host;
   align-self: end;
+  justify-self: start;
 }
 aes70-device > .head > .port {
   grid-area: port;
   align-self: start;
+  justify-self: start;
 }
-aes70-device > .head > .port::before {
-  content: ":";
+aes70-device > .head > .ihost,
+aes70-device > .head > .iport {
+  font-size: var(--font-size);
+  margin: 0;
+}
+aes70-device > .head > .ihost {
+  grid-area: ihost;
+  align-self: end;
+}
+aes70-device > .head > .iport {
+  grid-area: iport;
+  align-self: start;
 }
 
 
