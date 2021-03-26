@@ -12,7 +12,7 @@ const template = `
     (click)={{ this.onAddClicked }}
     %if={{ !this._controlNode }}
   ></aux-button>
-  <aux-confirmbutton
+  <aux-confirmbutton timeout=3000
     class=remove
     icon=trash
     icon_confirm=confirm
@@ -33,10 +33,15 @@ class AES70Object extends TemplateComponent.fromString(template) {
     this.classes = 'head';
     
     getBackendValue('local:selected').subscribe((v) => {
-      if (v && collectPrefix(this) === v)
+      if (v && collectPrefix(this) === v) {
         this._classesSet.add('selected');
-      else
+        if (this._controlNode)
+          this._controlNode.classList.add('selected');
+      } else {
         this._classesSet.delete('selected');
+        if (this._controlNode)
+          this._controlNode.classList.remove('selected');
+      }
       this.setClasses();
     });
     

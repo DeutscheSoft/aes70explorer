@@ -1,5 +1,8 @@
 aes70-object-control {
   display: inline-block;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 2px;
 }
 
 aes70-object-control.scaffold::before {
@@ -19,6 +22,11 @@ aes70-object-control.scaffold::before {
 aes70-object-control.scaffold > * {
   opacity: 0.2;
 }
+aes70-object-control.selected {
+  box-shadow: 0 0 4px var(--color);
+  z-index: 10;
+}
+
 @keyframes scaffold {
   0% { opacity: 0; }
   50% { opacity: 1; }
