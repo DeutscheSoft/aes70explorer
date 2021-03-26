@@ -193,7 +193,7 @@ html {
   grid-template-rows: 1fr 200px;
   grid-template-areas:
       "navigation canvas sidebar"
-      "navigation settings sidebar";
+      "navigation details sidebar";
 }
 
 
@@ -233,9 +233,33 @@ html {
 /* DETAILS */
 
 #details {
-  
+  grid-area: details;
+  display: flex;
+  margin: 16px;
 }
 
+#details > .control {
+  flex: 1 1 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+#details > .control > * {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+#details > .details {
+  flex: 1 1 70%;
+  text-align: left;
+}
+
+#details > .details > * {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 4px;
+}
 
 /* NAVIGATION */
 

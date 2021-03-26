@@ -4,8 +4,8 @@ import { callUnsubscribe } from '../utils.js';
 import { findTemplateDetails, findTemplateControl } from '../template_components.js';
 
 const template = `
-<div class=control #control></div>
-<div class=details #details></div>
+<div class=control></div>
+<div class=details></div>
 `
 class AES70ObjectDetails extends PrefixComponentBase {
   constructor() {
