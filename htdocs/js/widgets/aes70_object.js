@@ -2,7 +2,11 @@ import { collectPrefix, TemplateComponent, getBackendValue } from '../../AWML/sr
 import { addToCanvas } from '../layout.js';
 
 const template = `
-<div class={{ this.classes }} (click)={{ this.onHeaderClicked }}>
+<div
+  class={{ this.classes }}
+  (click)={{ this.onHeaderClicked }}
+  (dblclick)={{ this.onHeaderDblClicked }}
+  >
   <aux-icon %bind={{this.iconBindings}} class=icon></aux-icon>
   <aux-label %bind={{this.labelBindings}} class=label></aux-label>
   <aux-label %bind={{this.classBindings}} class=class></aux-label>
@@ -63,20 +67,15 @@ class AES70Object extends TemplateComponent.fromString(template) {
     this.onHeaderClicked = (e) => {
       getBackendValue('local:selected').set(collectPrefix(this));
     }
+    this.onHeaderDblClicked = (e) => {
+      this._addControl();
+    }
     
     this.onAddClicked = (e) => {
-      if (this._controlNode) return; 
-      const node = this._createControlNode();
-      this._controlNode = addToCanvas(node);
-      this._classesSet.add('hascontrol');
-      this.setClasses();
+      this._addControl();
     }
     this.onRemoveConfirmed = (e) => {
-      if (!this._controlNode) return;
-      this._controlNode.remove(); 
-      this._controlNode = null;
-      this._classesSet.delete('hascontrol');
-      this.setClasses();
+      this._removeControl();
     }
     this.onRemoveClicked = (e) => {
       if (!this._controlNode) return;
@@ -87,6 +86,23 @@ class AES70Object extends TemplateComponent.fromString(template) {
       this._controlNode.classList.remove('scaffold');
     }
   }
+  
+  _addControl() {
+    if (this._controlNode) return; 
+    const node = this._createControlNode();
+    this._controlNode = addToCanvas(node);
+    this._classesSet.add('hascontrol');
+    this.setClasses();
+  }
+  
+  _removeControl() {
+    if (!this._controlNode) return;
+    this._controlNode.remove(); 
+    this._controlNode = null;
+    this._classesSet.delete('hascontrol');
+    this.setClasses();
+  }
+  
   _createControlNode() {
     const node = document.createElement('aes70-object-control');
 
