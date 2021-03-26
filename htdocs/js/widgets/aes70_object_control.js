@@ -1,3 +1,4 @@
+import { collectPrefix, getBackendValue } from '../../AWML/src/index.pure.js';
 import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_base.js';
 import { callUnsubscribe } from '../utils.js';
 import { findTemplateControl } from '../template_components.js';
@@ -5,7 +6,10 @@ import { findTemplateControl } from '../template_components.js';
 class AES70ObjectControl extends PrefixComponentBase {
   constructor() {
     super();
-    this._cloneNode = null;
+    this._cloneControl = null;
+    this.addEventListener('click', (e) => {
+      getBackendValue('local:selected').set(collectPrefix(this));
+    });
   }
 
   connectedCallback() {
@@ -15,9 +19,9 @@ class AES70ObjectControl extends PrefixComponentBase {
   }
 
   _valueReceived(o) {
-    if (this._cloneNode !== null) {
-      this._cloneNode.remove();
-      this._cloneNode = null;
+    if (this._cloneControl !== null) {
+      this._cloneControl.remove();
+      this._cloneControl = null;
     }
 
     const tagName = findTemplateControl(o);
@@ -25,8 +29,8 @@ class AES70ObjectControl extends PrefixComponentBase {
     if (!tagName)
       return;
 
-    this._cloneNode = document.createElement(tagName);
-    this.appendChild(this._cloneNode);
+    this._cloneControl = document.createElement(tagName);
+    this.appendChild(this._cloneControl);
   }
 }
 
