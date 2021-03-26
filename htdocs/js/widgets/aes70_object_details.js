@@ -25,25 +25,16 @@ class AES70ObjectDetails extends PrefixComponentBase {
   }
 
   _valueReceived(path) {
+    this._clearClones();
+    if (!path)
+      return;
     this.setAttribute('prefix', path);
     getBackendValue(path).wait().then((function (o) {
-      
-      if (this._cloneControl !== null) {
-        this._cloneControl.remove();
-        this._cloneControl = null;
-      }
-      
-      if (this._cloneDetails !== null) {
-        this._cloneDetails.remove();
-        this._cloneDetails = null;
-      }
-  
       const ctrlTagName = findTemplateControl(o);
       if (ctrlTagName) {
         this._cloneControl = document.createElement(ctrlTagName);
         this.control.appendChild(this._cloneControl);
       }
-      
       const dtlsTagName = findTemplateDetails(o);
       if (dtlsTagName) {
         this._cloneDetails = document.createElement(dtlsTagName);
@@ -51,6 +42,17 @@ class AES70ObjectDetails extends PrefixComponentBase {
       }
       
     }).bind(this));
+  }
+  
+  _clearClones() {
+    if (this._cloneControl !== null) {
+      this._cloneControl.remove();
+      this._cloneControl = null;
+    }
+    if (this._cloneDetails !== null) {
+      this._cloneDetails.remove();
+      this._cloneDetails = null;
+    }
   }
 }
 

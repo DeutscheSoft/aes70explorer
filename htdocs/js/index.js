@@ -18,3 +18,17 @@ import './widgets/aes70_object_details.js';
 // for debugging
 import * as AWML from '../AWML/src/index.js';
 window.AWML = AWML;
+
+
+import { getBackendValue } from '../AWML/src/index.pure.js';
+
+document.addEventListener('mouseup', function (e) {
+  const path = e.path;
+  for (let i = 0; i < path.length; ++i) {
+    if (!path[i].tagName)
+      continue;
+    if (path[i].tagName.startsWith('aes70-template-oca'))
+      return;
+  }
+  getBackendValue('local:selected').set(null);
+});
