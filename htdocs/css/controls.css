@@ -11,7 +11,7 @@ aes70-object-control.scaffold::before {
   content: "񗍍";
   font-size: 64px;
   font-family: AES70Browser;
-  color: var(--color);
+  color: var(--color-accent);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,6 +27,9 @@ aes70-object-control.scaffold > * {
 aes70-object-control.selected {
   box-shadow: 0 0 4px var(--color);
   z-index: 10;
+}
+aes70-object-control.scaffold.selected {
+  box-shadow: 0 0 4px var(--color-accent);
 }
 
 @keyframes scaffold {
