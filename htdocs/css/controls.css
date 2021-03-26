@@ -3,6 +3,8 @@ aes70-object-control {
   border-radius: 4px;
   overflow: hidden;
   padding: 2px;
+  box-shadow: 0 0 0px var(--color);
+  transition: box-shadow var(--transition);
 }
 
 aes70-object-control.scaffold::before {
