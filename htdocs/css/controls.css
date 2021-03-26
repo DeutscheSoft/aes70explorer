@@ -13,6 +13,7 @@ aes70-object-control.scaffold::before {
   transform: translate(-50%, -50%);
   width: 64px;
   height: 64px;
+  line-height: 64px;
   animation: scaffold infinite 1s;
 }
 aes70-object-control.scaffold > * {
