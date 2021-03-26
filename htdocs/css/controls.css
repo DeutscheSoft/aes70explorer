@@ -1,10 +1,12 @@
 aes70-object-control {
-  display: inline-block;
+  display: inline-flex;
   border-radius: 4px;
   overflow: hidden;
   padding: 2px;
   box-shadow: 0 0 0px var(--color);
   transition: box-shadow var(--transition);
+  justify-content: center;
+  align-items: center;
 }
 
 aes70-object-control.scaffold::before {
@@ -81,24 +83,24 @@ aes70-template-ocapolaritycontrol > .aux-toggle.aux-active > .aux-icon {
 }
 
 
-aes70-template-ocauint8actuatorcontrol > .aux-valueknob {
+aes70-template-ocaactuatorcontrol > .aux-valueknob {
   display: block;
   margin-top: var(--line-height);
   margin-bottom: var(--line-height);
 }
-aes70-template-ocauint8actuatorcontrol > .aux-valueknob > .aux-label {
+aes70-template-ocaactuatorcontrol > .aux-valueknob > .aux-label {
   position: absolute;
   top: calc(var(--line-height) * -1);
   left: 50%;
   transform: translateX(-50%);
 }
-aes70-template-ocauint8actuatorcontrol > .aux-valueknob > .aux-value {
+aes70-template-ocaactuatorcontrol > .aux-valueknob > .aux-value {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-aes70-template-ocauint8actuatorcontrol > .aux-button {
+aes70-template-ocaactuatorcontrol > .aux-button {
   background: none;
   color: var(--color-fade);
   padding: 4px;
@@ -108,6 +110,6 @@ aes70-template-ocauint8actuatorcontrol > .aux-button {
   transform: translateX(-50%);
   margin: 0;
 }
-aes70-template-ocauint8actuatorcontrol > .aux-button > .aux-icon {
+aes70-template-ocaactuatorcontrol > .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon);
 }

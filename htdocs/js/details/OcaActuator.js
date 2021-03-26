@@ -28,7 +28,7 @@ const template = `
 
 `;
 
-class OcaUint8ActuatorDetails extends TemplateComponent.fromString(template) {
+class OcaActuatorDetails extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     
@@ -68,4 +68,4 @@ class OcaUint8ActuatorDetails extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateDetails(OcaUint8ActuatorDetails);
+registerTemplateDetails(OcaActuatorDetails);

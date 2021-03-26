@@ -58,7 +58,7 @@ const knobPresets = {
   },
 }
     
-class OcaUint8ActuatorControl extends TemplateComponent.fromString(template) {
+class OcaActuatorControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.knobPresets = DynamicValue.fromConstant(knobPresets);
@@ -112,4 +112,4 @@ class OcaUint8ActuatorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaUint8ActuatorControl);
+registerTemplateControl(OcaActuatorControl);

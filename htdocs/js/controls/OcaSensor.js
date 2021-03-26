@@ -16,7 +16,7 @@ const template = `
 </aux-levelmeter>
 `;
 
-class OcaUint8SensorControl extends TemplateComponent.fromString(template) {
+class OcaSensorControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.meterBindings = [
@@ -59,4 +59,4 @@ class OcaUint8SensorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaUint8SensorControl);
+registerTemplateControl(OcaSensorControl);
