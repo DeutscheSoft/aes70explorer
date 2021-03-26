@@ -20,9 +20,10 @@ aes70-object-control.scaffold::before {
   height: 40px;
   line-height: 40px;
   animation: scaffold infinite 1s;
+  z-index: 20;
 }
 aes70-object-control.scaffold > * {
-  opacity: 0.2;
+  opacity: 0.5;
   filter: blur(3px);
   background: var(--background-dark);
 }
