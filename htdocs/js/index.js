@@ -13,6 +13,7 @@ import './widgets/aes70_block.js';
 import './widgets/aes70_block_children.js';
 import './widgets/aes70_object.js';
 import './widgets/aes70_object_control.js';
+import './widgets/aes70_object_details.js';
 
 // for debugging
 import * as AWML from '../AWML/src/index.js';
