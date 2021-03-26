@@ -12,6 +12,7 @@ class AES70ObjectDetails extends PrefixComponentBase {
     super();
     this._cloneControl = null;
     this._cloneDetails = null;
+    this._path = null;
     
     this.innerHTML = template;
     this.control = this.querySelector('.control');
@@ -25,9 +26,13 @@ class AES70ObjectDetails extends PrefixComponentBase {
   }
 
   _valueReceived(path) {
+    if (path === this._path)
+      return;
+    this._path = path;
     this._clearClones();
     if (!path)
       return;
+    
     this.setAttribute('prefix', path);
     getBackendValue(path).wait().then((function (o) {
       const ctrlTagName = findTemplateControl(o);

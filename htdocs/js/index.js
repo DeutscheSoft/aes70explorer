@@ -27,7 +27,8 @@ document.addEventListener('mouseup', function (e) {
   for (let i = 0; i < path.length; ++i) {
     if (!path[i].tagName)
       continue;
-    if (path[i].tagName.startsWith('aes70-template-oca'))
+    if (path[i].tagName.startsWith('AES70-TEMPLATE-OCA')
+      || path[i].tagName.startsWith('AES70-OBJECT'))
       return;
   }
   getBackendValue('local:selected').set(null);
