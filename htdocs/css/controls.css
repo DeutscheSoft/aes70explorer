@@ -9,20 +9,22 @@ aes70-object-control {
 
 aes70-object-control.scaffold::before {
   content: "񗍍";
-  font-size: 64px;
+  font-size: 40px;
   font-family: AES70Browser;
   color: var(--color-accent);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
-  line-height: 64px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   animation: scaffold infinite 1s;
 }
 aes70-object-control.scaffold > * {
   opacity: 0.2;
+  filter: blur(3px);
+  background: var(--background-dark);
 }
 aes70-object-control.selected {
   box-shadow: 0 0 4px var(--color);
