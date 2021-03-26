@@ -101,6 +101,10 @@ class OcaUint8ActuatorControl extends TemplateComponent.fromString(template) {
       'OcaUint64Actuator',
       'OcaFloat32Actuator',
       'OcaFloat64Actuator',
+      'OcaFrequencyActuator',
+      'OcaPanBalance',
+      'OcaDelay',
+      'OcaDelayExtended',
     ].indexOf(o.ClassName) >= 0;
   }
 }

@@ -1,8 +1,8 @@
-import { collectPrefix, TemplateComponent } from '../../AWML/src/index.pure.js';
+import { collectPrefix, TemplateComponent, getBackendValue } from '../../AWML/src/index.pure.js';
 import { addToCanvas } from '../layout.js';
 
 const template = `
-<div class={{ this.classes }}>
+<div class={{ this.classes }} (click)={{ this.onHeaderClicked }}>
   <aux-icon %bind={{this.iconBindings}} class=icon></aux-icon>
   <aux-label %bind={{this.labelBindings}} class=label></aux-label>
   <aux-label %bind={{this.classBindings}} class=class></aux-label>
@@ -31,6 +31,15 @@ class AES70Object extends TemplateComponent.fromString(template) {
     this._classesSet = new Set();
     this._classesSet.add('head');
     this.classes = 'head';
+    
+    getBackendValue('local:selected').subscribe((v) => {
+      if (v && collectPrefix(this) === v)
+        this._classesSet.add('selected');
+      else
+        this._classesSet.delete('selected');
+      this.setClasses();
+    });
+    
     this.iconBindings = [{
       src: '',
       name: 'icon',
@@ -45,6 +54,11 @@ class AES70Object extends TemplateComponent.fromString(template) {
       name: 'label',
       transformReceive: v=>v.ClassName,
     }];
+    
+    this.onHeaderClicked = (e) => {
+      getBackendValue('local:selected').set(collectPrefix(this));
+    }
+    
     this.onAddClicked = (e) => {
       if (this._controlNode) return; 
       const node = this._createControlNode();

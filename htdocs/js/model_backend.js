@@ -10,7 +10,6 @@ const modelBackend = new DynamicValuesBackend({
   name: 'model',
   values: {
     devices: Devices,
-    selected: '',
   },
 });
 

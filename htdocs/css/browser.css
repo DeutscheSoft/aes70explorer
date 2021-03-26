@@ -379,6 +379,13 @@ aes70-object > .head {
 aes70-object:last-of-type > .head {
   border-bottom: none;
 }
+aes70-object > .head.selected {
+  background: var(--color-accent);
+}
+aes70-object > .head.selected * {
+  color: black !important;
+}
+
 aes70-object > .head > .icon {
   grid-area: icon;
 }
@@ -413,7 +420,6 @@ aes70-object > .head > .add {
 aes70-object > .head > .remove {
   
 }
-aes70-object > .head > .remove:hover,
-aes70-object > .head > .remove.aux-active {
+aes70-object > .head > .remove:hover {
   color: var(--color-accent);
 }
