@@ -472,10 +472,10 @@ aes70-object > .head {
 aes70-object:last-of-type > .head {
   border-bottom: none;
 }
-aes70-object > .head.selected {
+aes70-object.selected > .head {
   background: var(--color-accent);
 }
-aes70-object > .head.selected * {
+aes70-object.selected > .head * {
   color: black !important;
 }
 
@@ -485,7 +485,7 @@ aes70-object > .head > .icon {
 aes70-object > .head > .label {
   align-self: end;
 }
-aes70-object > .head.hascontrol > .label {
+aes70-object.hascontrol > .head > .label {
   color: var(--color-accent);
 }
 aes70-object > .head > .class {

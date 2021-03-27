@@ -1,5 +1,6 @@
 const templateControls = new Map();
 const templateDetails = new Map();
+const availableControls = new Map();
 
 export function registerTemplateControl(component) {
   const tagName = 'aes70-template-' + component.name.toLowerCase();
@@ -39,4 +40,19 @@ export function findTemplateDetails(o) {
   });
 
   return match;
+}
+
+export function registerControl(path, node) {
+  if (availableControls.has(path))
+    return availableControls.get(path);
+  availableControls.set(path, node);
+  return node;
+}
+
+export function unregisterControl(path) {
+  return availableControls.delete(path);
+}
+
+export function getRegisteredControl(path) {
+  return availableControls.get(path);
 }

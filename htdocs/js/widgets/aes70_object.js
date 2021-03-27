@@ -1,9 +1,10 @@
 import { collectPrefix, TemplateComponent, getBackendValue } from '../../AWML/src/index.pure.js';
 import { addToCanvas } from '../layout.js';
+import { registerControl, unregisterControl, getRegisteredControl } from '../template_components.js';
 
 const template = `
 <div
-  class={{ this.classes }}
+  class=head
   (click)={{ this.onHeaderClicked }}
   (dblclick)={{ this.onHeaderDblClicked }}
   >
@@ -14,7 +15,7 @@ const template = `
     class=add
     icon=puzzle
     (click)={{ this.onAddClicked }}
-    %if={{ !this._controlNode }}
+    %if={{ !this._hasControl }}
   ></aux-button>
   <aux-confirmbutton timeout=3000
     class=remove
@@ -23,7 +24,7 @@ const template = `
     (confirmed)={{ this.onRemoveConfirmed }}
     (click)={{ this.onRemoveClicked }}
     (canceled)={{ this.onRemoveCanceled }}
-    %if={{ !!this._controlNode }}
+    %if={{ !!this._hasControl }}
   ></aux-confirmbutton>
 </div>
 `;
@@ -31,22 +32,13 @@ const template = `
 class AES70Object extends TemplateComponent.fromString(template) {
   constructor() {
     super();
-    this._controlNode = null;
-    this._classesSet = new Set();
-    this._classesSet.add('head');
-    this.classes = 'head';
     
     getBackendValue('local:selected').subscribe((v) => {
       if (v && collectPrefix(this) === v) {
-        this._classesSet.add('selected');
-        if (this._controlNode)
-          this._controlNode.classList.add('selected');
+        this.classList.add('selected');
       } else {
-        this._classesSet.delete('selected');
-        if (this._controlNode)
-          this._controlNode.classList.remove('selected');
+        this.classList.remove('selected');
       }
-      this.setClasses();
     });
     
     this.iconBindings = [{
@@ -78,29 +70,34 @@ class AES70Object extends TemplateComponent.fromString(template) {
       this._removeControl();
     }
     this.onRemoveClicked = (e) => {
-      if (!this._controlNode) return;
-      this._controlNode.classList.add('scaffold');
+      console.log(collectPrefix(this))
+      const node = getRegisteredControl(collectPrefix(this));
+      if (!node) return;
+      node.classList.add('scaffold');
     }
     this.onRemoveCanceled = (e) => {
-      if (!this._controlNode) return;
-      this._controlNode.classList.remove('scaffold');
+      const node = getRegisteredControl(collectPrefix(this));
+      if (!node) return;
+      node.classList.remove('scaffold');
     }
   }
   
   _addControl() {
-    if (this._controlNode) return; 
+    const _node = getRegisteredControl(collectPrefix(this));
+    if (_node) return; 
     const node = this._createControlNode();
-    this._controlNode = addToCanvas(node);
-    this._classesSet.add('hascontrol');
-    this.setClasses();
+    registerControl(collectPrefix(this), addToCanvas(node));
+    this.classList.add('hascontrol');
+    this._hasControl = true;
   }
   
   _removeControl() {
-    if (!this._controlNode) return;
-    this._controlNode.remove(); 
-    this._controlNode = null;
-    this._classesSet.delete('hascontrol');
-    this.setClasses();
+    const _node = getRegisteredControl(collectPrefix(this));
+    if (!_node) return;
+    _node.remove(); 
+    unregisterControl(collectPrefix(this));
+    this.classList.remove('hascontrol');
+    this._hasControl = false;
   }
   
   _createControlNode() {
@@ -120,10 +117,9 @@ class AES70Object extends TemplateComponent.fromString(template) {
   connectedCallback() {
     super.connectedCallback();
     this.style.display = null;
-  }
-  
-  setClasses() {
-    this.classes = Array.from(this._classesSet).join(' ');
+    this._hasControl = getRegisteredControl(collectPrefix(this));
+    if (this._hasControl)
+      this.classList.add('hascontrol');
   }
 }
 

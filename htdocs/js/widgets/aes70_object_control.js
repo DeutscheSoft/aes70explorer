@@ -10,6 +10,15 @@ class AES70ObjectControl extends PrefixComponentBase {
     this.addEventListener('click', (e) => {
       getBackendValue('local:selected').set(collectPrefix(this));
     });
+    
+    getBackendValue('local:selected').subscribe((v) => {
+      if (v && collectPrefix(this) === v) {
+        this.classList.add('selected');
+      } else {
+        if (this.classList.contains('selected'))
+          this.classList.remove('selected');
+      }
+    });
   }
 
   connectedCallback() {
