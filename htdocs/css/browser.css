@@ -247,11 +247,14 @@ html {
 #details > .head {
   grid-area: head;
   display: grid;
-  grid-template-areas: "icon title title"
-                       "icon id class";
-  grid-template-columns: auto auto 1fr;
+  grid-template-areas: "icon title title title"
+                       "icon id class docs";
+  grid-template-columns: auto auto auto 1fr;
   grid-gap: 4px;
   text-align: left;
+}
+#details > .head * {
+  margin: 0;
 }
 #details > .head > .icon {
   grid-area: icon;
@@ -265,12 +268,25 @@ html {
 #details > .head > .classid {
   grid-area: id;
   font-size: var(--font-size-small);
-  align-self: start;
+  align-self: center;
 }
 #details > .head > .classname {
   grid-area: class;
   font-size: var(--font-size-small);
-  align-self: start;
+  align-self: center;
+}
+#details > .head > .docs {
+  grid-area: docs;
+  text-decoration: none;
+  align-self: center;
+}
+#details > .head > .docs > .aux-icon {
+  font-size: var(--font-size-large);
+  color: var(--color-fade);
+  transition: color var(--transition);
+}
+#details > .head > .docs:hover > .aux-icon {
+  color: var(--color);
 }
 
 #details > .control {

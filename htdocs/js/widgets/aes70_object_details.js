@@ -4,11 +4,12 @@ import { findTemplateDetails, findTemplateControl } from '../template_components
 
 const template = `
 <awml-prefix src="local:selected"></awml-prefix>
-<div class=head>
-  <aux-icon %if={{ this._path }} class=icon %bind={{ this.IconBind }}></aux-icon>
-  <aux-label %if={{ this._path }} class=role %bind={{ this.RoleBind }}></aux-label>
-  <aux-label %if={{ this._path }} class=classid %bind={{ this.ClassIDBind }}></aux-label>
-  <aux-label %if={{ this._path }} class=classname %bind={{ this.ClassNameBind }}></aux-label>
+<div class=head %if={{ this._path }}>
+  <aux-icon class=icon %bind={{ this.IconBind }}></aux-icon>
+  <aux-label class=role %bind={{ this.RoleBind }}></aux-label>
+  <aux-label class=classid %bind={{ this.ClassIDBind }}></aux-label>
+  <aux-label class=classname %bind={{ this.ClassNameBind }}></aux-label>
+  <a href={{ this.href }} target=_blank class=docs><aux-icon icon=book></aux-icon></a>
 </div>
 <div class=details #details></div>
 <div class=control #control></div>
@@ -20,6 +21,7 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
     this._cloneControl = null;
     this._cloneDetails = null;
     this._path = null;
+    this.href = null;
     
     this.IconBind = [{ src: '', name: 'icon',
       transformReceive: v=>v.ClassName.toLowerCase(), }];
@@ -48,7 +50,7 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
           this._cloneDetails = document.createElement(dtlsTagName);
           this.details.appendChild(this._cloneDetails);
         }
-        
+        this.href = 'http://docs.deuso.de/AES70/' + o.ClassName + '.html';
       }).bind(this));
     }).bind(this));
   }

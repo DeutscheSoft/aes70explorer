@@ -27,11 +27,10 @@ aes70-object-control.scaffold::before {
 aes70-object-control.scaffold > * {
   opacity: 0.5;
   filter: blur(3px);
-  background: var(--background-dark);
 }
 aes70-object-control.selected {
-  box-shadow: 0 0 4px var(--color);
   z-index: 10;
+  background: var(--background-selected);
 }
 aes70-object-control.scaffold.selected {
   box-shadow: 0 0 4px var(--color-accent);
