@@ -485,7 +485,10 @@ aes70-object.selected > .head {
   background: var(--color-accent);
 }
 aes70-object.selected > .head * {
-  color: black !important;
+  color: var(--color-contrast) !important;
+}
+aes70-object.selected.hascontrol > .head > .label {
+  color: var(--color) !important;
 }
 
 aes70-object > .head > .icon {
