@@ -17,15 +17,16 @@
   --transition: 0.33s;
   
   --background: #232635;
-  --background-fade: #181921;
+  --background-fade: rgba(0, 0, 0, 0.3);
+  --background-medium: #181B25;
   --background-dark: #101012;
   --background-even: #0d0d0e;
   --background-odd: #121214;
-  --background-selected: #2A2D3B;
+  --background-selected: #2C2F3D;
   
   --color: #ffffff;
   --color-dark: #87878B;
-  --color-fade: #4e505e; /*#6e707e;*/
+  --color-fade: rgba(255, 255, 255, 0.33); /*#4e505e; /*#6e707e;*/
   --color-accent: #ff6600;
   --color-contrast: var(--background-dark);
   --color-warn: #a31a83;

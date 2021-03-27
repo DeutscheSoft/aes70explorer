@@ -459,7 +459,7 @@ aes70-block {
   display: block;
 }
 aes70-block > .head {
-  background: var(--background-fade);
+  background: var(--background-medium);
   border-bottom: 1px solid black;
 }
 aes70-block > .head > .label {
