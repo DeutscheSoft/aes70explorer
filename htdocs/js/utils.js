@@ -54,3 +54,7 @@ export function forEachAsync(dv, callback, makeKey) {
     callUnsubscribe(sub);
   };
 }
+
+export function classIDToString (str) {
+  return str.split('').map(v=>v.charCodeAt(0)).join('.');
+}

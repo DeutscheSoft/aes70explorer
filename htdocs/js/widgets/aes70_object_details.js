@@ -1,54 +1,58 @@
-import { collectPrefix, getBackendValue } from '../../AWML/src/index.pure.js';
-import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_base.js';
-import { callUnsubscribe } from '../utils.js';
+import { collectPrefix, getBackendValue, TemplateComponent } from '../../AWML/src/index.pure.js';
+import { callUnsubscribe, classIDToString } from '../utils.js';
 import { findTemplateDetails, findTemplateControl } from '../template_components.js';
 
 const template = `
-<div class=control></div>
-<div class=details></div>
+<awml-prefix src="local:selected"></awml-prefix>
+<div class=head>
+  <aux-icon %if={{ this._path }} class=icon %bind={{ this.IconBind }}></aux-icon>
+  <aux-label %if={{ this._path }} class=role %bind={{ this.RoleBind }}></aux-label>
+  <aux-label %if={{ this._path }} class=classid %bind={{ this.ClassIDBind }}></aux-label>
+  <aux-label %if={{ this._path }} class=classname %bind={{ this.ClassNameBind }}></aux-label>
+</div>
+<div class=details #details></div>
+<div class=control #control></div>
+<div class=noselect %if={{ !this._path }}>Select An Object From The List</div>
 `
-class AES70ObjectDetails extends PrefixComponentBase {
+class AES70ObjectDetails extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this._cloneControl = null;
     this._cloneDetails = null;
     this._path = null;
     
-    this.innerHTML = template;
-    this.control = this.querySelector('.control');
-    this.details = this.querySelector('.details');
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.style.display = null;
-    this.setAttribute('src', 'local:selected');
-  }
-
-  _valueReceived(path) {
-    if (path === this._path)
-      return;
-    this._path = path;
-    this._clearClones();
-    if (!path)
-      return;
+    this.IconBind = [{ src: '', name: 'icon',
+      transformReceive: v=>v.ClassName.toLowerCase(), }];
+    this.RoleBind = [{ src: '/Role', name: 'label' }];
+    this.ClassIDBind = [{ src: '/ClassID', name: 'label',
+      transformReceive: classIDToString, }];
+    this.ClassNameBind = [{ src: '', name: 'label',
+      transformReceive: v=>v.ClassName }];
     
-    this.setAttribute('prefix', path);
-    getBackendValue(path).wait().then((function (o) {
-      const ctrlTagName = findTemplateControl(o);
-      if (ctrlTagName) {
-        this._cloneControl = document.createElement(ctrlTagName);
-        this.control.appendChild(this._cloneControl);
-      }
-      const dtlsTagName = findTemplateDetails(o);
-      if (dtlsTagName) {
-        this._cloneDetails = document.createElement(dtlsTagName);
-        this.details.appendChild(this._cloneDetails);
-      }
+    getBackendValue('local:selected').subscribe((function (path) {
+      if (path === this._path)
+        return;
+      this._path = path;
+      this._clearClones();
+      if (!path)
+        return;
       
+      getBackendValue(path).wait().then((function (o) {
+        const ctrlTagName = findTemplateControl(o);
+        if (ctrlTagName) {
+          this._cloneControl = document.createElement(ctrlTagName);
+          this.control.appendChild(this._cloneControl);
+        }
+        const dtlsTagName = findTemplateDetails(o);
+        if (dtlsTagName) {
+          this._cloneDetails = document.createElement(dtlsTagName);
+          this.details.appendChild(this._cloneDetails);
+        }
+        
+      }).bind(this));
     }).bind(this));
   }
-  
+
   _clearClones() {
     if (this._cloneControl !== null) {
       this._cloneControl.remove();

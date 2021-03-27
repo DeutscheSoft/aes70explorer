@@ -52,7 +52,7 @@
   --fader-handle-bar: var(--color-accent);
   --fader-handle-shadow: 0 3px 8px var(--color-shadow);
   
-  --toggle-background: var(--background-fade);
+  --toggle-background: rgba(0, 0, 0, 0.34);
   --toggle-color: var(--color-fade);
   --toggle-hover-background: var(--background-dark);
   --toggle-hover-color: var(--color);

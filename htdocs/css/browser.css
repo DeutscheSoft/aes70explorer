@@ -190,7 +190,7 @@ html {
   bottom: 0;
   
   grid-template-columns: auto 1fr 96px;
-  grid-template-rows: 1fr 200px;
+  grid-template-rows: 1fr 256px;
   grid-template-areas:
       "navigation canvas sidebar"
       "navigation details sidebar";
@@ -234,12 +234,47 @@ html {
 
 #details {
   grid-area: details;
-  display: flex;
-  margin: 16px;
+  display: grid;
+  grid-template-areas: "head control"
+                       "details control";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr auto;
+  grid-gap: 16px 8px;
+  padding: 8px 16px;
+  background: var(--background-fade);
+  border-top: 1px solid var(--color-accent);
+}
+#details > .head {
+  grid-area: head;
+  display: grid;
+  grid-template-areas: "icon title title"
+                       "icon id class";
+  grid-template-columns: auto auto 1fr;
+  grid-gap: 4px;
+  text-align: left;
+}
+#details > .head > .icon {
+  grid-area: icon;
+  font-size: 40px;
+}
+#details > .head > .role {
+  grid-area: title;
+  font-size: var(--font-size-huge);
+  line-height: 1;
+}
+#details > .head > .classid {
+  grid-area: id;
+  font-size: var(--font-size-small);
+  align-self: start;
+}
+#details > .head > .classname {
+  grid-area: class;
+  font-size: var(--font-size-small);
+  align-self: start;
 }
 
 #details > .control {
-  flex: 1 1 30%;
+  grid-area: control;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,14 +286,32 @@ html {
   justify-content: stretch;
 }
 #details > .details {
-  flex: 1 1 70%;
+  grid-area: details;
   text-align: left;
 }
 
 #details > .details > * {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-gap: 4px;
+  grid-gap: 6px;
+}
+#details > .details > * > * {
+  margin: 0;
+}
+#details > .details > * > .label {
+  text-align: right;
+  display: block;
+  color: var(--color-fade);
+}
+
+#details > .noselect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  opacity: 0.05;
+  font-size: var(--font-size-huge);
 }
 
 /* NAVIGATION */

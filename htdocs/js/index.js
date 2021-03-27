@@ -22,7 +22,7 @@ window.AWML = AWML;
 
 import { getBackendValue } from '../AWML/src/index.pure.js';
 
-document.addEventListener('mouseup', function (e) {
+document.getElementById('canvas').addEventListener('click', function (e) {
   const path = e.path;
   for (let i = 0; i < path.length; ++i) {
     if (!path[i].tagName)
