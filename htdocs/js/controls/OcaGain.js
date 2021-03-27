@@ -5,7 +5,9 @@ const template = `
 <aux-fader
   %bind={{ this.faderBindings }}
   show_value="true"
-  value.format="sprintf:%.2f">
+  value.format="sprintf:%.2f"
+  scale="decibel"
+  log_factor="3">
 </aux-fader>
 `;
 

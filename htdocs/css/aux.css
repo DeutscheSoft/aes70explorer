@@ -83,10 +83,6 @@
   height: 2px;
   margin-top: -1px;
 }
-.aux-fader > .aux-scale > .aux-max,
-.aux-fader > .aux-scale > .aux-min {
-  transform: none !important;
-}
 
 
 
