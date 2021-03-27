@@ -309,12 +309,16 @@ html {
 #details > .details {
   grid-area: details;
   text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #details > .details > * {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 6px;
+  align-content: center;
 }
 #details > .details > * > * {
   margin: 0;
