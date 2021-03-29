@@ -123,3 +123,15 @@ aes70-template-ocaintactuatorcontrol > .aux-button > .aux-icon,
 aes70-template-ocafloatactuatorcontrol > .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon);
 }
+
+
+
+aes70-template-ocaswitchcontrol {
+  display: flex;
+  align-items: center !important;
+}
+aes70-template-ocaswitchcontrol > .aux-label {
+  text-align: right;
+  margin-left: 8px;
+  margin-right: 8px;
+}

@@ -2,6 +2,7 @@ import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { registerTemplateControl } from '../template_components.js';
 
 const template = `
+<aux-label %bind={{ this.labelBindings }}></aux-label>
 <aux-select %bind={{ this.selectBindings }}></aux-select>
 `;
 
@@ -34,6 +35,12 @@ class OcaSwitchControl extends TemplateComponent.fromString(template) {
           }
           return entries;
         }
+      },
+    ];
+    this.labelBindings = [
+      {
+        src: '/Role',
+        name: 'label',
       },
     ];
   }
