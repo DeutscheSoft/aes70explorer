@@ -95,6 +95,25 @@
 
 
 
+.aux-select {
+  padding-right: 8px
+}
+.aux-button.aux-select > .aux-icon {
+  margin-left: 12px !important;
+}
+.aux-selectlist {
+  background: var(--background-dark);
+}
+.aux-selectlist > .aux-selectentry:hover {
+  background: var(--background-medium);
+}
+.aux-selectlist > .aux-selectentry.aux-active {
+  background: var(--color-accent);
+  color: var(--color-contrast);
+}
+
+
+
 .aux-toggle {
   padding-left: 4px;
   background: var(--toggle-background);
