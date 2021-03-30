@@ -23,13 +23,12 @@ window.AWML = AWML;
 import { getBackendValue } from '../AWML/src/index.pure.js';
 
 document.getElementById('canvas').addEventListener('click', function (e) {
-  const path = e.path;
-  for (let i = 0; i < path.length; ++i) {
-    if (!path[i].tagName)
-      continue;
-    if (path[i].tagName.startsWith('AES70-TEMPLATE-OCA')
-      || path[i].tagName.startsWith('AES70-OBJECT'))
+  let target = e.target;
+  while (target) {
+    if (target.tagName.startsWith('AES70-TEMPLATE-OCA')
+      || target.tagName.startsWith('AES70-OBJECT'))
       return;
+    target = target.parentElement;
   }
   getBackendValue('local:selected').set(null);
 });
