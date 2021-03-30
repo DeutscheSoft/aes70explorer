@@ -7,7 +7,7 @@ aes70-object-control {
   transition: box-shadow var(--transition);
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 0px var(--color-accent);
+  box-shadow: 0 0 0px var(--background);
 }
 
 aes70-object-control.scaffold::before {
