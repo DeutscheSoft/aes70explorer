@@ -2,7 +2,7 @@ aes70-object-control {
   display: inline-flex;
   border-radius: 4px;
   overflow: hidden;
-  padding: 4px;
+  padding: 8px;
   box-shadow: 0 0 0px var(--color);
   transition: box-shadow var(--transition);
   justify-content: center;
@@ -51,7 +51,10 @@ aes70-object-control > * {
 
 
 aes70-template-ocagaincontrol {
-  
+  height: 240px;
+}
+aes70-template-ocagaincontrol > .aux-fader {
+  height: 100%;
 }
 
 
@@ -134,4 +137,12 @@ aes70-template-ocaswitchcontrol > .aux-label {
   text-align: right;
   margin-left: 8px;
   margin-right: 8px;
+}
+
+
+aes70-template-ocasensorcontrol {
+  height: 240px;
+}
+aes70-template-ocasensorcontrol > .aux-meter {
+  height: 100%;
 }

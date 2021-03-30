@@ -11,6 +11,11 @@
 }
 
 
+.aux-widget {
+  margin: 0;
+}
+
+
 .aux-button {
   background: var(--button-background);
   color: var(--button-color);
@@ -41,10 +46,14 @@
 
 
 .aux-fader.aux-horizontal {
+/*
   min-width: 256px;
+*/
 }
 .aux-fader.aux-vertical {
+/*
   min-height: 256px;
+*/
 }
 .aux-fader.aux-horizontal > .aux-track {
   background: var(--fader-track-horizontal-background);
@@ -87,7 +96,9 @@
 
 
 .aux-meter.aux-vertical {
+/*
   min-height: 256px;
+*/
 }
 .aux-meter > .aux-bar > .aux-mask {
   opacity: 0.66;
