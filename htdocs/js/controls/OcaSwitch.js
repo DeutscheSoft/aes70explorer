@@ -3,7 +3,7 @@ import { registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-label %bind={{ this.labelBindings }}></aux-label>
-<aux-select %bind={{ this.selectBindings }}></aux-select>
+<aux-select auto_size=true %bind={{ this.selectBindings }}></aux-select>
 `;
 
 class OcaSwitchControl extends TemplateComponent.fromString(template) {
