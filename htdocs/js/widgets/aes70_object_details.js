@@ -2,6 +2,7 @@ import { collectPrefix, getBackendValue, TemplateComponent } from '../../AWML/sr
 import { callUnsubscribe, classIDToString } from '../utils.js';
 import { findTemplateDetails, findTemplateControl } from '../template_components.js';
 
+const docsLink = 'http://docs.deuso.de/AES70-OCC/Control Classes/';
 const template = `
 <awml-prefix src="local:selected"></awml-prefix>
 <div class=head %if={{ this._path }}>
@@ -50,7 +51,7 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
           this._cloneDetails = document.createElement(dtlsTagName);
           this.details.appendChild(this._cloneDetails);
         }
-        this.href = 'http://docs.deuso.de/AES70/' + o.ClassName + '.html';
+        this.href = docsLink + o.ClassName + '.html';
       }).bind(this));
     }).bind(this));
   }
