@@ -105,6 +105,11 @@
 }
 
 
+.aux-scale > .aux-label {
+  color: var(--color-fade);
+}
+
+
 
 .aux-select {
   padding-right: 8px
