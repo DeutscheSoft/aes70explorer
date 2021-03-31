@@ -2,6 +2,7 @@
   <link rel=stylesheet href='css/index.css' />
   <script src='js/AES70.es5.js'></script>
   <script type=module src='js/index.js'></script>
+  <script src='js/global.js'></script>
   <awml-backend type=local name=local></awml-backend>
 </head>
 <body>
@@ -9,6 +10,18 @@
     <aes70-navigation></aes70-navigation>
     <div id=canvas></div>
     <aes70-object-details id=details></aes70-object-details>
-    <div id=sidebar></div>
+    <div id=sidebar>
+    
+      <aux-button icon=addlinebreak label="Add Line Break"
+        layout=vertical>
+        <awml-event type=click callback="AES70.addLineBreak"></awml-event>
+      </aux-button>
+      
+      <aux-button icon=deletelinebreak label="Remove Line Break"
+        layout=vertical>
+        <awml-event type=click callback="AES70.removeLineBreak"></awml-event>
+      </aux-button>
+    
+    </div>
   </div>
 </body>

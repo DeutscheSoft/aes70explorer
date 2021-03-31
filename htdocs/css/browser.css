@@ -219,8 +219,19 @@ html {
   grid-area: sidebar;
   min-width: 96px;
   background: var(--background-dark);
+  display: flex;
+  flex-direction: column;
 }
 
+#sidebar .aux-button {
+  height: auto;
+  white-space: normal;
+  background: var(--background-medium);
+  margin-bottom: 1px;
+}
+#sidebar .aux-button > .aux-icon {
+  font-size: 24px;
+}
 
 /* CANVAS */ 
 

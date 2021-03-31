@@ -20,3 +20,5 @@
 .aux-icon.book::before                      { font-family: 'AES70Browser'; content: '񗍎'; }
 .aux-icon.documentation::before             { font-family: 'AES70Browser'; content: '񗍎'; }
 .aux-icon.manual::before                    { font-family: 'AES70Browser'; content: '񗍎'; }
+.aux-icon.addlinebreak::before              { font-family: 'AES70Browser'; content: '񗍏'; }
+.aux-icon.deletelinebreak::before           { font-family: 'AES70Browser'; content: '񗍐'; }

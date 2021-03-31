@@ -1,3 +1,10 @@
+aes70-line-break {
+  flex-basis: 100%;
+  height: 1px;
+  background: var(--background-medium);
+  margin: 8px 0;
+}
+
 aes70-object-control {
   display: inline-flex;
   border-radius: 4px;
