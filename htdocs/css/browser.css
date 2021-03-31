@@ -324,7 +324,7 @@ html {
 #details > .details > * {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 6px;
+  grid-gap: 3px 6px;
   align-content: center;
 }
 #details > .details > * > * {
@@ -334,6 +334,15 @@ html {
   text-align: right;
   display: block;
   color: var(--color-fade);
+  align-self: center;
+}
+#details > .details > * > .aux-value {
+  width: 200px;
+}
+#details > .details > * > .aux-toggle {
+  width: auto;
+  justify-self: start;
+  height: 32px;
 }
 
 #details > .noselect {

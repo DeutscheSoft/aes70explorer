@@ -165,7 +165,15 @@
     
 }
 .aux-value > .aux-input {
+  background: var(--background-dark);
+  color: var(--color);
+  font-size: var(--font-size-large);
+  border: 1px solid var(--background-selected);
+}
+.aux-valueknob > .aux-value > .aux-input,
+.aux-fader > .aux-value > .aux-input {
   background: transparent;
   color: var(--color);
   font-size: var(--font-size-large);
+  border: none;
 }
