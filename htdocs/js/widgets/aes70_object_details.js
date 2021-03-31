@@ -10,6 +10,7 @@ const template = `
   <aux-label class=role %bind={{ this.RoleBind }}></aux-label>
   <aux-label class=classid %bind={{ this.ClassIDBind }}></aux-label>
   <aux-label class=classname %bind={{ this.ClassNameBind }}></aux-label>
+  <aux-marquee class=path speed=10 pause=2000 label={{ this._path }}></aux-marquee>
   <a href={{ this.href }} target=_blank class=docs><aux-icon icon=book></aux-icon></a>
 </div>
 <div class=details #details></div>
@@ -21,7 +22,7 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
     super();
     this._cloneControl = null;
     this._cloneDetails = null;
-    this._path = null;
+    this.path = null;
     this.href = null;
     
     this.IconBind = [{ src: '', name: 'icon',
@@ -33,9 +34,10 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
       transformReceive: v=>v.ClassName }];
     
     getBackendValue('local:selected').subscribe((function (path) {
-      if (path === this._path)
+      if (path === this.path)
         return;
-      this._path = path;
+      this.path = path;
+      this._path = path.replace(/\//g, ' ▹ ').replace(/\:/g, '');
       this._clearClones();
       if (!path)
         return;

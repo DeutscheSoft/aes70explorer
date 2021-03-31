@@ -252,9 +252,9 @@ html {
 #details > .head {
   grid-area: head;
   display: grid;
-  grid-template-areas: "icon title title title"
-                       "icon id class docs";
-  grid-template-columns: auto auto auto 1fr;
+  grid-template-areas: "icon title id class docs"
+                       "icon path path path path";
+  grid-template-columns: auto auto auto auto 1fr;
   grid-gap: 4px;
   text-align: left;
 }
@@ -269,21 +269,24 @@ html {
   grid-area: title;
   font-size: var(--font-size-huge);
   line-height: 1;
+  align-self: end;
 }
 #details > .head > .classid {
   grid-area: id;
   font-size: var(--font-size-small);
-  align-self: center;
+  align-self: end;
+  color: var(--color-fade);
 }
 #details > .head > .classname {
   grid-area: class;
   font-size: var(--font-size-small);
-  align-self: center;
+  align-self: end;
+  color: var(--color-fade);
 }
 #details > .head > .docs {
   grid-area: docs;
   text-decoration: none;
-  align-self: center;
+  align-self: end;
 }
 #details > .head > .docs > .aux-icon {
   font-size: var(--font-size-large);
@@ -292,6 +295,10 @@ html {
 }
 #details > .head > .docs:hover > .aux-icon {
   color: var(--color);
+}
+#details > .head > .path {
+  grid-area: path;
+  font-size: 2em;
 }
 
 #details > .control {
