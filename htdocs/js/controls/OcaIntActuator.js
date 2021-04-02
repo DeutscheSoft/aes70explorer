@@ -1,5 +1,5 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { registerTemplateControl } from '../template_components.js';
+import { matchClass, registerTemplateControl } from '../template_components.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -94,16 +94,16 @@ class OcaIntActuatorControl extends TemplateComponent.fromString(template) {
     }
   }
   static match(o) {
-    return [
-      'OcaInt8Actuator',
-      'OcaInt16Actuator',
-      'OcaInt32Actuator',
-      'OcaInt64Actuator',
-      'OcaUint8Actuator',
-      'OcaUint16Actuator',
-      'OcaUint32Actuator',
-      'OcaUint64Actuator',
-    ].indexOf(o.ClassName) >= 0;
+    return Math.max(
+      matchClass(OCA.RemoteControlClasses.OcaInt8Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt16Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt32Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt64Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint8Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint16Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint32Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint64Actuator, o),
+    );
   }
 }
 

@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateControl } from '../template_components.js';
+import { matchClass, registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-toggle %bind={{ this.faderBindings }}></aux-toggle>
@@ -20,7 +20,7 @@ class OcaBooleanActuatorControl extends TemplateComponent.fromString(template) {
     ];
   }
   static match(o) {
-    return o.ClassName === 'OcaBooleanActuator';
+    return matchClass(OCA.RemoteControlClasses.OcaBooleanActuator, o);
   }
 }
 

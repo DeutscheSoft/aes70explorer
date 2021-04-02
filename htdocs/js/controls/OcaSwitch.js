@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateControl } from '../template_components.js';
+import { matchClass, registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-label %bind={{ this.labelBindings }}></aux-label>
@@ -45,7 +45,7 @@ class OcaSwitchControl extends TemplateComponent.fromString(template) {
     ];
   }
   static match(o) {
-    return o.ClassName === 'OcaSwitch';
+    return matchClass(OCA.RemoteControlClasses.OcaSwitch, o);
   }
 }
 

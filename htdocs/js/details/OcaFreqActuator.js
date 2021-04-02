@@ -1,5 +1,5 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { registerTemplateDetails } from '../template_components.js';
+import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
 <span class="label">Label</span>
@@ -37,9 +37,7 @@ class OcaFreqActuatorDetails extends TemplateComponent.fromString(template) {
     this.MaxBind = [{ src: '/Frequency/Max', name: 'label' }];
   }
   static match(o) {
-    return [
-      'OcaFrequencyActuator',
-    ].indexOf(o.ClassName) >= 0;
+    return matchClass(OCA.RemoteControlClasses.OcaFrequencyActuator, o);
   }
 }
 

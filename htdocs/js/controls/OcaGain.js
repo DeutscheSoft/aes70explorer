@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateControl } from '../template_components.js';
+import { matchClass, registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-fader
@@ -32,7 +32,7 @@ class OcaGainControl extends TemplateComponent.fromString(template) {
     ];
   }
   static match(o) {
-    return o.ClassName === 'OcaGain';
+    return matchClass(OCA.RemoteControlClasses.OcaGain, o);
   }
 }
 

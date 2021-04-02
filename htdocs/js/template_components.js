@@ -2,6 +2,12 @@ const templateControls = new Map();
 const templateDetails = new Map();
 const availableControls = new Map();
 
+export function matchClass(Class, object) {
+  if (!(object instanceof Class)) return -1;
+
+  return Class.ClassID.length;
+}
+
 export function registerTemplateControl(component) {
   const tagName = 'aes70-template-' + component.name.toLowerCase();
 
@@ -15,31 +21,28 @@ export function registerTemplateDetails(component) {
   customElements.define(tagName, component);
 }
 
-export function findTemplateControl(o) {
-  // We use the last match.
+function findBestMatch(set, o) {
+  let bestMatch = null;
+  let bestScore = -1;
 
-  let match;
+  set.forEach((component, tagName) => {
+    const score = component.match(o);
 
-  templateControls.forEach((component, tagName) => {
-    if (!component.match(o))
+    if (score <= bestScore)
       return;
-    match = tagName;
+
+    bestScore = score;
+    bestMatch = tagName;
   });
 
-  return match;
+  return bestMatch;
+}
+
+export function findTemplateControl(o) {
+  return findBestMatch(templateControls, o);
 }
 export function findTemplateDetails(o) {
-  // We use the last match.
-
-  let match;
-
-  templateDetails.forEach((component, tagName) => {
-    if (!component.match(o))
-      return;
-    match = tagName;
-  });
-
-  return match;
+  return findBestMatch(templateDetails, o);
 }
 
 export function registerControl(path, node) {

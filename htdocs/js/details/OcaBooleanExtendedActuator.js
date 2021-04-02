@@ -1,5 +1,5 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { registerTemplateDetails } from '../template_components.js';
+import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
 <span class="label">Label</span>
@@ -29,7 +29,8 @@ class OcaBooleanExtendedActuatorDetails extends TemplateComponent.fromString(tem
     this.StateBind = [{ src: '/State', name: 'label' }];
   }
   static match(o) {
-    return o.ClassName == 'OcaMute' || o.ClassName == 'OcaPolarity';
+    return Math.max(matchClass(OCA.RemoteControlClasses.OcaMute, o),
+                    matchClass(OCA.RemoteControlClasses.OcaPolarity, o));
   }
 }
 

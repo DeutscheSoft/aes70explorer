@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateControl } from '../template_components.js';
+import { matchClass, registerTemplateControl } from '../template_components.js';
 
 const colorMax = '#ff6600';
 const colorMid = '#8b06a5';
@@ -55,7 +55,7 @@ class OcaSensorControl extends TemplateComponent.fromString(template) {
     ];
   }
   static match(o) {
-    return o.ClassName.endsWith('Sensor');
+    return matchClass(OCA.RemoteControlClasses.OcaSensor, o);
   }
 }
 

@@ -1,5 +1,5 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { registerTemplateDetails } from '../template_components.js';
+import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
 <span class="label">Label</span>
@@ -37,26 +37,7 @@ class OcaActuatorDetails extends TemplateComponent.fromString(template) {
     this.MaxBind = [{ src: '/Setting/Max', name: 'label' }];
   }
   static match(o) {
-    return [
-      'OcaActuator',
-      'OcaBasicActuator',
-      'OcaInt8Actuator',
-      'OcaInt16Actuator',
-      'OcaInt32Actuator',
-      'OcaInt64Actuator',
-      'OcaUint8Actuator',
-      'OcaUint16Actuator',
-      'OcaUint32Actuator',
-      'OcaUint64Actuator',
-      'OcaFloat32Actuator',
-      'OcaFloat64Actuator',
-      'OcaMute',
-      'OcaPolarity',
-      'OcaSwitch',
-      'OcaPanBalance',
-      'OcaDelay',
-      'OcaDelayExtended',
-    ].indexOf(o.ClassName) >= 0;
+    return matchClass(OCA.RemoteControlClasses.OcaActuator, o);
   }
 }
 

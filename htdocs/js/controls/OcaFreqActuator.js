@@ -1,5 +1,5 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { registerTemplateControl } from '../template_components.js';
+import { matchClass, registerTemplateControl } from '../template_components.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -94,9 +94,7 @@ class OcaFreqActuatorControl extends TemplateComponent.fromString(template) {
     }
   }
   static match(o) {
-    return [
-      'OcaFrequencyActuator',
-    ].indexOf(o.ClassName) >= 0;
+    return matchClass(OCA.RemoteControlClasses.OcaFrequencyActuator, o);
   }
 }
 

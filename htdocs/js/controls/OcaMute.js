@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { registerTemplateControl } from '../template_components.js';
+import { matchClass, registerTemplateControl } from '../template_components.js';
 
 const template = `
 <aux-toggle icon=unmuted icon_active=muted %bind={{ this.faderBindings }}></aux-toggle>
@@ -23,7 +23,7 @@ class OcaMuteControl extends TemplateComponent.fromString(template) {
     ];
   }
   static match(o) {
-    return o.ClassName === 'OcaMute';
+    return matchClass(OCA.RemoteControlClasses.OcaMute, o);
   }
 }
 
