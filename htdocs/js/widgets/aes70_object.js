@@ -1,4 +1,6 @@
 import { collectPrefix, TemplateComponent, getBackendValue } from '../../AWML/src/index.pure.js';
+import { Bindings } from '../../AWML/src/bindings.js';
+import { fromSubscription } from '../../AWML/src/operators/from_subscription.js';
 import { addToCanvas } from '../layout.js';
 import { registerControl, unregisterControl, getRegisteredControl } from '../template_components.js';
 
@@ -8,7 +10,7 @@ const template = `
   (click)={{ this.onHeaderClicked }}
   (dblclick)={{ this.onHeaderDblClicked }}
   >
-  <aux-icon %bind={{this.iconBindings}} class=icon></aux-icon>
+  <aux-icon icon='ocaroot' class='icon aux-icon {{ this.typeClassNames }}'></aux-icon>
   <aux-label %bind={{this.labelBindings}} class=label></aux-label>
   <aux-label %bind={{this.classBindings}} class=class></aux-label>
   <aux-button
@@ -29,23 +31,53 @@ const template = `
 </div>
 `;
 
+const Selected = getBackendValue('local:selected');
+
 class AES70Object extends TemplateComponent.fromString(template) {
+  getHostBindings() {
+    return [
+      {
+        src: '',
+        name: 'typeClassNames',
+        readonly: true,
+        sync: true,
+        transformReceive: (o) => {
+          const names = [];
+          for (; o.constructor.ClassName; o = Object.getPrototypeOf(o))
+          {
+            names.push(o.constructor.ClassName.toLowerCase());
+          }
+          return names.reverse().join(' ');
+        },
+      },
+      {
+        backendValue: Selected,
+        readonly: true,
+        name: 'selectedClassName',
+        transformReceive: (prefix) => prefix === collectPrefix(this),
+      }
+    ];
+  }
+
+  awmlCreateBinding(name, options) {
+    if (name === 'selectedClassName') {
+      return fromSubscription(null, (value) => {
+        this.classList.toggle('selected', !!value);
+      });
+    }
+
+    return super.awmlCreateBinding(name, options);
+  }
+
+  _updatePrefix(handle) {
+    super._updatePrefix(handle);
+    this._bindings.updatePrefix(handle);
+  }
+
   constructor() {
     super();
-    
-    getBackendValue('local:selected').subscribe((v) => {
-      if (v && collectPrefix(this) === v) {
-        this.classList.add('selected');
-      } else {
-        this.classList.remove('selected');
-      }
-    });
-    
-    this.iconBindings = [{
-      src: '',
-      name: 'icon',
-      transformReceive: v=>v.ClassName.toLowerCase(),
-    }];
+    this._bindings = null;
+
     this.labelBindings = [{
       src: '/Role',
       name: 'label',
@@ -70,7 +102,6 @@ class AES70Object extends TemplateComponent.fromString(template) {
       this._removeControl();
     }
     this.onRemoveClicked = (e) => {
-      console.log(collectPrefix(this))
       const node = getRegisteredControl(collectPrefix(this));
       if (!node) return;
       node.classList.add('scaffold');
