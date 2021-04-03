@@ -10,7 +10,7 @@ const template = `
   (click)={{ this.onHeaderClicked }}
   (dblclick)={{ this.onHeaderDblClicked }}
   >
-  <aux-icon icon='ocaroot' class='icon aux-icon {{ this.typeClassNames }}'></aux-icon>
+  <aux-icon #icon class='icon'></aux-icon>
   <aux-label %bind={{this.labelBindings}} class=label></aux-label>
   <aux-label %bind={{this.classBindings}} class=class></aux-label>
   <aux-button
@@ -33,12 +33,28 @@ const template = `
 
 const Selected = getBackendValue('local:selected');
 
+function classListBinding(node) {
+  let lastList = [];
+  return fromSubscription(null, (list) => {
+    list = list || [];
+    lastList.forEach((name) => {
+      if (list.includes(name)) return;
+      node.classList.remove(name);
+    });
+    list.forEach((name) => {
+      if (lastList.includes(name)) return;
+      node.classList.add(name);
+    });
+    lastList = list;
+  });
+}
+
 class AES70Object extends TemplateComponent.fromString(template) {
   getHostBindings() {
     return [
       {
         src: '',
-        name: 'typeClassNames',
+        name: 'iconClassNames',
         readonly: true,
         sync: true,
         transformReceive: (o) => {
@@ -47,7 +63,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
           {
             names.push(o.constructor.ClassName.toLowerCase());
           }
-          return names.reverse().join(' ');
+          return names;
         },
       },
       {
@@ -64,6 +80,8 @@ class AES70Object extends TemplateComponent.fromString(template) {
       return fromSubscription(null, (value) => {
         this.classList.toggle('selected', !!value);
       });
+    } else if (name === 'iconClassNames') {
+      return classListBinding(this.icon);
     }
 
     return super.awmlCreateBinding(name, options);
