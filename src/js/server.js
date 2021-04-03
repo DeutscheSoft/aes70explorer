@@ -1,5 +1,6 @@
 import yargs from 'yargs';
-import { start } from './lib/http.js';
+import startHTTP from './lib/http.js';
+import startDiscovery from './lib/discovery.js';
 
 const argv = yargs(process.argv.slice(2))
   .command('server.js', 'Starts the aes70-browser as a standalone HTTP server.', {
@@ -61,15 +62,31 @@ function parseDestination(str)
 
 const destinations = new Map();
 
+function addDestination(destination) {
+  const name = destination.name;
+
+  if (destinations.has(name))
+    throw new Error('Destination already exists.');
+
+  destinations.set(name, destination);
+
+  return () => {
+    if (name === null) return;
+    destinations.delete(name);
+    name = null;
+  };
+}
+
 argv._.forEach((arg) => {
   const destination = parseDestination(arg);
 
   console.log('Using manual destination: %o', destination);
-
-  destinations.set(destination.name, destination);
+  addDestination(destination);
 });
 
-start(httpOptions, destinations).then(
+startDiscovery(addDestination);
+
+startHTTP(httpOptions, destinations).then(
   () => {
     console.log('Running on port %d.', httpOptions.port);
   },

@@ -33,7 +33,7 @@ class WebSocketTCPTunnel extends Events {
       this.close();
       return;
     }
-    console.log('WebSocket -> Socket %d bytes.', data.length);
+    //console.log('WebSocket -> Socket %d bytes.', data.length);
     this.socket.write(data);
   }
 
@@ -42,7 +42,7 @@ class WebSocketTCPTunnel extends Events {
   }
 
   _onSocketData(buffer) {
-    console.log('Socket -> WebSocket %d bytes.', buffer.length);
+    //console.log('Socket -> WebSocket %d bytes.', buffer.length);
     this.websocket.send(buffer);
   }
 

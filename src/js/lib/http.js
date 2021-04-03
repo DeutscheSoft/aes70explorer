@@ -15,7 +15,7 @@ import WS from 'ws';
  *      the path `/_control/<NAME>` will attempt to forward to the destination
  *      with the name `<NAME>`.
  */
-export async function start(config, destinations) {
+export default async function start(config, destinations) {
   const server = new Server({ port: config.port });
 
   await server.register({ plugin: HapiPluginInert });

@@ -13,6 +13,7 @@
     "@hapi/inert": "^6.0.3",
     "aes70": "^1.1.16",
     "argparse": "^2.0.1",
+    "dnssd": "^0.4.1",
     "hapi-plugin-websocket": "^2.3.1",
     "yargs": "^16.1.1"
   }
