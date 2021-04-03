@@ -15,18 +15,9 @@ const template = `
 
 <span class="label">Lockable</span>
 <aux-label %bind={{ this.LockableBind }}></aux-label>
-
-<span class="label">Min</span>
-<aux-label %bind={{ this.MinBind }}></aux-label>
-
-<span class="label">Max</span>
-<aux-label %bind={{ this.MaxBind }}></aux-label>
-
-<span class="label">Setting</span>
-<aux-label %bind={{ this.SettingBind }}></aux-label>
 `;
 
-class OcaBasicActuatorDetails extends TemplateComponent.fromString(template) {
+class OcaWorkerDetails extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {
@@ -50,8 +41,8 @@ class OcaBasicActuatorDetails extends TemplateComponent.fromString(template) {
     this.MaxBind = [{ src: '/Setting/Max', name: 'label' }];
   }
   static match(o) {
-    return matchClass(OCA.RemoteControlClasses.OcaBasicActuator, o);
+    return matchClass(OCA.RemoteControlClasses.OcaWorker, o);
   }
 }
 
-registerTemplateDetails(OcaBasicActuatorDetails);
+registerTemplateDetails(OcaWorkerDetails);
