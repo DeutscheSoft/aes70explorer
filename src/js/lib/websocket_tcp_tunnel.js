@@ -19,6 +19,8 @@ class WebSocketTCPTunnel extends Events {
 
     websocket.on('close', () => this._onWebSocketClosed());
     socket.on('close', () => this._onSocketClosed());
+    websocket.on('error', (err) => this._onWebSocketClosed());
+    socket.on('error', (err) => this._onSocketClosed());
     socket.on('data', (buf) => this._onSocketData(buf));
     websocket.on('message', (data) => this._onWebSocketData(data));
   }
