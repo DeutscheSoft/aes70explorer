@@ -19,6 +19,22 @@
      id="defs">
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient1524">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.38425419"
+         offset="0"
+         id="stop1520" />
+      <stop
+         style="stop-color:#7d7d7d;stop-opacity:0"
+         offset="0.50769168"
+         id="stop1528" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0.79804385"
+         offset="1"
+         id="stop1522" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
        id="linearGradient1753">
       <stop
          style="stop-color:#e9deff;stop-opacity:1"
@@ -389,6 +405,28 @@
        y1="0"
        x2="123.80372"
        y2="255.82779" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1524"
+       id="radialGradient1526"
+       cx="2114.6721"
+       cy="321.18484"
+       fx="2114.6721"
+       fy="321.18484"
+       r="15.141279"
+       gradientTransform="matrix(1.3721632,-5.8643124e-6,0,0.34823224,-787.00495,209.81883)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1524"
+       id="radialGradient1572"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.3721632,-5.8643124e-6,0,0.34823224,-1767.0049,219.81883)"
+       cx="2114.6721"
+       cy="321.18484"
+       fx="2114.6721"
+       fy="321.18484"
+       r="15.141279" />
   </defs>
   <sodipodi:namedview
      inkscape:document-rotation="0"
@@ -409,9 +447,9 @@
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="566.91418"
-     inkscape:cx="1932.0492"
-     inkscape:zoom="1.4189545"
+     inkscape:cy="364.07496"
+     inkscape:cx="952.64601"
+     inkscape:zoom="4.0134094"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
      borderopacity="1.0"
@@ -477,13 +515,6 @@
        height="960"
        x="1216"
        y="0" />
-    <rect
-       style="color:#000000;overflow:visible;fill:#17f575;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
-       id="rect1167"
-       width="30.282558"
-       height="8.3030396"
-       x="687.92023"
-       y="312.22617" />
     <rect
        style="color:#000000;overflow:visible;fill:#3e404e;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
        id="rect1189"
@@ -564,12 +595,20 @@
        x="2626"
        y="0" />
     <rect
+       style="color:#000000;overflow:visible;fill:#7b7c8b;fill-opacity:1;stroke:none;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect1512"
+       width="93.059982"
+       height="38.723724"
+       x="2069.2065"
+       y="291.87891"
+       ry="4" />
+    <rect
        style="color:#000000;overflow:visible;fill:#17f575;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
        id="rect1167-2"
        width="30.282558"
        height="8.3030396"
-       x="2097.9202"
-       y="312.22617" />
+       x="2099.5381"
+       y="317.67877" />
     <rect
        style="color:#000000;overflow:visible;fill:#3e404e;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
        id="rect1189-6"
@@ -2243,6 +2282,107 @@
        height="35"
        x="2311.2886"
        y="193.29231" />
+    <rect
+       style="color:#000000;overflow:visible;fill:#7b7c8b;fill-opacity:1;stroke:none;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect1514"
+       width="0.10353575"
+       height="1.1343913"
+       x="2162.1631"
+       y="296.04428"
+       ry="0.051767875" />
+    <rect
+       style="color:#000000;overflow:visible;fill:#17f575;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
+       id="rect1516"
+       width="30.282558"
+       height="8.3030396"
+       x="2099.5381"
+       y="317.67877" />
+    <rect
+       style="color:#000000;overflow:visible;fill:url(#radialGradient1526);fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
+       id="rect1518"
+       width="30.282558"
+       height="8.3030396"
+       x="2099.5381"
+       y="317.67877" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:100%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;shape-padding:0;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="2113.7446"
+       y="308.58786"
+       id="text5541-4-3"><tspan
+         sodipodi:role="line"
+         x="2113.7446"
+         y="308.58786"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1px"
+         id="tspan1554">My Sensor</tspan></text>
+    <rect
+       style="color:#000000;overflow:visible;fill:#181921;fill-opacity:1;stroke:none;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect1558"
+       width="93.059982"
+       height="38.723724"
+       x="1089.2065"
+       y="301.87891"
+       ry="4" />
+    <rect
+       style="color:#000000;overflow:visible;fill:#7b7c8b;fill-opacity:1;stroke:none;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect1562"
+       width="0.10353575"
+       height="1.1343913"
+       x="1182.1631"
+       y="306.04428"
+       ry="0.051767875" />
+    <rect
+       style="color:#000000;overflow:visible;fill:#17f575;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
+       id="rect1564"
+       width="84.64502"
+       height="3"
+       x="1093.4137"
+       y="332.67877" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:100%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;shape-padding:0;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="1135.7446"
+       y="320.58786"
+       id="text1570"><tspan
+         sodipodi:role="line"
+         x="1135.7446"
+         y="320.58786"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1px"
+         id="tspan1568">My Sensor</tspan></text>
+    <rect
+       style="color:#000000;overflow:visible;fill:#181921;fill-opacity:1;stroke:none;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect1596"
+       width="93.059982"
+       height="38.723724"
+       x="1089.2065"
+       y="351.87891"
+       ry="4" />
+    <rect
+       style="color:#000000;overflow:visible;fill:#7b7c8b;fill-opacity:1;stroke:none;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect1600"
+       width="0.10353575"
+       height="1.1343913"
+       x="1182.1631"
+       y="356.04428"
+       ry="0.051767875" />
+    <rect
+       style="color:#000000;overflow:visible;fill:#a31a83;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers;stop-color:#000000"
+       id="rect1602"
+       width="84.64502"
+       height="3"
+       x="1093.4137"
+       y="382.67877" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:100%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;shape-padding:0;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="1135.7446"
+       y="370.58786"
+       id="text1608"><tspan
+         sodipodi:role="line"
+         x="1135.7446"
+         y="370.58786"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1px"
+         id="tspan1606">My Sensor</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
