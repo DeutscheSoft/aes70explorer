@@ -15,9 +15,12 @@ const template = `
 
 <span class="label">Lockable</span>
 <aux-label %bind={{ this.LockableBind }}></aux-label>
+
+<span class="label">String</span>
+<aux-label %bind={{ this.StringBind }}></aux-label>
 `;
 
-class OcaWorkerDetails extends TemplateComponent.fromString(template) {
+class OcaStringSensorDetails extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {
@@ -39,10 +42,11 @@ class OcaWorkerDetails extends TemplateComponent.fromString(template) {
     this.SettingBind = [{ src: '/Setting', name: 'label', readonly: true }];
     this.MinBind = [{ src: '/Setting/Min', name: 'label', readonly: true }];
     this.MaxBind = [{ src: '/Setting/Max', name: 'label', readonly: true }];
+    this.StringBind = [{ src: '/String', name: 'label', readonly: true }];
   }
   static match(o) {
-    return matchClass(OCA.RemoteControlClasses.OcaWorker, o);
+    return matchClass(OCA.RemoteControlClasses.OcaStringSensor, o);
   }
 }
 
-registerTemplateDetails(OcaWorkerDetails);
+registerTemplateDetails(OcaStringSensorDetails);

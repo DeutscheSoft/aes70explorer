@@ -59,7 +59,6 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
 
           return tagName ? document.createElement(tagName) : null;
         },
-        debug: true,
       },
       {
         backendValue: ObjectIfSelected,
