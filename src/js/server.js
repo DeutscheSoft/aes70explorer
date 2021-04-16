@@ -63,7 +63,7 @@ function parseDestination(str)
 const destinations = new Map();
 
 function addDestination(destination) {
-  const name = destination.name;
+  let name = destination.name;
 
   if (destinations.has(name))
     throw new Error('Destination already exists.');
