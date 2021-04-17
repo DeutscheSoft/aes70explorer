@@ -56,43 +56,6 @@ aes70-object-control > * {
 }
 
 
-
-aes70-template-ocagaincontrol {
-  height: 240px;
-}
-aes70-template-ocagaincontrol > .aux-fader {
-  height: 100%;
-}
-
-
-aes70-template-ocamutecontrol > .aux-toggle {
-  padding-left: var(--aux-button-paddinghorizontal);
-}
-aes70-template-ocamutecontrol > .aux-toggle::before {
-  content: none !important;
-}
-aes70-template-ocamutecontrol > .aux-toggle > .aux-icon {
-  font-size: 20px;
-}
-aes70-template-ocamutecontrol > .aux-toggle.aux-active > .aux-icon {
-  color: var(--color-accent);
-}
-
-
-aes70-template-ocapolaritycontrol > .aux-toggle {
-  padding-left: var(--aux-button-paddinghorizontal);
-}
-aes70-template-ocapolaritycontrol > .aux-toggle::before {
-  content: none !important;
-}
-aes70-template-ocapolaritycontrol > .aux-toggle > .aux-icon {
-  font-size: 20px;
-}
-aes70-template-ocapolaritycontrol > .aux-toggle.aux-active > .aux-icon {
-  color: var(--color-accent);
-}
-
-
 aes70-template-ocafreqactuatorcontrol > .aux-valueknob,
 aes70-template-ocaintactuatorcontrol > .aux-valueknob,
 aes70-template-ocafloatactuatorcontrol > .aux-valueknob {
@@ -136,19 +99,8 @@ aes70-template-ocafloatactuatorcontrol > .aux-button > .aux-icon {
 
 
 
-aes70-template-ocaswitchcontrol {
-  display: flex;
-  align-items: center !important;
-}
-aes70-template-ocaswitchcontrol > .aux-label {
-  text-align: right;
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
-
-
 aes70-template-ocabitstringactuatorcontrol {
+  display: flex;
   flex-direction: column;
 }
 aes70-template-ocabitstringactuatorcontrol > .aux-label {
@@ -179,9 +131,73 @@ aes70-template-ocabitstringactuatorcontrol > .aux-buttons.aes70-size-tiny > .aux
   height: 16px; 
 }
 
+
+aes70-template-ocagaincontrol {
+  height: 240px;
+}
+aes70-template-ocagaincontrol > .aux-fader {
+  height: 100%;
+}
+
+
+aes70-template-ocamutecontrol > .aux-toggle {
+  padding-left: var(--aux-button-paddinghorizontal);
+}
+aes70-template-ocamutecontrol > .aux-toggle::before {
+  content: none !important;
+}
+aes70-template-ocamutecontrol > .aux-toggle > .aux-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+aes70-template-ocamutecontrol > .aux-toggle.aux-active > .aux-icon {
+  color: var(--color-accent);
+}
+
+
+aes70-template-ocapolaritycontrol > .aux-toggle {
+  padding-left: var(--aux-button-paddinghorizontal);
+}
+aes70-template-ocapolaritycontrol > .aux-toggle::before {
+  content: none !important;
+}
+aes70-template-ocapolaritycontrol > .aux-toggle > .aux-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+aes70-template-ocapolaritycontrol > .aux-toggle.aux-active > .aux-icon {
+  color: var(--color-accent);
+}
+
+
 aes70-template-ocasensorcontrol {
   height: 240px;
 }
 aes70-template-ocasensorcontrol > .aux-meter {
   height: 100%;
+}
+
+
+aes70-template-ocastringactuatorcontrol {
+  display: flex;
+  flex-direction: column;
+}
+aes70-template-ocastringactuatorcontrol > .aux-label {
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+aes70-template-ocastringactuatorcontrol > .aux-value {
+  width: 192px;
+  text-align: left;
+}
+
+
+aes70-template-ocaswitchcontrol {
+  display: flex;
+  align-items: center !important;
+}
+aes70-template-ocaswitchcontrol > .aux-label {
+  text-align: right;
+  margin-left: 8px;
+  margin-right: 8px;
 }

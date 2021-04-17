@@ -14,7 +14,6 @@ class OcaStringSensorControl extends TemplateComponent.fromString(template) {
         src: '/String',
         name: 'label',
         readonly: true,
-        debug: true,
       }
     ];
   }

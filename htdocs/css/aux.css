@@ -147,7 +147,7 @@
   content: "";
   background: var(--toggle-indicator);
   transition: all var(--transition);
-  width: 3px;
+  width: 1px;
   height: 100%;
   border-radius: 2px;
   margin-right: var(--aux-button-paddinghorizontal);
@@ -169,6 +169,7 @@
   color: var(--color);
   font-size: var(--font-size-large);
   border: 1px solid var(--background-selected);
+  border-radius: var(--border-radius);
 }
 .aux-valueknob > .aux-value > .aux-input,
 .aux-fader > .aux-value > .aux-input {
