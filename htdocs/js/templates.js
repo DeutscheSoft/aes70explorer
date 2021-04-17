@@ -16,6 +16,7 @@ import './details/OcaActuator.js';
 import './details/OcaFreqActuator.js';
 import './details/OcaBooleanActuator.js';
 import './details/OcaBooleanExtendedActuator.js';
+import './details/OcaBitstringActuator.js';
 import './details/OcaGain.js';
 import './details/OcaSensor.js';
 import './details/OcaStringSensor.js';
