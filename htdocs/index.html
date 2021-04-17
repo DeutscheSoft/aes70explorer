@@ -1,9 +1,14 @@
 <head>
   <link rel=stylesheet href='css/index.css' />
+  <script type=module src='js/global.js'></script>
   <script src='js/AES70.es5.js'></script>
   <script type=module src='js/index.js'></script>
-  <script src='js/global.js'></script>
-  <awml-backend type=local name=local></awml-backend>
+  <awml-backend type=local name=local>
+  {
+    "canRemoveLineBreak": false,
+    "canAddLineBreak": false
+  }
+  </awml-backend>
 </head>
 <body>
   <div id=root>
@@ -15,11 +20,23 @@
       <aux-button icon=addlinebreak label="Add Line Break"
         layout=vertical>
         <awml-event type=click callback="AES70.addLineBreak"></awml-event>
+        <awml-option
+          type=bind
+          name=disabled
+          src="local:canAddLineBreak"
+          transform-receive="v=>!v">
+        </awml-option>
       </aux-button>
       
       <aux-button icon=deletelinebreak label="Remove Line Break"
         layout=vertical>
         <awml-event type=click callback="AES70.removeLineBreak"></awml-event>
+        <awml-option
+          type=bind
+          name=disabled
+          src="local:canRemoveLineBreak"
+          transform-receive="v=>!v">
+        </awml-option>
       </aux-button>
     
     </div>

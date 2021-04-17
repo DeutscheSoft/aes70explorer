@@ -59,3 +59,7 @@ export function unregisterControl(path) {
 export function getRegisteredControl(path) {
   return availableControls.get(path);
 }
+
+export function findControl(path) {
+  return availableControls.get(path);
+}

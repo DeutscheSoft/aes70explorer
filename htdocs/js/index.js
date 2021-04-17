@@ -15,6 +15,8 @@ import './widgets/aes70_object.js';
 import './widgets/aes70_object_control.js';
 import './widgets/aes70_object_details.js';
 
+import { findControl } from './template_components.js';
+
 // for debugging
 import * as AWML from '../AWML/src/index.js';
 window.AWML = AWML;
@@ -31,4 +33,24 @@ document.getElementById('canvas').addEventListener('click', function (e) {
     target = target.parentElement;
   }
   getBackendValue('local:selected').set(null);
+});
+
+getBackendValue('local:selected').subscribe(v => {
+  const control = findControl(v);
+  if (!control || !control.nextSibling) {
+    getBackendValue('local:canRemoveLineBreak').set(false);
+    return;
+  }
+  const hasLineBreak = control.nextSibling.tagName === 'AES70-LINE-BREAK';
+  getBackendValue('local:canRemoveLineBreak').set(hasLineBreak);
+});
+
+getBackendValue('local:selected').subscribe(v => {
+  const control = findControl(v);
+  const canAdd = control && (
+    (control.nextSibling && control.nextSibling.tagName !== 'AES70-LINE-BREAK')
+    ||
+    !control.nextSibling
+  );
+  getBackendValue('local:canAddLineBreak').set(canAdd);
 });

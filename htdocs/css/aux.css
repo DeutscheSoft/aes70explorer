@@ -16,6 +16,12 @@
 }
 
 
+.aux-disabled {
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+
 .aux-button {
   background: var(--button-background);
   color: var(--button-color);

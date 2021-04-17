@@ -1,3 +1,5 @@
+import { getBackendValue } from './../AWML/src/index.pure.js';
+
 window.AES70 = {
   
   addLineBreak: function () {
@@ -10,6 +12,8 @@ window.AES70 = {
       canvas.insertBefore(lb, prec.nextSibling);
     else
       canvas.appendChild(lb);
+    getBackendValue('local:canAddLineBreak').set(false);
+    getBackendValue('local:canRemoveLineBreak').set(true);
   },
   
   removeLineBreak: function () {
@@ -18,6 +22,8 @@ window.AES70 = {
     if (!lb)
       return;
     lb.parentElement.removeChild(lb);
+    getBackendValue('local:canAddLineBreak').set(true);
+    getBackendValue('local:canRemoveLineBreak').set(false);
   },
   
 }
