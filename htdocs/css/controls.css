@@ -194,10 +194,10 @@ aes70-template-ocastringactuatorcontrol > .aux-value {
 
 aes70-template-ocaswitchcontrol {
   display: flex;
+  flex-direction: column;
   align-items: center !important;
 }
 aes70-template-ocaswitchcontrol > .aux-label {
-  text-align: right;
-  margin-left: 8px;
-  margin-right: 8px;
+  align-self: flex-start;
+  margin-bottom: 4px;
 }
