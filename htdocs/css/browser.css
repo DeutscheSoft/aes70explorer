@@ -495,7 +495,9 @@ aes70-block > .head > .label {
 aes70-block > .head > .icon {
   color: var(--color-fade);
 }
-
+aes70-block.aes70-open > .head > .icon {
+  color: var(--color);
+}
 
 /* OBJECT */
 

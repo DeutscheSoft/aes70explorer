@@ -3,7 +3,7 @@ import { callUnsubscribe } from '../utils.js';
 
 const template = `
 <div class=head (click)={{ this.onHeadClick }}>
-  <aux-icon icon=ocablock class=icon></aux-icon>
+  <aux-icon icon={{ this._icon }} class=icon></aux-icon>
   <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
 </div>
 `;
@@ -12,6 +12,7 @@ class AES70Block extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this._open = DynamicValue.from(false);
+    this._icon = 'ocablock';
     
     this.onHeadClick = (ev) => {
       this.open = !this.open;
@@ -53,6 +54,7 @@ class AES70Block extends TemplateComponent.fromString(template) {
       if (isOpen === !!blockNode) return;
 
       this.classList.toggle('aes70-open', isOpen);
+      this._icon = isOpen ? 'ocablockopen' : 'ocablock';
 
       if (isOpen) {
         blockNode = document.createElement('aes70-block-children');
