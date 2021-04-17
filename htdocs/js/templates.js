@@ -2,6 +2,7 @@ import './controls/OcaGain.js';
 import './controls/OcaBooleanActuator.js';
 import './controls/OcaIntActuator.js';
 import './controls/OcaFloatActuator.js';
+import './controls/OcaBitstringActuator.js';
 import './controls/OcaFreqActuator.js';
 import './controls/OcaMute.js';
 import './controls/OcaPolarity.js';
