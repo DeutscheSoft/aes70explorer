@@ -150,7 +150,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
   }
   
   _createControlNode() {
-    const node = document.createElement('aes70-object-control');
+    const node = document.createElement('aes70-control');
 
     node.setAttribute('prefix', collectPrefix(this));
 

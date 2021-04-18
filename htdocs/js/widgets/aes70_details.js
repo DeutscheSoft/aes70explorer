@@ -24,7 +24,7 @@ const ObjectIfSelected = switchMap(Selected, (prefix) => {
   return prefix ? getBackendValue(prefix) : DynamicValue.fromConstant(null);
 });
 
-class AES70ObjectDetails extends TemplateComponent.fromString(template) {
+class AES70Details extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {
@@ -43,7 +43,7 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
         name: 'path',
         transformReceive: function (path) {
           if (path && path.length) {
-            return path.replace(/\//g, ' ▹ ').replace(/\:/g, '');
+            return path.replace(/\:\//g, ' :/ ').replace(/\//g, ' / ');
           } else {
             return '';
           }
@@ -87,4 +87,4 @@ class AES70ObjectDetails extends TemplateComponent.fromString(template) {
   }
 }
 
-customElements.define('aes70-object-details', AES70ObjectDetails);
+customElements.define('aes70-details', AES70Details);

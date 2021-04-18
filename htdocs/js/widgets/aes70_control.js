@@ -3,7 +3,7 @@ import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_
 import { callUnsubscribe } from '../utils.js';
 import { findTemplateControl } from '../template_components.js';
 
-class AES70ObjectControl extends PrefixComponentBase {
+class AES70Control extends PrefixComponentBase {
   constructor() {
     super();
     this._cloneControl = null;
@@ -43,4 +43,4 @@ class AES70ObjectControl extends PrefixComponentBase {
   }
 }
 
-customElements.define('aes70-object-control', AES70ObjectControl);
+customElements.define('aes70-control', AES70Control);

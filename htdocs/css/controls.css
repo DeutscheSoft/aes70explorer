@@ -5,7 +5,7 @@ aes70-line-break {
   margin: 8px 0;
 }
 
-aes70-object-control {
+aes70-control {
   display: inline-flex;
   border-radius: 4px;
   overflow: hidden;
@@ -17,7 +17,7 @@ aes70-object-control {
   transition: all var(--transition);
 }
 
-aes70-object-control.scaffold::before {
+aes70-control.scaffold::before {
   content: "񗍍";
   font-size: 40px;
   font-family: AES70Browser;
@@ -32,15 +32,15 @@ aes70-object-control.scaffold::before {
   animation: scaffold infinite 1s;
   z-index: 20;
 }
-aes70-object-control.scaffold > * {
+aes70-control.scaffold > * {
   opacity: 0.5;
   filter: blur(3px);
 }
-aes70-object-control.selected {
+aes70-control.selected {
   z-index: 10;
   background: var(--background-selected);
 }
-aes70-object-control.scaffold.selected {
+aes70-control.scaffold.selected {
   box-shadow: 0 0 4px var(--color-accent);
 }
 
@@ -50,7 +50,7 @@ aes70-object-control.scaffold.selected {
   100% { opacity: 0; }
 }
 
-aes70-object-control > * {
+aes70-control > * {
   display: block;
   transition: opacity var(--transition);
 }
