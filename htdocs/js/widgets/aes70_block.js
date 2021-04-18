@@ -1,9 +1,9 @@
-import { DynamicValue, TemplateComponent } from '../../AWML/src/index.pure.js';
+import { collectPrefix, DynamicValue, TemplateComponent, getBackendValue } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe } from '../utils.js';
 
 const template = `
 <div class=head (click)={{ this.onHeadClick }}>
-  <aux-icon icon={{ this._icon }} class=icon></aux-icon>
+  <aux-icon icon={{ this._icon }} (click)={{ this.onIconClick }} class=icon></aux-icon>
   <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
 </div>
 `;
@@ -15,10 +15,11 @@ class AES70Block extends TemplateComponent.fromString(template) {
     this._icon = 'ocablock';
     
     this.onHeadClick = (ev) => {
+      getBackendValue('local:selected').set(collectPrefix(this));
+    }
+    
+    this.onIconClick = (ev) => {
       this.open = !this.open;
-      ev.preventDefault();
-      ev.stopPropagation();
-      return false;
     }
     
     this.labelBindings = [
@@ -27,6 +28,15 @@ class AES70Block extends TemplateComponent.fromString(template) {
         src: '/Role',
       }
     ]
+    
+    getBackendValue('local:selected').subscribe((v) => {
+      if (v && collectPrefix(this) === v) {
+        this.classList.add('selected');
+      } else {
+        if (this.classList.contains('selected'))
+          this.classList.remove('selected');
+      }
+    });
     
     this._subscribe();
   }

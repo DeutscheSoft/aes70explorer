@@ -1,9 +1,9 @@
-import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
+import { TemplateComponent, DynamicValue, getBackendValue, collectPrefix } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe } from '../utils.js';
 
 const template = `
 <div class='head' (click)={{ this.onHeadClick }}>
-  <aux-icon class='icon' icon={{ this._icon }}></aux-icon>
+  <aux-icon class='icon' icon={{ this._icon }} (click)={{ this.onIconClick }}></aux-icon>
   <aux-label class='name' label='{{ this.info.name }}'></aux-label>
   <aux-icon class='ihost' icon='ip'></aux-icon>
   <aux-icon class='iport' icon='port'></aux-icon>
@@ -18,16 +18,31 @@ class AES70Device extends TemplateComponent.fromString(template) {
     this._open = DynamicValue.from(false);
     this._icon = 'ocadevice';
     
-    this.onHeadClick = (e) => {
-      this.open = !this.open;
-      e.stopPropagation();
-      e.preventDefault();
-      return false;
+    this.onHeadClick = (ev) => {
+      getBackendValue('local:selected').set(collectPrefix(this));
     }
+    
+    this.onIconClick = (ev) => {
+      this.open = !this.open;
+    }
+    
+    getBackendValue('local:selected').subscribe((v) => {
+      if (v && collectPrefix(this) === v) {
+        this.classList.add('selected');
+      } else {
+        if (this.classList.contains('selected'))
+          this.classList.remove('selected');
+      }
+    });
   }
 
   set info(info) {
     this._info = info;
+    
+    // @Arne: die folgende Zeile wirft, brauchen wir aber, um das device
+    // selektierbar zu machen.
+    //this.setAttribute('prefix', info.name + ':');
+    
     // @Arne: gibt es im TemplateComponent nicht?
     //this._resubscribe();
     //

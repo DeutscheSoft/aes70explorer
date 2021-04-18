@@ -429,10 +429,18 @@ aes70-device > .head {
   top: 0;
   z-index: 10;
 }
+aes70-device.selected > .head {
+  background: var(--color-accent);
+}
+aes70-device > .head * {
+  color: var(--color) !important;
+}
+aes70-device.selected > .head * {
+  color: var(--color-contrast) !important;
+  transition: all var(--transition);
+}
 aes70-device > .head > .icon {
   font-size: 32px;
-  color: var(--color-fade);
-  transition: color var(--transition);
 }
 aes70-device.aes70-open > .head > .icon {
   color: var(--color);
@@ -493,6 +501,16 @@ aes70-block > .head {
   background: var(--background-medium);
   border-bottom: 1px solid black;
 }
+aes70-block.selected > .head {
+  background: var(--color-accent);
+}
+aes70-block > .head * {
+  color: var(--color) !important;
+}
+aes70-block.selected > .head * {
+  color: var(--color-contrast) !important;
+  transition: all var(--transition);
+}
 aes70-block > .head > .label {
   
 }
@@ -532,9 +550,6 @@ aes70-object.selected.hascontrol > .head > .label {
 
 aes70-object > .head > .icon {
   grid-area: icon;
-}
-aes70-object > .head > .add {
-  opacity: 0.5;
 }
 aes70-object > .head > .label {
   align-self: end;

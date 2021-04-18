@@ -8,7 +8,6 @@ const template = `
 <div
   class=head
   (click)={{ this.onHeaderClicked }}
-  (dblclick)={{ this.onHeaderDblClicked }}
   >
   <aux-icon #icon class='icon'></aux-icon>
   <aux-label %bind={{this.labelBindings}} class=label></aux-label>
@@ -105,14 +104,9 @@ class AES70Object extends TemplateComponent.fromString(template) {
       name: 'label',
       transformReceive: v=>v.ClassName,
     }];
-    
     this.onHeaderClicked = (e) => {
       getBackendValue('local:selected').set(collectPrefix(this));
     }
-    this.onHeaderDblClicked = (e) => {
-      this._addControl();
-    }
-    
     this.onAddClicked = (e) => {
       this._addControl();
     }
