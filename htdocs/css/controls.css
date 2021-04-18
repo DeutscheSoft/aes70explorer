@@ -11,10 +11,10 @@ aes70-object-control {
   overflow: hidden;
   padding: 8px;
   box-shadow: 0 0 0px var(--color);
-  transition: box-shadow var(--transition);
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 0px var(--background);
+  transition: all var(--transition);
 }
 
 aes70-object-control.scaffold::before {

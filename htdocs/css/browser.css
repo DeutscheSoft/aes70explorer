@@ -432,6 +432,7 @@ aes70-device > .head {
 aes70-device > .head > .icon {
   font-size: 32px;
   color: var(--color-fade);
+  transition: color var(--transition);
 }
 aes70-device.aes70-open > .head > .icon {
   color: var(--color);
@@ -497,6 +498,7 @@ aes70-block > .head > .label {
 }
 aes70-block > .head > .icon {
   color: var(--color-fade);
+  transition: color var(--transition);
 }
 aes70-block.aes70-open > .head > .icon {
   color: var(--color);
@@ -509,6 +511,7 @@ aes70-object > .head {
   grid-template-areas:
     "icon label action"
     "icon class action";
+  transition: background var(--transition);
 }
 aes70-object:last-of-type > .head {
   border-bottom: none;
@@ -516,8 +519,12 @@ aes70-object:last-of-type > .head {
 aes70-object.selected > .head {
   background: var(--color-accent);
 }
+aes70-object > .head * {
+  color: var(--color) !important;
+}
 aes70-object.selected > .head * {
   color: var(--color-contrast) !important;
+  transition: all var(--transition);
 }
 aes70-object.selected.hascontrol > .head > .label {
   color: var(--color) !important;
@@ -526,11 +533,14 @@ aes70-object.selected.hascontrol > .head > .label {
 aes70-object > .head > .icon {
   grid-area: icon;
 }
+aes70-object > .head > .add {
+  opacity: 0.5;
+}
 aes70-object > .head > .label {
   align-self: end;
 }
 aes70-object.hascontrol > .head > .label {
-  color: var(--color-accent);
+  color: var(--color-accent) !important;
 }
 aes70-object > .head > .class {
   grid-area: class;
