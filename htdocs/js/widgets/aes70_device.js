@@ -3,7 +3,7 @@ import { callUnsubscribe } from '../utils.js';
 
 const template = `
 <div class='head' (click)={{ this.onHeadClick }}>
-  <aux-icon class='icon' icon='ocadevice'></aux-icon>
+  <aux-icon class='icon' icon={{ this._icon }}></aux-icon>
   <aux-label class='name' label='{{ this.info.name }}'></aux-label>
   <aux-icon class='ihost' icon='ip'></aux-icon>
   <aux-icon class='iport' icon='port'></aux-icon>
@@ -16,6 +16,7 @@ class AES70Device extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this._open = DynamicValue.from(false);
+    this._icon = 'ocadevice';
     
     this.onHeadClick = (e) => {
       this.open = !this.open;
@@ -56,7 +57,8 @@ class AES70Device extends TemplateComponent.fromString(template) {
       if (isOpen === !!blockNode) return;
 
       this.classList.toggle('aes70-open', isOpen);
-
+      this._icon = isOpen ? 'ocadeviceopen' : 'ocadevice';
+      
       if (isOpen) {
         blockNode = document.createElement('aes70-block-children');
         blockNode.setAttribute('prefix', info.name + ':');

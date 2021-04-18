@@ -433,6 +433,9 @@ aes70-device > .head > .icon {
   font-size: 32px;
   color: var(--color-fade);
 }
+aes70-device.aes70-open > .head > .icon {
+  color: var(--color);
+}
 aes70-device > .head > .name {
   grid-area: name;
   overflow: hidden;
