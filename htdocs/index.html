@@ -91,9 +91,15 @@
   <meta name="theme-color" content="#232635" />
   
   <awml-backend type=local name=local src="local.json"></awml-backend>
+  <awml-backend type=localstorage name=storage src="storage.json"></awml-backend>
 </head>
 <body>
   <div id=root>
+    
+    <awml-clone id=tipsclone fetch src="storage:tips/show"
+      transform-receive="v => v ? 'templates/tips.html' : null">
+    </awml-clone>
+    
     <aes70-navigation></aes70-navigation>
     <div id=canvas></div>
     <aes70-details id=details></aes70-details>
@@ -119,6 +125,10 @@
           src="local:canRemoveLineBreak"
           transform-receive="v=>!v">
         </awml-option>
+      </aux-button>
+      
+      <aux-button icon=confirm id=showtips label="Tips">
+        <awml-event type=click callback="AES70.showHelp"></awml-event>
       </aux-button>
     
     </div>

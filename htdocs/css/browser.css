@@ -197,6 +197,73 @@ html {
 }
 
 
+/* TIPS */
+
+#tipsclone {
+  position: absolute;
+}
+#tips {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background-medium);
+  z-index: 100000;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 32px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#tips > * {
+  white-space: normal;
+  max-width: 256px;
+}
+
+#tips > .copyright {
+  text-align: right;
+}
+#tips > .copyright > a {
+  color: var(--color) !important;
+  text-decoration: none !important;
+  opacity: 0.2;
+}
+#tips > .copyright img {
+  width: 96px;
+  margin-top: 4px;
+}
+
+#tips > div > .aux-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+#tips h2 {
+  font-size: var(--font-size-huge);
+  margin-bottom: 8px;
+  color: var(--color-accent);
+}
+
+#tips > .aux-button {
+  float: right;
+  padding: 12px;
+  width: auto;
+  justify-self: center;
+  padding: 32px;
+}
+#tips > .aux-button > .aux-icon {
+  font-size: 24px;
+  color: var(--color-accent);
+}
+#tips > .aux-button > .aux-label {
+  font-size: var(--font-size-large);
+}
 
 /* SIDEBAR */
 
@@ -216,6 +283,16 @@ html {
 }
 #sidebar .aux-button > .aux-icon {
   font-size: 24px;
+}
+
+#sidebar #showtips {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: none;
+}
+#sidebar #showtips > .aux-icon {
+  margin-right: 8px;
 }
 
 /* CANVAS */ 

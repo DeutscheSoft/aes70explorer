@@ -55,6 +55,12 @@ window.AES70 = {
       !control && (canvas.lastChild && canvas.lastChild.tagName !== 'AES70-LINE-BREAK')
     );
     getBackendValue('local:canAddLineBreak').set(canAdd);
-  }
+  },
   
+  closeHelp: function () {
+    getBackendValue('storage:tips/show').set(false);
+  },
+  showHelp: function () {
+    getBackendValue('storage:tips/show').set(true);
+  },
 }

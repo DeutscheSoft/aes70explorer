@@ -16,10 +16,12 @@ import './widgets/aes70_control.js';
 import './widgets/aes70_details.js';
 
 import { findControl } from './template_components.js';
+import { registerValueTimer } from './value_timer.js';
 
 // for debugging
 import * as AWML from '../AWML/src/index.js';
 window.AWML = AWML;
+
 
 
 import { getBackendValue } from '../AWML/src/index.pure.js';
@@ -39,3 +41,31 @@ getBackendValue('local:selected').subscribe(v => {
   AES70.checkAddLineBreak(v);
   AES70.checkRemoveLineBreak(v);
 });
+
+registerValueTimer('local:tips/icons/ocadevice', ['ocadevice','ocadeviceopen'], 2500);
+registerValueTimer('local:tips/icons/ocablock', ['ocablock','ocablockopen'], 2500);
+registerValueTimer('local:tips/icons/ocaworker', [
+  'ocabasicactuator',
+  'ocabooleanactuator',
+  'ocastringactuator',
+  'ocabitstringactuator',
+  'ocamute',
+  'ocapolarity',
+  'ocaswitch',
+  'ocagain',
+  'ocapanbalance',
+  'ocadelay',
+  'ocadelayextended',
+  'ocafrequencyactuator',
+  'ocadynamics',
+  'ocadynamicsdetector',
+  'ocadynamicscurve',
+  'ocatemperatureactuator',
+  'ocaidentificationactuator',
+  'ocasummingpoint',
+  'ocasensor',
+  'ocastringsensor',
+  'ocalevelsensor',
+  'ocatimeintervalsensor',
+  'ocatemperaturesensor',
+], 2500);
