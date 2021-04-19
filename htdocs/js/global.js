@@ -15,9 +15,8 @@ window.AES70 = {
     getBackendValue('local:selected').wait().then(v => {
       AES70.checkAddLineBreak(v);
       AES70.checkRemoveLineBreak(v);
+      getBackendValue('local:selected').set(null);
     });
-    //getBackendValue('local:canAddLineBreak').set(false);
-    //getBackendValue('local:canRemoveLineBreak').set(true);
   },
   
   removeLineBreak: function () {
@@ -30,8 +29,6 @@ window.AES70 = {
       AES70.checkAddLineBreak(v);
       AES70.checkRemoveLineBreak(v);
     });
-    //getBackendValue('local:canAddLineBreak').set(true);
-    //getBackendValue('local:canRemoveLineBreak').set(false);
   },
   
   checkRemoveLineBreak: function (v) {
