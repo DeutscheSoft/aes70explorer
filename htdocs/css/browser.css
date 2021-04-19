@@ -254,7 +254,8 @@ html {
   float: right;
   padding: 12px;
   width: auto;
-  justify-self: center;
+  justify-self: end;
+  align-self: end;
   padding: 32px;
 }
 #tips > .aux-button > .aux-icon {
