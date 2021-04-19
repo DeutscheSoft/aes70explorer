@@ -197,21 +197,6 @@ html {
 }
 
 
-/* LOGO */
-
-#logo {
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
-  width: 96px;
-  opacity: 1;
-  z-index: -1;
-/*
-  transform-origin: bottom left;
-  transform:  translate(100%, 0%) rotate(-90deg);
-*/
-}
-
 
 /* SIDEBAR */
 
@@ -243,6 +228,21 @@ html {
   justify-content: center;
   flex-wrap: wrap;
   align-content: center;
+}
+
+#canvas::before {
+  content: "";
+  background-image: url("../images/aes70explorer_4c_white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 96px;
+  height: 17px;
+  opacity: 1;
+  z-index: -1;
 }
 
 

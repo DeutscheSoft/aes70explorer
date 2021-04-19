@@ -36,21 +36,6 @@ document.getElementById('canvas').addEventListener('click', function (e) {
 });
 
 getBackendValue('local:selected').subscribe(v => {
-  const control = findControl(v);
-  if (!control || !control.nextSibling) {
-    getBackendValue('local:canRemoveLineBreak').set(false);
-    return;
-  }
-  const hasLineBreak = control.nextSibling.tagName === 'AES70-LINE-BREAK';
-  getBackendValue('local:canRemoveLineBreak').set(hasLineBreak);
-});
-
-getBackendValue('local:selected').subscribe(v => {
-  const control = findControl(v);
-  const canAdd = control && (
-    (control.nextSibling && control.nextSibling.tagName !== 'AES70-LINE-BREAK')
-    ||
-    !control.nextSibling
-  );
-  getBackendValue('local:canAddLineBreak').set(canAdd);
+  AES70.checkAddLineBreak(v);
+  AES70.checkRemoveLineBreak(v);
 });
