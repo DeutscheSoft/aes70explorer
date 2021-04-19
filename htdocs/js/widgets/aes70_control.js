@@ -2,6 +2,7 @@ import { collectPrefix, getBackendValue } from '../../AWML/src/index.pure.js';
 import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_base.js';
 import { callUnsubscribe } from '../utils.js';
 import { findTemplateControl } from '../template_components.js';
+import { element } from '../../aux-widgets/src/utils/dom.js';
 
 class AES70Control extends PrefixComponentBase {
   constructor() {
