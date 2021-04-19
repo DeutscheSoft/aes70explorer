@@ -1,3 +1,4 @@
+![aes70exlorer logo](aes70explorer_4c.svg)
 # Installation
 
       npm ci
