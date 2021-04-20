@@ -1,6 +1,4 @@
-import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_base.js';
-import { map } from '../../AWML/src/index.pure.js';
-import { callUnsubscribe, forEachAsync } from '../utils.js';
+import { TemplateComponent } from '../../AWML/src/index.pure.js';
 
 function createChildComponent(roleName, o) {
   let component;
@@ -16,45 +14,45 @@ function createChildComponent(roleName, o) {
   return component;
 }
 
-class AES70BlockChildren extends PrefixComponentBase {
-  connectedCallback() {
-    super.connectedCallback();
-    this.style.display = null;
-    this.setAttribute('src', '/');
+const template = `{{ this.objectNodes }}`;
+
+class AES70BlockChildren extends TemplateComponent.fromString(template) {
+  constructor() {
+    super();
+    this._nodeCache = new WeakMap();
   }
 
-  _subscribe() {
-    const backendValue = this._getBackendValue();
-    
-    if (backendValue === null) return null;
+  createChildComponent(roleName, o) {
+    let node;
 
-    this._backendValue = backendValue;
+    if (!this._nodeCache.has(o)) {
+      this._nodeCache.set(o, node = createChildComponent(roleName, o));
+    } else {
+      node = this._nodeCache.get(o);
+    }
 
-    const children = map(backendValue, (a) => {
-      const [ block, roleMap ] = a;
+    return node;
+  }
 
-      return Array.from(roleMap.keys());
-    });
+  getHostBindings() {
+    return [
+      {
+        src: '/',
+        name: 'objectNodes',
+        readonly: true,
+        sync: true,
+        transformReceive: (a) => {
+          const [ block, roleMap ] = a;
+          let nodes = [];
 
-    const subs = forEachAsync(children, (roleName) => {
-      const [ block, roleMap ] = backendValue.value;
+          roleMap.forEach((o, roleName) => {
+            nodes.push(this.createChildComponent(roleName, o));
+          });
 
-      const o = roleMap.get(roleName);
-
-      const component = createChildComponent(roleName, o);
-
-      this.appendChild(component);
-
-      return () => {
-        component.remove();
-      };
-    });
-
-    return () => {
-      if (this._backendValue === null) return;
-      this._backendValue = null;
-      callUnsubscribe(subs);
-    };
+          return nodes;
+        },
+      },
+    ];
   }
 }
 
