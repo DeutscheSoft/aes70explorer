@@ -1,46 +1,51 @@
-import { collectPrefix, getBackendValue } from '../../AWML/src/index.pure.js';
-import { PrefixComponentBase } from '../../AWML/src/components/prefix_component_base.js';
-import { callUnsubscribe } from '../utils.js';
+import { collectPrefix, getBackendValue, TemplateComponent, fromSubscription } from '../../AWML/src/index.pure.js';
 import { findTemplateControl } from '../template_components.js';
-import { element } from '../../aux-widgets/src/utils/dom.js';
 
-class AES70Control extends PrefixComponentBase {
+const Selected = getBackendValue('local:selected');
+
+const template = `{{ this.controlComponent }}`;
+
+class AES70Control extends TemplateComponent.fromString(template) {
+  getHostBindings() {
+    return [
+      {
+        backendValue: Selected,
+        readonly: true,
+        name: 'selectedClassName',
+        transformReceive: (prefix) => prefix === collectPrefix(this),
+      },
+      {
+        src: '',
+        readonly: true,
+        name: 'controlComponent',
+        sync: true,
+        transformReceive: (o) => {
+          const tagName = findTemplateControl(o);
+
+          if (!tagName)
+            return null;
+
+          return document.createElement(tagName);
+        },
+      }
+    ];
+  }
+
+  awmlCreateBinding(name, options) {
+    if (name === 'selectedClassName') {
+      return fromSubscription(null, (value) => {
+        this.classList.toggle('selected', !!value);
+      });
+    }
+
+    return super.awmlCreateBinding(name, options);
+  }
+
   constructor() {
     super();
-    this._cloneControl = null;
     this.addEventListener('click', (e) => {
       getBackendValue('local:selected').set(collectPrefix(this));
     });
-    
-    getBackendValue('local:selected').subscribe((v) => {
-      if (v && collectPrefix(this) === v) {
-        this.classList.add('selected');
-      } else {
-        if (this.classList.contains('selected'))
-          this.classList.remove('selected');
-      }
-    });
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.style.display = null;
-    this.setAttribute('src', '');
-  }
-
-  _valueReceived(o) {
-    if (this._cloneControl !== null) {
-      this._cloneControl.remove();
-      this._cloneControl = null;
-    }
-
-    const tagName = findTemplateControl(o);
-
-    if (!tagName)
-      return;
-
-    this._cloneControl = document.createElement(tagName);
-    this.appendChild(this._cloneControl);
   }
 }
 
