@@ -49,7 +49,9 @@
 .aux-circular > .aux-value {
   fill: var(--color-accent);
 }
-
+.aux-circular .aux-label {
+  fill: var(--color);
+}
 
 .aux-fader.aux-horizontal {
 /*

@@ -9,6 +9,7 @@ const template = `
   knob.show_hand=false
   %bind={{ this.knobBindings }}
   knob.preset=medium
+  base=0
   >
 </aux-valueknob>
 <aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
@@ -58,7 +59,7 @@ const knobPresets = {
   },
 }
     
-class OcaFloatActuatorControl extends TemplateComponent.fromString(template) {
+class OcaPanBalanceControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.knobPresets = DynamicValue.fromConstant(knobPresets);
@@ -68,24 +69,29 @@ class OcaFloatActuatorControl extends TemplateComponent.fromString(template) {
         name: 'label',
       },
       {
-        src: '/Setting',
+        src: '/Position',
         name: 'value',
       },
       {
-        src: '/Setting/Min',
+        src: '/Position/Min',
         name: 'min',
       },
       {
-        src: '/Setting/Max',
+        src: '/Position/Max',
         name: 'max',
-      },
-      {
-        src: '/Setting/Min',
-        name: 'base',
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+      },
+      {
+        src: ['/Position/Min', '/Position/Max'],
+        name: 'labels',
+        debug: true,
+        transformReceive: function (arr) {
+          const [min, max] = arr;
+          return [{pos:min, label:'L'}, {pos:max, label:'R'}, {pos:0, label:'C'}];
+        }
       }
     ];
     this.editClicked = (e) => {
@@ -94,12 +100,9 @@ class OcaFloatActuatorControl extends TemplateComponent.fromString(template) {
   }
   static match(o) {
     return Math.max(
-      matchClass(OCA.RemoteControlClasses.OcaFloat32Actuator, o),
-      matchClass(OCA.RemoteControlClasses.OcaFloat64Actuator, o),
-      matchClass(OCA.RemoteControlClasses.OcaDelay, o),
-      matchClass(OCA.RemoteControlClasses.OcaDelayExtended, o)
+      matchClass(OCA.RemoteControlClasses.OcaPanBalance, o),
     );
   }
 }
 
-registerTemplateControl(OcaFloatActuatorControl);
+registerTemplateControl(OcaPanBalanceControl);

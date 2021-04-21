@@ -1,4 +1,3 @@
-import './controls/OcaGain.js';
 import './controls/OcaBooleanActuator.js';
 import './controls/OcaIntActuator.js';
 import './controls/OcaFloatActuator.js';
@@ -11,6 +10,8 @@ import './controls/OcaSensor.js';
 import './controls/OcaBooleanSensor.js';
 import './controls/OcaSwitch.js';
 import './controls/OcaStringSensor.js';
+import './controls/OcaGain.js';
+import './controls/OcaPanBalance.js';
 
 import './details/OcaWorker.js';
 import './details/OcaActuator.js';
