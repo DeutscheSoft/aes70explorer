@@ -2,26 +2,30 @@ import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
-<span class="label">Label</span>
-<aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
-
-<span class="label">Enabled</span>
-<aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
-
-<span class="label">ClassVersion</span>
-<aux-label %bind={{ this.ClassVersionBind }}></aux-label>
-
-<span class="label">Lockable</span>
-<aux-label %bind={{ this.LockableBind }}></aux-label>
-
-<span class="label">Min</span>
-<aux-label %bind={{ this.MinBind }}></aux-label>
-
-<span class="label">Max</span>
-<aux-label %bind={{ this.MaxBind }}></aux-label>
-
-<span class="label">Frequency</span>
-<aux-label %bind={{ this.FrequencyBind }}></aux-label>
+<div class="grid">
+  <div %if={{ this.implementsLabel }}>
+    <span class="label">Label</span>
+    <aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
+  </div>
+  
+  <span class="label">Enabled</span>
+  <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
+  
+  <span class="label">ClassVersion</span>
+  <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
+  
+  <span class="label">Lockable</span>
+  <aux-label %bind={{ this.LockableBind }}></aux-label>
+  
+  <span class="label">Min</span>
+  <aux-label %bind={{ this.MinBind }}></aux-label>
+  
+  <span class="label">Max</span>
+  <aux-label %bind={{ this.MaxBind }}></aux-label>
+  
+  <span class="label">Frequency</span>
+  <aux-label %bind={{ this.FrequencyBind }}></aux-label>
+</div>
 `;
 
 class OcaFreqActuatorDetails extends TemplateComponent.fromString(template) {

@@ -2,19 +2,21 @@ import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
-<div %if={{ this.implementsLabel }}>
-<span class="label">Label</span>
-<aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
+<div class="grid">
+  <div %if={{ this.implementsLabel }}>
+    <span class="label">Label</span>
+    <aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
+  </div>
+  
+  <span class="label">Enabled</span>
+  <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
+  
+  <span class="label">ClassVersion</span>
+  <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
+  
+  <span class="label">Lockable</span>
+  <aux-label %bind={{ this.LockableBind }}></aux-label>
 </div>
-
-<span class="label">Enabled</span>
-<aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
-
-<span class="label">ClassVersion</span>
-<aux-label %bind={{ this.ClassVersionBind }}></aux-label>
-
-<span class="label">Lockable</span>
-<aux-label %bind={{ this.LockableBind }}></aux-label>
 `;
 
 class OcaWorkerDetails extends TemplateComponent.fromString(template) {

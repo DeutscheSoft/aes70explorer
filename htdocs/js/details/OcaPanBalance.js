@@ -2,37 +2,40 @@ import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
-<div %if={{ this.implementsLabel }}>
-<span class="label">Label</span>
-<aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
+<div class="grid">
+  <div %if={{ this.implementsLabel }}>
+    <span class="label">Label</span>
+    <aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
+  </div>
+  
+  <span class="label">Enabled</span>
+  <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
+  
+  <span class="label">ClassVersion</span>
+  <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
+  
+  <span class="label">Lockable</span>
+  <aux-label %bind={{ this.LockableBind }}></aux-label>
+  
+  <span class="label">Min</span>
+  <aux-label %bind={{ this.MinBind }}></aux-label>
+  
+  <span class="label">Max</span>
+  <aux-label %bind={{ this.MaxBind }}></aux-label>
+  
+  <span class="label">Position</span>
+  <aux-label %bind={{ this.PositionBind }}></aux-label>
 </div>
-
-<span class="label">Enabled</span>
-<aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
-
-<span class="label">ClassVersion</span>
-<aux-label %bind={{ this.ClassVersionBind }}></aux-label>
-
-<span class="label">Lockable</span>
-<aux-label %bind={{ this.LockableBind }}></aux-label>
-
-<span class="label">Min</span>
-<aux-label %bind={{ this.MinBind }}></aux-label>
-
-<span class="label">Max</span>
-<aux-label %bind={{ this.MaxBind }}></aux-label>
-
-<span class="label">Position</span>
-<aux-label %bind={{ this.PositionBind }}></aux-label>
-
-<span class="label">MidpointGain Min</span>
-<aux-label %bind={{ this.MidMinBind }}></aux-label>
-
-<span class="label">MidpointGain Max</span>
-<aux-label %bind={{ this.MidMaxBind }}></aux-label>
-
-<span class="label">MidpointGain</span>
-<aux-label %bind={{ this.MidBind }}></aux-label>
+<div class="grid">
+  <span class="label">MidpointGain Min</span>
+  <aux-label %bind={{ this.MidMinBind }}></aux-label>
+  
+  <span class="label">MidpointGain Max</span>
+  <aux-label %bind={{ this.MidMaxBind }}></aux-label>
+  
+  <span class="label">MidpointGain</span>
+  <aux-label %bind={{ this.MidBind }}></aux-label>
+</div>
 `;
 
 class OcaPanBalanceDetails extends TemplateComponent.fromString(template) {
@@ -49,7 +52,6 @@ class OcaPanBalanceDetails extends TemplateComponent.fromString(template) {
 
   constructor() {
     super();
-    
     this.LabelBind = [{ src: '/Label', name: 'value' }];
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
