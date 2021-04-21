@@ -32,9 +32,12 @@ class OcaFreqActuatorDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.FrequencyBind = [{ src: '/Frequency', name: 'label' }];
-    this.MinBind = [{ src: '/Frequency/Min', name: 'label' }];
-    this.MaxBind = [{ src: '/Frequency/Max', name: 'label' }];
+    this.FrequencyBind = [{ src: '/Frequency', name: 'label',
+      transformReceive: v => v.toFixed(3) + 'Hz' }];
+    this.MinBind = [{ src: '/Frequency/Min', name: 'label',
+      transformReceive: v => v.toFixed(3) + 'Hz' }];
+    this.MaxBind = [{ src: '/Frequency/Max', name: 'label',
+      transformReceive: v => v.toFixed(3) + 'Hz' }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaFrequencyActuator, o);
