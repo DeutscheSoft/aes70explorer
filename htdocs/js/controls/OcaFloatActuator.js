@@ -91,7 +91,6 @@ class OcaFloatActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: ['/Setting/Min', '/Setting/Max'],
         name: 'labels',
-        debug: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];

@@ -26,7 +26,7 @@ const template = `
 <aux-label %bind={{ this.SettingBind }}></aux-label>
 `;
 
-class OcaBasicActuatorDetails extends TemplateComponent.fromString(template) {
+class OcaIntActuatorDetails extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {
@@ -50,8 +50,17 @@ class OcaBasicActuatorDetails extends TemplateComponent.fromString(template) {
     this.MaxBind = [{ src: '/Setting/Max', name: 'label' }];
   }
   static match(o) {
-    return matchClass(OCA.RemoteControlClasses.OcaBasicActuator, o);
+    return Math.max(
+      matchClass(OCA.RemoteControlClasses.OcaInt8Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt16Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt32Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt64Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint8Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint16Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint32Actuator, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint64Actuator, o),
+    );
   }
 }
 
-registerTemplateDetails(OcaBasicActuatorDetails);
+registerTemplateDetails(OcaIntActuatorDetails);
