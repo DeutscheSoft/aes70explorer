@@ -50,7 +50,7 @@
   fill: var(--color-accent);
 }
 .aux-circular .aux-label {
-  fill: var(--color);
+  fill: var(--color-fade);
 }
 
 .aux-fader.aux-horizontal {
