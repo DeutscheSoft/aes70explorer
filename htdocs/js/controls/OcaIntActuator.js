@@ -1,5 +1,6 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
+import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -87,6 +88,15 @@ class OcaIntActuatorControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+      },
+      {
+        src: ['/Setting/Min', '/Setting/Max'],
+        name: 'labels',
+        debug: true,
+        transformReceive: function (arr) {
+          const [min, max] = arr;
+          return [{pos:min, label:min}, {pos:max, label:max}];
+        }
       }
     ];
     this.editClicked = (e) => {
