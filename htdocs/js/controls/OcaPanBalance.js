@@ -87,7 +87,6 @@ class OcaPanBalanceControl extends TemplateComponent.fromString(template) {
       {
         src: ['/Position/Min', '/Position/Max'],
         name: 'labels',
-        debug: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:'L'}, {pos:max, label:'R'}, {pos:0, label:'C'}];
