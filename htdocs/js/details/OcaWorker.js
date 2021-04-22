@@ -38,9 +38,6 @@ class OcaWorkerDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label', readonly: true }];
     this.LockableBind = [{ src: '/Lockable', name: 'label', readonly: true }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state', readonly: true }];
-    this.SettingBind = [{ src: '/Setting', name: 'label', readonly: true }];
-    this.MinBind = [{ src: '/Setting/Min', name: 'label', readonly: true }];
-    this.MaxBind = [{ src: '/Setting/Max', name: 'label', readonly: true }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaWorker, o);
