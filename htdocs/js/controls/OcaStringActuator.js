@@ -20,7 +20,11 @@ class OcaStringActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Setting',
         name: 'value',
-      }
+      },
+      {
+        src: '/MaxLen',
+        name: 'maxlength',
+      },
     ];
   }
   static match(o) {
