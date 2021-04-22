@@ -1,11 +1,12 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
+import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
 const template = `
 <aux-valueknob #knob
-  value.format='sprintf:%.2f'
+  value.format='sprintf:%d'
   knob.show_hand=false
   %bind={{ this.knobBindings }}
   knob.preset=medium
@@ -25,10 +26,6 @@ class OcaFreqActuatorControl extends TemplateComponent.fromString(template) {
         name: 'label',
       },
       {
-        src: '/Frequency',
-        name: 'value',
-      },
-      {
         src: '/Frequency/Min',
         name: 'min',
       },
@@ -41,8 +38,20 @@ class OcaFreqActuatorControl extends TemplateComponent.fromString(template) {
         name: 'base',
       },
       {
+        src: '/Frequency',
+        name: 'value',
+      },
+      {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+      },
+      {
+        src: ['/Frequency/Min', '/Frequency/Max'],
+        name: 'labels',
+        transformReceive: function (arr) {
+          const [min, max] = arr;
+          return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
+        }
       }
     ];
     this.editClicked = (e) => {

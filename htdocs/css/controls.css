@@ -62,18 +62,7 @@ aes70-template-ocafreqactuatorcontrol > .aux-valueknob,
 aes70-template-ocaintactuatorcontrol > .aux-valueknob,
 aes70-template-ocafloatactuatorcontrol > .aux-valueknob {
   display: block;
-  margin-top: var(--line-height);
   margin-bottom: var(--line-height);
-}
-aes70-template-ocadelaycontrol > .aux-valueknob > .aux-label,
-aes70-template-ocapanbalancecontrol > .aux-valueknob > .aux-label,
-aes70-template-ocafreqactuatorcontrol > .aux-valueknob > .aux-label,
-aes70-template-ocaintactuatorcontrol > .aux-valueknob > .aux-label,
-aes70-template-ocafloatactuatorcontrol > .aux-valueknob > .aux-label {
-  position: absolute;
-  top: calc(var(--line-height) * -1);
-  left: 50%;
-  transform: translateX(-50%);
 }
 aes70-template-ocadelaycontrol > .aux-valueknob > .aux-value,
 aes70-template-ocapanbalancecontrol > .aux-valueknob > .aux-value,
@@ -84,6 +73,7 @@ aes70-template-ocafloatactuatorcontrol > .aux-valueknob > .aux-value {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  margin-top: calc(var(--line-height) / 2);
 }
 aes70-template-ocadelaycontrol > .aux-button,
 aes70-template-ocapanbalancecontrol > .aux-button,
