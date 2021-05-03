@@ -510,6 +510,7 @@ aes70-device > .head {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding-right: 8px;
 }
 aes70-device.selected > .head {
   background: var(--color-accent);
