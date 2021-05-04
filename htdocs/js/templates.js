@@ -6,6 +6,7 @@ import './controls/OcaBitstringActuator.js';
 import './controls/OcaStringActuator.js';
 import './controls/OcaFreqActuator.js';
 import './controls/OcaMute.js';
+import './controls/OcaFilterParametric.js';
 import './controls/OcaPolarity.js';
 import './controls/OcaSensor.js';
 import './controls/OcaBooleanSensor.js';
