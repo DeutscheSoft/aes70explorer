@@ -47,6 +47,9 @@ class OcaDelayControl extends TemplateComponent.fromString(template) {
         }
       },
     ];
+    this.editClicked = (e) => {
+      this.knob.auxWidget.value._input.focus();
+    }
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaDelay, o);
