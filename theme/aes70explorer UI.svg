@@ -8,7 +8,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="OCABrowser.svg"
+   sodipodi:docname="aes70explorer UI.svg"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    version="1.1"
    id="svg2"
@@ -447,9 +447,9 @@
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="364.07496"
-     inkscape:cx="952.64601"
-     inkscape:zoom="4.0134094"
+     inkscape:cy="495.81552"
+     inkscape:cx="1954.4087"
+     inkscape:zoom="1.4189545"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
      borderopacity="1.0"
@@ -567,7 +567,7 @@
        x="1410"
        y="0" />
     <rect
-       style="color:#000000;overflow:visible;fill:#bcbdd5;fill-opacity:1;stroke-width:40;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
+       style="color:#000000;overflow:visible;fill:#c3c3ce;fill-opacity:1;stroke-width:40;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
        id="rect5438-3"
        width="1280"
        height="960"
@@ -830,7 +830,7 @@
        transform="matrix(3.7465944,0,0,3.7465944,1466.9857,110.00316)"
        style="stroke-width:0.266909">
       <path
-         style="fill:#9397b0;fill-opacity:1;fill-rule:evenodd;stroke:#868798;stroke-width:10.6764;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.266909, 0.26690900000000001;stroke-dashoffset:0;stroke-opacity:1"
+         style="fill:#9c9ea7;fill-opacity:1;fill-rule:evenodd;stroke:#868798;stroke-width:10.6764;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.266909, 0.26690900000000001;stroke-dashoffset:0;stroke-opacity:1"
          d="m 231.41399,41.10315 v 112"
          id="path1745-9" />
       <g
@@ -1593,7 +1593,7 @@
        transform="matrix(3.7465944,0,0,3.7465944,1386.9857,110.00316)"
        style="stroke-width:0.266909">
       <path
-         style="fill:#9397b0;fill-opacity:1;fill-rule:evenodd;stroke:#868798;stroke-width:10.6764;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.266909, 0.26690900000000001;stroke-dashoffset:0;stroke-opacity:1"
+         style="fill:#9c9ea7;fill-opacity:1;fill-rule:evenodd;stroke:#868798;stroke-width:10.6764;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.266909, 0.26690900000000001;stroke-dashoffset:0;stroke-opacity:1"
          d="m 231.41399,41.10315 v 112"
          id="path3639-8" />
       <g
@@ -1685,7 +1685,7 @@
        transform="matrix(3.7465944,0,0,3.7465944,1546.9857,110.00316)"
        style="stroke-width:0.266909">
       <path
-         style="fill:#9397b0;fill-opacity:1;fill-rule:evenodd;stroke:#868798;stroke-width:10.6764;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.266909, 0.26690900000000001;stroke-dashoffset:0;stroke-opacity:1"
+         style="fill:#9c9ea7;fill-opacity:1;fill-rule:evenodd;stroke:#868798;stroke-width:10.6764;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.266909, 0.26690900000000001;stroke-dashoffset:0;stroke-opacity:1"
          d="m 231.41399,41.10315 v 112"
          id="path3673-9" />
       <g
@@ -1954,7 +1954,7 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
     <rect
-       style="color:#000000;overflow:visible;fill:#bcbdd5;fill-opacity:1;stroke:none;stroke-width:20;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:20, 20;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="color:#000000;overflow:visible;fill:#c3c3ce;fill-opacity:1;stroke:none;stroke-width:20;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:20, 20;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="rect5394-9"
        width="360"
        height="40"
