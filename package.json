@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "parcel build htdocs/index.html"
+    "build": "parcel build --no-scope-hoist htdocs/index.html"
   },
   "keywords": [],
   "author": "",
