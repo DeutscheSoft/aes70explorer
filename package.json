@@ -1,20 +1,16 @@
 {
-  "name": "aes70-browser",
+  "name": "aes70-explorer-build",
   "version": "1.0.0",
   "description": "",
-  "main": "src/js/start.js",
-  "scripts": {},
+  "scripts": {
+    "build": "parcel build htdocs/index.html"
+  },
   "keywords": [],
   "author": "",
-  "license": "GPLv2",
+  "license": "GPL-2.0-only",
   "type": "module",
-  "dependencies": {
-    "@hapi/hapi": "^20.0.3",
-    "@hapi/inert": "^6.0.3",
-    "aes70": "^1.1.16",
-    "argparse": "^2.0.1",
-    "dnssd": "^0.4.1",
-    "hapi-plugin-websocket": "^2.3.1",
-    "yargs": "^16.1.1"
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.2"
   }
 }
