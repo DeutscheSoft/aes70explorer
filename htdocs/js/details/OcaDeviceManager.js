@@ -2,70 +2,66 @@ import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 function extractManufaturerID (value) {
-  str = "";
-  for (let i = 0; i < 3; ++i) {
-    value = value >> 8;
-    str += (value & 0xff).toString(16);
-  }
+  let MfrCode = new Uint8Array(value.MfrCode);
+
+  return MfrCode.map((c) => c.toString(16)).join('');
 }
+
 function extractModelID (value) {
-  str = "";
-  value = value >> (8 * 4);
-  for (let i = 0; i < 4; ++i) {
-    str += (value & 0xff).toString(16);
-    value = value >> 8;
-  }
+  let ModelCode = new Uint8Array(value.ModelCode);
+
+  return ModelCode.map((c) => c.toString(16)).join('');
 }
 
 const template = `
 <div class="grid">
   <span class="label">Enabled</span>
   <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
-  
+
   <span class="label">ClassVersion</span>
   <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
-  
+
   <span class="label">Device Busy</span>
   <aux-state %bind={{ this.BusyBind }}></aux-state>
-  
+
   <span class="label">Device State</span>
   <aux-label %bind={{ this.DeviceStateBind }}></aux-label>
-  
+
   <span class="label">Device Name</span>
   <aux-label %bind={{ this.DeviceNameBind }}></aux-label>
-  
+
   <span class="label">Device Revision ID</span>
   <aux-label %bind={{ this.DeviceRevisionIDBind }}></aux-label>
 </div>
 <div class="grid">
   <span class="label">Manufacturer</span>
   <aux-label %bind={{ this.ManufacturerBind }}></aux-label>
-  
+
   <span class="label">Model</span>
   <aux-label %bind={{ this.ModelBind }}></aux-label>
-  
+
   <span class="label">Version</span>
   <aux-label %bind={{ this.VersionBind }}></aux-label>
-  
+
   <span class="label">Serial Number</span>
   <aux-label %bind={{ this.SerialNumberBind }}></aux-label>
-  
+
   <span class="label">Manufacturer ID</span>
   <aux-label %bind={{ this.ManufacturerIDBind }}></aux-label>
-  
+
   <span class="label">Model ID</span>
   <aux-label %bind={{ this.ModelIDBind }}></aux-label>
 </div>
 <div class="grid">
   <span class="label">OCA Version</span>
   <aux-label %bind={{ this.OCAVersionBind }}></aux-label>
-  
+
   <span class="label">User Inventory Code</span>
   <aux-label %bind={{ this.UserInventoryCodeBind }}></aux-label>
-  
+
   <span class="label">Last Reset Cause</span>
   <aux-label %bind={{ this.ResetCauseBind }}></aux-label>
-  
+
   <span class="label">Message</span>
   <aux-marquee %bind={{ this.MessageBind }}></aux-marquee>
 </div>
