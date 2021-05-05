@@ -1,4 +1,4 @@
-import { getBackendValue, TemplateComponent, switchMap, DynamicValue } from '../../AWML/src/index.pure.js';
+import { getBackendValue, TemplateComponent, switchMap, DynamicValue, fromSubscription } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe, classIDToString } from '../utils.js';
 import { findTemplateDetails, findTemplateControl } from '../template_components.js';
 
@@ -21,7 +21,18 @@ const template = `
 const Selected = getBackendValue('local:selected');
 
 const ObjectIfSelected = switchMap(Selected, (prefix) => {
-  return prefix ? getBackendValue(prefix) : DynamicValue.fromConstant(null);
+  if (!prefix) {
+    return DynamicValue.fromConstant(null);
+  }
+
+  const b = getBackendValue(prefix);
+
+  const result = fromSubscription(
+    (cb) => b.subscribe(cb),
+    function(value) { this._updateValue(value); }
+  );
+  result.set(null);
+  return result;
 });
 
 class AES70Details extends TemplateComponent.fromString(template) {
@@ -55,6 +66,9 @@ class AES70Details extends TemplateComponent.fromString(template) {
         readonly: true,
         sync: true,
         transformReceive: function (o) {
+          if (!o)
+            return null;
+
           const tagName = findTemplateDetails(o);
 
           return tagName ? document.createElement(tagName) : null;
@@ -66,6 +80,9 @@ class AES70Details extends TemplateComponent.fromString(template) {
         readonly: true,
         sync: true,
         transformReceive: function (o) {
+          if (!o)
+            return null;
+
           const tagName = findTemplateControl(o);
 
           return tagName ? document.createElement(tagName) : null;
@@ -76,7 +93,7 @@ class AES70Details extends TemplateComponent.fromString(template) {
 
   constructor() {
     super();
-    
+
     this.IconBind = [{ src: '', name: 'icon',
       transformReceive: v=>v.ClassName.toLowerCase(), }];
     this.RoleBind = [{ src: '/Role', name: 'label' }];
