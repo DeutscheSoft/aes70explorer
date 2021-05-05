@@ -43,6 +43,7 @@ aes70-control.selected {
 }
 aes70-control.scaffold.selected {
   box-shadow: 0 0 4px var(--color-accent);
+  background: var(--background-medium);
 }
 
 @keyframes scaffold {
