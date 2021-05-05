@@ -44,7 +44,10 @@ class AES70Control extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.addEventListener('click', (e) => {
-      Selected.set({type:'object', prefix:collectPrefix(this)});
+      const prefix = collectPrefix(this);
+      if (Selected._value && Selected._value.prefix === prefix)
+        return;
+      Selected.set({type:'object', prefix:prefix});
     });
   }
 }
