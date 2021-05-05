@@ -105,7 +105,10 @@ class AES70Object extends TemplateComponent.fromString(template) {
       transformReceive: v=>v.ClassName,
     }];
     this.onHeaderClicked = (e) => {
-      Selected.set({type:'object', prefix:collectPrefix(this)});
+      const prefix = collectPrefix(this);
+      if (Selected._value && Selected._value.prefix === prefix)
+        return;
+      Selected.set({type:'object', prefix:prefix});
     }
     this.onAddClicked = (e) => {
       this._addControl();
