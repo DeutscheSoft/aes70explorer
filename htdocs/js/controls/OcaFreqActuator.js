@@ -15,7 +15,7 @@ const template = `
 </aux-valueknob>
 <aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
 `;
-    
+
 class OcaFreqActuatorControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
@@ -63,4 +63,4 @@ class OcaFreqActuatorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaFreqActuatorControl);
+registerTemplateControl(OcaFreqActuatorControl, 'frequencyactuator');

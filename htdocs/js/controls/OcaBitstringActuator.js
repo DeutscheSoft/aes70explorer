@@ -52,4 +52,4 @@ class OcaBitstringActuatorControl extends TemplateComponent.fromString(template)
   }
 }
 
-registerTemplateControl(OcaBitstringActuatorControl);
+registerTemplateControl(OcaBitstringActuatorControl, 'bitstringactuator');

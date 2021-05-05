@@ -27,4 +27,4 @@ class OcaPolarityControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaPolarityControl);
+registerTemplateControl(OcaPolarityControl, 'polarity');

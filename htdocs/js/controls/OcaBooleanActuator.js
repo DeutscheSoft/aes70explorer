@@ -24,4 +24,4 @@ class OcaBooleanActuatorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaBooleanActuatorControl);
+registerTemplateControl(OcaBooleanActuatorControl, 'booleanactuator');

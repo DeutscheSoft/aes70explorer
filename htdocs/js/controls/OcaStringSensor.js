@@ -22,4 +22,4 @@ class OcaStringSensorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaStringSensorControl);
+registerTemplateControl(OcaStringSensorControl, 'stringsensor');

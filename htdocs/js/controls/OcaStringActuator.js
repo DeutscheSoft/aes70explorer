@@ -32,4 +32,4 @@ class OcaStringActuatorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaStringActuatorControl);
+registerTemplateControl(OcaStringActuatorControl, 'stringactuator');

@@ -22,4 +22,4 @@ class OcaBooleanSensorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaBooleanSensorControl);
+registerTemplateControl(OcaBooleanSensorControl, 'booleansensor');

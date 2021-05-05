@@ -56,30 +56,30 @@ aes70-control > * {
 }
 
 
-aes70-template-ocadelaycontrol > .aux-valueknob,
-aes70-template-ocapanbalancecontrol > .aux-valueknob,
-aes70-template-ocafreqactuatorcontrol > .aux-valueknob,
-aes70-template-ocaintactuatorcontrol > .aux-valueknob,
-aes70-template-ocafloatactuatorcontrol > .aux-valueknob {
+aes70-control-delay > .aux-valueknob,
+aes70-control-panbalance > .aux-valueknob,
+aes70-control-freqactuator > .aux-valueknob,
+aes70-control-intactuator > .aux-valueknob,
+aes70-control-floatactuator > .aux-valueknob {
   display: block;
   margin-bottom: var(--line-height);
 }
-aes70-template-ocadelaycontrol > .aux-valueknob > .aux-value,
-aes70-template-ocapanbalancecontrol > .aux-valueknob > .aux-value,
-aes70-template-ocafreqactuatorcontrol > .aux-valueknob > .aux-value,
-aes70-template-ocaintactuatorcontrol > .aux-valueknob > .aux-value,
-aes70-template-ocafloatactuatorcontrol > .aux-valueknob > .aux-value {
+aes70-control-delay > .aux-valueknob > .aux-value,
+aes70-control-panbalance > .aux-valueknob > .aux-value,
+aes70-control-freqactuator > .aux-valueknob > .aux-value,
+aes70-control-intactuator > .aux-valueknob > .aux-value,
+aes70-control-floatactuator > .aux-valueknob > .aux-value {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin-top: calc(var(--line-height) / 2);
 }
-aes70-template-ocadelaycontrol > .aux-button,
-aes70-template-ocapanbalancecontrol > .aux-button,
-aes70-template-ocafreqactuatorcontrol > .aux-button,
-aes70-template-ocaintactuatorcontrol > .aux-button,
-aes70-template-ocafloatactuatorcontrol > .aux-button {
+aes70-control-delay > .aux-button,
+aes70-control-panbalance > .aux-button,
+aes70-control-freqactuator > .aux-button,
+aes70-control-intactuator > .aux-button,
+aes70-control-floatactuator > .aux-button {
   background: none;
   color: var(--color-fade);
   padding: 4px;
@@ -89,115 +89,115 @@ aes70-template-ocafloatactuatorcontrol > .aux-button {
   transform: translateX(-50%);
   margin: 0;
 }
-aes70-template-ocadelaycontrol > .aux-button > .aux-icon,
-aes70-template-ocapanbalancecontrol > .aux-button > .aux-icon,
-aes70-template-ocafreqactuatorcontrol > .aux-button > .aux-icon,
-aes70-template-ocaintactuatorcontrol > .aux-button > .aux-icon,
-aes70-template-ocafloatactuatorcontrol > .aux-button > .aux-icon {
+aes70-control-delay > .aux-button > .aux-icon,
+aes70-control-panbalance > .aux-button > .aux-icon,
+aes70-control-freqactuator > .aux-button > .aux-icon,
+aes70-control-intactuator > .aux-button > .aux-icon,
+aes70-control-floatactuator > .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon);
 }
 
 
 
-aes70-template-ocabitstringactuatorcontrol {
+aes70-control-bitstringactuator {
   display: flex;
   flex-direction: column;
 }
-aes70-template-ocabitstringactuatorcontrol > .aux-label {
+aes70-control-bitstringactuator > .aux-label {
   margin-bottom: 4px;
   align-self: flex-start;
 }
-aes70-template-ocabitstringactuatorcontrol > .aux-buttons {
+aes70-control-bitstringactuator > .aux-buttons {
   display: grid;
   grid-gap: 2px;
 }
-aes70-template-ocabitstringactuatorcontrol > .aux-buttons > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons > .aux-button {
   padding: 0;
 }
-aes70-template-ocabitstringactuatorcontrol > .aux-buttons.aes70-size-large > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-large > .aux-button {
   min-width: 40px;
   height: 40px;
 }
-aes70-template-ocabitstringactuatorcontrol > .aux-buttons.aes70-size-medium > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-medium > .aux-button {
   min-width: 32px;
-  height: 32px; 
+  height: 32px;
 }
-aes70-template-ocabitstringactuatorcontrol > .aux-buttons.aes70-size-small > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-small > .aux-button {
   min-width: 24px;
-  height: 24px; 
+  height: 24px;
 }
-aes70-template-ocabitstringactuatorcontrol > .aux-buttons.aes70-size-tiny > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-tiny > .aux-button {
   min-width: 16px;
-  height: 16px; 
+  height: 16px;
 }
 
 
-aes70-template-ocagaincontrol {
+aes70-control-gain {
   height: 240px;
 }
-aes70-template-ocagaincontrol > .aux-fader {
+aes70-control-gain > .aux-fader {
   height: 100%;
 }
 
 
-aes70-template-ocamutecontrol > .aux-toggle {
+aes70-control-mute > .aux-toggle {
   padding-left: var(--aux-button-paddinghorizontal);
 }
-aes70-template-ocamutecontrol > .aux-toggle::before {
+aes70-control-mute > .aux-toggle::before {
   content: none !important;
 }
-aes70-template-ocamutecontrol > .aux-toggle > .aux-icon {
+aes70-control-mute > .aux-toggle > .aux-icon {
   font-size: 20px;
   margin-right: 8px;
 }
-aes70-template-ocamutecontrol > .aux-toggle.aux-active > .aux-icon {
+aes70-control-mute > .aux-toggle.aux-active > .aux-icon {
   color: var(--color-accent);
 }
 
 
-aes70-template-ocapolaritycontrol > .aux-toggle {
+aes70-control-polarity > .aux-toggle {
   padding-left: var(--aux-button-paddinghorizontal);
 }
-aes70-template-ocapolaritycontrol > .aux-toggle::before {
+aes70-control-polarity > .aux-toggle::before {
   content: none !important;
 }
-aes70-template-ocapolaritycontrol > .aux-toggle > .aux-icon {
+aes70-control-polarity > .aux-toggle > .aux-icon {
   font-size: 20px;
   margin-right: 8px;
 }
-aes70-template-ocapolaritycontrol > .aux-toggle.aux-active > .aux-icon {
+aes70-control-polarity > .aux-toggle.aux-active > .aux-icon {
   color: var(--color-accent);
 }
 
 
-aes70-template-ocasensorcontrol {
+aes70-control-sensor {
   height: 240px;
 }
-aes70-template-ocasensorcontrol > .aux-meter {
+aes70-control-sensor > .aux-meter {
   height: 100%;
 }
 
 
-aes70-template-ocastringactuatorcontrol {
+aes70-control-stringactuator {
   display: flex;
   flex-direction: column;
 }
-aes70-template-ocastringactuatorcontrol > .aux-label {
+aes70-control-stringactuator > .aux-label {
   align-self: flex-start;
   margin-bottom: 4px;
 }
-aes70-template-ocastringactuatorcontrol > .aux-value {
+aes70-control-stringactuator > .aux-value {
   width: 192px;
   text-align: left;
 }
 
 
-aes70-template-ocaswitchcontrol {
+aes70-control-switch {
   display: flex;
   flex-direction: column;
   align-items: center !important;
 }
-aes70-template-ocaswitchcontrol > .aux-label {
+aes70-control-switch > .aux-label {
   align-self: flex-start;
   margin-bottom: 4px;
 }

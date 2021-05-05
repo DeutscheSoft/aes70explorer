@@ -72,4 +72,4 @@ class OcaIntActuatorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaIntActuatorControl);
+registerTemplateControl(OcaIntActuatorControl, 'intactuator');

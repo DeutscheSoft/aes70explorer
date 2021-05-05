@@ -75,4 +75,4 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
   }
 }
 
-registerTemplateControl(OcaFilterParametricControl);
+registerTemplateControl(OcaFilterParametricControl, 'filterparametric');

@@ -27,4 +27,4 @@ class OcaMuteControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaMuteControl);
+registerTemplateControl(OcaMuteControl, 'mute');

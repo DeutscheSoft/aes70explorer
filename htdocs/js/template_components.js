@@ -8,11 +8,14 @@ export function matchClass(Class, object) {
   return Class.ClassID.length;
 }
 
-export function registerTemplateControl(component) {
-  const tagName = 'aes70-template-' + component.name.toLowerCase();
+export function registerTemplateControl(component, name) {
+  const tagName = 'aes70-control-' + name;
 
-  templateControls.set(tagName, component);
+  if (templateControls.has(tagName))
+    throw new Error(`Control component with name ${tagName} already defined.`)
+
   customElements.define(tagName, component);
+  templateControls.set(tagName, component);
 }
 export function registerTemplateDetails(component) {
   const tagName = 'aes70-template-' + component.name.toLowerCase();

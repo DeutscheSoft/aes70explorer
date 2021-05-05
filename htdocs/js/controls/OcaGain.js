@@ -36,4 +36,4 @@ class OcaGainControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaGainControl);
+registerTemplateControl(OcaGainControl, 'gain');

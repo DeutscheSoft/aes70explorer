@@ -56,4 +56,4 @@ class OcaDelayControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaDelayControl);
+registerTemplateControl(OcaDelayControl, 'delay');

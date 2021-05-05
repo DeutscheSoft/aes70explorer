@@ -14,7 +14,7 @@ const template = `
 </aux-valueknob>
 <aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
 `;
-    
+
 class OcaPanBalanceControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
@@ -60,4 +60,4 @@ class OcaPanBalanceControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaPanBalanceControl);
+registerTemplateControl(OcaPanBalanceControl, 'panbalance');

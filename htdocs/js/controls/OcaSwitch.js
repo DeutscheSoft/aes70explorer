@@ -49,4 +49,4 @@ class OcaSwitchControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaSwitchControl);
+registerTemplateControl(OcaSwitchControl, 'switch');

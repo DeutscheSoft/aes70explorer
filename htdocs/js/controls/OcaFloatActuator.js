@@ -66,4 +66,4 @@ class OcaFloatActuatorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaFloatActuatorControl);
+registerTemplateControl(OcaFloatActuatorControl, 'floatactuator');

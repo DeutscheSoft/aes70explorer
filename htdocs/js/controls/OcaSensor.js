@@ -59,4 +59,4 @@ class OcaSensorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaSensorControl);
+registerTemplateControl(OcaSensorControl, 'sensor');
