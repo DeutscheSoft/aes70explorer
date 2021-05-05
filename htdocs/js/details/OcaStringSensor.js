@@ -3,22 +3,20 @@ import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
 <div class="grid">
-    <div %if={{ this.implementsLabel }}>
-      <span class="label">Label</span>
-      <aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
-    </div>
+  <span %if={{ this.implementsLabel }} class="label">Label</span>
+  <aux-value %if={{ this.implementsLabel }} preset=string %bind={{ this.LabelBind }}></aux-value>
 
-    <span class="label">Enabled</span>
-    <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
+  <span class="label">Enabled</span>
+  <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
 
-    <span class="label">ClassVersion</span>
-    <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
+  <span class="label">ClassVersion</span>
+  <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
 
-    <span class="label">Lockable</span>
-    <aux-label %bind={{ this.LockableBind }}></aux-label>
+  <span class="label">Lockable</span>
+  <aux-label %bind={{ this.LockableBind }}></aux-label>
 
-    <span class="label">String</span>
-    <aux-label %bind={{ this.StringBind }}></aux-label>
+  <span class="label">String</span>
+  <aux-label %bind={{ this.StringBind }}></aux-label>
 </div>
 `;
 

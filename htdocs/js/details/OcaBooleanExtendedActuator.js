@@ -3,10 +3,8 @@ import { matchClass, registerTemplateDetails } from '../template_components.js';
 
 const template = `
 <div class="grid">
-  <div %if={{ this.implementsLabel }}>
-    <span class="label">Label</span>
-    <aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
-  </div>
+  <span %if={{ this.implementsLabel }} class="label">Label</span>
+  <aux-value %if={{ this.implementsLabel }} preset=string %bind={{ this.LabelBind }}></aux-value>
 
   <span class="label">Enabled</span>
   <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
