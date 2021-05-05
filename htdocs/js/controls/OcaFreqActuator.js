@@ -11,6 +11,8 @@ const template = `
   %bind={{ this.knobBindings }}
   knob.preset=medium
   scale="frequency"
+  min="1"
+  max="20000"
   >
 </aux-valueknob>
 <aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
