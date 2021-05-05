@@ -69,7 +69,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (prefix) => prefix === collectPrefix(this),
+        transformReceive: (selected) => selected && selected.prefix === collectPrefix(this),
       }
     ];
   }
@@ -105,7 +105,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
       transformReceive: v=>v.ClassName,
     }];
     this.onHeaderClicked = (e) => {
-      getBackendValue('local:selected').set(collectPrefix(this));
+      Selected.set({type:'object', prefix:collectPrefix(this)});
     }
     this.onAddClicked = (e) => {
       this._addControl();

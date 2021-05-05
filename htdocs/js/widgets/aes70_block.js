@@ -17,7 +17,7 @@ class AES70Block extends TemplateComponent.fromString(template) {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (prefix) => prefix === collectPrefix(this),
+        transformReceive: (selected) => selected && selected.prefix === collectPrefix(this),
       }
     ];
   }
@@ -37,7 +37,7 @@ class AES70Block extends TemplateComponent.fromString(template) {
     this._icon = 'ocablock';
     
     this.onHeadClick = (ev) => {
-      Selected.set(collectPrefix(this));
+      Selected.set({type:'block', prefix:collectPrefix(this)});
     }
     
     this.onIconClick = (ev) => {

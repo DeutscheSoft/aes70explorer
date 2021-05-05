@@ -34,12 +34,12 @@ document.getElementById('canvas').addEventListener('click', function (e) {
       return;
     target = target.parentElement;
   }
-  getBackendValue('local:selected').set(null);
+  getBackendValue('local:selected').set({type:null, prefix:null});
 });
 
 getBackendValue('local:selected').subscribe(v => {
-  AES70.checkAddLineBreak(v);
-  AES70.checkRemoveLineBreak(v);
+  AES70.checkAddLineBreak(v.prefix);
+  AES70.checkRemoveLineBreak(v.prefix);
 });
 
 registerValueTimer('local:tips/icons/ocadevice', ['ocadevice','ocadeviceopen'], 2500);

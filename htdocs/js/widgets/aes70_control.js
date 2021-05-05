@@ -12,7 +12,7 @@ class AES70Control extends TemplateComponent.fromString(template) {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (prefix) => prefix === collectPrefix(this),
+        transformReceive: (selected) => selected.prefix === collectPrefix(this),
       },
       {
         src: '',
@@ -44,7 +44,7 @@ class AES70Control extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.addEventListener('click', (e) => {
-      getBackendValue('local:selected').set(collectPrefix(this));
+      Selected.set({type:'object', prefix:collectPrefix(this)});
     });
   }
 }

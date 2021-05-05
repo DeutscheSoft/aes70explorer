@@ -21,7 +21,7 @@ class AES70Device extends TemplateComponent.fromString(template) {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (prefix) => prefix === this.info.name + ':/DeviceManager',
+        transformReceive: (selected) => selected && selected.prefix === this.info.name + ':/DeviceManager',
       }
     ];
   }
@@ -41,7 +41,7 @@ class AES70Device extends TemplateComponent.fromString(template) {
     this._icon = 'ocadevice';
     
     this.onHeadClick = (ev) => {
-      Selected.set(this.info.name + ':/DeviceManager');
+      Selected.set({type:'device', prefix:this.info.name + ':/DeviceManager'});
     }
     
     this.onIconClick = (ev) => {

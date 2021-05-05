@@ -2,7 +2,7 @@ import { findControl } from './template_components.js';
 import { getBackendValue } from './../AWML/src/index.pure.js';
 
 export function addToCanvas(node) {
-  const path = getBackendValue('local:selected')._value;
+  const path = getBackendValue('local:selected')._value.prefix;
   const canvas = document.querySelector('#canvas');
   let selected, next;
   if (path && (selected = findControl(path)) && (next = selected.nextSibling)) {

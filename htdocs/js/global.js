@@ -19,9 +19,9 @@ window.AES70 = {
       canvas.appendChild(lb);
     }
     getBackendValue('local:selected').wait().then(v => {
-      AES70.checkAddLineBreak(v);
-      AES70.checkRemoveLineBreak(v);
-      getBackendValue('local:selected').set(null);
+      AES70.checkAddLineBreak(v.prefix);
+      AES70.checkRemoveLineBreak(v.prefix);
+      getBackendValue('local:selected').set({type:null, prefix:null});
     });
   },
 
@@ -32,8 +32,8 @@ window.AES70 = {
       return;
     lb.parentElement.removeChild(lb);
     getBackendValue('local:selected').wait().then(v => {
-      AES70.checkAddLineBreak(v);
-      AES70.checkRemoveLineBreak(v);
+      AES70.checkAddLineBreak(v.prefix);
+      AES70.checkRemoveLineBreak(v.prefix);
     });
   },
 

@@ -4,7 +4,7 @@ import { findTemplateDetails, findTemplateControl } from '../template_components
 
 const docsLink = 'http://docs.deuso.de/AES70-OCC/Control Classes/';
 const template = `
-<awml-prefix src="local:selected"></awml-prefix>
+<awml-prefix src="local:selected" transform-receive="v=>v.prefix"></awml-prefix>
 <div class=head %if={{ this.path }}>
   <aux-icon class=icon %bind={{ this.IconBind }}></aux-icon>
   <aux-label class=role %bind={{ this.RoleBind }}></aux-label>
@@ -20,12 +20,12 @@ const template = `
 
 const Selected = getBackendValue('local:selected');
 
-const ObjectIfSelected = switchMap(Selected, (prefix) => {
-  if (!prefix) {
+const ObjectIfSelected = switchMap(Selected, (selected) => {
+  if (!selected.prefix) {
     return DynamicValue.fromConstant(null);
   }
 
-  const b = getBackendValue(prefix);
+  const b = getBackendValue(selected.prefix);
 
   const result = fromSubscription(
     (cb) => b.subscribe(cb),
@@ -52,9 +52,9 @@ class AES70Details extends TemplateComponent.fromString(template) {
         readonly: true,
         sync: true,
         name: 'path',
-        transformReceive: function (path) {
-          if (path && path.length) {
-            return path.replace(/\:\//g, ' :/ ').replace(/\//g, ' / ');
+        transformReceive: function (selected) {
+          if (selected && selected.prefix && selected.prefix.length) {
+            return selected.prefix.replace(/\:\//g, ' :/ ').replace(/\//g, ' / ');
           } else {
             return '';
           }
