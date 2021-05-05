@@ -29,7 +29,7 @@ import { getBackendValue } from '../AWML/src/index.pure.js';
 document.getElementById('canvas').addEventListener('click', function (e) {
   let target = e.target;
   while (target) {
-    if (target.tagName.startsWith('AES70-TEMPLATE-OCA')
+    if (target.tagName.startsWith('AES70-CONTROL')
       || target.tagName.startsWith('AES70-OBJECT'))
       return;
     target = target.parentElement;
