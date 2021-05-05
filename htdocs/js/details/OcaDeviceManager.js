@@ -99,4 +99,4 @@ class OcaDeviceManagerDetails extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateDetails(OcaDeviceManagerDetails);
+registerTemplateDetails(OcaDeviceManagerDetails, 'devicemanager');

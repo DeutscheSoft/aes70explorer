@@ -17,11 +17,14 @@ export function registerTemplateControl(component, name) {
   customElements.define(tagName, component);
   templateControls.set(tagName, component);
 }
-export function registerTemplateDetails(component) {
-  const tagName = 'aes70-template-' + component.name.toLowerCase();
+export function registerTemplateDetails(component, name) {
+  const tagName = 'aes70-details-' + name;
 
-  templateDetails.set(tagName, component);
+  if (templateDetails.has(tagName))
+    throw new Error(`Details component with name ${tagName} already defined.`);
+
   customElements.define(tagName, component);
+  templateDetails.set(tagName, component);
 }
 
 function findBestMatch(set, o) {

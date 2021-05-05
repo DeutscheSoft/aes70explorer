@@ -7,16 +7,16 @@ const template = `
     <span class="label">Label</span>
     <aux-value preset=string %bind={{ this.LabelBind }}></aux-value>
   </div>
-  
+
   <span class="label">Enabled</span>
   <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
-  
+
   <span class="label">ClassVersion</span>
   <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
-  
+
   <span class="label">Lockable</span>
   <aux-label %bind={{ this.LockableBind }}></aux-label>
-  
+
   <span class="label">State</span>
   <aux-label %bind={{ this.StateBind }}></aux-label>
 </div>
@@ -25,7 +25,7 @@ const template = `
 class OcaBooleanExtendedActuatorDetails extends TemplateComponent.fromString(template) {
   constructor() {
     super();
-    
+
     this.LabelBind = [{ src: '/Label', name: 'value' }];
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
@@ -38,4 +38,4 @@ class OcaBooleanExtendedActuatorDetails extends TemplateComponent.fromString(tem
   }
 }
 
-registerTemplateDetails(OcaBooleanExtendedActuatorDetails);
+registerTemplateDetails(OcaBooleanExtendedActuatorDetails, 'booleanextendedactuator');
