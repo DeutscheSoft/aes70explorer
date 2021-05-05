@@ -338,6 +338,11 @@ html {
   background: var(--background-fade);
   border-top: 1px solid var(--color-accent);
 }
+#details.device {
+  grid-template-areas: "head"
+                       "details";
+  grid-template-columns: 100%;
+}
 #details > .head {
   grid-area: head;
   display: grid;
@@ -397,6 +402,9 @@ html {
   justify-content: center;
   margin-right: 16px;
 }
+#details.device > .control {
+  display: none;
+}
 #details > .control > * {
   display: flex;
   align-items: stretch;
@@ -408,6 +416,9 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+#details.device > .details {
+  justify-items: stretch;
 }
 
 #details > .details > * {
@@ -668,4 +679,13 @@ aes70-object > .head > .remove {
 }
 aes70-object > .head > .remove:hover {
   color: var(--color-accent);
+}
+
+
+aes70-details-devicemanager {
+  width: 100%;
+}
+
+aes70-details-devicemanager > .grid {
+  flex: 1 1 auto;
 }

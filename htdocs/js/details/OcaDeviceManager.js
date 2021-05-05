@@ -28,23 +28,23 @@ const template = `
   <aux-label %bind={{ this.DeviceStateBind }}></aux-label>
 
   <span class="label">Device Name</span>
-  <aux-label %bind={{ this.DeviceNameBind }}></aux-label>
+  <aux-marquee %bind={{ this.DeviceNameBind }}></aux-marquee>
 
   <span class="label">Device Revision ID</span>
   <aux-label %bind={{ this.DeviceRevisionIDBind }}></aux-label>
 </div>
 <div class="grid">
   <span class="label">Manufacturer</span>
-  <aux-label %bind={{ this.ManufacturerBind }}></aux-label>
+  <aux-marquee %bind={{ this.ManufacturerBind }}></aux-marquee>
 
   <span class="label">Model</span>
-  <aux-label %bind={{ this.ModelBind }}></aux-label>
+  <aux-marquee %bind={{ this.ModelBind }}></aux-marquee>
 
   <span class="label">Version</span>
   <aux-label %bind={{ this.VersionBind }}></aux-label>
 
   <span class="label">Serial Number</span>
-  <aux-label %bind={{ this.SerialNumberBind }}></aux-label>
+  <aux-marquee %bind={{ this.SerialNumberBind }}></aux-marquee>
 
   <span class="label">Manufacturer ID</span>
   <aux-label %bind={{ this.ManufacturerIDBind }}></aux-label>
@@ -57,10 +57,10 @@ const template = `
   <aux-label %bind={{ this.OCAVersionBind }}></aux-label>
 
   <span class="label">User Inventory Code</span>
-  <aux-label %bind={{ this.UserInventoryCodeBind }}></aux-label>
+  <aux-marquee %bind={{ this.UserInventoryCodeBind }}></aux-marquee>
 
   <span class="label">Last Reset Cause</span>
-  <aux-label %bind={{ this.ResetCauseBind }}></aux-label>
+  <aux-marquee %bind={{ this.ResetCauseBind }}></aux-marquee>
 
   <span class="label">Message</span>
   <aux-marquee %bind={{ this.MessageBind }}></aux-marquee>

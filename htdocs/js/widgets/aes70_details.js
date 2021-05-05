@@ -87,10 +87,27 @@ class AES70Details extends TemplateComponent.fromString(template) {
 
           return tagName ? document.createElement(tagName) : null;
         },
+      },
+      {
+        backendValue: Selected,
+        readonly: true,
+        name: 'selectedClassName',
+        transformReceive: (selected) => selected.type,
       }
     ];
   }
 
+  awmlCreateBinding(name, options) {
+    if (name === 'selectedClassName') {
+      return fromSubscription(null, (value) => {
+        this.classList.remove('object', 'block', 'device');
+        this.classList.add(value);
+      });
+    }
+
+    return super.awmlCreateBinding(name, options);
+  }
+  
   constructor() {
     super();
 
