@@ -446,7 +446,6 @@ html {
   display: block;
   color: var(--color-fade);
   align-self: center;
-  background: var(--background-fade);
 }
 #details > .details .grid > .aux-value {
   width: 200px;
