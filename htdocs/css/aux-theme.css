@@ -8,6 +8,8 @@
   --aux-scale-minwidth: 28px;
   --aux-meter-size: 4px;
   --aux-meter-gridgap: 4px;
+  --aux-state-width: 32px;
+  --aux-state-height: 8px;
 }
 
 
@@ -136,6 +138,14 @@
   color: var(--color-contrast);
 }
 
+
+
+.aux-state {
+  background: var(--color-ok);
+}
+.aux-state > .aux-mask {
+  background: var(--background-dark);
+}
 
 
 .aux-toggle {
