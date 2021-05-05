@@ -418,6 +418,7 @@ html {
   grid-template-columns: auto auto;
   grid-gap: 3px 6px;
   align-content: center;
+  align-items: center;
   margin: 8px;
 }
 #details > .details .grid > * {
