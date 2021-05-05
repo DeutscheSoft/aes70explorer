@@ -2,7 +2,13 @@ import { getBackendValue } from './../AWML/src/index.pure.js';
 import { findControl } from './template_components.js';
 
 window.AES70 = {
-  
+  storageDefaults: {
+    "tips/show": true,
+  },
+  localDefaults: {
+    "canRemoveLineBreak": false,
+    "canAddLineBreak": false,
+  },
   addLineBreak: function () {
     const canvas = document.getElementById('canvas');
     const prec = canvas.querySelector('.selected');
@@ -18,7 +24,7 @@ window.AES70 = {
       getBackendValue('local:selected').set(null);
     });
   },
-  
+
   removeLineBreak: function () {
     const canvas = document.getElementById('canvas');
     const lb = canvas.querySelector('.selected ~ aes70-line-break');
@@ -30,7 +36,7 @@ window.AES70 = {
       AES70.checkRemoveLineBreak(v);
     });
   },
-  
+
   checkRemoveLineBreak: function (v) {
     const control = findControl(v);
     if (!control || !control.nextSibling) {
@@ -40,7 +46,7 @@ window.AES70 = {
     const hasLineBreak = control.nextSibling.tagName === 'AES70-LINE-BREAK';
     getBackendValue('local:canRemoveLineBreak').set(hasLineBreak);
   },
-  
+
   checkAddLineBreak: function (v) {
     const control = findControl(v);
     const canvas = document.getElementById('canvas');
@@ -53,14 +59,14 @@ window.AES70 = {
     );
     getBackendValue('local:canAddLineBreak').set(canAdd);
   },
-  
+
   closeHelp: function () {
     getBackendValue('storage:tips/show').set(false);
   },
   showHelp: function () {
     getBackendValue('storage:tips/show').set(true);
   },
-  
+
   knobPresets: {
     tiny: {
       margin: 0,
@@ -87,7 +93,7 @@ window.AES70 = {
       markers_defaults: { thickness: 2, margin: 11 },
       show_labels: true,
     },
-    large: { 
+    large: {
       margin: 13,
       thickness: 2.2,
       hand: { width: 1.5, length: 12, margin: 26 },

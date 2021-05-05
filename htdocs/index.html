@@ -4,7 +4,7 @@
   <script type=module src='js/global.js'></script>
   <script src='js/AES70.es5.js'></script>
   <script type=module src='js/index.js'></script>
-  
+
   <meta
     name="viewport"
     content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width"
@@ -89,22 +89,22 @@
     content="images/favicons/ms-icon-144x144.png"
   />
   <meta name="theme-color" content="#232635" />
-  
-  <awml-backend type=local name=local src="local.json"></awml-backend>
-  <awml-backend type=localstorage name=storage src="storage.json"></awml-backend>
+
+  <awml-backend type=local name=local data="AES70.localDefaults"></awml-backend>
+  <awml-backend type=localstorage name=storage data="AES70.storageDefaults"></awml-backend>
 </head>
 <body>
   <div id=root>
-    
+
     <awml-clone id=tipsclone fetch src="storage:tips/show"
       transform-receive="v => v ? 'templates/tips.html' : null">
     </awml-clone>
-    
+
     <aes70-navigation></aes70-navigation>
     <div id=canvas></div>
     <aes70-details id=details></aes70-details>
     <div id=sidebar>
-    
+
       <aux-button icon=addlinebreak label="Add Line Break"
         layout=vertical>
         <awml-event type=click callback="AES70.addLineBreak"></awml-event>
@@ -115,7 +115,7 @@
           transform-receive="v=>!v">
         </awml-option>
       </aux-button>
-      
+
       <aux-button icon=deletelinebreak label="Remove Line Break"
         layout=vertical>
         <awml-event type=click callback="AES70.removeLineBreak"></awml-event>
@@ -126,11 +126,11 @@
           transform-receive="v=>!v">
         </awml-option>
       </aux-button>
-      
+
       <aux-button icon=confirm id=showtips label="Help">
         <awml-event type=click callback="AES70.showHelp"></awml-event>
       </aux-button>
-    
+
     </div>
   </div>
 </body>
