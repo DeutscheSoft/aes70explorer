@@ -338,6 +338,7 @@ html {
   background: var(--background-fade);
   border-top: 1px solid var(--color-accent);
 }
+#details.block,
 #details.device {
   grid-template-areas: "head"
                        "details";
@@ -402,6 +403,7 @@ html {
   justify-content: center;
   margin-right: 16px;
 }
+#details.block > .control,
 #details.device > .control {
   display: none;
 }
@@ -417,12 +419,16 @@ html {
   align-items: center;
   justify-content: center;
 }
+#details.block > .details,
 #details.device > .details {
   justify-items: stretch;
 }
 
 #details > .details > * {
   display: flex;
+}
+#details > .details > * > * {
+  margin: 8px;
 }
 #details > .details .grid {
   display: grid;
@@ -440,6 +446,7 @@ html {
   display: block;
   color: var(--color-fade);
   align-self: center;
+  background: var(--background-fade);
 }
 #details > .details .grid > .aux-value {
   width: 200px;
@@ -683,9 +690,11 @@ aes70-object > .head > .remove:hover {
 
 
 
+aes70-details-block,
 aes70-details-devicemanager {
   width: 100%;
 }
-aes70-details-devicemanager > .grid {
+aes70-details-block > *,
+aes70-details-devicemanager > * {
   flex: 1 1 auto;
 }

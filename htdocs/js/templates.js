@@ -16,6 +16,7 @@ import './controls/OcaGain.js';
 import './controls/OcaDelay.js';
 
 import './details/OcaDeviceManager.js';
+import './details/OcaBlock.js';
 import './details/OcaWorker.js';
 import './details/OcaPanBalance.js';
 import './details/OcaIntActuator.js';
