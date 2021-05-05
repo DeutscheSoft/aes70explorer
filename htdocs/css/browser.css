@@ -682,10 +682,10 @@ aes70-object > .head > .remove:hover {
 }
 
 
+
 aes70-details-devicemanager {
   width: 100%;
 }
-
 aes70-details-devicemanager > .grid {
   flex: 1 1 auto;
 }
