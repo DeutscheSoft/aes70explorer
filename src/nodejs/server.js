@@ -1,6 +1,11 @@
 import yargs from 'yargs';
 import startHTTP from './lib/http.js';
 import startDiscovery from './lib/discovery.js';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const defaultHtdocs = join(dirname(__filename), "../../htdocs");
 
 const argv = yargs(process.argv.slice(2))
   .command('server.js', 'Starts the aes70-browser as a standalone HTTP server.', {
@@ -18,12 +23,12 @@ const argv = yargs(process.argv.slice(2))
   .alias('help', 'h')
   .argv;
 
-console.log('argv', argv);
-
 const httpOptions = {
   port: argv.port || 8080,
-  htdocs: argv.htdocs || './htdocs',
+  htdocs: argv.htdocs || defaultHtdocs,
 };
+
+console.log('Starting with options', httpOptions);
 
 function parseDestination(str)
 {

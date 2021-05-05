@@ -1,12 +1,25 @@
 ![aes70exlorer logo](aes70explorer_4c.svg)
-# Installation
+# Repository setup
 
-      npm ci
+Some dependencies are pulled into this repository as git submodules. To
+initialize them, run
+
       git submodule update --init
 
-# Running
+# NodeJS Server
 
-       node src/js/server.js tcp:<IP>:<PORT>
+The AES70Explorer can be run without a UI as a pure http server.
+
+## Installation
+
+      cd src/nodejs/
+      npm ci
+
+## Running
+
+In the `src/nodejs` directory run
+
+      node server.js [tcp:<IP>:<PORT>]
 
 # License
 
