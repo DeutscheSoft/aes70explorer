@@ -45,9 +45,12 @@ class OcaIntActuatorDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.SettingBind = [{ src: '/Setting', name: 'label' }];
-    this.MinBind = [{ src: '/Setting/Min', name: 'label' }];
-    this.MaxBind = [{ src: '/Setting/Max', name: 'label' }];
+    this.SettingBind = [{ src: '/Setting', name: 'label',
+      transformReceive: v => Number(v) }];
+    this.MinBind = [{ src: '/Setting/Min', name: 'label',
+      transformReceive: v => Number(v) }];
+    this.MaxBind = [{ src: '/Setting/Max', name: 'label',
+      transformReceive: v => Number(v) }];
   }
   static match(o) {
     return Math.max(

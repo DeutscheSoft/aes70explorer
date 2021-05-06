@@ -28,18 +28,22 @@ class OcaIntActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Setting',
         name: 'value',
+        transformReceive: v => Number(v),
       },
       {
         src: '/Setting/Min',
         name: 'min',
+        transformReceive: v => Number(v),
       },
       {
         src: '/Setting/Max',
         name: 'max',
+        transformReceive: v => Number(v),
       },
       {
         src: '/Setting/Min',
         name: 'base',
+        transformReceive: v => Number(v),
       },
       {
         backendValue: this.knobPresets,
@@ -49,7 +53,9 @@ class OcaIntActuatorControl extends TemplateComponent.fromString(template) {
         src: ['/Setting/Min', '/Setting/Max'],
         name: 'labels',
         transformReceive: function (arr) {
-          const [min, max] = arr;
+          let [min, max] = arr;
+          min = Number(min);
+          max = Number(max);
           return [{pos:min, label:min}, {pos:max, label:max}];
         }
       }
