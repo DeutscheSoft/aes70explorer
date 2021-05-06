@@ -54,7 +54,7 @@ class AES70Details extends TemplateComponent.fromString(template) {
         name: 'path',
         transformReceive: function (selected) {
           if (selected && selected.prefix && selected.prefix.length) {
-            return selected.prefix.replace(/\:\//g, ' :/ ').replace(/\//g, ' / ');
+            return selected.prefix.replace(/\:\//g, ' / ').replace(/\//g, ' / ');
           } else {
             return '';
           }
