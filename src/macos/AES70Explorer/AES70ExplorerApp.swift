@@ -9,25 +9,39 @@ import SwiftUI
 import Swifter
 import Foundation
 
-func createHTTPServer() -> HttpServer {
-    let httpServer = HttpServer()
-    if let resourcePath = Bundle.main.resourcePath {
-        //httpServer["/resources/(.+)"] =
-        httpServer["/:path"] = shareFilesFromDirectory(resourcePath + "/htdocs/")
-    }
+
+class WebServer: NSObject, NetServiceBrowserDelegate, NetServiceDelegate {
+    let httpServer: HttpServer = HttpServer();
+    let deviceBrowser = DeviceBrowser();
     
-    do {
-        try httpServer.start(8080, forceIPv4: true)
-    } catch {
-        print("Failed to start HTTP Server.")
-        exit(1)
+    override init() {
+        super.init()
+
+        httpServer["/_api/destinations"] = { request in
+            return .ok(.data(Data(self.deviceBrowser.getDevicesJSON().utf8), contentType: "application/json"))
+        }
+
+        if let resourcePath = Bundle.main.resourcePath {
+            //httpServer["/resources/(.+)"] =
+            httpServer["/:path"] = shareFilesFromDirectory(resourcePath + "/htdocs/")
+        }
+
+        do {
+            try httpServer.start(8080, forceIPv4: true)
+        } catch {
+            print("Failed to start HTTP Server.")
+            exit(1)
+        }
     }
-    return httpServer
+
+    func port() throws -> Int {
+        return try self.httpServer.port();
+    }
 }
 
 @main
 struct AES70ExplorerApp: App {
-    private var server = createHTTPServer();
+    private var server = WebServer();
     
     private func port() -> Int {
         var port = 0

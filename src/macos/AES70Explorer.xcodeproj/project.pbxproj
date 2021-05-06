@@ -12,6 +12,7 @@
 		2440C138264296B100F2E81D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2440C137264296B100F2E81D /* Assets.xcassets */; };
 		2440C13B264296B100F2E81D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2440C13A264296B100F2E81D /* Preview Assets.xcassets */; };
 		2440C145264297A400F2E81D /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 2440C144264297A400F2E81D /* Swifter */; };
+		2440C15B2643BD5000F2E81D /* DeviceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2440C15A2643BD5000F2E81D /* DeviceBrowser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2440C13A264296B100F2E81D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2440C13C264296B100F2E81D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2440C13D264296B100F2E81D /* AES70Explorer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AES70Explorer.entitlements; sourceTree = "<group>"; };
+		2440C15A2643BD5000F2E81D /* DeviceBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceBrowser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				2440C13C264296B100F2E81D /* Info.plist */,
 				2440C13D264296B100F2E81D /* AES70Explorer.entitlements */,
 				2440C139264296B100F2E81D /* Preview Content */,
+				2440C15A2643BD5000F2E81D /* DeviceBrowser.swift */,
 			);
 			path = AES70Explorer;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2440C15B2643BD5000F2E81D /* DeviceBrowser.swift in Sources */,
 				2440C136264296AC00F2E81D /* ContentView.swift in Sources */,
 				2440C134264296AC00F2E81D /* AES70ExplorerApp.swift in Sources */,
 			);
