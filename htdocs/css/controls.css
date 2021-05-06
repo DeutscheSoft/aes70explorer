@@ -62,6 +62,7 @@ aes70-control-delay > .aux-valueknob,
 aes70-control-panbalance > .aux-valueknob,
 aes70-control-freqactuator > .aux-valueknob,
 aes70-control-intactuator > .aux-valueknob,
+aes70-control-frequencyactuator > .aux-valueknob,
 aes70-control-floatactuator > .aux-valueknob {
   display: block;
   margin-bottom: var(--line-height);
@@ -70,6 +71,7 @@ aes70-control-delay > .aux-valueknob > .aux-value,
 aes70-control-panbalance > .aux-valueknob > .aux-value,
 aes70-control-freqactuator > .aux-valueknob > .aux-value,
 aes70-control-intactuator > .aux-valueknob > .aux-value,
+aes70-control-frequencyactuator > .aux-valueknob > .aux-value,
 aes70-control-floatactuator > .aux-valueknob > .aux-value {
   position: absolute;
   top: 50%;
@@ -81,6 +83,7 @@ aes70-control-delay > .aux-button,
 aes70-control-panbalance > .aux-button,
 aes70-control-freqactuator > .aux-button,
 aes70-control-intactuator > .aux-button,
+aes70-control-frequencyactuator > .aux-button,
 aes70-control-floatactuator > .aux-button {
   background: none;
   color: var(--color-fade);
@@ -95,6 +98,7 @@ aes70-control-delay > .aux-button > .aux-icon,
 aes70-control-panbalance > .aux-button > .aux-icon,
 aes70-control-freqactuator > .aux-button > .aux-icon,
 aes70-control-intactuator > .aux-button > .aux-icon,
+aes70-control-frequencyactuator > .aux-button > .aux-icon,
 aes70-control-floatactuator > .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon);
 }
