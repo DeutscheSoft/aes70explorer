@@ -529,6 +529,7 @@ aes70-device > .head {
   top: 0;
   z-index: 10;
   padding-right: 8px;
+  transition: all var(--transition);
 }
 aes70-device.selected > .head {
   background: var(--color-accent);
@@ -601,6 +602,7 @@ aes70-block {
 aes70-block > .head {
   background: var(--background-medium);
   border-bottom: 1px solid black;
+  transition: all var(--transition);
 }
 aes70-block.selected > .head {
   background: var(--color-accent);
@@ -630,7 +632,7 @@ aes70-object > .head {
   grid-template-areas:
     "icon label action"
     "icon class action";
-  transition: background var(--transition);
+  transition: all var(--transition);
 }
 aes70-object:last-of-type > .head {
   border-bottom: none;
@@ -640,6 +642,7 @@ aes70-object.selected > .head {
 }
 aes70-object > .head * {
   color: var(--color) !important;
+  transition: all var(--transition);
 }
 aes70-object.selected > .head * {
   color: var(--color-contrast) !important;
