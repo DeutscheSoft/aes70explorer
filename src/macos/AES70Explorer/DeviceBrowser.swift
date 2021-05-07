@@ -40,7 +40,7 @@ struct AES70Device: Codable, Hashable {
     var source = "dnssd"
 
     init(service: NetService) {
-        name = service.name + "." + service.hostName!
+        name = service.name
         host = extractIPv4Address(addresses: service.addresses!)!
         port = service.port
     }
@@ -65,12 +65,12 @@ struct AES70Device: Codable, Hashable {
 
 class DeviceBrowser: NSObject, NetServiceBrowserDelegate, NetServiceDelegate {
     let serviceBrowser = NetServiceBrowser();
-    var devices: Set<AES70Device> = []
+    public var devices = [String: AES70Device]()
     var resolving: Set<NetService> = []
     var encodedDevices: String? = nil;
 
     func getDevices() -> Array<AES70Device> {
-        return Array(devices)
+        return Array(devices.values)
     }
 
     func getDevicesJSON() -> String {
@@ -91,20 +91,19 @@ class DeviceBrowser: NSObject, NetServiceBrowserDelegate, NetServiceDelegate {
 
     func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
         print("Service did not resolve: \(sender.name)")
+        resolving.remove(sender)
     }
 
     func netServiceDidResolveAddress(_ sender: NetService) {
         print("service resolved: \(sender.hostName!)")
-        let device = AES70Device(service: sender)
-        if !devices.contains(device) {
-            devices.insert(device)
-            encodedDevices = nil
+        if (resolving.contains(sender)) {
+            resolving.remove(sender)
+            let device = AES70Device(service: sender)
+            if nil == devices[sender.name] {
+                devices[sender.name] = device
+                encodedDevices = nil
+            }
         }
-        resolving.remove(sender)
-        let jsonEncoder = JSONEncoder()
-        let data = try! jsonEncoder.encode(getDevices())
-        let str = String(data: data, encoding: .utf8)!
-        print("json of device: \(str)")
     }
 
     func netServiceDidStop(_ sender: NetService) {
@@ -122,15 +121,10 @@ class DeviceBrowser: NSObject, NetServiceBrowserDelegate, NetServiceDelegate {
 
     func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
         print("service removed: \(service.name)")
-        //self.currentService = service
-        //service.delegate = self.serviceAgent
-        //service.resolve(withTimeout: 5)
-        if nil != service.hostName {
-            let device = AES70Device(service: service)
-            if devices.contains(device) {
-                devices.remove(device)
-                encodedDevices = nil
-            }
+        // TODO: this does not work, address can be nil when removing
+        if nil != devices[service.name] {
+            devices.removeValue(forKey: service.name)
+            encodedDevices = nil
         }
     }
 }

@@ -21,6 +21,22 @@ class WebServer: NSObject, NetServiceBrowserDelegate, NetServiceDelegate {
             return .ok(.data(Data(self.deviceBrowser.getDevicesJSON().utf8), contentType: "application/json"))
         }
 
+        httpServer["/_control/:path"] = { request in
+            let deviceName = request.params.first
+
+            if deviceName == nil {
+                return .badRequest(.text("Missing device name"))
+            }
+
+            let device = self.deviceBrowser.devices[deviceName!.value]
+
+            if device == nil {
+                return .notFound    
+            }
+
+            return websocketTunnel(device: device!)(request)
+        }
+
         if let resourcePath = Bundle.main.resourcePath {
             //httpServer["/resources/(.+)"] =
             httpServer["/:path"] = shareFilesFromDirectory(resourcePath + "/htdocs/")
