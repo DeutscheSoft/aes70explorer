@@ -15,7 +15,23 @@ aes70-control {
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 0px var(--background);
-  transition: all var(--transition);
+  transition: background var(--transition),
+              color var(--transition),
+              box-shadow var(--transition);
+  background: var(--background-control);
+  margin: 4px;
+  border: 1px solid var(--background-control);
+}
+
+aes70-control.selected {
+  z-index: 10;
+  background: var(--background-selected);
+  border: var(--border-control-selected);
+  animation: aes70-control-selected var(--transition);
+}
+@keyframes aes70-control-selected {
+  0% { border-color: white; };
+  100% { border-color:  var(--bordercolor-control-selected) };
 }
 
 aes70-control.scaffold::before {
@@ -36,10 +52,6 @@ aes70-control.scaffold::before {
 aes70-control.scaffold > * {
   opacity: 0.5;
   filter: blur(3px);
-}
-aes70-control.selected {
-  z-index: 10;
-  background: var(--background-selected);
 }
 aes70-control.scaffold.selected {
   box-shadow: 0 0 4px var(--color-accent);

@@ -24,6 +24,7 @@
   --background-even: #0d0d0e;
   --background-odd: #121214;
   --background-selected: #2C2F3D;
+  --background-control: #1e2230;
   
   --color: #ffffff;
   --color-dark: #87878B;
@@ -34,6 +35,9 @@
   --color-ok: #17f575;
   
   --color-shadow: rgba(0, 0, 0, 0.8);
+  
+  --bordercolor-control-selected: rgba(255,255,255,0.1);
+  --border-control-selected: 1px solid var(--bordercolor-control-selected);
   
   
   --link-color: var(--color-accent);
