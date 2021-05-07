@@ -332,7 +332,7 @@ html {
   grid-template-areas: "head control"
                        "details control";
   grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 22fr 1fr;
   grid-gap: 16px 8px;
   padding: 8px 16px;
   background: var(--background-fade);
@@ -429,6 +429,7 @@ html {
 }
 #details > .details > * > * {
   margin: 8px;
+  flex: 1 1 auto;
 }
 #details > .details .grid {
   display: grid;
@@ -454,6 +455,7 @@ html {
   width: auto;
   justify-self: start;
   height: 32px;
+  width: fit-content;
 }
 
 #details > .noselect {

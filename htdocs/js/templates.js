@@ -28,5 +28,6 @@ import './details/OcaBitstringActuator.js';
 import './details/OcaStringActuator.js';
 import './details/OcaGain.js';
 import './details/OcaDelay.js';
+import './details/OcaSwitch.js';
 import './details/OcaSensor.js';
 import './details/OcaStringSensor.js';
