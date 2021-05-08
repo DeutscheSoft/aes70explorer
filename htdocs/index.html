@@ -105,6 +105,16 @@
     <aes70-details id=details></aes70-details>
     <div id=sidebar>
       
+      <aux-button icon=savecontrols label="Save Controls"
+        layout=vertical>
+        <awml-event type=click callback="AES70.saveControlsOnCanvas"></awml-event>
+      </aux-button>
+      
+      <aux-button icon=wipecontrols label="Wipe Controls"
+        layout=vertical>
+        <awml-event type=click callback="AES70.clearCanvas"></awml-event>
+      </aux-button>
+      
       <aux-button icon=addlinebreak label="Add Line Break"
         layout=vertical>
         <awml-event type=click callback="AES70.addLineBreak"></awml-event>
@@ -125,16 +135,6 @@
           src="local:canRemoveLineBreak"
           transform-receive="v=>!v">
         </awml-option>
-      </aux-button>
-      
-      <aux-button icon=savecontrols label="Save Controls"
-        layout=vertical>
-        <awml-event type=click callback="AES70.saveControlsOnCanvas"></awml-event>
-      </aux-button>
-      
-      <aux-button icon=wipecontrols label="Wipe Controls"
-        layout=vertical>
-        <awml-event type=click callback="AES70.clearCanvas"></awml-event>
       </aux-button>
       
       <aux-button icon=confirm id=showtips label="Help">
