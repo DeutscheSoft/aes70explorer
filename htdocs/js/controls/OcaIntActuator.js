@@ -13,7 +13,7 @@ const template = `
   snap=1
   >
 </aux-valueknob>
-<aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
+<aux-button class=edit icon=edit (click)={{ this.editClicked }}></aux-button>
 `;
 
 class OcaIntActuatorControl extends TemplateComponent.fromString(template) {

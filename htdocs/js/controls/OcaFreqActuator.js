@@ -15,7 +15,7 @@ const template = `
   max="20000"
   >
 </aux-valueknob>
-<aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
+<aux-button class=edit icon=edit (click)={{ this.editClicked }}></aux-button>
 `;
 
 class OcaFreqActuatorControl extends TemplateComponent.fromString(template) {

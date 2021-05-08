@@ -12,7 +12,7 @@ const template = `
   base=0
   >
 </aux-valueknob>
-<aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
+<aux-button class=edit icon=edit (click)={{ this.editClicked }}></aux-button>
 `;
 
 class OcaPanBalanceControl extends TemplateComponent.fromString(template) {

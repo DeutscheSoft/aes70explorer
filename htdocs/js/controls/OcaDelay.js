@@ -10,7 +10,7 @@ const template = `
   knob.preset=medium
   >
 </aux-valueknob>
-<aux-button icon=edit (click)={{ this.editClicked }}></aux-button>
+<aux-button class=edit icon=edit (click)={{ this.editClicked }}></aux-button>
 `;
 
 class OcaDelayControl extends TemplateComponent.fromString(template) {
