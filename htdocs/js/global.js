@@ -1,28 +1,18 @@
-import { getBackendValue } from './../AWML/src/index.pure.js';
+import { getBackendValue, collectPrefix } from './../AWML/src/index.pure.js';
 import { findControl } from './template_components.js';
+import { getControlsOnCanvas, addLineBreakToCanvas, addControlToCanvas, clearCanvas } from './layout.js';
 
 window.AES70 = {
   storageDefaults: {
     "tips/show": true,
+    "controls": [],
   },
   localDefaults: {
     "canRemoveLineBreak": false,
     "canAddLineBreak": false,
   },
   addLineBreak: function () {
-    const canvas = document.getElementById('canvas');
-    const prec = canvas.querySelector('.selected');
-    const lb = document.createElement('aes70-line-break');
-    if (prec && prec.nextSibling) {
-      canvas.insertBefore(lb, prec.nextSibling);
-    } else if (prec || canvas.children.length) {
-      canvas.appendChild(lb);
-    }
-    getBackendValue('local:selected').wait().then(v => {
-      AES70.checkAddLineBreak(v.prefix);
-      AES70.checkRemoveLineBreak(v.prefix);
-      getBackendValue('local:selected').set({type:null, prefix:null});
-    });
+    addLineBreakToCanvas();
   },
 
   removeLineBreak: function () {
@@ -109,5 +99,25 @@ window.AES70 = {
       markers_defaults: { thickness: 2, margin: 11 },
       show_labels: true,
     },
-  }
+  },
+  
+  saveControlsOnCanvas: function () {
+    const C = getControlsOnCanvas();
+    getBackendValue('storage:controls').set(C);
+  },
+  restoreControlsOnCanvas: function () {
+    getBackendValue('storage:controls').wait().then(v => {
+      if (!Array.isArray(v)) return;
+      for (let i = 0, m = v.length; i < m; ++i) {
+        if (v[i] == '[LINEBREAK]')
+          addLineBreakToCanvas();
+        else
+          addControlToCanvas(v[i]);
+      }
+    });
+  },
+  clearCanvas: function () {
+    clearCanvas();
+    getBackendValue('storage:controls').set([]);
+  },
 }

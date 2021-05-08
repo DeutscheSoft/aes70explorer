@@ -1,8 +1,8 @@
 import { collectPrefix, TemplateComponent, getBackendValue } from '../../AWML/src/index.pure.js';
 import { Bindings } from '../../AWML/src/bindings.js';
 import { fromSubscription } from '../../AWML/src/operators/from_subscription.js';
-import { addToCanvas } from '../layout.js';
-import { registerControl, unregisterControl, getRegisteredControl } from '../template_components.js';
+import { addControlToCanvas, removeControlFromCanvas } from '../layout.js';
+import { getRegisteredControl } from '../template_components.js';
 
 const template = `
 <div
@@ -129,31 +129,17 @@ class AES70Object extends TemplateComponent.fromString(template) {
   }
   
   _addControl() {
-    const _node = getRegisteredControl(collectPrefix(this));
-    if (_node) return; 
-    const node = this._createControlNode();
-    registerControl(collectPrefix(this), addToCanvas(node));
+    addControlToCanvas(collectPrefix(this));
     this.classList.add('hascontrol');
     this._hasControl = true;
   }
   
   _removeControl() {
-    const _node = getRegisteredControl(collectPrefix(this));
-    if (!_node) return;
-    _node.remove(); 
-    unregisterControl(collectPrefix(this));
+    removeControlFromCanvas(collectPrefix(this));
     this.classList.remove('hascontrol');
     this._hasControl = false;
   }
   
-  _createControlNode() {
-    const node = document.createElement('aes70-control');
-
-    node.setAttribute('prefix', collectPrefix(this));
-
-    return node;
-  }
-
   _subscribe() {
     return () => {
       while (this.lastChild) this.lastChild.remove();

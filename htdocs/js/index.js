@@ -24,7 +24,7 @@ window.AWML = AWML;
 
 
 
-import { getBackendValue } from '../AWML/src/index.pure.js';
+import { getBackendValue, LocalStorageBackend } from '../AWML/src/index.pure.js';
 
 document.getElementById('canvas').addEventListener('click', function (e) {
   let target = e.target;
@@ -63,3 +63,8 @@ registerValueTimer('local:tips/icons/ocaworker', [
   'ocatimeintervalsensor',
   'ocatemperaturesensor',
 ], 2500);
+
+window.setTimeout(function () {
+  AES70.restoreControlsOnCanvas();
+  getBackendValue('local:selected').set({type:null, prefix:null});
+}, 500);
