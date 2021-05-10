@@ -26,7 +26,22 @@ window.AWML = AWML;
 
 import { getBackendValue, LocalStorageBackend } from '../AWML/src/index.pure.js';
 
-document.getElementById('canvas').addEventListener('click', function (e) {
+let canvasdown;
+document.getElementById('canvas').addEventListener('mousedown', function (e) {
+  canvasdown = e;
+});
+document.getElementById('canvas').addEventListener('mouseup', function (e) {
+  if (!canvasdown) return;
+  
+  const x1 = canvasdown.screenX;
+  const y1 = canvasdown.screenY;
+  const x2 = e.screenX;
+  const y2 = e.screenY;
+  const d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  if (d > 5) return;
+  
+  canvasdown = null;
+  
   let target = e.target;
   while (target) {
     if (target.tagName.startsWith('AES70-CONTROL')
