@@ -70,10 +70,11 @@ aes70-control > * {
 }
 
 
+.control .aux-valueknob,
 aes70-control .aux-valueknob {
-  display: block;
   margin-bottom: var(--line-height);
 }
+.control .aux-valueknob > .aux-value,
 aes70-control .aux-valueknob > .aux-value {
   position: absolute;
   top: 50%;
@@ -81,7 +82,8 @@ aes70-control .aux-valueknob > .aux-value {
   transform: translate(-50%, -50%);
   margin-top: calc(var(--line-height) / 2);
 }
-aes70-control .aux-button.edit  {
+.control .aux-button.edit,
+aes70-control .aux-button.edit {
   background: none;
   color: var(--color-fade);
   padding: 4px;
@@ -91,6 +93,7 @@ aes70-control .aux-button.edit  {
   transform: translateX(-50%);
   margin: 0;
 }
+.control .aux-button.edit > .aux-icon,
 aes70-control .aux-button.edit > .aux-icon {
   font-size: var(--font-size-button-icon);
 }
