@@ -97,6 +97,10 @@ aes70-control .aux-button.edit {
 aes70-control .aux-button.edit > .aux-icon {
   font-size: var(--font-size-button-icon);
 }
+.control .aux-valueknob.small > .aux-value > .aux-input,
+aes70-control .aux-valueknob.small > .aux-value > .aux-input {
+  font-size: var(--font-size);
+}
 
 
 
@@ -130,6 +134,30 @@ aes70-control-bitstringactuator > .aux-buttons.aes70-size-small > .aux-button {
 aes70-control-bitstringactuator > .aux-buttons.aes70-size-tiny > .aux-button {
   min-width: 16px;
   height: 16px;
+}
+
+
+aes70-control-filterclassical {
+  display: grid !important;
+  grid-template-areas:
+    "label label label"
+    "param freq order"
+    "switch switch switch";
+  align-items: center !important;
+}
+aes70-control-filterclassical > .aux-label {
+  grid-area: label;
+}
+aes70-control-filterclassical > .freq {
+  margin: 8px;
+}
+aes70-control-filterclassical > .switch {
+  grid-area: switch;
+}
+aes70-control-filterclassical > .switch > .aux-buttons > .aux-button {
+  padding: 0;
+  margin: 1px;
+  width: var(--aux-clickable-size);
 }
 
 

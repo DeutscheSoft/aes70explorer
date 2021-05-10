@@ -37,7 +37,9 @@
   color: var(--button-active-color);
   background: var(--button-active-background);
 }
-
+.aux-button > .aux-icon {
+  font-size: var(--font-size-button-icon-small);
+}
 
 
 .aux-circular {

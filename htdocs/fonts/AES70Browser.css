@@ -24,3 +24,8 @@
 .aux-icon.deletelinebreak::before           { font-family: 'AES70Browser'; content: '񗍐'; }
 .aux-icon.savecontrols::before              { font-family: 'AES70Browser'; content: '񗍑'; }
 .aux-icon.wipecontrols::before              { font-family: 'AES70Browser'; content: '񗍒'; }
+.aux-icon.hipass::before                    { font-family: 'AES70Browser'; content: '񗍓'; }
+.aux-icon.lopass::before                    { font-family: 'AES70Browser'; content: '񗍔'; }
+.aux-icon.bandpass::before                  { font-family: 'AES70Browser'; content: '񗍕'; }
+.aux-icon.bandreject::before                { font-family: 'AES70Browser'; content: '񗍖'; }
+.aux-icon.allpass::before                   { font-family: 'AES70Browser'; content: '񗍗'; }

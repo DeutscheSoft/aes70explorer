@@ -68,11 +68,11 @@ window.AES70 = {
     },
     small: {
       margin: 8,
-      thickness: 4,
+      thickness: 3,
       hand: { width: 1, length: 8, margin: 17 },
       dots_defaults: { length: 4.5, margin: 8.5, width: 1 },
       markers_defaults: { thickness: 2, margin: 8 },
-      labels_defaults: { margin: 9 },
+      labels_defaults: { margin: 7 },
       show_labels: true,
     },
     medium: {
@@ -81,6 +81,7 @@ window.AES70 = {
       hand: { width: 1, length: 10, margin: 25 },
       dots_defaults: { length: 6, margin: 13.5, width: 1 },
       markers_defaults: { thickness: 2, margin: 11 },
+      labels_defaults: { margin: 11 },
       show_labels: true,
     },
     large: {
