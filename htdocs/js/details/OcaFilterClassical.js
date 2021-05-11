@@ -78,9 +78,9 @@ class OcaFilterClassicalDetails extends TemplateComponent.fromString(template) {
     this.OrderMaxBind = [{ src: '/Order/Max', name: 'label',
       transformReceive: v => v.toFixed(0) }];
     this.ShapeBind = [{ src: '/Shape', name: 'label',
-      transformReceive: v => ['', 'Butterworth','Bessel','Chebyshef','LinkwitzRiley'][v.value] }];
+      transformReceive: v => v.name }];
     this.PassbandBind = [{ src: '/Passband', name: 'label',
-      transformReceive: v => ['', 'HiPass','LoPass','BandPass','BandReject','AllPass'][v.value] }];
+      transformReceive: v => v.name }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaFilterClassical, o);
