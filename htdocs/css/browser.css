@@ -441,6 +441,7 @@ html {
 }
 #details > .details .grid > * {
   margin: 0;
+  min-width: 80px;
 }
 #details > .details .grid > .label {
   text-align: right;
@@ -459,6 +460,7 @@ html {
 }
 #details > .details .grid > .aux-toggle > .aux-icon {
   font-size: 18px;
+  flex: 1 0 auto;
 }
 
 #details > .noselect {
