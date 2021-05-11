@@ -457,6 +457,9 @@ html {
   height: 32px;
   width: fit-content;
 }
+#details > .details .grid > .aux-toggle > .aux-icon {
+  font-size: 18px;
+}
 
 #details > .noselect {
   position: absolute;
