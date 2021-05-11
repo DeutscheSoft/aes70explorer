@@ -6,6 +6,8 @@ const template = `
 <div class=head (click)={{ this.onHeadClick }}>
   <aux-icon icon={{ this._icon }} (click)={{ this.onIconClick }} class=icon></aux-icon>
   <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
+  <aux-icon icon=item class=iconm></aux-icon>
+  <aux-label class=children %bind={{ this.childrenBindings }}></aux-label>
 </div>
 <aes70-block-children %if={{ this.open }}></aes70-block-children>
 `;
@@ -48,6 +50,13 @@ class AES70Block extends TemplateComponent.fromString(template) {
       {
         name: 'label',
         src: '/Role',
+      }
+    ]
+    this.childrenBindings = [
+      {
+        name: 'label',
+        src: '/Members',
+        transformReceive: v => v.length,
       }
     ]
   }

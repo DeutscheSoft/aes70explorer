@@ -57,8 +57,8 @@ getBackendValue('local:selected').subscribe(v => {
   AES70.checkRemoveLineBreak(v.prefix);
 });
 
-registerValueTimer('local:tips/icons/ocadevice', ['ocadevice','ocadeviceopen'], 2500);
-registerValueTimer('local:tips/icons/ocablock', ['ocablock','ocablockopen'], 2500);
+registerValueTimer('local:tips/icons/ocadevice', ['ocadevice','ocadeviceopen'], 1500);
+registerValueTimer('local:tips/icons/ocablock', ['ocablock','ocablockopen'], 1500);
 registerValueTimer('local:tips/icons/ocaworker', [
   'ocabooleanactuator',
   'ocastringactuator',
@@ -77,7 +77,7 @@ registerValueTimer('local:tips/icons/ocaworker', [
   'ocastringsensor',
   'ocatimeintervalsensor',
   'ocatemperaturesensor',
-], 2500);
+], 1500);
 
 window.setTimeout(function () {
   AES70.restoreControlsOnCanvas();

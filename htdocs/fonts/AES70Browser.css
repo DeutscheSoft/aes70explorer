@@ -30,3 +30,4 @@
 .aux-icon.bandreject::before                { font-family: 'AES70Browser'; content: '񗍖'; }
 .aux-icon.allpass::before                   { font-family: 'AES70Browser'; content: '񗍗'; }
 .aux-icon.enabled::before                   { font-family: 'AES70Browser'; content: '񗍘'; }
+.aux-icon.item::before                      { font-family: 'AES70Browser'; content: '񗍙'; }

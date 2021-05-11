@@ -605,6 +605,8 @@ aes70-block > .head {
   background: var(--background-medium);
   border-bottom: 1px solid black;
   transition: all var(--transition);
+  grid-template-areas: "icon label iconm members";
+  grid-template-columns: 40px 1fr auto;
 }
 aes70-block.selected > .head {
   background: var(--color-accent);
@@ -618,6 +620,14 @@ aes70-block.selected > .head * {
 }
 aes70-block > .head > .label {
   
+}
+aes70-block > .head > .iconm {
+  grid-area: iconm;
+  font-size: var(--font-size-medium);
+}
+aes70-block > .head > .children {
+  grid-area: members;
+  font-size: var(--font-size-medium);
 }
 aes70-block > .head > .icon {
   color: var(--color-fade);
