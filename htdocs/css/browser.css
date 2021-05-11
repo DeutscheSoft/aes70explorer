@@ -423,7 +423,7 @@ html {
   display: flex;
 }
 #details > .details > * > * {
-  margin: 8px;
+  margin: 0 8px;
   flex: 1 1 auto;
 }
 #details > .details .grid {
@@ -432,7 +432,7 @@ html {
   grid-gap: 3px 6px;
   align-content: center;
   align-items: center;
-  margin: 8px;
+  margin: 0 8px;
 }
 #details > .details .grid > * {
   margin: 0;

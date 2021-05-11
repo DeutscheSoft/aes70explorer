@@ -40,7 +40,7 @@
 .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon-small);
 }
-.aux-button.aux-horizontal > .aux-icon {
+.aux-button.aux-horizontal.aux-has-icon.aux-has-label > .aux-icon {
   margin-right: 8px;
 }
 
