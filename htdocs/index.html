@@ -106,17 +106,20 @@
     <div id=sidebar>
       
       <aux-button icon=savecontrols label="Save Controls"
-        layout=vertical>
+        >
         <awml-event type=click callback="AES70.saveControlsOnCanvas"></awml-event>
       </aux-button>
       
-      <aux-button icon=wipecontrols label="Wipe Controls"
-        layout=vertical>
-        <awml-event type=click callback="AES70.clearCanvas"></awml-event>
-      </aux-button>
+      <aux-confirmbutton
+        icon=wipecontrols
+        label="Wipe Controls"
+        icon_confirm="confirm"
+        >
+        <awml-event type=confirmed callback="AES70.clearCanvas"></awml-event>
+      </aux-confirmbutton>
       
       <aux-button icon=addlinebreak label="Add Line Break"
-        layout=vertical>
+        >
         <awml-event type=click callback="AES70.addLineBreak"></awml-event>
         <awml-option
           type=bind
@@ -127,7 +130,7 @@
       </aux-button>
 
       <aux-button icon=deletelinebreak label="Remove Line Break"
-        layout=vertical>
+        >
         <awml-event type=click callback="AES70.removeLineBreak"></awml-event>
         <awml-option
           type=bind

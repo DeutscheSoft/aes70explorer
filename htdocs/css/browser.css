@@ -189,11 +189,12 @@ html {
   right: 0;
   bottom: 0;
   
-  grid-template-columns: auto 1fr 96px;
-  grid-template-rows: 1fr 256px;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 48px 1fr 256px;
   grid-template-areas:
-      "navigation canvas sidebar"
-      "navigation details sidebar";
+      "navigation sidebar"
+      "navigation canvas"
+      "navigation details";
 }
 
 
@@ -270,31 +271,25 @@ html {
 
 #sidebar {
   grid-area: sidebar;
-  min-width: 96px;
-  background: var(--background-dark);
+  background: var(--background);
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
 }
 
 #sidebar .aux-button {
   height: auto;
   white-space: normal;
   background: var(--background-medium);
-  margin-bottom: 1px;
+  margin: 1px;
+}
+#sidebar .aux-button.aux-active {
+  color: var(--button-active-color);
+  background: var(--button-active-background);
 }
 #sidebar .aux-button > .aux-icon {
   font-size: 24px;
 }
 
-#sidebar #showtips {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: none;
-}
-#sidebar #showtips > .aux-icon {
-  margin-right: 8px;
-}
 
 /* CANVAS */ 
 

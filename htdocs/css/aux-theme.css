@@ -40,7 +40,9 @@
 .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon-small);
 }
-
+.aux-button.aux-horizontal > .aux-icon {
+  margin-right: 8px;
+}
 
 .aux-circular {
   
