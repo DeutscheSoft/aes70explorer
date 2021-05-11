@@ -144,13 +144,13 @@ aes70-control-filterclassical {
     "param freq order"
     "switch switch switch";
   align-items: center !important;
+  grid-gap: 8px 0;
 }
 aes70-control-filterclassical > .aux-label {
   grid-area: label;
   text-align: left;
 }
 aes70-control-filterclassical > .freq {
-  margin: 8px;
 }
 aes70-control-filterclassical > .switch {
   grid-area: switch;
@@ -159,6 +159,38 @@ aes70-control-filterclassical > .switch > .aux-buttons > .aux-button {
   padding: 0;
   margin: 1px;
   width: var(--aux-clickable-size);
+}
+
+
+aes70-control-filterparametric {
+  display: grid !important;
+  grid-template-areas:
+    "label label label label"
+    "width freq gain shapep"
+    "shape shape shape shape";
+  align-items: center !important;
+  grid-gap: 8px 0;
+}
+aes70-control-filterparametric > .aux-label {
+  grid-area: label;
+  text-align: left;
+}
+aes70-control-filterparametric > .freq {
+}
+aes70-control-filterparametric > .gain {
+  grid-area: gain;
+}
+aes70-control-filterparametric > .width {
+  grid-area: width;
+}
+aes70-control-filterparametric > .shapep {
+  grid-area: shapep;
+}
+aes70-control-filterparametric > .shape {
+  grid-area: shape;
+}
+aes70-control-filterparametric > .shape > .aux-button {
+  float: right;
 }
 
 
