@@ -147,6 +147,7 @@ aes70-control-filterclassical {
 }
 aes70-control-filterclassical > .aux-label {
   grid-area: label;
+  text-align: left;
 }
 aes70-control-filterclassical > .freq {
   margin: 8px;
