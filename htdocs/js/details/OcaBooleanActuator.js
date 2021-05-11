@@ -7,7 +7,7 @@ const template = `
   <aux-value %if={{ this.implementsLabel }} preset=string %bind={{ this.LabelBind }}></aux-value>
 
   <span class="label">Enabled</span>
-  <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
+  <aux-toggle icon=enabled %bind={{ this.EnabledBind }}></aux-toggle>
 
   <span class="label">ClassVersion</span>
   <aux-label %bind={{ this.ClassVersionBind }}></aux-label>

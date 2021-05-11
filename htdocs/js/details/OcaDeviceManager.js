@@ -16,7 +16,7 @@ function extractModelID (value) {
 const template = `
 <div class="grid">
   <span class="label">Enabled</span>
-  <aux-toggle icon=power %bind={{ this.EnabledBind }}></aux-toggle>
+  <aux-toggle icon=enabled %bind={{ this.EnabledBind }}></aux-toggle>
 
   <span class="label">ClassVersion</span>
   <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
