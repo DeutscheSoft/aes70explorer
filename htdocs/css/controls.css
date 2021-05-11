@@ -160,6 +160,9 @@ aes70-control-filterclassical > .switch > .aux-buttons > .aux-button {
   margin: 1px;
   width: var(--aux-clickable-size);
 }
+aes70-control-filterclassical > .switch > .aux-buttons > .aux-button > .aux-icon {
+  margin: 0;
+}
 
 
 aes70-control-filterparametric {
