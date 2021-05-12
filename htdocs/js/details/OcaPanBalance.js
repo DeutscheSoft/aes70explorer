@@ -39,12 +39,7 @@ const template = `
 class OcaPanBalanceDetails extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
-      {
-        name: 'implementsLabel',
-        src: '/Label/Implemented',
-        readonly: true,
-        sync: true,
-      },
+      {name: 'implementsLabel', src: '/Label/Implemented', readonly: true, sync: true},
     ];
   }
 
