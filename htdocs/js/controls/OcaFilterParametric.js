@@ -5,7 +5,7 @@ import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
 
 const template = `
 <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
-<div class="Freq">
+<div class="Freq" %if={{ this.implementsFrequency }}>
   <aux-valueknob #freq
     %bind={{ this.frequencyBindings }}
     label="Frequency"
@@ -17,7 +17,7 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.freqClicked }}></aux-button>
 </div>
-<div class="gain">
+<div class="gain" %if={{ this.implementsGain }}>
   <aux-valueknob #gain
     %bind={{ this.gainBindings }}
     label="Gain"
@@ -27,7 +27,7 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.gainClicked }}></aux-button>
 </div>
-<div class="width">
+<div class="width" %if={{ this.implementsWidth }}>
   <aux-valueknob #width
     class="small"
     %bind={{ this.widthBindings }}
@@ -38,7 +38,7 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.widthClicked }}></aux-button>
 </div>
-<div class="shapep">
+<div class="shapep" %if={{ this.implementsShapeParameter }}>
   <aux-valueknob #shapep
     class="small"
     %bind={{ this.shapepBindings }}
@@ -49,7 +49,7 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.shapepClicked }}></aux-button>
 </div>
-<div class="shape">
+<div class="shape" %if={{ this.implementsShape }}>
   <aux-select
     %bind={{ this.shapeBindings }}
     auto_size=true
@@ -73,6 +73,16 @@ const template = `
 `;
 
 class OcaFilterParametricControl extends TemplateComponent.fromString(template) {
+  static getHostBindings() {
+    return [
+      {name: 'implementsWidth', src: '/WidthParameter/Implemented', readonly: true, sync: true},
+      {name: 'implementsFrequency', src: '/Frequency/Implemented', readonly: true, sync: true},
+      {name: 'implementsGain', src: '/InbandGain/Implemented', readonly: true, sync: true},
+      {name: 'implementsShapeParameter', src: '/ShapeParameter/Implemented', readonly: true, sync: true},
+      {name: 'implementsShape', src: '/Shape/Implemented', readonly: true, sync: true},
+    ];
+  }
+  
   constructor() {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);

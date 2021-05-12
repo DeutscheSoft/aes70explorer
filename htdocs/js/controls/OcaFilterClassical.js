@@ -8,7 +8,7 @@ import { formatFrequency } from '../utils.js';
 const template = `
 <aux-label %bind={{ this.labelBindings }}></aux-label>
 
-<div>
+<div %if={{ this.implementsParameter }}>
   <aux-valueknob #param
     class=small
     label="Parameter"
@@ -22,7 +22,7 @@ const template = `
   <aux-button class=edit icon=edit (click)={{ this.paramClicked }}></aux-button>
 </div>
 
-<div class=freq>
+<div class=freq %if={{ this.implementsFrequency }}>
   <aux-valueknob #freq
     label="Frequency"
     value.format='sprintf:%d'
@@ -37,7 +37,7 @@ const template = `
   <aux-button class=edit icon=edit (click)={{ this.freqClicked }}></aux-button>
 </div>
 
-<div>
+<div %if={{ this.implementsOrder }}>
   <aux-valueknob #order
     class=small
     label="Order"
@@ -53,11 +53,11 @@ const template = `
 </div>
 
 <div class=switch>
-  <aux-buttons
+  <aux-buttons %if={{ this.implementsPassband }}
     %bind={{ this.passbandBindings }}
     buttons="js:[{icon:'hipass'},{icon:'lopass'},{icon:'bandpass'},{icon:'bandreject'},{icon:'allpass'}]"
   ></aux-buttons>
-  <aux-select
+  <aux-select %if={{ this.implementsShape }}
     %bind={{ this.shapeBindings }}
     auto_size=true
     entries="js:['ButterW','Bessel','ChebyS','LinkwR']"
@@ -66,6 +66,16 @@ const template = `
 `;
 
 class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
+  static getHostBindings() {
+    return [
+      {name: 'implementsParameter', src: '/Parameter/Implemented', readonly: true, sync: true},
+      {name: 'implementsFrequency', src: '/Frequency/Implemented', readonly: true, sync: true},
+      {name: 'implementsOrder', src: '/Order/Implemented', readonly: true, sync: true},
+      {name: 'implementsShape', src: '/Shape/Implemented', readonly: true, sync: true},
+      {name: 'implementsPassband', src: '/Passband/Implemented', readonly: true, sync: true},
+    ];
+  }
+  
   constructor() {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
