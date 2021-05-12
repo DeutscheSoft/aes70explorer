@@ -29,6 +29,14 @@ class OcaGainControl extends TemplateComponent.fromString(template) {
         src: '/Gain/Max',
         name: 'max',
       },
+      {
+        src: ['/Gain/Min', '/Gain/Max'],
+        name: 'labels',
+        transformReceive: function (arr) {
+          const [min, max] = arr;
+          return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
+        }
+      }
     ];
   }
   static match(o) {
