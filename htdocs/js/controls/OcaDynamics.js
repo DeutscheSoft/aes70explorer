@@ -252,7 +252,6 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
         transformReceive: v => ({
           min:v[0], max: v[1], reverse: false, snap: 0.01,
         }),
-        debug: true,
       }
     ];
     this.attackClicked = (e) => {
