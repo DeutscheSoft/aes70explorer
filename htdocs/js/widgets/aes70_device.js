@@ -30,6 +30,11 @@ class AES70Device extends templateComponent {
     ];
   }
 
+  select() {
+    if (!this.isSelected)
+      Selected.set({type:'device', prefix:this.info.name + ':/DeviceManager'});
+  }
+
   constructor() {
     super();
     this._icon = 'ocadevice';
@@ -39,7 +44,7 @@ class AES70Device extends templateComponent {
     
     this.onHeadClick = (ev) => {
       if (!this.isSelected) {
-        Selected.set({type:'device', prefix:this.info.name + ':/DeviceManager'});
+        this.select();
       } else {
         this.open = !this.open;
       }
@@ -47,6 +52,8 @@ class AES70Device extends templateComponent {
     
     this.onIconClick = (ev) => {
       this.open = !this.open;
+      ev.stopPropagation();
+      this.select();
     }
   }
 }

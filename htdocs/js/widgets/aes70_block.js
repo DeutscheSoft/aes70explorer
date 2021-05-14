@@ -30,6 +30,11 @@ class AES70Block extends templateComponent {
     ];
   }
 
+  select() {
+    if (!this.isSelected)
+      Selected.set({type:'block', prefix:collectPrefix(this)});
+  }
+
   constructor() {
     super();
     this._icon = 'ocablock';
@@ -39,7 +44,7 @@ class AES70Block extends templateComponent {
     
     this.onHeadClick = (ev) => {
       if (!this.isSelected) {
-        Selected.set({type:'block', prefix:collectPrefix(this)});
+        this.select();
       } else {
         this.open = !this.open;
       }
@@ -47,6 +52,8 @@ class AES70Block extends templateComponent {
     
     this.onIconClick = (ev) => {
       this.open = !this.open;
+      ev.stopPropagation();
+      this.select();
     }
     
     this.labelBindings = [
