@@ -1,4 +1,4 @@
-import { getBackendValue, TemplateComponent, switchMap, DynamicValue, fromSubscription } from '../../AWML/src/index.pure.js';
+import { getBackendValue, DynamicValue, TemplateComponent, switchMap, map, fromSubscription } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe, classIDToString } from '../utils.js';
 import { findTemplateDetails, findTemplateControl } from '../template_components.js';
 
@@ -20,30 +20,25 @@ const template = `
 
 const Selected = getBackendValue('local:selected');
 
-const ObjectIfSelected = switchMap(Selected, (selected) => {
-  if (!selected.prefix) {
-    return DynamicValue.fromConstant(null);
-  }
+const ObjectAndSelected = switchMap(Selected, (selected) => {
+  const b = selected.prefix
+    ? getBackendValue(selected.prefix)
+    : DynamicValue.fromConstant(null);
 
-  const b = getBackendValue(selected.prefix);
-
-  const result = fromSubscription(
-    (cb) => b.subscribe(cb),
-    function(value) { this._updateValue(value); }
-  );
-  result.set(null);
-  return result;
+  return map(b, function(o) {
+    return [ o, selected ];
+  });
 });
 
 class AES70Details extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {
-        backendValue: ObjectIfSelected,
+        backendValue: ObjectAndSelected,
         name: 'href',
         sync: true,
         readonly: true,
-        transformReceive: function (o) {
+        transformReceive: function ([ o, selected ]) {
           return o ? docsLink + o.ClassName + '.html' : null;
         },
       },
@@ -61,31 +56,45 @@ class AES70Details extends TemplateComponent.fromString(template) {
         },
       },
       {
-        backendValue: ObjectIfSelected,
+        backendValue: ObjectAndSelected,
         name: 'detailsContent',
         readonly: true,
         sync: true,
-        transformReceive: function (o) {
+        transformReceive: function ([ o, selected ]) {
           if (!o)
             return null;
 
           const tagName = findTemplateDetails(o);
 
-          return tagName ? document.createElement(tagName) : null;
+          if (!tagName)
+            return null;
+
+          const element = document.createElement(tagName);
+
+          element.setAttribute('prefix', selected.prefix);
+
+          return element;
         },
       },
       {
-        backendValue: ObjectIfSelected,
+        backendValue: ObjectAndSelected,
         name: 'controlContent',
         readonly: true,
         sync: true,
-        transformReceive: function (o) {
+        transformReceive: function ([ o, selected ]) {
           if (!o)
             return null;
 
           const tagName = findTemplateControl(o);
 
-          return tagName ? document.createElement(tagName) : null;
+          if (!tagName)
+            return null;
+
+          const element = document.createElement(tagName);
+
+          element.setAttribute('prefix', selected.prefix);
+
+          return element;
         },
       },
       {
