@@ -190,7 +190,7 @@
   content: "";
   background: var(--toggle-indicator);
   transition: all var(--transition);
-  width: 1px;
+  width: 3px;
   height: 100%;
   border-radius: 2px;
   margin-right: var(--aux-button-paddinghorizontal);
