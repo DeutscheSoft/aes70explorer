@@ -44,6 +44,27 @@
   margin-right: 8px;
 }
 
+
+.aux-chart {
+  background: var(--background-dark);
+}
+.aux-chart > svg > .aux-grid > .aux-gridline {
+  stroke: var(--background-medium);
+}
+.aux-chart > svg > .aux-grid > .aux-gridlabel {
+  fill: var(--color-dark);
+}
+.aux-chart > svg > .aux-grid > .aux-gridlabel {
+  fill: var(--color-dark);
+}
+.aux-chart > svg > .aux-graphs > .aux-steady {
+  stroke: var(--color-dark);
+}
+.aux-chart > svg > .aux-graphs > .aux- {
+  stroke: var(--color);
+}
+
+
 .aux-circular {
   
 }

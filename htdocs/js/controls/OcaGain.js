@@ -38,7 +38,7 @@ class OcaGainControl extends TemplateComponent.fromString(template) {
           const [min, max] = arr;
           return [{value:min, label: min.toFixed(0) }, {value:max, label: max.toFixed(0)}];
         }
-      }
+      },
     ];
   }
   static match(o) {

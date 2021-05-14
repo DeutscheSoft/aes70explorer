@@ -137,6 +137,44 @@ aes70-control-bitstringactuator > .aux-buttons.aes70-size-tiny > .aux-button {
 }
 
 
+aes70-control-dynamics {
+  display: grid !important;
+  grid-template-areas: "label label label label label"
+                       "hold attack graph thres knee"
+                       ". release graph slope ."
+                       ". . select . .";
+    grid-gap: 4px 8px;
+}
+aes70-control-dynamics > .aux-label {
+  grid-area: label;
+}
+aes70-control-dynamics > .aux-dynamics {
+  grid-area: graph;
+  width: 200px;
+  height: 200px;
+}
+
+aes70-control-dynamics > .attack {
+  grid-area: attack;
+}
+aes70-control-dynamics > .release {
+  grid-area: release;
+}
+aes70-control-dynamics > .hold {
+  grid-area: hold;
+}
+
+aes70-control-dynamics > .threshold {
+  grid-area: thres;
+}
+aes70-control-dynamics > .slope {
+  grid-area: slope;
+}
+aes70-control-dynamics > .knee {
+  grid-area: knee;
+}
+
+
 aes70-control-filterclassical {
   display: grid !important;
   grid-template-areas:
