@@ -21,9 +21,6 @@ const template = `
   <span class="label">ClassVersion</span>
   <aux-label %bind={{ this.ClassVersionBind }}></aux-label>
 
-  <span class="label">Device Busy</span>
-  <aux-state %bind={{ this.BusyBind }}></aux-state>
-
   <span class="label">Device State</span>
   <aux-label %bind={{ this.DeviceStateBind }}></aux-label>
 
@@ -74,7 +71,6 @@ class OcaDeviceManagerDetails extends TemplateComponent.fromString(template) {
     this.LabelBind = [{ src: '/Label', name: 'value' }];
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.BusyBind = [{ src: '/Busy', name: 'state' }];
     this.ManufacturerIDBind = [{ src: '/ModelGUID', name: 'label',
       transformReceive: extractManufaturerID }];
     this.ModelIDBind = [{ src: '/ModelGUID', name: 'label',
