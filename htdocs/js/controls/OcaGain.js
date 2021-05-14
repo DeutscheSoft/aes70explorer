@@ -5,7 +5,9 @@ const template = `
 <aux-fader
   %bind={{ this.faderBindings }}
   show_value="true"
-  value.format="sprintf:%.2f">
+  value.format="sprintf:%.2f"
+  scale.fixed_dots="[]"
+  >
 </aux-fader>
 `;
 
@@ -31,10 +33,10 @@ class OcaGainControl extends TemplateComponent.fromString(template) {
       },
       {
         src: ['/Gain/Min', '/Gain/Max'],
-        name: 'labels',
+        name: 'scale.fixed_labels',
         transformReceive: function (arr) {
           const [min, max] = arr;
-          return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
+          return [{value:min, label: min.toFixed(0) }, {value:max, label: max.toFixed(0)}];
         }
       }
     ];
