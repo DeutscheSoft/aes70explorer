@@ -2,7 +2,8 @@ import { collectPrefix, TemplateComponent, getBackendValue, fromSubscription } f
 
 const Selected = getBackendValue('local:selected');
 
-const template = `
+const templateComponent = TemplateComponent.create({
+  template: `
 <div class=head (click)={{ this.onHeadClick }}>
   <aux-icon icon={{ this._icon }} (click)={{ this.onIconClick }} class=icon></aux-icon>
   <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
@@ -10,36 +11,38 @@ const template = `
   <aux-label class=children %bind={{ this.childrenBindings }}></aux-label>
 </div>
 <aes70-block-children %if={{ this.open }}></aes70-block-children>
-`;
+`,
+  properties: [ 'isSelected' ],
+});
 
-class AES70Block extends TemplateComponent.fromString(template) {
+class AES70Block extends templateComponent {
   getHostBindings() {
     return [
       {
         backendValue: Selected,
         readonly: true,
-        name: 'selectedClassName',
-        transformReceive: (selected) => selected && selected.prefix === collectPrefix(this),
+        name: 'isSelected',
+        sync: true,
+        transformReceive: (selected) => {
+          return selected && selected.prefix === collectPrefix(this);
+        },
       }
     ];
-  }
-
-  awmlCreateBinding(name, options) {
-    if (name === 'selectedClassName') {
-      return fromSubscription(null, (value) => {
-        this.classList.toggle('selected', !!value);
-      });
-    }
-
-    return super.awmlCreateBinding(name, options);
   }
 
   constructor() {
     super();
     this._icon = 'ocablock';
+    this.subscribeEvent('isSelectedChanged', (value) => {
+      this.classList.toggle('selected', value);
+    });
     
     this.onHeadClick = (ev) => {
-      Selected.set({type:'block', prefix:collectPrefix(this)});
+      if (!this.isSelected) {
+        Selected.set({type:'block', prefix:collectPrefix(this)});
+      } else {
+        this.open = !this.open;
+      }
     }
     
     this.onIconClick = (ev) => {
