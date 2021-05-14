@@ -190,7 +190,7 @@ html {
   bottom: 0;
   
   grid-template-columns: auto 1fr;
-  grid-template-rows: 48px 1fr 256px;
+  grid-template-rows: 48px 1fr 320px;
   grid-template-areas:
       "navigation sidebar"
       "navigation canvas"
