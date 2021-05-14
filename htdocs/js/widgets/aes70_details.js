@@ -1,4 +1,4 @@
-import { getBackendValue, DynamicValue, TemplateComponent, switchMap, map, fromSubscription } from '../../AWML/src/index.pure.js';
+import { getBackendValue, DynamicValue, TemplateComponent, switchMap, map, fromSubscription, resolve } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe, classIDToString } from '../utils.js';
 import { findTemplateDetails, findTemplateControl } from '../template_components.js';
 
@@ -30,6 +30,38 @@ const ObjectAndSelected = switchMap(Selected, (selected) => {
   });
 });
 
+const DetailComponent = resolve(ObjectAndSelected, async ([ o, selected ]) => {
+  if (!o)
+    return null;
+
+  const tagName = await findTemplateDetails(o);
+
+  if (!tagName)
+    return null;
+
+  const element = document.createElement(tagName);
+
+  element.setAttribute('prefix', selected.prefix);
+
+  return element;
+});
+
+const ControlComponent = resolve(ObjectAndSelected, async ([ o, selected ]) => {
+  if (!o)
+    return null;
+
+  const tagName = await findTemplateControl(o);
+
+  if (!tagName)
+    return null;
+
+  const element = document.createElement(tagName);
+
+  element.setAttribute('prefix', selected.prefix);
+
+  return element;
+});
+
 class AES70Details extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
@@ -56,46 +88,16 @@ class AES70Details extends TemplateComponent.fromString(template) {
         },
       },
       {
-        backendValue: ObjectAndSelected,
+        backendValue: DetailComponent,
         name: 'detailsContent',
         readonly: true,
         sync: true,
-        transformReceive: function ([ o, selected ]) {
-          if (!o)
-            return null;
-
-          const tagName = findTemplateDetails(o);
-
-          if (!tagName)
-            return null;
-
-          const element = document.createElement(tagName);
-
-          element.setAttribute('prefix', selected.prefix);
-
-          return element;
-        },
       },
       {
-        backendValue: ObjectAndSelected,
+        backendValue: ControlComponent,
         name: 'controlContent',
         readonly: true,
         sync: true,
-        transformReceive: function ([ o, selected ]) {
-          if (!o)
-            return null;
-
-          const tagName = findTemplateControl(o);
-
-          if (!tagName)
-            return null;
-
-          const element = document.createElement(tagName);
-
-          element.setAttribute('prefix', selected.prefix);
-
-          return element;
-        },
       },
       {
         backendValue: Selected,

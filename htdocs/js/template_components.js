@@ -28,20 +28,33 @@ export function registerTemplateDetails(component, name) {
 }
 
 function findBestMatch(set, o) {
-  let bestMatch = null;
-  let bestScore = -1;
+  const tasks = [];
 
   set.forEach((component, tagName) => {
-    const score = component.match(o);
-
-    if (score <= bestScore)
-      return;
-
-    bestScore = score;
-    bestMatch = tagName;
+    tasks.push(
+      (async () => {
+        return await component.match(o);
+      })().then((score) => [ tagName, score ])
+    );
   });
 
-  return bestMatch;
+  return Promise.allSettled(tasks).then((results) => {
+    const matches = results.filter((result) => result.status === 'fulfilled')
+      .map((result) => result.value);
+
+    let bestMatch = null;
+    let bestScore = -1;
+
+    matches.forEach(([ tagName, score ]) => {
+      if (score <= bestScore)
+        return;
+
+      bestScore = score;
+      bestMatch = tagName;
+    });
+
+    return bestMatch;
+  });
 }
 
 export function findTemplateControl(o) {
