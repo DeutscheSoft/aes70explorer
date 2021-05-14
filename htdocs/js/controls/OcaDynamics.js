@@ -88,6 +88,30 @@ const template = `
 </div>
 `;
 
+function makeKnobBindings(src) {
+  return [
+      {
+        src: [ src, src + '/Min', src + '/Max' ],
+        name: 'value',
+        readonly: true,
+        transformReceive: function (a) { return a[0]; },
+      },
+      {
+        src: src,
+        name: 'value',
+        writeonly: true,
+      },
+      {
+        src: src + '/Min',
+        name: 'min',
+      },
+      {
+        src: src + '/Max',
+        name: 'max',
+      },
+  ];
+}
+
 class OcaDynamicsControl extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
@@ -110,18 +134,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.attackBindings = [
-      {
-        src: '/AttackTime',
-        name: 'value',
-      },
-      {
-        src: '/AttackTime/Min',
-        name: 'min',
-      },
-      {
-        src: '/AttackTime/Max',
-        name: 'max',
-      },
+      ...makeKnobBindings('/AttackTime'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',

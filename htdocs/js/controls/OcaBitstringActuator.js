@@ -39,7 +39,6 @@ class OcaBitstringActuatorControl extends TemplateComponent.fromString(template)
       {
         src: '/Bitstring',
         name: 'bitstring',
-        debug: true,
       },
       {
         src: '/Bitstring',
