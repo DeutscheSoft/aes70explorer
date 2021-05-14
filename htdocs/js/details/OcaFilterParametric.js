@@ -77,11 +77,11 @@ class OcaFilterParametricDetails extends TemplateComponent.fromString(template) 
       transformReceive: v => v.toFixed(0) + 'Hz' }];
     this.FrequencyMaxBind = [{ src: '/Frequency/Max', name: 'label',
       transformReceive: v => v.toFixed(0) + 'Hz' }];
-    this.GainBind = [{ src: '/Gain', name: 'label',
+    this.GainBind = [{ src: '/InbandGain', name: 'label',
       transformReceive: v => v.toFixed(2) + 'dB' }];
-    this.GainMinBind = [{ src: '/Gain/Min', name: 'label',
+    this.GainMinBind = [{ src: '/InbandGain/Min', name: 'label',
       transformReceive: v => v.toFixed(2) + 'dB' }];
-    this.GainMaxBind = [{ src: '/Gain/Max', name: 'label',
+    this.GainMaxBind = [{ src: '/InbandGain/Max', name: 'label',
       transformReceive: v => v.toFixed(2) + 'dB' }];
     this.WidthBind = [{ src: '/WidthParameter', name: 'label',
       transformReceive: v => v.toFixed(2) }];
