@@ -1,6 +1,7 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
+import { makeValueMinMaxBinding } from '../utils.js';
 
 const template = `
 <aux-label %bind={{ this.labelBindings }}></aux-label>
@@ -88,29 +89,6 @@ const template = `
 </div>
 `;
 
-function makeKnobBindings(src) {
-  return [
-      {
-        src: [ src, src + '/Min', src + '/Max' ],
-        name: 'value',
-        readonly: true,
-        transformReceive: function (a) { return a[0]; },
-      },
-      {
-        src: src,
-        name: 'value',
-        writeonly: true,
-      },
-      {
-        src: src + '/Min',
-        name: 'min',
-      },
-      {
-        src: src + '/Max',
-        name: 'max',
-      },
-  ];
-}
 
 class OcaDynamicsControl extends TemplateComponent.fromString(template) {
   static getHostBindings() {
@@ -134,7 +112,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.attackBindings = [
-      ...makeKnobBindings('/AttackTime'),
+      ...makeValueMinMaxBinding('AttackTime'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -149,18 +127,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.releaseBindings = [
-      {
-        src: '/ReleaseTime',
-        name: 'value',
-      },
-      {
-        src: '/ReleaseTime/Min',
-        name: 'min',
-      },
-      {
-        src: '/ReleaseTime/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('ReleaseTime'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -175,18 +142,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.holdBindings = [
-      {
-        src: '/HoldTime',
-        name: 'value',
-      },
-      {
-        src: '/HoldTime/Min',
-        name: 'min',
-      },
-      {
-        src: '/HoldTime/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('HoldTime'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -201,20 +157,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.thresholdBindings = [
-      {
-        src: '/Threshold',
-        name: 'value',
-        transformReceive: v => v.Value,
-        transformSend: v => ({ Value:v, Ref:0 }),
-      },
-      {
-        src: '/Threshold/Min',
-        name: 'min',
-      },
-      {
-        src: '/Threshold/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('Threshold', v => v.Value, v => ({ Value:v, Ref:0 }) ),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -229,18 +172,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.slopeBindings = [
-      {
-        src: '/Slope',
-        name: 'value',
-      },
-      {
-        src: '/Slope/Min',
-        name: 'min',
-      },
-      {
-        src: '/Slope/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('Slope'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -255,18 +187,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.kneeBindings = [
-      {
-        src: '/KneeParameter',
-        name: 'value',
-      },
-      {
-        src: '/KneeParameter/Min',
-        name: 'min',
-      },
-      {
-        src: '/KneeParameter/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('KneeParameter'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',

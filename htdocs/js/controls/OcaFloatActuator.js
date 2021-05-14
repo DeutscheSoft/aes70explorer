@@ -1,6 +1,7 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
+import { makeValueMinMaxBinding } from '../utils.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -20,21 +21,10 @@ class OcaFloatActuatorControl extends TemplateComponent.fromString(template) {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
     this.knobBindings = [
+      ...makeValueMinMaxBinding('Setting'),
       {
         src: '/Role',
         name: 'label',
-      },
-      {
-        src: '/Setting',
-        name: 'value',
-      },
-      {
-        src: '/Setting/Min',
-        name: 'min',
-      },
-      {
-        src: '/Setting/Max',
-        name: 'max',
       },
       {
         src: '/Setting/Min',

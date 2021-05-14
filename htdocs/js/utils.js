@@ -71,3 +71,34 @@ export function formatFrequency (v) {
     return (v / 1000).toFixed(3) + 'k';
   return (v / 1000).toFixed(2) + 'k';
 }
+
+export function makeValueMinMaxBinding(src, recv, send) {
+  if (!src.startsWith('/'))
+    src = '/' + src;
+  const frecv = recv ? a => recv(a[0]) : a => a[0];
+  const fsend = send ? send : v => v;
+  return [
+      {
+        src: [ src, src + '/Min', src + '/Max' ],
+        name: 'value',
+        readonly: true,
+        transformReceive: frecv,
+        debug: true,
+      },
+      {
+        src: src,
+        name: 'value',
+        writeonly: true,
+        transformSend: fsend,
+      },
+      {
+        src: src + '/Min',
+        name: 'min',
+      },
+      {
+        src: src + '/Max',
+        name: 'max',
+        debug: true,
+      },
+  ];
+}

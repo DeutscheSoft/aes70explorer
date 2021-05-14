@@ -1,5 +1,6 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
+import { makeValueMinMaxBinding } from '../utils.js';
 
 const colorMax = '#ff6600';
 const colorMid = '#8b06a5';

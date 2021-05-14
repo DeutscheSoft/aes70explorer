@@ -1,5 +1,6 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
+import { makeValueMinMaxBinding } from '../utils.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -20,21 +21,10 @@ class OcaPanBalanceControl extends TemplateComponent.fromString(template) {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
     this.knobBindings = [
+      ...makeValueMinMaxBinding('Position'),
       {
         src: '/Role',
         name: 'label',
-      },
-      {
-        src: '/Position',
-        name: 'value',
-      },
-      {
-        src: '/Position/Min',
-        name: 'min',
-      },
-      {
-        src: '/Position/Max',
-        name: 'max',
       },
       {
         backendValue: this.knobPresets,

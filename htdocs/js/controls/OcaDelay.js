@@ -1,6 +1,7 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
+import { makeValueMinMaxBinding } from '../utils.js';
 
 const template = `
 <aux-valueknob #knob
@@ -18,21 +19,10 @@ class OcaDelayControl extends TemplateComponent.fromString(template) {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
     this.knobBindings = [
+      ...makeValueMinMaxBinding('DelayTime'),
       {
         src: '/Role',
         name: 'label',
-      },
-      {
-        src: '/DelayTime',
-        name: 'value',
-      },
-      {
-        src: '/DelayTime/Min',
-        name: 'min',
-      },
-      {
-        src: '/DelayTime/Max',
-        name: 'max',
       },
       {
         backendValue: this.knobPresets,

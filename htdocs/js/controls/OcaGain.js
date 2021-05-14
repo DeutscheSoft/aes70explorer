@@ -1,5 +1,6 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
+import { makeValueMinMaxBinding } from '../utils.js';
 
 const template = `
 <aux-fader
@@ -15,21 +16,10 @@ class OcaGainControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.faderBindings = [
+      ...makeValueMinMaxBinding('Gain'),
       {
         src: '/Role',
         name: 'label',
-      },
-      {
-        src: '/Gain',
-        name: 'value',
-      },
-      {
-        src: '/Gain/Min',
-        name: 'min',
-      },
-      {
-        src: '/Gain/Max',
-        name: 'max',
       },
       {
         src: ['/Gain/Min', '/Gain/Max'],

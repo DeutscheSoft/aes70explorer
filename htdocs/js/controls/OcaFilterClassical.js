@@ -1,7 +1,7 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
-import { formatFrequency } from '../utils.js';
+import { formatFrequency, makeValueMinMaxBinding } from '../utils.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -80,21 +80,10 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
     this.freqBindings = [
-      {
-        src: '/Frequency/Min',
-        name: 'min',
-      },
-      {
-        src: '/Frequency/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('Frequency'),
       {
         src: '/Frequency/Min',
         name: 'base',
-      },
-      {
-        src: '/Frequency',
-        name: 'value',
       },
       {
         backendValue: this.knobPresets,
@@ -110,21 +99,10 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       }
     ];
     this.paramBindings = [
-      {
-        src: '/Parameter/Min',
-        name: 'min',
-      },
-      {
-        src: '/Parameter/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('Parameter'),
       {
         src: '/Parameter/Min',
         name: 'base',
-      },
-      {
-        src: '/Parameter',
-        name: 'value',
       },
       {
         backendValue: this.knobPresets,
@@ -140,21 +118,10 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       }
     ];
     this.orderBindings = [
-      {
-        src: '/Order/Min',
-        name: 'min',
-      },
-      {
-        src: '/Order/Max',
-        name: 'max',
-      },
+      ...makeValueMinMaxBinding('Order'),
       {
         src: '/Order/Min',
         name: 'base',
-      },
-      {
-        src: '/Order',
-        name: 'value',
       },
       {
         backendValue: this.knobPresets,

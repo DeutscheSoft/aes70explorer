@@ -1,7 +1,6 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 
-
 const template = `
 <aux-state %bind={{ this.stateBindings }}></aux-state>
 `;

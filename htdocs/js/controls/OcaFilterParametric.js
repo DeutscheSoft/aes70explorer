@@ -1,6 +1,6 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
-import { formatFrequency } from '../utils.js';
+import { formatFrequency, makeValueMinMaxBinding } from '../utils.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
 
 const template = `
@@ -93,18 +93,7 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       },
     ];
     this.frequencyBindings = [
-      {
-        src: '/Frequency/Min',
-        name: 'min',
-      },
-      {
-        src: '/Frequency/Max',
-        name: 'max',
-      },
-      {
-        src: '/Frequency',
-        name: 'value',
-      },
+      ...makeValueMinMaxBinding('Frequency'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -119,18 +108,7 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       }
     ];
     this.gainBindings = [
-      {
-        src: '/InbandGain/Min',
-        name: 'min',
-      },
-      {
-        src: '/InbandGain/Max',
-        name: 'max',
-      },
-      {
-        src: '/InbandGain',
-        name: 'value',
-      },
+      ...makeValueMinMaxBinding('InbandGain'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -145,18 +123,7 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       }
     ];
     this.widthBindings = [
-      {
-        src: '/WidthParameter/Min',
-        name: 'min',
-      },
-      {
-        src: '/WidthParameter/Max',
-        name: 'max',
-      },
-      {
-        src: '/WidthParameter',
-        name: 'value',
-      },
+      ...makeValueMinMaxBinding('WidthParameter'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -171,18 +138,7 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       }
     ];
     this.shapepBindings = [
-      {
-        src: '/ShapeParameter/Min',
-        name: 'min',
-      },
-      {
-        src: '/ShapeParameter/Max',
-        name: 'max',
-      },
-      {
-        src: '/ShapeParameter',
-        name: 'value',
-      },
+      ...makeValueMinMaxBinding('ShapeParameter'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
