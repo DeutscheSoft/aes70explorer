@@ -52,12 +52,19 @@
   --button-active-background: var(--color-accent);
   --button-active-color: var(--color-contrast);
   
+  --charthandle-color: rgba(255,255,255,0.2);
+  
   --fader-track-horizontal-background: repeating-linear-gradient(to right, black 0px, black 1px, transparent 1.001px, transparent 2px);
   --fader-track-vertical-background: repeating-linear-gradient(to bottom, black 0px, black 1px, transparent 1.001px, transparent 2px);
   --fader-handle-horizontal-background: linear-gradient(to right, #e9deff 0%, #858585 11%, #e3e3ff 50%, #ffffff 89%, #5e5154 100%);
   --fader-handle-vertical-background: linear-gradient(to bottom, #e9deff 0%, #858585 11%, #e3e3ff 50%, #ffffff 89%, #5e5154 100%);
   --fader-handle-bar: var(--color-accent);
   --fader-handle-shadow: 0 3px 8px var(--color-shadow);
+  
+  --graph-color: var(--color-accent);
+  --graph-color: var(--color-accent);
+  
+  --grid-label-color: #67676A;
   
   --toggle-background: rgba(0, 0, 0, 0.34);
   --toggle-color: var(--color-fade);

@@ -83,7 +83,6 @@ export function makeValueMinMaxBinding(src, recv, send) {
         name: 'value',
         readonly: true,
         transformReceive: frecv,
-        debug: true,
       },
       {
         src: src,
@@ -98,7 +97,6 @@ export function makeValueMinMaxBinding(src, recv, send) {
       {
         src: src + '/Max',
         name: 'max',
-        debug: true,
       },
   ];
 }

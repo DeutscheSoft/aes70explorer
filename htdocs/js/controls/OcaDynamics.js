@@ -46,15 +46,14 @@ const template = `
   <aux-button class=edit icon=edit (click)={{ this.holdClicked }}></aux-button>
 </div>
 
-<aux-dynamics
-  >
+<aux-dynamics %bind={{ this.dynamicsBindings }}>
 </aux-dynamics>
 
 <div %if={{ this.implementsThreshold }} class=threshold>
   <aux-valueknob #thres
     class=small
     label="Threshold"
-    value.format='sprintf:%.2f'
+    value.format='sprintf:%.1f'
     knob.show_hand=false
     %bind={{ this.thresholdBindings }}
     knob.preset=small
@@ -104,6 +103,10 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
   
   constructor() {
     super();
+    
+    this.threshold = 0;
+    this.reference = 0;
+    
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
     this.labelBindings = [
       {
@@ -157,7 +160,11 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.thresholdBindings = [
-      ...makeValueMinMaxBinding('Threshold', v => v.Value, v => ({ Value:v, Ref:0 }) ),
+      ...makeValueMinMaxBinding(
+        'Threshold',
+        v => v.Value,
+        v => ({ Value:v, Ref:0 })
+      ),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -197,11 +204,57 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
         name: 'labels',
         transformReceive: function (arr) {
           const [min, max] = arr;
-          return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];
+          return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
         }
       },
     ];
-    
+    this.dynamicsBindings = [
+      {
+        src: '/Threshold',
+        name: 'threshold',
+        transformReceive: v => {
+          this.reference = v.Ref;
+          return v.Value
+        },
+        transformSend: v => {
+          return { Value: v, Ref: this.reference }
+        },
+      },
+      {
+        src: '/Threshold',
+        name: 'reference',
+        transformReceive: v => {
+          this.threshold = v.Value;
+          return v.Ref
+        },
+        readonly: true,
+      },
+      {
+        src: '/Slope',
+        name: 'ratio',
+      },
+      {
+        src: '/Ratio',
+        name: 'ratio',
+      },
+      {
+        src: '/KneeParameter',
+        name: 'knee',
+      },
+      {
+        src: '/Function',
+        name: 'type',
+        transformReceive: v => ['', 'compressor', 'limiter', 'expander', 'gate'][v.value],
+      },
+      {
+        src: ['/Slope/Min', '/Slope/Max'],
+        name: 'range_z',
+        transformReceive: v => ({
+          min:v[0], max: v[1], reverse: false, snap: 0.01,
+        }),
+        debug: true,
+      }
+    ];
     this.attackClicked = (e) => {
       this.attack.auxWidget.value._input.focus();
     }

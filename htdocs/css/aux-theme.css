@@ -55,7 +55,10 @@
   fill: var(--color-dark);
 }
 .aux-chart > svg > .aux-grid > .aux-gridlabel {
-  fill: var(--color-dark);
+  fill: var(--grid-label-color);
+}
+.aux-chart > svg > .aux-graphs > .aux-graph {
+  stroke: var(--graph-color);
 }
 .aux-chart > svg > .aux-graphs > .aux-steady {
   stroke: var(--color-dark);
@@ -63,7 +66,9 @@
 .aux-chart > svg > .aux-graphs > .aux- {
   stroke: var(--color);
 }
-
+.aux-chart > svg > .aux-handles > .aux-charthandle > .aux-handle {
+  fill: var(--charthandle-color);
+}
 
 .aux-circular {
   
