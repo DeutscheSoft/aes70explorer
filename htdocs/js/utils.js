@@ -79,12 +79,6 @@ export function makeValueMinMaxBinding(src, recv, send) {
   const fsend = send ? send : v => v;
   return [
       {
-        src: [ src, src + '/Min', src + '/Max' ],
-        name: 'value',
-        readonly: true,
-        transformReceive: frecv,
-      },
-      {
         src: src,
         name: 'value',
         writeonly: true,
@@ -97,6 +91,12 @@ export function makeValueMinMaxBinding(src, recv, send) {
       {
         src: src + '/Max',
         name: 'max',
+      },
+      {
+        src: [ src, src + '/Min', src + '/Max' ],
+        name: 'value',
+        readonly: true,
+        transformReceive: frecv,
       },
   ];
 }
