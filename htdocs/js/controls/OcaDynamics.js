@@ -1,12 +1,12 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
-import { makeValueMinMaxBinding } from '../utils.js';
+import { makeValueMinMaxBinding, makeImplementedBindings } from '../utils.js';
 
 const template = `
 <aux-label %bind={{ this.labelBindings }}></aux-label>
 
-<div %if={{ this.implementsAttack }} class=attack>
+<div %if={{ this.implementsAttackTime }} class=attack>
   <aux-valueknob #attack
     class=small
     label="Attack"
@@ -19,7 +19,7 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.attackClicked }}></aux-button>
 </div>
-<div %if={{ this.implementsRelease }} class=release>
+<div %if={{ this.implementsReleaseTime }} class=release>
   <aux-valueknob #release
     class=small
     label="Release"
@@ -32,7 +32,7 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.releaseClicked }}></aux-button>
 </div>
-<div %if={{ this.implementsHold }} class=hold>
+<div %if={{ this.implementsHoldTime }} class=hold>
   <aux-valueknob #hold
     class=small
     label="Hold"
@@ -74,7 +74,19 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.slopeClicked }}></aux-button>
 </div>
-<div %if={{ this.implementsKnee }} class=knee>
+<div %if={{ this.implementsRatio }} class=slope>
+  <aux-valueknob #ratio
+    class=small
+    label="Ratio"
+    value.format='sprintf:%.2f'
+    knob.show_hand=false
+    %bind={{ this.ratioBindings }}
+    knob.preset=small
+    >
+  </aux-valueknob>
+  <aux-button class=edit icon=edit (click)={{ this.slopeClicked }}></aux-button>
+</div>
+<div %if={{ this.implementsKneeParameter }} class=knee>
   <aux-valueknob #knee
     class=small
     label="Knee"
@@ -86,19 +98,63 @@ const template = `
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.kneeClicked }}></aux-button>
 </div>
+<div %if={{ this.implementsDynamicGainCeiling }} class=gainceiling>
+  <aux-valueknob #gainceiling
+    class=small
+    label="Gain Ceiling"
+    value.format='sprintf:%.2f'
+    knob.show_hand=false
+    %bind={{ this.gainceilingBindings }}
+    knob.preset=small
+    >
+  </aux-valueknob>
+  <aux-button class=edit icon=edit (click)={{ this.gainceilingClicked }}></aux-button>
+</div>
+<div %if={{ this.implementsDynamicGainFloor }} class=gainfloor>
+  <aux-valueknob #gainfloor
+    class=small
+    label="Gain Floor"
+    value.format='sprintf:%.2f'
+    knob.show_hand=false
+    %bind={{ this.gainfloorBindings }}
+    knob.preset=small
+    >
+  </aux-valueknob>
+  <aux-button class=edit icon=edit (click)={{ this.gainfloorClicked }}></aux-button>
+</div>
+
+<aux-select %if={{ this.implementsFunction}}
+  class=function
+  entries="js:['None','Comp','Limit','Expand','Gate']"
+  auto_size=true
+  %bind={{ this.functionBindings }}
+  >
+</aux-select>
+<aux-select %if={{ this.implementsDetectorLaw }}
+  class=detect
+  entries="js:['None','RMS','Peak']"
+  auto_size=true
+  %bind={{ this.detectBindings }}
+  >
+</aux-select>
 `;
 
 
 class OcaDynamicsControl extends TemplateComponent.fromString(template) {
   static getHostBindings() {
-    return [
-      {name: 'implementsAttack', src: '/AttackTime/Implemented', readonly: true, sync: true},
-      {name: 'implementsRelease', src: '/ReleaseTime/Implemented', readonly: true, sync: true},
-      {name: 'implementsHold', src: '/HoldTime/Implemented', readonly: true, sync: true},
-      {name: 'implementsThreshold', src: '/Threshold/Implemented', readonly: true, sync: true},
-      {name: 'implementsSlope', src: '/Slope/Implemented', readonly: true, sync: true},
-      {name: 'implementsKnee', src: '/KneeParameter/Implemented', readonly: true, sync: true},
-    ];
+    return makeImplementedBindings([
+      'AttackTime',
+      'ReleaseTime',
+      'HoldTime',
+      'Threshold',
+      'Slope',
+      'Ratio',
+      'KneeParameter',
+      'DynamicGainCeiling',
+      'DynamicGainFloor',
+      'DetectorLaw',
+      'Function',
+    ]);
   }
   
   constructor() {
@@ -177,6 +233,10 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
         }
       },
+      {
+        src: '/Threshold/Max',
+        name: 'base',
+      },
     ];
     this.slopeBindings = [
       ...makeValueMinMaxBinding('Slope'),
@@ -193,6 +253,21 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
         }
       },
     ];
+    //this.ratioBindings = [
+      //...makeValueMinMaxBinding('Ratio'),
+      //{
+        //backendValue: this.knobPresets,
+        //name: 'knob.presets',
+      //},
+      //{
+        //src: ['/Ratio/Min', '/Ratio/Max'],
+        //name: 'labels',
+        //transformReceive: function (arr) {
+          //const [min, max] = arr;
+          //return [{pos:min, label:sprintf('%d:1', min)}, {pos:max, label:sprintf('%d:1', max)}];
+        //}
+      //},
+    //];
     this.kneeBindings = [
       ...makeValueMinMaxBinding('KneeParameter'),
       {
@@ -207,6 +282,58 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
         }
       },
+    ];
+    this.gainceilingBindings = [
+      ...makeValueMinMaxBinding('DynamicGainCeiling'),
+      {
+        backendValue: this.knobPresets,
+        name: 'knob.presets',
+      },
+      {
+        src: ['/DynamicGainCeiling/Min', '/DynamicGainCeiling/Max'],
+        name: 'labels',
+        transformReceive: function (arr) {
+          const [min, max] = arr;
+          return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
+        }
+      },
+      {
+        src: '/DynamicGainCeiling/Max',
+        name: 'base',
+      },
+    ];
+    this.gainfloorBindings = [
+      ...makeValueMinMaxBinding('DynamicGainFloor'),
+      {
+        backendValue: this.knobPresets,
+        name: 'knob.presets',
+      },
+      {
+        src: ['/DynamicGainFloor/Min', '/DynamicGainFloor/Max'],
+        name: 'labels',
+        transformReceive: function (arr) {
+          const [min, max] = arr;
+          return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
+        }
+      },
+      {
+        src: '/DynamicGainFloor/Min',
+        name: 'base',
+      },
+    ];
+    this.detectBindings = [
+      {
+        src: '/DetectorLaw',
+        name: 'selected',
+        transformReceive: v => v.value,
+      }
+    ];
+    this.functionBindings = [
+      {
+        src: '/Function',
+        name: 'selected',
+        transformReceive: v =>v.value,
+      }
     ];
     this.dynamicsBindings = [
       {
@@ -244,7 +371,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/Function',
         name: 'type',
-        transformReceive: v => ['', 'compressor', 'limiter', 'expander', 'gate'][v.value],
+        transformReceive: v => ['compressor', 'compressor', 'limiter', 'expander', 'gate'][v.value],
       },
       {
         src: ['/Slope/Min', '/Slope/Max'],
@@ -252,7 +379,19 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
         transformReceive: v => ({
           min:v[0], max: v[1], reverse: false, snap: 0.01,
         }),
-      }
+      },
+      {
+        src: ['/Ratio/Min', '/Ratio/Max'],
+        name: 'range_z',
+        transformReceive: v => ({
+          min:v[0], max: v[1], reverse: false, snap: 0.01,
+        }),
+      },
+      {
+        src: '/Function',
+        name: 'disabled',
+        transformReceive: v => !v.value,
+      },
     ];
     this.attackClicked = (e) => {
       this.attack.auxWidget.value._input.focus();
@@ -271,6 +410,12 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
     }
     this.kneeClicked = (e) => {
       this.knee.auxWidget.value._input.focus();
+    }
+    this.gainceilingClicked = (e) => {
+      this.gainceiling.auxWidget.value._input.focus();
+    }
+    this.gainfloorClicked = (e) => {
+      this.gainfloor.auxWidget.value._input.focus();
     }
   }
   static match(o) {

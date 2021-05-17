@@ -1,7 +1,7 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
-import { formatFrequency, makeValueMinMaxBinding } from '../utils.js';
+import { formatFrequency, makeValueMinMaxBinding, makeImplementedBindings } from '../utils.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -67,13 +67,9 @@ const template = `
 
 class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
   static getHostBindings() {
-    return [
-      {name: 'implementsParameter', src: '/Parameter/Implemented', readonly: true, sync: true},
-      {name: 'implementsFrequency', src: '/Frequency/Implemented', readonly: true, sync: true},
-      {name: 'implementsOrder', src: '/Order/Implemented', readonly: true, sync: true},
-      {name: 'implementsShape', src: '/Shape/Implemented', readonly: true, sync: true},
-      {name: 'implementsPassband', src: '/Passband/Implemented', readonly: true, sync: true},
-    ];
+    return makeImplementedBindings([
+      'Parameter', 'Frequency', 'Order', 'Shape', 'Passband',
+    ]);
   }
   
   constructor() {

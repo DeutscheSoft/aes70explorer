@@ -100,3 +100,12 @@ export function makeValueMinMaxBinding(src, recv, send) {
       },
   ];
 }
+
+export function makeImplementedBindings(arr) {
+  const R = [];
+  for (let i = 0, m = arr.length; i < m; ++i) {
+    const E = arr[i];
+    R.push({name: 'implements' + E, src: '/' + E + '/Implemented', readonly: true, sync: true});
+  }
+  return R;
+}
