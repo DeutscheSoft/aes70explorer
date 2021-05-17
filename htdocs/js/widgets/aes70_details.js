@@ -13,7 +13,7 @@ const template = `
   <aux-marquee class=path speed=10 pause=2000 label={{ this.path }}></aux-marquee>
   <a href={{ this.href }} target=_blank class=docs><aux-icon icon=book></aux-icon></a>
 </div>
-<div class=details #details>{{ this.detailsContent }}</div>
+{{ this.detailsContent }}
 <div class=control #control>{{ this.controlContent }}</div>
 <div class=noselect %if={{ !this.path }}>Select An Object From The List</div>
 `
@@ -40,6 +40,7 @@ const DetailComponent = resolve(ObjectAndSelected, async ([ o, selected ]) => {
     return null;
 
   const element = document.createElement(tagName);
+  element.classList.add('details');
 
   element.setAttribute('prefix', selected.prefix);
 

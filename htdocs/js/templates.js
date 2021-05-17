@@ -33,6 +33,7 @@ import './details/OcaDelay.js';
 import './details/OcaSwitch.js';
 import './details/OcaFilterClassical.js';
 import './details/OcaFilterParametric.js';
+import './details/OcaDynamics.js';
 
 import './details/OcaSensor.js';
 import './details/OcaStringSensor.js';

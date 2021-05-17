@@ -328,7 +328,7 @@ html {
                        "details control";
   grid-template-rows: auto 1fr;
   grid-template-columns: 2fr 1fr;
-  grid-gap: 16px 8px;
+  grid-gap: 8px 8px;
   padding: 8px 16px;
   background: var(--background-fade);
   border-top: 1px solid var(--color-accent);
@@ -413,6 +413,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 #details.block > .details,
 #details.device > .details {
@@ -420,9 +422,6 @@ html {
 }
 
 #details > .details > * {
-  display: flex;
-}
-#details > .details > * > * {
   margin: 0 8px;
   flex: 1 1 auto;
 }
@@ -432,7 +431,7 @@ html {
   grid-gap: 3px 6px;
   align-content: center;
   align-items: center;
-  margin: 0 8px;
+  margin: auto 8px;
 }
 #details > .details .grid > * {
   margin: 0;
@@ -443,6 +442,8 @@ html {
   display: block;
   color: var(--color-fade);
   align-self: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #details > .details .grid > .aux-value {
   width: 200px;
