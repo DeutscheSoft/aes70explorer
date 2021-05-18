@@ -1,7 +1,7 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
-import { formatFrequency, makeValueMinMaxBinding, makeImplementedBindings } from '../utils.js';
+import { formatFrequency, makeValueMinMaxBinding, makeImplementedBindings, limitValueDigits } from '../utils.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -75,6 +75,8 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
+    this.formatValueBinding = DynamicValue.fromConstant(limitValueDigits(4));
+    
     this.freqBindings = [
       ...makeValueMinMaxBinding('Frequency'),
       {
@@ -103,6 +105,10 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+      },
+      {
+        name: 'value.format',
+        backendValue: this.formatValueBinding,
       },
       {
         src: ['/Parameter/Min', '/Parameter/Max'],

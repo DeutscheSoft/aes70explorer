@@ -1,6 +1,6 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
-import { formatFrequency, makeValueMinMaxBinding } from '../utils.js';
+import { formatFrequency, makeValueMinMaxBinding, limitValueDigits } from '../utils.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
 
 const template = `
@@ -86,6 +86,8 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
   constructor() {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
+    this.formatValueBinding = DynamicValue.fromConstant(limitValueDigits(4));
+    
     this.labelBindings = [
       {
         src: '/Role',
@@ -129,6 +131,10 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
         name: 'knob.presets',
       },
       {
+        name: 'value.format',
+        backendValue: this.formatValueBinding,
+      },
+      {
         src: ['/WidthParameter/Min', '/WidthParameter/Max'],
         name: 'labels',
         transformReceive: function (arr) {
@@ -142,6 +148,10 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+      },
+      {
+        name: 'value.format',
+        backendValue: this.formatValueBinding,
       },
       {
         src: ['/ShapeParameter/Min', '/ShapeParameter/Max'],

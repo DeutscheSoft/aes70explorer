@@ -109,3 +109,13 @@ export function makeImplementedBindings(arr) {
   }
   return R;
 }
+
+export function limitValueDigits(limit) {
+  return function (value) {
+    const digits = parseInt(Math.abs(value)).toString().length;
+    let L = limit;
+    if (value < 0)
+      L -= 1;
+    return value.toFixed(Math.max(0, L - digits));
+  }
+}
