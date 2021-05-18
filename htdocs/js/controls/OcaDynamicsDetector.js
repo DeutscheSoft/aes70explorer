@@ -9,7 +9,6 @@ const template = `
 <div %if={{ this.implementsAttackTime }} class=attack>
   <aux-valueknob #attack
     label="Attack"
-    value.format='sprintf:%.3f'
     knob.show_hand=false
     %bind={{ this.attackBindings }}
     knob.preset=medium
@@ -21,7 +20,6 @@ const template = `
 <div %if={{ this.implementsReleaseTime }} class=release>
   <aux-valueknob #release
     label="Release"
-    value.format='sprintf:%.3f'
     knob.show_hand=false
     %bind={{ this.releaseBindings }}
     knob.preset=medium
@@ -33,7 +31,6 @@ const template = `
 <div %if={{ this.implementsHoldTime }} class=hold>
   <aux-valueknob #hold
     label="Hold"
-    value.format='sprintf:%.3f'
     knob.show_hand=false
     %bind={{ this.holdBindings }}
     knob.preset=medium

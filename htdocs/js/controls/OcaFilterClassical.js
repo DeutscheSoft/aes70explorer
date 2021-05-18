@@ -12,7 +12,6 @@ const template = `
   <aux-valueknob #param
     class=small
     label="Parameter"
-    value.format='sprintf:%.1f'
     knob.show_hand=false
     %bind={{ this.paramBindings }}
     knob.preset=small

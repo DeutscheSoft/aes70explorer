@@ -10,7 +10,6 @@ const template = `
   <aux-valueknob #attack
     class=small
     label="Attack"
-    value.format='sprintf:%.3f'
     knob.show_hand=false
     %bind={{ this.attackBindings }}
     knob.preset=small
@@ -23,7 +22,6 @@ const template = `
   <aux-valueknob #release
     class=small
     label="Release"
-    value.format='sprintf:%.3f'
     knob.show_hand=false
     %bind={{ this.releaseBindings }}
     knob.preset=small
@@ -36,7 +34,6 @@ const template = `
   <aux-valueknob #hold
     class=small
     label="Hold"
-    value.format='sprintf:%.3f'
     knob.show_hand=false
     %bind={{ this.holdBindings }}
     knob.preset=small
@@ -68,7 +65,6 @@ const template = `
   <aux-valueknob #thres
     class=small
     label="Threshold"
-    value.format='sprintf:%.1f'
     knob.show_hand=false
     %bind={{ this.thresholdBindings }}
     knob.preset=small
@@ -93,7 +89,6 @@ const template = `
   <aux-valueknob #ratio
     class=small
     label="Ratio"
-    value.format='sprintf:%.2f'
     knob.show_hand=false
     %bind={{ this.ratioBindings }}
     knob.preset=small
@@ -105,7 +100,6 @@ const template = `
   <aux-valueknob #knee
     class=small
     label="Knee"
-    value.format='sprintf:%.2f'
     knob.show_hand=false
     %bind={{ this.kneeBindings }}
     knob.preset=small
@@ -117,7 +111,6 @@ const template = `
   <aux-valueknob #gainceiling
     class=small
     label="Gain Ceiling"
-    value.format='sprintf:%.2f'
     knob.show_hand=false
     %bind={{ this.gainceilingBindings }}
     knob.preset=small
@@ -129,7 +122,6 @@ const template = `
   <aux-valueknob #gainfloor
     class=small
     label="Gain Floor"
-    value.format='sprintf:%.2f'
     knob.show_hand=false
     %bind={{ this.gainfloorBindings }}
     knob.preset=small

@@ -33,8 +33,7 @@ const template = `
     %bind={{ this.widthBindings }}
     label="Width"
     knob.show_hand=false
-    knob.preset=small
-    value.format='sprintf:%.1f'>
+    knob.preset=small>
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.widthClicked }}></aux-button>
 </div>
@@ -44,8 +43,7 @@ const template = `
     %bind={{ this.shapepBindings }}
     label="ShapeParam"
     knob.show_hand=false
-    knob.preset=small
-    value.format='sprintf:%.2f'>
+    knob.preset=small>
   </aux-valueknob>
   <aux-button class=edit icon=edit (click)={{ this.shapepClicked }}></aux-button>
 </div>
