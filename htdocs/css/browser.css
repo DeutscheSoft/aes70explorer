@@ -435,7 +435,6 @@ html {
 }
 #details > .details .grid > * {
   margin: 0;
-  min-width: 80px;
 }
 #details > .details .grid > .label {
   text-align: right;
