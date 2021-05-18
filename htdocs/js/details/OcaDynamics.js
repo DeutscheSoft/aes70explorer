@@ -131,35 +131,35 @@ class OcaDynamicsDetails extends TemplateComponent.fromString(template) {
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
     
     this.ThresholdBind = [{ src: '/Threshold', name: 'label',
-      transformReceive: v => v.Ref.toFixed(2) + 'dB' }];
+      transformReceive: v => v.Ref.toFixed(3) + 'dB' }];
       
     this.ThresholdBind = [{ src: '/Threshold', name: 'label',
-      transformReceive: v => v.Value.toFixed(2) + 'dB' }];
+      transformReceive: v => v.Value.toFixed(3) + 'dB' }];
     this.ThresholdMinBind = [{ src: '/Threshold/Min', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
     this.ThresholdMaxBind = [{ src: '/Threshold/Max', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
     
     this.SlopeBind = [{ src: '/Slope', name: 'label',
-      transformReceive: v => v.toFixed(2) + ':1' }];
+      transformReceive: v => v.toFixed(3) + ':1' }];
     this.SlopeMinBind = [{ src: '/Slope/Min', name: 'label',
-      transformReceive: v => v.toFixed(2) + ':1' }];
+      transformReceive: v => v.toFixed(3) + ':1' }];
     this.SlopeMaxBind = [{ src: '/Slope/Max', name: 'label',
-      transformReceive: v => v.toFixed(2) + ':1' }];
+      transformReceive: v => v.toFixed(3) + ':1' }];
     
     this.RatioBind = [{ src: '/Ratio', name: 'label',
-      transformReceive: v => v.toFixed(2) + ':1' }];
+      transformReceive: v => v.toFixed(3) + ':1' }];
     this.RatioMinBind = [{ src: '/Ratio/Min', name: 'label',
-      transformReceive: v => v.toFixed(2) + ':1' }];
+      transformReceive: v => v.toFixed(3) + ':1' }];
     this.RatioMaxBind = [{ src: '/Ratio/Max', name: 'label',
-      transformReceive: v => v.toFixed(2) + ':1' }];
+      transformReceive: v => v.toFixed(3) + ':1' }];
       
      this.KneeBind = [{ src: '/KneeParameter', name: 'label',
-      transformReceive: v => v.toFixed(2) }];
+      transformReceive: v => v.toFixed(3) }];
     this.KneeMinBind = [{ src: '/KneeParameter/Min', name: 'label',
-      transformReceive: v => v.toFixed(2) }];
+      transformReceive: v => v.toFixed(3) }];
     this.KneeMaxBind = [{ src: '/KneeParameter/Max', name: 'label',
-      transformReceive: v => v.toFixed(2) }];
+      transformReceive: v => v.toFixed(3) }];
     
     this.AttackBind = [{ src: '/AttackTime', name: 'label',
       transformReceive: v => v.toFixed(3) + 's' }];
@@ -184,18 +184,18 @@ class OcaDynamicsDetails extends TemplateComponent.fromString(template) {
       
       
     this.DynamicGainCeilingBind = [{ src: '/DynamicGainCeiling', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
     this.DynamicGainCeilingMinBind = [{ src: '/DynamicGainCeiling/Min', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
     this.DynamicGainCeilingMaxBind = [{ src: '/DynamicGainCeiling/Max', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
       
     this.DynamicGainFloorBind = [{ src: '/DynamicGainFloor', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
     this.DynamicGainFloorMinBind = [{ src: '/DynamicGainFloor/Min', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
     this.DynamicGainFloorMaxBind = [{ src: '/DynamicGainFloor/Max', name: 'label',
-      transformReceive: v => v.toFixed(2) + 'dB' }];
+      transformReceive: v => v.toFixed(3) + 'dB' }];
     
     this.FunctionBind = [{ src: '/Function', name: 'label',
       transformReceive: v => v.name }];
