@@ -202,6 +202,31 @@ aes70-control-dynamics > .detect {
   grid-area: detect;
 }
 
+
+aes70-control-dynamicsdetector {
+  display: grid !important;
+  grid-template-areas: "label label label"
+                       "attack release hold"
+                       ". . law";
+    grid-gap: 8px 0px;
+}
+aes70-control-dynamicsdetector > .aux-label {
+  grid-area: label;
+}
+aes70-control-dynamicsdetector > .attack {
+  grid-area: attack;
+}
+aes70-control-dynamicsdetector > .release {
+  grid-area: release;
+}
+aes70-control-dynamicsdetector > .hold {
+  grid-area: hold;
+}
+aes70-control-dynamicsdetector > .law {
+  grid-area: law;
+}
+
+
 aes70-control-filterclassical {
   display: grid !important;
   grid-template-areas:

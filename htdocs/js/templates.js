@@ -16,6 +16,7 @@ import './controls/OcaDelay.js';
 import './controls/OcaFilterParametric.js';
 import './controls/OcaFilterClassical.js';
 import './controls/OcaDynamics.js';
+import './controls/OcaDynamicsDetector.js';
 
 import './details/OcaDeviceManager.js';
 import './details/OcaBlock.js';
@@ -34,6 +35,7 @@ import './details/OcaSwitch.js';
 import './details/OcaFilterClassical.js';
 import './details/OcaFilterParametric.js';
 import './details/OcaDynamics.js';
+import './details/OcaDynamicsDetector.js';
 
 import './details/OcaSensor.js';
 import './details/OcaStringSensor.js';
