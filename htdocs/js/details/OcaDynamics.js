@@ -17,7 +17,7 @@ const template = `
   <aux-label %bind={{ this.LockableBind }}></aux-label>
 
   <span class="label">Triggered</span>
-  <aux-state %bind={{ this.TriggeredBind }}></aux-state>
+  <aux-label %bind={{ this.TriggeredBind }}></aux-label>
 
   <span class="label">DynamicGain</span>
   <aux-label %bind={{ this.DynamicGainBind }}></aux-label>
@@ -131,9 +131,6 @@ class OcaDynamicsDetails extends TemplateComponent.fromString(template) {
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
     
     this.ThresholdBind = [{ src: '/Threshold', name: 'label',
-      transformReceive: v => v.Ref.toFixed(3) + 'dB' }];
-      
-    this.ThresholdBind = [{ src: '/Threshold', name: 'label',
       transformReceive: v => v.Value.toFixed(3) + 'dB' }];
     this.ThresholdMinBind = [{ src: '/Threshold/Min', name: 'label',
       transformReceive: v => v.toFixed(3) + 'dB' }];
@@ -182,7 +179,6 @@ class OcaDynamicsDetails extends TemplateComponent.fromString(template) {
     this.HoldMaxBind = [{ src: '/HoldTime/Max', name: 'label',
       transformReceive: v => v.toFixed(3) + 's' }];
       
-      
     this.DynamicGainCeilingBind = [{ src: '/DynamicGainCeiling', name: 'label',
       transformReceive: v => v.toFixed(3) + 'dB' }];
     this.DynamicGainCeilingMinBind = [{ src: '/DynamicGainCeiling/Min', name: 'label',
@@ -203,6 +199,7 @@ class OcaDynamicsDetails extends TemplateComponent.fromString(template) {
       transformReceive: v => v.name }];
     this.DynamicGainBind = [{ src: '/DynamicGain', name: 'label',
       transformReceive: v => v.toFixed(3) + 'dB' }];
+    this.TriggeredBind = [{ src: '/Triggered', name: 'label', }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaDynamics, o);
