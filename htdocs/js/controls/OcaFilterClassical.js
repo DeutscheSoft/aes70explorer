@@ -1,7 +1,7 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
-import { formatFrequency, makeValueMinMaxBinding, makeImplementedBindings, limitValueDigits } from '../utils.js';
+import { makeValueMinMaxBinding, makeImplementedBindings, limitValueDigits } from '../utils.js';
 
 // knob.presets={{ "json:" + JSON.stringify(this.knobPresets) }}
 
@@ -193,7 +193,7 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       this.param.auxWidget.value._input.focus();
     }
     this.subscribeEvent('attached', () => {
-      this.freq.auxWidget.set('value.format', formatFrequency);
+      this.freq.auxWidget.set('value.format', limitValueDigits(5));
     });
   }
   static match(o) {
