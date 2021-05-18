@@ -142,7 +142,7 @@ aes70-control-dynamics {
   grid-template-areas: "label label label label label label label label"
                        "hold attack graph graph meter thres knee ceil"
                        ". release graph graph meter slope . floor"
-                       ". release func detect . slope . floor";
+                       "trig release func detect . slope . floor";
     grid-gap: 4px 4px;
 }
 aes70-control-dynamics > .aux-label {
@@ -152,6 +152,15 @@ aes70-control-dynamics > .aux-dynamics {
   grid-area: graph;
   width: 160px;
   height: 160px;
+}
+aes70-control-dynamics > .triggered {
+  grid-area: trig;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aes70-control-dynamics > .triggered > .aux-state {
+  margin-top: 8px;
 }
 
 aes70-control-dynamics > .aux-levelmeter {

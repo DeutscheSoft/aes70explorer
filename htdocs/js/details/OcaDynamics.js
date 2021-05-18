@@ -201,6 +201,8 @@ class OcaDynamicsDetails extends TemplateComponent.fromString(template) {
       transformReceive: v => v.name }];
     this.DetectorLawBind = [{ src: '/DetectorLaw', name: 'label',
       transformReceive: v => v.name }];
+    this.DynamicGainBind = [{ src: '/DynamicGain', name: 'label',
+      transformReceive: v => v.toFixed(3) + 'dB' }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaDynamics, o);

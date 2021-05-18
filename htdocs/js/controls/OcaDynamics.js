@@ -59,6 +59,11 @@ const template = `
   >
 </aux-levelmeter>
 
+<div %if={{ this.implementsTriggered }} class=triggered>
+  <aux-label label="Triggered"></aux-label>
+  <aux-state %bind={{ this.triggeredBindings }}></aux-state>
+</div>
+
 <div %if={{ this.implementsThreshold }} class=threshold>
   <aux-valueknob #thres
     class=small
@@ -165,6 +170,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       'DetectorLaw',
       'Function',
       'DynamicGain',
+      'Triggered',
     ]);
   }
   
@@ -185,6 +191,12 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/DynamicGain',
         name: 'value',
+      },
+    ];
+    this.triggeredBindings = [
+      {
+        src: '/Triggered',
+        name: 'state',
       },
     ];
     this.attackBindings = [
