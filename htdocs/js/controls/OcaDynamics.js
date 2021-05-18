@@ -49,6 +49,16 @@ const template = `
 <aux-dynamics %bind={{ this.dynamicsBindings }}>
 </aux-dynamics>
 
+<aux-levelmeter
+  %if={{ this.implementsDynamicGain }}
+  %bind={{ this.gainBindings }}
+  min=-96
+  max=0
+  scale="decibel"
+  label="Gain"
+  >
+</aux-levelmeter>
+
 <div %if={{ this.implementsThreshold }} class=threshold>
   <aux-valueknob #thres
     class=small
@@ -154,6 +164,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       'DynamicGainFloor',
       'DetectorLaw',
       'Function',
+      'DynamicGain',
     ]);
   }
   
@@ -168,6 +179,12 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+      },
+    ];
+    this.gainBindings = [
+      {
+        src: '/DynamicGain',
+        name: 'value',
       },
     ];
     this.attackBindings = [

@@ -139,10 +139,10 @@ aes70-control-bitstringactuator > .aux-buttons.aes70-size-tiny > .aux-button {
 
 aes70-control-dynamics {
   display: grid !important;
-  grid-template-areas: "label label label label label label label"
-                       "hold attack graph graph thres knee ceil"
-                       ". release graph graph slope . floor"
-                       ". release func detect slope . floor";
+  grid-template-areas: "label label label label label label label label"
+                       "hold attack graph graph meter thres knee ceil"
+                       ". release graph graph meter slope . floor"
+                       ". release func detect . slope . floor";
     grid-gap: 4px 4px;
 }
 aes70-control-dynamics > .aux-label {
@@ -151,6 +151,11 @@ aes70-control-dynamics > .aux-label {
 aes70-control-dynamics > .aux-dynamics {
   grid-area: graph;
   width: 160px;
+  height: 160px;
+}
+
+aes70-control-dynamics > .aux-levelmeter {
+  grid-area: meter;
   height: 160px;
 }
 
