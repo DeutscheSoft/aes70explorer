@@ -19,6 +19,7 @@ import './controls/OcaDynamics.js';
 import './controls/OcaDynamicsDetector.js';
 import './controls/OcaSignalGenerator.js';
 import './controls/OcaTemperatureActuator.js';
+import './controls/OcaIdentificationActuator.js';
 
 import './details/OcaDeviceManager.js';
 import './details/OcaBlock.js';
@@ -40,6 +41,7 @@ import './details/OcaDynamics.js';
 import './details/OcaDynamicsDetector.js';
 import './details/OcaSignalGenerator.js';
 import './details/OcaTemperatureActuator.js';
+import './details/OcaIdentificationActuator.js';
 
 import './details/OcaSensor.js';
 import './details/OcaStringSensor.js';
