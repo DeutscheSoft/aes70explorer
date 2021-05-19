@@ -292,31 +292,31 @@ aes70-control-gain > .aux-fader {
 }
 
 
-aes70-control-mute > .aux-toggle {
-  padding-left: var(--aux-button-paddinghorizontal);
+aes70-control-identificationactuator,
+aes70-control-mute,
+aes70-control-polarity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-aes70-control-mute > .aux-toggle::before {
-  content: none !important;
-}
-aes70-control-mute > .aux-toggle > .aux-icon {
-  font-size: 20px;
-  margin-right: 8px;
-}
-aes70-control-mute > .aux-toggle.aux-active > .aux-icon {
-  color: var(--color-accent);
-}
-
-
+aes70-control-identificationactuator > .aux-toggle,
+aes70-control-mute > .aux-toggle,
 aes70-control-polarity > .aux-toggle {
   padding-left: var(--aux-button-paddinghorizontal);
+  margin-top: 8px;
 }
+aes70-control-identificationactuator > .aux-toggle::before,
+aes70-control-mute > .aux-toggle::before,
 aes70-control-polarity > .aux-toggle::before {
   content: none !important;
 }
+aes70-control-identificationactuator > .aux-toggle > .aux-icon,
+aes70-control-mute > .aux-toggle > .aux-icon,
 aes70-control-polarity > .aux-toggle > .aux-icon {
   font-size: 20px;
-  margin-right: 8px;
 }
+aes70-control-identificationactuator > .aux-toggle.aux-active > .aux-icon,
+aes70-control-mute > .aux-toggle.aux-active > .aux-icon,
 aes70-control-polarity > .aux-toggle.aux-active > .aux-icon {
   color: var(--color-accent);
 }
