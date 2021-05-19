@@ -142,6 +142,17 @@ aes70-control-bitstringactuator > .aux-buttons.aes70-size-tiny > .aux-button {
 }
 
 
+aes70-control-booleansensor {
+  grid-area: trig;
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+}
+aes70-control-booleansensor > .aux-state {
+  margin-top: 8px;
+}
+
+
 aes70-control-dynamics {
   display: grid !important;
   grid-template-areas: "label label label label label label label label"
