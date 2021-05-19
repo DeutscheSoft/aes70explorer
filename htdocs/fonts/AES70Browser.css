@@ -31,3 +31,10 @@
 .aux-icon.allpass::before                   { font-family: 'AES70Browser'; content: '񗍗'; }
 .aux-icon.enabled::before                   { font-family: 'AES70Browser'; content: '񗍘'; }
 .aux-icon.item::before                      { font-family: 'AES70Browser'; content: '񗍙'; }
+.aux-icon.sine::before                      { font-family: 'AES70Browser'; content: '񗍚'; }
+.aux-icon.dc::before                        { font-family: 'AES70Browser'; content: '񗍛'; }
+.aux-icon.square::before                    { font-family: 'AES70Browser'; content: '񗍜'; }
+.aux-icon.impulse::before                   { font-family: 'AES70Browser'; content: '񗍝'; }
+.aux-icon.pinknoise::before                 { font-family: 'AES70Browser'; content: '񗍞'; }
+.aux-icon.whitenoise::before                { font-family: 'AES70Browser'; content: '񗍟'; }
+.aux-icon.polaritytest::before              { font-family: 'AES70Browser'; content: '񗍠'; }
