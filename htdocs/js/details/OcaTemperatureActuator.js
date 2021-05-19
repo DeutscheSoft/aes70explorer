@@ -15,10 +15,10 @@ const template = `
   <span class="label">Lockable</span>
   <aux-label %bind={{ this.LockableBind }}></aux-label>
 
-  <span class="label">Min</span>
+  <span class="label">Temperature Min</span>
   <aux-label %bind={{ this.MinBind }}></aux-label>
 
-  <span class="label">Max</span>
+  <span class="label">Temperature Max</span>
   <aux-label %bind={{ this.MaxBind }}></aux-label>
 
   <span class="label">Temperature</span>
