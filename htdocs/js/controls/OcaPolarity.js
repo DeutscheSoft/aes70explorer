@@ -2,17 +2,20 @@ import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 
 const template = `
-<aux-toggle icon=polarity %bind={{ this.faderBindings }}></aux-toggle>
+<aux-label %bind={{ this.labelBindings }}></aux-label>
+<aux-toggle icon=polarity %bind={{ this.toggleBindings }}></aux-toggle>
 `;
 
 class OcaPolarityControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
-    this.faderBindings = [
+    this.labelBindings = [
       {
         src: '/Role',
         name: 'label',
       },
+    ];
+    this.toggleBindings = [
       {
         src: '/State',
         name: 'state',
