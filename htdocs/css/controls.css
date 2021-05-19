@@ -1,7 +1,7 @@
 aes70-line-break {
   flex-basis: 100%;
-  margin: 16px 48px;
-  border-top: 3px dashed rgba(255,255,255,0.06);
+  margin: 16px 0px;
+  border-top: 4px dotted rgba(255,255,255,0.06);
 }
 
 aes70-control {
