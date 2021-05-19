@@ -158,6 +158,15 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
           const angle = amnt * 30;
           return 270 - angle / 2;
         }
+      },
+      {
+        src: ['/Order/Min', '/Order/Max'],
+        name: 'basis',
+        transformReceive: function (arr) {
+          const [min, max] = arr;
+          const amnt = (max - min);
+          return amnt * 40;
+        }
       }
     ];
     this.labelBindings = [
