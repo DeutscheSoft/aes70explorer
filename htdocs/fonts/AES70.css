@@ -42,6 +42,7 @@
 .aux-icon.ocaidentificationactuator::before  { font-family: 'AES70'; content: '񗝩'; }
 .aux-icon.ocasummingpoint::before            { font-family: 'AES70'; content: '񗝪'; }
 .aux-icon.ocasensor::before                  { font-family: 'AES70'; content: '񗝫'; }
+.aux-icon.ocabooleansensor::before           { font-family: 'AES70'; content: '񗝭'; }
 .aux-icon.ocastringsensor::before            { font-family: 'AES70'; content: '񗝸'; }
 .aux-icon.ocalevelsensor::before             { font-family: 'AES70'; content: '񗝺'; }
 .aux-icon.ocatimeintervalsensor::before      { font-family: 'AES70'; content: '񗝼'; }
