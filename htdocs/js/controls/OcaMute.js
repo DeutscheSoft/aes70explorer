@@ -2,13 +2,13 @@ import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 
 const template = `
-<aux-toggle icon=unmuted icon_active=muted %bind={{ this.faderBindings }}></aux-toggle>
+<aux-toggle icon=unmuted icon_active=muted %bind={{ this.toggleBindings }}></aux-toggle>
 `;
 
 class OcaMuteControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
-    this.faderBindings = [
+    this.toggleBindings = [
       {
         src: '/Role',
         name: 'label',
