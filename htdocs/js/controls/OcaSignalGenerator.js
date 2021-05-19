@@ -137,7 +137,7 @@ class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.frequency2Bindings = [
-      ...makeValueMinMaxBinding('Frequency2', null, null, true),
+      ...makeValueMinMaxBinding('Frequency2'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
