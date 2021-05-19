@@ -327,7 +327,7 @@ html {
   grid-template-areas: "head control"
                        "details control";
   grid-template-rows: auto 1fr;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 5fr 2fr;
   grid-gap: 8px 8px;
   padding: 8px 16px;
   background: var(--background-fade);
@@ -443,6 +443,9 @@ html {
   align-self: center;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+#details > .details .grid > .aux-widget {
+  max-width: 256px;
 }
 #details > .details .grid > .aux-value {
   width: 200px;
