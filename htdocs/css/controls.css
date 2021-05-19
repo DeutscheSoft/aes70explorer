@@ -102,6 +102,12 @@ aes70-control .aux-valueknob.small > .aux-value > .aux-input {
   font-size: var(--font-size);
 }
 
+.control .aux-buttons > .aux-button,
+aes70-control .aux-buttons > .aux-button {
+  padding: 0;
+  margin: 0 1px;
+  width: var(--aux-clickable-size);
+}
 
 
 aes70-control-bitstringactuator {
@@ -118,6 +124,7 @@ aes70-control-bitstringactuator > .aux-buttons {
 }
 aes70-control-bitstringactuator > .aux-buttons > .aux-button {
   padding: 0;
+  margin: 0;
 }
 aes70-control-bitstringactuator > .aux-buttons.aes70-size-large > .aux-button {
   min-width: 40px;
@@ -233,7 +240,6 @@ aes70-control-filterclassical {
     "label label label"
     "param freq order"
     "switch switch switch";
-  align-items: center !important;
   grid-gap: 8px 0;
 }
 aes70-control-filterclassical > .aux-label {
@@ -245,11 +251,6 @@ aes70-control-filterclassical > .freq {
 aes70-control-filterclassical > .switch {
   grid-area: switch;
 }
-aes70-control-filterclassical > .switch > .aux-buttons > .aux-button {
-  padding: 0;
-  margin: 1px;
-  width: var(--aux-clickable-size);
-}
 
 
 aes70-control-filterparametric {
@@ -258,7 +259,6 @@ aes70-control-filterparametric {
     "label label label label"
     "width freq gain shapep"
     "shape shape shape shape";
-  align-items: center !important;
   grid-gap: 8px 0;
 }
 aes70-control-filterparametric > .aux-label {
@@ -327,6 +327,59 @@ aes70-control-sensor {
 }
 aes70-control-sensor > .aux-meter {
   height: 100%;
+}
+
+
+aes70-control-signalgenerator {
+  display: grid !important;
+  grid-template-areas: "label label label label label"
+                       "freq1 freq2 level time type"
+                       "freq1 freq2 level time repeat"
+                       "wave wave wave wave active";
+  grid-gap: 8px 0;
+}
+aes70-control-signalgenerator > .aux-label {
+  grid-area: label;
+}
+aes70-control-signalgenerator > .freq1 {
+  grid-area: freq1;
+}
+aes70-control-signalgenerator > .freq2 {
+  grid-area: freq2;
+}
+aes70-control-signalgenerator > .level {
+  grid-area: level;
+}
+aes70-control-signalgenerator > .sweeptime {
+  grid-area: time;
+}
+aes70-control-signalgenerator > .sweeptype {
+  grid-area: type;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aes70-control-signalgenerator > .sweeptype > .aux-select {
+  width: 100%;
+  margin-top: 8px;
+}
+aes70-control-signalgenerator > .sweeprepeat {
+  grid-area: repeat;
+  width: fit-content;
+}
+aes70-control-signalgenerator > .waveform {
+  grid-area: wave;
+}
+aes70-control-signalgenerator > .generating {
+  grid-area: active;
+}
+aes70-control-signalgenerator > .generating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aes70-control-signalgenerator > .generating > .aux-state {
+  margin-top: 8px;
 }
 
 
