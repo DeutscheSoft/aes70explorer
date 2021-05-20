@@ -60,8 +60,37 @@ function findBestMatch(set, o) {
 export function findTemplateControl(o) {
   return findBestMatch(templateControls, o);
 }
+
+export async function createControlComponent(o) {
+  const tagName = await findTemplateControl(o);
+
+  if (!tagName)
+    return null;
+
+  const element = document.createElement(tagName);
+
+  if (element.setControlObject)
+    element.setControlObject(o);
+
+  return element;
+}
+
 export function findTemplateDetails(o) {
   return findBestMatch(templateDetails, o);
+}
+
+export async function createDetailsComponent(o) {
+  const tagName = await findTemplateDetails(o);
+
+  if (!tagName)
+    return null;
+
+  const element = document.createElement(tagName);
+
+  if (element.setControlObject)
+    element.setControlObject(o);
+
+  return element;
 }
 
 export function registerControl(path, node) {

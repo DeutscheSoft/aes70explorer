@@ -1,6 +1,6 @@
 import { getBackendValue, DynamicValue, TemplateComponent, switchMap, map, fromSubscription, resolve } from '../../AWML/src/index.pure.js';
 import { callUnsubscribe, classIDToString } from '../utils.js';
-import { findTemplateDetails, findTemplateControl } from '../template_components.js';
+import { createDetailsComponent, createControlComponent } from '../template_components.js';
 
 const docsLink = 'http://docs.deuso.de/AES70-OCC/Control Classes/';
 const template = `
@@ -34,12 +34,8 @@ const DetailComponent = resolve(ObjectAndSelected, async ([ o, selected ]) => {
   if (!o)
     return null;
 
-  const tagName = await findTemplateDetails(o);
+  const element = await createDetailsComponent(o);
 
-  if (!tagName)
-    return null;
-
-  const element = document.createElement(tagName);
   element.classList.add('details');
 
   element.setAttribute('prefix', selected.prefix);
@@ -51,12 +47,7 @@ const ControlComponent = resolve(ObjectAndSelected, async ([ o, selected ]) => {
   if (!o)
     return null;
 
-  const tagName = await findTemplateControl(o);
-
-  if (!tagName)
-    return null;
-
-  const element = document.createElement(tagName);
+  const element = await createControlComponent(o);
 
   element.setAttribute('prefix', selected.prefix);
 
