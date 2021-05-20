@@ -63,8 +63,7 @@ class OcaTimeIntervalSensorControl extends TemplateComponent.fromString(template
     ];
   }
   static match(o) {
-    return 
-      matchClass(OCA.RemoteControlClasses.OcaSensor, o);
+    return matchClass(OCA.RemoteControlClasses.OcaTimeIntervalSensor, o);
   }
 }
 
