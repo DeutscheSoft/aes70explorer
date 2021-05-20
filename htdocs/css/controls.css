@@ -428,13 +428,19 @@ aes70-control-stringactuator > .aux-value {
 }
 
 
+aes70-control-frequencysensor,
 aes70-control-stringsensor {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-aes70-control-stringsensor > .aux-label.label {
-  margin-bottom: 8px;
+aes70-control-frequencysensor > .aux-label.value,
+aes70-control-stringsensor > .aux-label.value {
+  margin-top: 8px;
+  font-size: var(--font-size-large);
+}
+aes70-control-frequencysensor > .aux-label.value::after {
+  content: "Hz";
 }
 
 

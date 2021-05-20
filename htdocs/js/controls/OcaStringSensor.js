@@ -3,8 +3,8 @@ import { matchClass, registerTemplateControl } from '../template_components.js';
 
 
 const template = `
-<aux-label %bind={{ this.labelBindings }}></aux-label>
-<aux-label %bind={{ this.sensorBindings }}></aux-label>
+<aux-label %bind={{ this.labelBindings }} class=label></aux-label>
+<aux-label %bind={{ this.sensorBindings }} class=value></aux-label>
 `;
 
 class OcaStringSensorControl extends TemplateComponent.fromString(template) {
