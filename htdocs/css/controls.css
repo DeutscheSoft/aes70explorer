@@ -344,10 +344,12 @@ aes70-control-polarity > .aux-toggle.aux-active > .aux-icon {
 }
 
 
-aes70-control-sensor {
+aes70-control-floatsensor,
+aes70-control-intsensor {
   height: 240px;
 }
-aes70-control-sensor > .aux-meter {
+aes70-control-floatsensor > .aux-meter,
+aes70-control-intsensor > .aux-meter {
   height: 100%;
 }
 

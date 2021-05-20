@@ -18,7 +18,8 @@ import './controls/OcaSignalGenerator.js';
 import './controls/OcaTemperatureActuator.js';
 import './controls/OcaIdentificationActuator.js';
 
-import './controls/OcaSensor.js';
+import './controls/OcaIntSensor.js';
+import './controls/OcaFloatSensor.js';
 import './controls/OcaBooleanSensor.js';
 import './controls/OcaStringSensor.js';
 import './controls/OcaBitstringSensor.js';
