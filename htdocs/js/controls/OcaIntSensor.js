@@ -9,7 +9,6 @@ const colorMin = '#280062';
 
 const template = `
 <aux-levelmeter
-  falling=100
   show_value=true
   sync_value=true
   format_value="sprintf:%d"
