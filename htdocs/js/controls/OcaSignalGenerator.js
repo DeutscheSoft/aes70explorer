@@ -88,21 +88,34 @@ const template = `
   <aux-label label="Generating"></aux-label>
   <aux-state %bind={{ this.generatingBindings}}></aux-state>
 </div>
+
+<div class=generating %if={{ this.implementsGenerating }}>
+  <aux-button %if={{ !this.isGenerating }} label='Start' (click)={{ this.onStartClicked }} ></aux-button>
+  <aux-button %if={{ this.isGenerating }} label='Stop' (click)={{ this.onStopClicked }} ></aux-button>
+</div>
 `;
 
 
 class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
   static getHostBindings() {
-    return makeImplementedBindings([
-      'Frequency1',
-      'Frequency2',
-      'Level',
-      'SweepTime',
-      'SweepType',
-      'SweepRepeat',
-      'Waveform',
-      'Generating',
-    ]);
+    return [
+      ...makeImplementedBindings([
+        'Frequency1',
+        'Frequency2',
+        'Level',
+        'SweepTime',
+        'SweepType',
+        'SweepRepeat',
+        'Waveform',
+        'Generating',
+      ]),
+      {
+        src: '/Generating',
+        name: 'isGenerating',
+        sync: true,
+        readonly: true,
+      }
+    ];
   }
   
   constructor() {
@@ -235,9 +248,21 @@ class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
     this.sweeptimeClicked = (e) => {
       this.sweeptime.auxWidget.value._input.focus();
     }
+
+    this._controlObject = null;
+    this.onStartClicked = async () => {
+      await this._controlObject.Start();
+    };
+    this.onStopClicked = async () => {
+      await this._controlObject.Stop();
+    };
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaSignalGenerator, o);
+  }
+
+  setControlObject(o) {
+    this._controlObject = o;
   }
 }
 
