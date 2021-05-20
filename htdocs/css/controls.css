@@ -344,8 +344,8 @@ aes70-control-signalgenerator {
   grid-template-areas: "label label label label label"
                        "freq1 freq2 level time type"
                        "freq1 freq2 level time repeat"
-                       "wave wave wave wave active";
-  grid-gap: 8px 0;
+                       "wave wave wave wave toggle";
+  grid-gap: 8px 2px;
 }
 aes70-control-signalgenerator > .aux-label {
   grid-area: label;
@@ -379,18 +379,16 @@ aes70-control-signalgenerator > .sweeprepeat {
 aes70-control-signalgenerator > .waveform {
   grid-area: wave;
 }
-aes70-control-signalgenerator > .generating {
-  grid-area: active;
+aes70-control-signalgenerator > .startstop {
+  grid-area: toggle;
 }
-aes70-control-signalgenerator > .generating {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+aes70-control-signalgenerator > .startstop > * {
+  width: 100%;
 }
-aes70-control-signalgenerator > .generating > .aux-state {
-  margin-top: 8px;
+aes70-control-signalgenerator > .startstop > .stop {
+  background: var(--color-accent);
+  color: var(--color-contrast);
 }
-
 
 aes70-control-stringactuator {
   display: flex;

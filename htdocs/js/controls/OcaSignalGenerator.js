@@ -84,14 +84,9 @@ const template = `
   >
 </aux-toggle>
 
-<div class=generating %if={{ this.implementsGenerating }}>
-  <aux-label label="Generating"></aux-label>
-  <aux-state %bind={{ this.generatingBindings}}></aux-state>
-</div>
-
-<div class=generating %if={{ this.implementsGenerating }}>
-  <aux-button %if={{ !this.isGenerating }} label='Start' (click)={{ this.onStartClicked }} ></aux-button>
-  <aux-button %if={{ this.isGenerating }} label='Stop' (click)={{ this.onStopClicked }} ></aux-button>
+<div class=startstop %if={{ this.implementsGenerating }}>
+  <aux-button %if={{ !this.isGenerating }} icon='play' class=start (click)={{ this.onStartClicked }} ></aux-button>
+  <aux-button %if={{ this.isGenerating }} icon='stop' class=stop (click)={{ this.onStopClicked }} ></aux-button>
 </div>
 `;
 
