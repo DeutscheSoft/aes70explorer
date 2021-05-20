@@ -16,11 +16,11 @@ const template = `
   <aux-label %bind={{ this.LockableBind }}></aux-label>
 
   <span class="label">Reading</span>
-  <aux-label %bind={{ this.ReadingBind }}></aux-label>
+  <aux-label %bind={{ this.ReadingBind }} format="sprintf:%d"></aux-label>
 </div>
 `;
 
-class OcaSensorDetails extends TemplateComponent.fromString(template) {
+class OcaIntSensorDetails extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {name: 'implementsLabel', src: '/Label/Implemented', readonly: true, sync: true},
@@ -46,10 +46,8 @@ class OcaSensorDetails extends TemplateComponent.fromString(template) {
       matchClass(OCA.RemoteControlClasses.OcaUint16Sensor, o),
       matchClass(OCA.RemoteControlClasses.OcaUint32Sensor, o),
       matchClass(OCA.RemoteControlClasses.OcaUint64Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaFloat32Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaFloat64Sensor, o),
     );
   }
 }
 
-registerTemplateDetails(OcaSensorDetails, 'sensor');
+registerTemplateDetails(OcaIntSensorDetails, 'intsensor');

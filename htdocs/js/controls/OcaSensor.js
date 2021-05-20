@@ -1,6 +1,7 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
 import { matchClass, registerTemplateControl } from '../template_components.js';
 import { makeValueMinMaxBinding } from '../utils.js';
+import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
 
 const colorMax = '#ff6600';
 const colorMid = '#8b06a5';
@@ -10,7 +11,8 @@ const template = `
 <aux-levelmeter
   falling=100
   show_value=true
-  value.format='sprintf:%.2f'
+  sync_value=true
+  scale.labels='sprintf:%d'
   foreground='black'
   %bind={{ this.meterBindings }}
   >
@@ -56,7 +58,18 @@ class OcaSensorControl extends TemplateComponent.fromString(template) {
     ];
   }
   static match(o) {
-    return matchClass(OCA.RemoteControlClasses.OcaSensor, o);
+    return Math.max(
+      matchClass(OCA.RemoteControlClasses.OcaInt8Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt16Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt32Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaInt64Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint8Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint16Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint32Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaUint64Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaFloat32Sensor, o),
+      matchClass(OCA.RemoteControlClasses.OcaFloat64Sensor, o),
+    );
   }
 }
 

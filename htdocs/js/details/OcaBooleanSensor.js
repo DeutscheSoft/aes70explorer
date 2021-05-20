@@ -20,7 +20,7 @@ const template = `
 </div>
 `;
 
-class OcaSensorDetails extends TemplateComponent.fromString(template) {
+class OcaIntSensorDetails extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {name: 'implementsLabel', src: '/Label/Implemented', readonly: true, sync: true},
@@ -37,19 +37,8 @@ class OcaSensorDetails extends TemplateComponent.fromString(template) {
     this.ReadingBind = [{ src: '/Reading', name: 'label', readonly: true }];
   }
   static match(o) {
-    return Math.max(
-      matchClass(OCA.RemoteControlClasses.OcaInt8Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaInt16Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaInt32Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaInt64Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaUint8Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaUint16Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaUint32Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaUint64Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaFloat32Sensor, o),
-      matchClass(OCA.RemoteControlClasses.OcaFloat64Sensor, o),
-    );
+    return matchClass(OCA.RemoteControlClasses.OcaBooleanSensor, o);
   }
 }
 
-registerTemplateDetails(OcaSensorDetails, 'sensor');
+registerTemplateDetails(OcaIntSensorDetails, 'booleansensor');
