@@ -54,6 +54,7 @@
 .aux-icon.ocafloat32sensor::before           { font-family: 'AES70'; content: '񗝶'; }
 .aux-icon.ocafloat64sensor::before           { font-family: 'AES70'; content: '񗝷'; }
 .aux-icon.ocastringsensor::before            { font-family: 'AES70'; content: '񗝸'; }
+.aux-icon.ocabitstringsensor::before         { font-family: 'AES70'; content: '񗝹'; }
 .aux-icon.ocalevelsensor::before             { font-family: 'AES70'; content: '񗝺'; }
 .aux-icon.ocatimeintervalsensor::before      { font-family: 'AES70'; content: '񗝼'; }
 .aux-icon.ocatemperaturesensor::before       { font-family: 'AES70'; content: '񗝾'; }

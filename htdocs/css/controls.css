@@ -387,6 +387,9 @@ aes70-control-signalgenerator > .startstop > * {
   padding: 0;
   width: var(--aux-clickable-size);
 }
+aes70-control-signalgenerator > .startstop > .start {
+  color: var(--color-accent);
+}
 aes70-control-signalgenerator > .startstop > .stop {
   background: var(--color-accent);
   color: var(--color-contrast);
