@@ -47,12 +47,12 @@ class OcaSwitchDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.PositionBind = [{ src: '/Position', name: 'label' }];
-    this.MinBind = [{ src: '/Position/Min', name: 'label' }];
-    this.MaxBind = [{ src: '/Position/Max', name: 'label' }];
-    this.NamesBind = [{ src: '/PositionNames', name: 'label',
+    this.PositionBind = [{ src: '/Position', name: 'label', readonly: true }];
+    this.MinBind = [{ src: '/Position/Min', name: 'label', readonly: true }];
+    this.MaxBind = [{ src: '/Position/Max', name: 'label', readonly: true }];
+    this.NamesBind = [{ src: '/PositionNames', name: 'label', readonly: true,
       transformReceive: v => v.join(',') }];
-    this.EnabledsBind = [{ src: '/PositionEnableds', name: 'label',
+    this.EnabledsBind = [{ src: '/PositionEnableds', name: 'label', readonly: true,
       transformReceive: v => v.join(',') }];
   }
   static match(o) {

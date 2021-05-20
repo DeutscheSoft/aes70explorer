@@ -59,27 +59,27 @@ class OcaFilterClassicalDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.FrequencyBind = [{ src: '/Frequency', name: 'label',
+    this.FrequencyBind = [{ src: '/Frequency', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
-    this.FrequencyMinBind = [{ src: '/Frequency/Min', name: 'label',
+    this.FrequencyMinBind = [{ src: '/Frequency/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
-    this.FrequencyMaxBind = [{ src: '/Frequency/Max', name: 'label',
+    this.FrequencyMaxBind = [{ src: '/Frequency/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
-    this.ParameterBind = [{ src: '/Parameter', name: 'label',
+    this.ParameterBind = [{ src: '/Parameter', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.ParameterMinBind = [{ src: '/Parameter/Min', name: 'label',
+    this.ParameterMinBind = [{ src: '/Parameter/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.ParameterMaxBind = [{ src: '/Parameter/Max', name: 'label',
+    this.ParameterMaxBind = [{ src: '/Parameter/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
     this.OrderBind = [{ src: '/Order', name: 'label',
       transformReceive: v => v.toFixed(0) }];
-    this.OrderMinBind = [{ src: '/Order/Min', name: 'label',
+    this.OrderMinBind = [{ src: '/Order/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(0) }];
-    this.OrderMaxBind = [{ src: '/Order/Max', name: 'label',
+    this.OrderMaxBind = [{ src: '/Order/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(0) }];
-    this.ShapeBind = [{ src: '/Shape', name: 'label',
+    this.ShapeBind = [{ src: '/Shape', name: 'label', readonly: true,
       transformReceive: v => v.name }];
-    this.PassbandBind = [{ src: '/Passband', name: 'label',
+    this.PassbandBind = [{ src: '/Passband', name: 'label', readonly: true,
       transformReceive: v => v.name }];
   }
   static match(o) {

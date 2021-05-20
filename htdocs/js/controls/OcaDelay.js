@@ -25,18 +25,22 @@ class OcaDelayControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
         backendValue: this.formatValueBinding,
+        readonly: true,
       },
       {
         src: ['/DelayTime/Min', '/DelayTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.3f', min)}, {pos:max, label:sprintf('%.3f', max)}];

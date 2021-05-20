@@ -45,11 +45,11 @@ class OcaGainDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.SettingBind = [{ src: '/Gain', name: 'label',
+    this.SettingBind = [{ src: '/Gain', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.MinBind = [{ src: '/Gain/Min', name: 'label',
+    this.MinBind = [{ src: '/Gain/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.MaxBind = [{ src: '/Gain/Max', name: 'label',
+    this.MaxBind = [{ src: '/Gain/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
   }
   static match(o) {

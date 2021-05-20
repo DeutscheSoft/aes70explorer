@@ -34,7 +34,7 @@ class OcaBooleanExtendedActuatorDetails extends TemplateComponent.fromString(tem
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.StateBind = [{ src: '/State', name: 'label' }];
+    this.StateBind = [{ src: '/State', name: 'label', readonly: true }];
   }
   static match(o) {
     return Math.max(matchClass(OCA.RemoteControlClasses.OcaMute, o),

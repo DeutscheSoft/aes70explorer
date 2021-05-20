@@ -27,22 +27,27 @@ class OcaFloatActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         src: '/Setting/Min',
         name: 'base',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/Setting/Min', '/Setting/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];

@@ -37,8 +37,8 @@ class OcaStringActuatorDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.SettingBind = [{ src: '/Setting', name: 'label' }];
-    this.MaxLenBind = [{ src: '/MaxLen', name: 'label' }];
+    this.SettingBind = [{ src: '/Setting', name: 'label', readonly: true }];
+    this.MaxLenBind = [{ src: '/MaxLen', name: 'label', readonly: true }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaStringActuator, o);

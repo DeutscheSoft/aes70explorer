@@ -26,26 +26,32 @@ class OcaFloatSensorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         src: '/Reading',
         name: 'value',
+        readonly: true,
       },
       {
         src: '/Reading/Min',
         name: 'min',
+        readonly: true,
       },
       {
         src: '/Reading/Max',
         name: 'max',
+        readonly: true,
       },
       {
         src: '/Reading/Min',
         name: 'base',
+        readonly: true,
       },
       {
         src: ['/Reading/Min','/Reading/Max'],
         name: 'gradient',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           let grad = {};

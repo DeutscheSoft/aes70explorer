@@ -71,24 +71,24 @@ class OcaDeviceManagerDetails extends TemplateComponent.fromString(template) {
     this.LabelBind = [{ src: '/Label', name: 'value' }];
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.ManufacturerIDBind = [{ src: '/ModelGUID', name: 'label',
+    this.ManufacturerIDBind = [{ src: '/ModelGUID', name: 'label', readonly: true,
       transformReceive: extractManufaturerID }];
-    this.ModelIDBind = [{ src: '/ModelGUID', name: 'label',
+    this.ModelIDBind = [{ src: '/ModelGUID', name: 'label', readonly: true,
       transformReceive: extractModelID }];
-    this.SerialNumberBind = [{ src: '/SerialNumber', name: 'label' }];
-    this.ManufacturerBind = [{ src: '/ModelDescription', name: 'label',
+    this.SerialNumberBind = [{ src: '/SerialNumber', name: 'label', readonly: true }];
+    this.ManufacturerBind = [{ src: '/ModelDescription', name: 'label', readonly: true,
       transformReceive: v => v.Manufacturer }];
-    this.ModelBind = [{ src: '/ModelDescription', name: 'label',
+    this.ModelBind = [{ src: '/ModelDescription', name: 'label', readonly: true,
       transformReceive: v => v.Name }];
-    this.VersionBind = [{ src: '/ModelDescription', name: 'label',
+    this.VersionBind = [{ src: '/ModelDescription', name: 'label', readonly: true,
       transformReceive: v => v.Version }];
-    this.DeviceNameBind = [{ src: '/DeviceName', name: 'label' }];
-    this.OCAVersionBind = [{ src: '/OcaVersion', name: 'label' }];
-    this.DeviceRoleBind = [{ src: '/DeviceRole', name: 'label' }];
-    this.UserInventoryCodeBind = [{ src: '/UserInventoryCode', name: 'label' }];
-    this.DeviceStateBind = [{ src: '/State', name: 'label' }];
-    this.MessageBind = [{ src: '/Message', name: 'label' }];
-    this.DeviceRevisionIDBind = [{ src: '/DeviceRevisionID', name: 'label' }];
+    this.DeviceNameBind = [{ src: '/DeviceName', name: 'label', readonly: true }];
+    this.OCAVersionBind = [{ src: '/OcaVersion', name: 'label', readonly: true }];
+    this.DeviceRoleBind = [{ src: '/DeviceRole', name: 'label', readonly: true }];
+    this.UserInventoryCodeBind = [{ src: '/UserInventoryCode', name: 'label', readonly: true }];
+    this.DeviceStateBind = [{ src: '/State', name: 'label', readonly: true }];
+    this.MessageBind = [{ src: '/Message', name: 'label', readonly: true }];
+    this.DeviceRevisionIDBind = [{ src: '/DeviceRevisionID', name: 'label', readonly: true }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaDeviceManager, o);

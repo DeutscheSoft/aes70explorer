@@ -30,22 +30,27 @@ class OcaFreqActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         src: '/Frequency/Min',
         name: 'base',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/Frequency/Min', '/Frequency/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];

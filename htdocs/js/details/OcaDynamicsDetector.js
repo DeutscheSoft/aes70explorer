@@ -64,25 +64,25 @@ class OcaDynamicsDetectorDetails extends TemplateComponent.fromString(template) 
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
     
-    this.AttackBind = [{ src: '/AttackTime', name: 'label',
+    this.AttackBind = [{ src: '/AttackTime', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.AttackMinBind = [{ src: '/AttackTime/Min', name: 'label',
+    this.AttackMinBind = [{ src: '/AttackTime/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.AttackMaxBind = [{ src: '/AttackTime/Max', name: 'label',
-      transformReceive: v => v.toFixed(3) + 's' }];
-    
-    this.ReleaseBind = [{ src: '/ReleaseTime', name: 'label',
-      transformReceive: v => v.toFixed(3) + 's' }];
-    this.ReleaseMinBind = [{ src: '/ReleaseTime/Min', name: 'label',
-      transformReceive: v => v.toFixed(3) + 's' }];
-    this.ReleaseMaxBind = [{ src: '/ReleaseTime/Max', name: 'label',
+    this.AttackMaxBind = [{ src: '/AttackTime/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
     
-    this.HoldBind = [{ src: '/HoldTime', name: 'label',
+    this.ReleaseBind = [{ src: '/ReleaseTime', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.HoldMinBind = [{ src: '/HoldTime/Min', name: 'label',
+    this.ReleaseMinBind = [{ src: '/ReleaseTime/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.HoldMaxBind = [{ src: '/HoldTime/Max', name: 'label',
+    this.ReleaseMaxBind = [{ src: '/ReleaseTime/Max', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 's' }];
+    
+    this.HoldBind = [{ src: '/HoldTime', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 's' }];
+    this.HoldMinBind = [{ src: '/HoldTime/Min', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 's' }];
+    this.HoldMaxBind = [{ src: '/HoldTime/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
       
     this.LawBind = [{ src: '/Law', name: 'label',

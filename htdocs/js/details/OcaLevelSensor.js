@@ -40,11 +40,12 @@ class OcaLevelSensorDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label', readonly: true }];
     this.LockableBind = [{ src: '/Lockable', name: 'label', readonly: true }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state', readonly: true }];
-    this.ReadingBind = [{ src: '/Reading', name: 'label', readonly: true }];
-    this.MinBind = [{ src: '/Reading/Min', name: 'label',
-      transformReceive: v => v.toFixed(3) }];
-    this.MaxBind = [{ src: '/Reading/Max', name: 'label',
-      transformReceive: v => v.toFixed(3) }];
+    this.ReadingBind = [{ src: '/Reading', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 'dB' }];
+    this.MinBind = [{ src: '/Reading/Min', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 'dB' }];
+    this.MaxBind = [{ src: '/Reading/Max', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 'dB' }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaLevelSensor, o);

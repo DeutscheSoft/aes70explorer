@@ -90,6 +90,7 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.frequencyBindings = [
@@ -97,10 +98,12 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         src: ['/Frequency/Min', '/Frequency/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -112,10 +115,12 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         src: ['/InbandGain/Min', '/InbandGain/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -127,14 +132,17 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/WidthParameter/Min', '/WidthParameter/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -146,14 +154,17 @@ class OcaFilterParametricControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/ShapeParameter/Min', '/ShapeParameter/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];

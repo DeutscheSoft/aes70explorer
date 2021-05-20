@@ -27,22 +27,27 @@ class OcaTemperatureActuatorControl extends TemplateComponent.fromString(templat
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         src: '/Temperature/Min',
         name: 'base',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
         backendValue: this.formatValueBinding,
+        readonly: true,
       },
       {
         src: ['/Temperature/Min', '/Temperature/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];

@@ -17,6 +17,7 @@ class OcaSwitchControl extends TemplateComponent.fromString(template) {
       {
         src: ['/PositionNames','/PositionEnableds','/Position/Min','/Position/Max'],
         name: 'entries',
+        readonly: true,
         debounce: 10,
         partial: true,
         transformReceive: (arr) => {
@@ -41,6 +42,7 @@ class OcaSwitchControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
   }

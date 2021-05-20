@@ -82,40 +82,40 @@ class OcaSignalGeneratorDetails extends TemplateComponent.fromString(template) {
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
     
-    this.Frequency1Bind = [{ src: '/Frequency1', name: 'label',
+    this.Frequency1Bind = [{ src: '/Frequency1', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
-    this.Frequency1MinBind = [{ src: '/Frequency1/Min', name: 'label',
+    this.Frequency1MinBind = [{ src: '/Frequency1/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
-    this.Frequency1MaxBind = [{ src: '/Frequency1/Max', name: 'label',
+    this.Frequency1MaxBind = [{ src: '/Frequency1/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
     
-    this.Frequency2Bind = [{ src: '/Frequency2', name: 'label',
+    this.Frequency2Bind = [{ src: '/Frequency2', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
-    this.Frequency2MinBind = [{ src: '/Frequency2/Min', name: 'label',
+    this.Frequency2MinBind = [{ src: '/Frequency2/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
-    this.Frequency2MaxBind = [{ src: '/Frequency2/Max', name: 'label',
+    this.Frequency2MaxBind = [{ src: '/Frequency2/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'Hz' }];
     
     this.LevelBind = [{ src: '/Level', name: 'label',
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.LevelMinBind = [{ src: '/Level/Min', name: 'label',
+    this.LevelMinBind = [{ src: '/Level/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.LevelMaxBind = [{ src: '/Level/Max', name: 'label',
+    this.LevelMaxBind = [{ src: '/Level/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
       
-    this.SweepTimeBind = [{ src: '/SweepTime', name: 'label',
+    this.SweepTimeBind = [{ src: '/SweepTime', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.SweepTimeMinBind = [{ src: '/SweepTime/Min', name: 'label',
+    this.SweepTimeMinBind = [{ src: '/SweepTime/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.SweepTimeMaxBind = [{ src: '/SweepTime/Max', name: 'label',
+    this.SweepTimeMaxBind = [{ src: '/SweepTime/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
       
-    this.SweepTypeBind = [{ src: '/SweepType', name: 'label',
+    this.SweepTypeBind = [{ src: '/SweepType', name: 'label', readonly: true,
       transformReceive: v => v.name }];
-    this.SweepRepeatBind = [{ src: '/SweepRepeat', name: 'label', }];
-    this.WaveformBind = [{ src: '/Waveform', name: 'label',
+    this.SweepRepeatBind = [{ src: '/SweepRepeat', name: 'label', readonly: true, }];
+    this.WaveformBind = [{ src: '/Waveform', name: 'label', readonly: true,
       transformReceive: v => v.name }];
-    this.GeneratingBind = [{ src: '/Generating', name: 'label', }];
+    this.GeneratingBind = [{ src: '/Generating', name: 'label', readonly: true, }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaSignalGenerator, o);

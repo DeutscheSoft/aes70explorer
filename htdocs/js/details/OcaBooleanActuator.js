@@ -34,7 +34,7 @@ class OcaBooleanActuatorDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.SettingBind = [{ src: '/Setting', name: 'label' }];
+    this.SettingBind = [{ src: '/Setting', name: 'label', readonly: true }];
   }
 
   static match(o) {

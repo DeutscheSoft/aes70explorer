@@ -20,10 +20,12 @@ class OcaGainControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         src: ['/Gain/Min', '/Gain/Max'],
         name: 'scale.fixed_labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{value:min, label: min.toFixed(0) }, {value:max, label: max.toFixed(0)}];

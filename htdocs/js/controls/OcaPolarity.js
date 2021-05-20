@@ -13,6 +13,7 @@ class OcaPolarityControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.toggleBindings = [

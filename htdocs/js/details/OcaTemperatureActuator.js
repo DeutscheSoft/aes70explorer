@@ -40,12 +40,12 @@ class OcaTemperatureActuatorDetails extends TemplateComponent.fromString(templat
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.TemperatureBind = [{ src: '/Temperature', name: 'label',
-      transformReceive: v => v.toFixed(3) }];
-    this.MinBind = [{ src: '/Temperature/Min', name: 'label',
-      transformReceive: v => v.toFixed(3) }];
-    this.MaxBind = [{ src: '/Temperature/Max', name: 'label',
-      transformReceive: v => v.toFixed(3) }];
+    this.TemperatureBind = [{ src: '/Temperature', readonly: true, name: 'label',
+      transformReceive: v => v.toFixed(3) + '°C' }];
+    this.MinBind = [{ src: '/Temperature/Min', readonly: true, name: 'label',
+      transformReceive: v => v.toFixed(3) + '°C' }];
+    this.MaxBind = [{ src: '/Temperature/Max', readonly: true, name: 'label',
+      transformReceive: v => v.toFixed(3) + '°C' }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaTemperatureActuator, o);

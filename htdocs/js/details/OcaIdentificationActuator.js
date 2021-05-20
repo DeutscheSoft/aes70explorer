@@ -34,7 +34,7 @@ class OcaIdentificationActuatorDetails extends TemplateComponent.fromString(temp
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.ActiveBind = [{ src: '/Active', name: 'label' }];
+    this.ActiveBind = [{ src: '/Active', name: 'label', readonly: true }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaIdentificationActuator, o);

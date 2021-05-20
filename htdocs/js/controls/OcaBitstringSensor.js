@@ -33,16 +33,19 @@ class OcaBitstringSensorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.BitstringBindings = [
       {
         src: '/BitString',
         name: 'bitstring',
+        readonly: true,
       },
       {
         src: '/BitString',
         name: 'length',
+        readonly: true,
         transformReceive: v=>v.length
       },
     ];

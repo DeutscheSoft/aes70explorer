@@ -81,14 +81,17 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         src: '/Frequency/Min',
         name: 'base',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         src: ['/Frequency/Min', '/Frequency/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -100,18 +103,22 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         src: '/Parameter/Min',
         name: 'base',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/Parameter/Min', '/Parameter/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -123,14 +130,17 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         src: '/Order/Min',
         name: 'base',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         src: ['/Order/Min', '/Order/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           const a = [];
@@ -142,6 +152,7 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         src: ['/Order/Min', '/Order/Max'],
         name: 'angle',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           const amnt = (max - min);
@@ -152,6 +163,7 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         src: ['/Order/Min', '/Order/Max'],
         name: 'start',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           const amnt = (max - min);
@@ -162,6 +174,7 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         src: ['/Order/Min', '/Order/Max'],
         name: 'basis',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           const amnt = (max - min);
@@ -173,6 +186,7 @@ class OcaFilterClassicalControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.passbandBindings = [

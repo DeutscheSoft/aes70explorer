@@ -130,76 +130,76 @@ class OcaDynamicsDetails extends TemplateComponent.fromString(template) {
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
     
-    this.ThresholdBind = [{ src: '/Threshold', name: 'label',
+    this.ThresholdBind = [{ src: '/Threshold', name: 'label', readonly: true,
       transformReceive: v => v.Value.toFixed(3) + 'dB' }];
-    this.ThresholdMinBind = [{ src: '/Threshold/Min', name: 'label',
+    this.ThresholdMinBind = [{ src: '/Threshold/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.ThresholdMaxBind = [{ src: '/Threshold/Max', name: 'label',
+    this.ThresholdMaxBind = [{ src: '/Threshold/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
     
-    this.SlopeBind = [{ src: '/Slope', name: 'label',
+    this.SlopeBind = [{ src: '/Slope', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + ':1' }];
-    this.SlopeMinBind = [{ src: '/Slope/Min', name: 'label',
+    this.SlopeMinBind = [{ src: '/Slope/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + ':1' }];
-    this.SlopeMaxBind = [{ src: '/Slope/Max', name: 'label',
+    this.SlopeMaxBind = [{ src: '/Slope/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + ':1' }];
     
-    this.RatioBind = [{ src: '/Ratio', name: 'label',
+    this.RatioBind = [{ src: '/Ratio', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + ':1' }];
-    this.RatioMinBind = [{ src: '/Ratio/Min', name: 'label',
+    this.RatioMinBind = [{ src: '/Ratio/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + ':1' }];
-    this.RatioMaxBind = [{ src: '/Ratio/Max', name: 'label',
+    this.RatioMaxBind = [{ src: '/Ratio/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + ':1' }];
       
-     this.KneeBind = [{ src: '/KneeParameter', name: 'label',
+     this.KneeBind = [{ src: '/KneeParameter', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.KneeMinBind = [{ src: '/KneeParameter/Min', name: 'label',
+    this.KneeMinBind = [{ src: '/KneeParameter/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.KneeMaxBind = [{ src: '/KneeParameter/Max', name: 'label',
+    this.KneeMaxBind = [{ src: '/KneeParameter/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
     
-    this.AttackBind = [{ src: '/AttackTime', name: 'label',
+    this.AttackBind = [{ src: '/AttackTime', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.AttackMinBind = [{ src: '/AttackTime/Min', name: 'label',
+    this.AttackMinBind = [{ src: '/AttackTime/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.AttackMaxBind = [{ src: '/AttackTime/Max', name: 'label',
-      transformReceive: v => v.toFixed(3) + 's' }];
-    
-    this.ReleaseBind = [{ src: '/ReleaseTime', name: 'label',
-      transformReceive: v => v.toFixed(3) + 's' }];
-    this.ReleaseMinBind = [{ src: '/ReleaseTime/Min', name: 'label',
-      transformReceive: v => v.toFixed(3) + 's' }];
-    this.ReleaseMaxBind = [{ src: '/ReleaseTime/Max', name: 'label',
+    this.AttackMaxBind = [{ src: '/AttackTime/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
     
-    this.HoldBind = [{ src: '/HoldTime', name: 'label',
+    this.ReleaseBind = [{ src: '/ReleaseTime', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.HoldMinBind = [{ src: '/HoldTime/Min', name: 'label',
+    this.ReleaseMinBind = [{ src: '/ReleaseTime/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.HoldMaxBind = [{ src: '/HoldTime/Max', name: 'label',
+    this.ReleaseMaxBind = [{ src: '/ReleaseTime/Max', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 's' }];
+    
+    this.HoldBind = [{ src: '/HoldTime', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 's' }];
+    this.HoldMinBind = [{ src: '/HoldTime/Min', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) + 's' }];
+    this.HoldMaxBind = [{ src: '/HoldTime/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
       
-    this.DynamicGainCeilingBind = [{ src: '/DynamicGainCeiling', name: 'label',
+    this.DynamicGainCeilingBind = [{ src: '/DynamicGainCeiling', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.DynamicGainCeilingMinBind = [{ src: '/DynamicGainCeiling/Min', name: 'label',
+    this.DynamicGainCeilingMinBind = [{ src: '/DynamicGainCeiling/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.DynamicGainCeilingMaxBind = [{ src: '/DynamicGainCeiling/Max', name: 'label',
+    this.DynamicGainCeilingMaxBind = [{ src: '/DynamicGainCeiling/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
       
-    this.DynamicGainFloorBind = [{ src: '/DynamicGainFloor', name: 'label',
+    this.DynamicGainFloorBind = [{ src: '/DynamicGainFloor', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.DynamicGainFloorMinBind = [{ src: '/DynamicGainFloor/Min', name: 'label',
+    this.DynamicGainFloorMinBind = [{ src: '/DynamicGainFloor/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.DynamicGainFloorMaxBind = [{ src: '/DynamicGainFloor/Max', name: 'label',
+    this.DynamicGainFloorMaxBind = [{ src: '/DynamicGainFloor/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
     
-    this.FunctionBind = [{ src: '/Function', name: 'label',
+    this.FunctionBind = [{ src: '/Function', name: 'label', readonly: true,
       transformReceive: v => v.name }];
-    this.DetectorLawBind = [{ src: '/DetectorLaw', name: 'label',
+    this.DetectorLawBind = [{ src: '/DetectorLaw', name: 'label', readonly: true,
       transformReceive: v => v.name }];
-    this.DynamicGainBind = [{ src: '/DynamicGain', name: 'label',
+    this.DynamicGainBind = [{ src: '/DynamicGain', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 'dB' }];
-    this.TriggeredBind = [{ src: '/Triggered', name: 'label', }];
+    this.TriggeredBind = [{ src: '/Triggered', name: 'label', readonly: true, }];
   }
   static match(o) {
     return matchClass(OCA.RemoteControlClasses.OcaDynamics, o);

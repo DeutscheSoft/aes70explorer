@@ -49,17 +49,17 @@ class OcaPanBalanceDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.PositionBind = [{ src: '/Position', name: 'label',
+    this.PositionBind = [{ src: '/Position', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.MinBind = [{ src: '/Position/Min', name: 'label',
+    this.MinBind = [{ src: '/Position/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.MaxBind = [{ src: '/Position/Max', name: 'label',
+    this.MaxBind = [{ src: '/Position/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.MidBind = [{ src: '/MidpointGain', name: 'label',
+    this.MidBind = [{ src: '/MidpointGain', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(2) + 'dB'}];
-    this.MidMinBind = [{ src: '/MidpointGain/Min', name: 'label',
+    this.MidMinBind = [{ src: '/MidpointGain/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(2) + 'dB'}];
-    this.MidMaxBind = [{ src: '/MidpointGain/Max', name: 'label',
+    this.MidMaxBind = [{ src: '/MidpointGain/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(2) + 'dB'}];
   }
   static match(o) {

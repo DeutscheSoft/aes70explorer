@@ -14,6 +14,7 @@ class OcaStringActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.ValueBindings = [
@@ -24,6 +25,7 @@ class OcaStringActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: '/MaxLen',
         name: 'maxlength',
+        readonly: true,
       },
     ];
   }

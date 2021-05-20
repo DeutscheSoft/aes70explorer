@@ -56,15 +56,15 @@ class OcaBlockDetails extends TemplateComponent.fromString(template) {
 
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.TypeBind = [{ src: '/Type', name: 'label' }];
-    this.MembersBind = [{ src: '/Members', name: 'label',
+    this.MembersBind = [{ src: '/Members', name: 'label', readonly: true,
       transformReceive: v => v.length }];
-    this.MostRecentParamSetIDLibraryBind = [{ src: '/MostRecentParamSetIdentifierBind', name: 'label',
+    this.MostRecentParamSetIDLibraryBind = [{ src: '/MostRecentParamSetIdentifierBind', name: 'label', readonly: true,
       transformReceive: v => v.Library }];
-    this.MostRecentParamSetIDIDBind = [{ src: '/MostRecentParamSetIdentifierBind', name: 'label',
+    this.MostRecentParamSetIDIDBind = [{ src: '/MostRecentParamSetIdentifierBind', name: 'label', readonly: true,
       transformReceive: v => v.Library }];
-    this.GlobalTypeAuthorityBind = [{ src: '/GlobalType', name: 'label',
+    this.GlobalTypeAuthorityBind = [{ src: '/GlobalType', name: 'label', readonly: true,
       transformReceive: extractOrganizationID }];
-    this.GlobalTypeIDBind = [{ src: '/GlobalType', name: 'label',
+    this.GlobalTypeIDBind = [{ src: '/GlobalType', name: 'label', readonly: true,
       transformReceive: v => v.ID }];
   }
   static match(o) {

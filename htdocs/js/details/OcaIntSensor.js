@@ -40,10 +40,11 @@ class OcaIntSensorDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label', readonly: true }];
     this.LockableBind = [{ src: '/Lockable', name: 'label', readonly: true }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state', readonly: true }];
-    this.ReadingBind = [{ src: '/Reading', name: 'label', readonly: true }];
-    this.MinBind = [{ src: '/Reading/Min', name: 'label',
+    this.ReadingBind = [{ src: '/Reading', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
-    this.MaxBind = [{ src: '/Reading/Max', name: 'label',
+    this.MinBind = [{ src: '/Reading/Min', name: 'label', readonly: true,
+      transformReceive: v => v.toFixed(3) }];
+    this.MaxBind = [{ src: '/Reading/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) }];
   }
   static match(o) {

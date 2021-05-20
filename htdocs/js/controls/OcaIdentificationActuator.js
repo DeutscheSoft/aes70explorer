@@ -13,6 +13,7 @@ class OcaIdentificationActuatorControl extends TemplateComponent.fromString(temp
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.toggleBindings = [

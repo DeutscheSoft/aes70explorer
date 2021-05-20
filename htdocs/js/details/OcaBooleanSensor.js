@@ -31,9 +31,9 @@ class OcaIntSensorDetails extends TemplateComponent.fromString(template) {
     super();
 
     this.LabelBind = [{ src: '/Label', name: 'value', readonly: true }];
-    this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label', readonly: true }];
-    this.LockableBind = [{ src: '/Lockable', name: 'label', readonly: true }];
-    this.EnabledBind = [{ src: '/Enabled', name: 'state', readonly: true }];
+    this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
+    this.LockableBind = [{ src: '/Lockable', name: 'label' }];
+    this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
     this.ReadingBind = [{ src: '/Reading', name: 'label', readonly: true }];
   }
   static match(o) {

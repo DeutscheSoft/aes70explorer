@@ -34,7 +34,7 @@ class OcaBitstringSensorDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.BitstringBind = [{ src: '/BitString', name: 'label' }];
+    this.BitstringBind = [{ src: '/BitString', name: 'label', readonly: true }];
   }
 
   static match(o) {

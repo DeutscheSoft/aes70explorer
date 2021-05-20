@@ -179,6 +179,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.gainBindings = [
@@ -198,14 +199,17 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
         backendValue: this.formatValueBinding,
+        readonly: true,
       },
       {
         src: ['/AttackTime/Min', '/AttackTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];
@@ -217,14 +221,17 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/ReleaseTime/Min', '/ReleaseTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];
@@ -236,14 +243,17 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/HoldTime/Min', '/HoldTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];
@@ -259,14 +269,17 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/Threshold/Min', '/Threshold/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -275,6 +288,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/Threshold/Max',
         name: 'base',
+        readonly: true,
       },
     ];
     this.slopeBindings = [
@@ -282,48 +296,39 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/Slope/Min', '/Slope/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d:1', min)}, {pos:max, label:sprintf('%d:1', max)}];
         }
       },
     ];
-    //this.ratioBindings = [
-      //...makeValueMinMaxBinding('Ratio'),
-      //{
-        //backendValue: this.knobPresets,
-        //name: 'knob.presets',
-      //},
-      //{
-        //src: ['/Ratio/Min', '/Ratio/Max'],
-        //name: 'labels',
-        //transformReceive: function (arr) {
-          //const [min, max] = arr;
-          //return [{pos:min, label:sprintf('%d:1', min)}, {pos:max, label:sprintf('%d:1', max)}];
-        //}
-      //},
-    //];
     this.kneeBindings = [
       ...makeValueMinMaxBinding('KneeParameter'),
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/KneeParameter/Min', '/KneeParameter/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -335,14 +340,12 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
-      },
-      {
-        name: 'value.format',
-        backendValue: this.formatValueBinding,
+        readonly: true,
       },
       {
         src: ['/DynamicGainCeiling/Min', '/DynamicGainCeiling/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -351,9 +354,11 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/DynamicGainCeiling/Max',
         name: 'base',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
     ];
@@ -362,14 +367,17 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/DynamicGainFloor/Min', '/DynamicGainFloor/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -378,6 +386,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/DynamicGainFloor/Min',
         name: 'base',
+        readonly: true,
       },
     ];
     this.detectBindings = [
@@ -426,15 +435,18 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/KneeParameter',
         name: 'knee',
+        readonly: true,
       },
       {
         src: '/Function',
         name: 'type',
+        readonly: true,
         transformReceive: v => ['compressor', 'compressor', 'limiter', 'expander', 'gate'][v.value],
       },
       {
         src: ['/Slope/Min', '/Slope/Max'],
         name: 'range_z',
+        readonly: true,
         transformReceive: v => ({
           min:v[0], max: v[1], reverse: false, snap: 0.01,
         }),
@@ -442,6 +454,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: ['/Ratio/Min', '/Ratio/Max'],
         name: 'range_z',
+        readonly: true,
         transformReceive: v => ({
           min:v[0], max: v[1], reverse: false, snap: 0.01,
         }),
@@ -449,6 +462,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/Function',
         name: 'disabled',
+        readonly: true,
         transformReceive: v => !v.value,
       },
     ];

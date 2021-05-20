@@ -26,19 +26,23 @@ class OcaIntActuatorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         src: '/Setting/Min',
         name: 'base',
+        readonly: true,
         transformReceive: v => Number(v),
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         src: ['/Setting/Min', '/Setting/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           let [min, max] = arr;
           min = Number(min);

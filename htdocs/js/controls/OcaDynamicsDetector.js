@@ -70,6 +70,7 @@ class OcaDynamicsDetectorControl extends TemplateComponent.fromString(template) 
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.attackBindings = [
@@ -77,14 +78,17 @@ class OcaDynamicsDetectorControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/AttackTime/Min', '/AttackTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];
@@ -96,14 +100,17 @@ class OcaDynamicsDetectorControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/ReleaseTime/Min', '/ReleaseTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];
@@ -115,14 +122,17 @@ class OcaDynamicsDetectorControl extends TemplateComponent.fromString(template) 
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/HoldTime/Min', '/HoldTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.2f', min)}, {pos:max, label:sprintf('%.2f', max)}];

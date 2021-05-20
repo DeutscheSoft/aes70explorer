@@ -25,14 +25,17 @@ class OcaPanBalanceControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         src: ['/Position/Min', '/Position/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:'L'}, {pos:max, label:'R'}, {pos:0, label:'C'}];

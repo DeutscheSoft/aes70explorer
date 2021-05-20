@@ -40,11 +40,11 @@ class OcaDelayDetails extends TemplateComponent.fromString(template) {
     this.ClassVersionBind = [{ src: '/ClassVersion', name: 'label' }];
     this.LockableBind = [{ src: '/Lockable', name: 'label' }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state' }];
-    this.DelayTimeBind = [{ src: '/DelayTime', name: 'label',
+    this.DelayTimeBind = [{ src: '/DelayTime', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.MinBind = [{ src: '/DelayTime/Min', name: 'label',
+    this.MinBind = [{ src: '/DelayTime/Min', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
-    this.MaxBind = [{ src: '/DelayTime/Max', name: 'label',
+    this.MaxBind = [{ src: '/DelayTime/Max', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(3) + 's' }];
   }
   static match(o) {

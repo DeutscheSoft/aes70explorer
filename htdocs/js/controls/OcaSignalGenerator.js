@@ -123,6 +123,7 @@ class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
       {
         src: '/Role',
         name: 'label',
+        readonly: true,
       },
     ];
     this.frequency1Bindings = [
@@ -130,14 +131,17 @@ class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/Frequency1/Min', '/Frequency1/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -149,14 +153,17 @@ class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/Frequency2/Min', '/Frequency2/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -168,18 +175,22 @@ class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         name: 'base',
+        readonly: true,
         src: '/Level/Min',
       },
       {
         src: ['/Level/Min', '/Level/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%d', min)}, {pos:max, label:sprintf('%d', max)}];
@@ -191,14 +202,17 @@ class OcaSignalGeneratorControl extends TemplateComponent.fromString(template) {
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
+        readonly: true,
       },
       {
         name: 'value.format',
+        readonly: true,
         backendValue: this.formatValueBinding,
       },
       {
         src: ['/SweepTime/Min', '/SweepTime/Max'],
         name: 'labels',
+        readonly: true,
         transformReceive: function (arr) {
           const [min, max] = arr;
           return [{pos:min, label:sprintf('%.1f', min)}, {pos:max, label:sprintf('%.1f', max)}];
