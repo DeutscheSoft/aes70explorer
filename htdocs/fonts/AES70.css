@@ -43,6 +43,16 @@
 .aux-icon.ocasummingpoint::before            { font-family: 'AES70'; content: '񗝪'; }
 .aux-icon.ocasensor::before                  { font-family: 'AES70'; content: '񗝫'; }
 .aux-icon.ocabooleansensor::before           { font-family: 'AES70'; content: '񗝭'; }
+.aux-icon.ocaint8sensor::before              { font-family: 'AES70'; content: '񗝮'; }
+.aux-icon.ocaint16sensor::before             { font-family: 'AES70'; content: '񗝯'; }
+.aux-icon.ocaint32sensor::before             { font-family: 'AES70'; content: '񗝰'; }
+.aux-icon.ocaint64sensor::before             { font-family: 'AES70'; content: '񗝱'; }
+.aux-icon.ocauint8sensor::before             { font-family: 'AES70'; content: '񗝲'; }
+.aux-icon.ocauint16sensor::before            { font-family: 'AES70'; content: '񗝳'; }
+.aux-icon.ocauint32sensor::before            { font-family: 'AES70'; content: '񗝴'; }
+.aux-icon.ocauint64sensor::before            { font-family: 'AES70'; content: '񗝵'; }
+.aux-icon.ocafloat32sensor::before           { font-family: 'AES70'; content: '񗝶'; }
+.aux-icon.ocafloat64sensor::before           { font-family: 'AES70'; content: '񗝷'; }
 .aux-icon.ocastringsensor::before            { font-family: 'AES70'; content: '񗝸'; }
 .aux-icon.ocalevelsensor::before             { font-family: 'AES70'; content: '񗝺'; }
 .aux-icon.ocatimeintervalsensor::before      { font-family: 'AES70'; content: '񗝼'; }
