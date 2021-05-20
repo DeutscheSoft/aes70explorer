@@ -381,9 +381,11 @@ aes70-control-signalgenerator > .waveform {
 }
 aes70-control-signalgenerator > .startstop {
   grid-area: toggle;
+  text-align: right;
 }
 aes70-control-signalgenerator > .startstop > * {
-  width: 100%;
+  padding: 0;
+  width: var(--aux-clickable-size);
 }
 aes70-control-signalgenerator > .startstop > .stop {
   background: var(--color-accent);
