@@ -25,6 +25,7 @@ import './controls/OcaBooleanSensor.js';
 import './controls/OcaStringSensor.js';
 import './controls/OcaBitstringSensor.js';
 import './controls/OcaLevelSensor.js';
+import './controls/OcaTimeIntervalSensor.js';
 
 
 import './details/OcaDeviceManager.js';
@@ -56,3 +57,4 @@ import './details/OcaFloatSensor.js';
 import './details/OcaStringSensor.js';
 import './details/OcaBitstringSensor.js';
 import './details/OcaLevelSensor.js';
+import './details/OcaTimeIntervalSensor.js';

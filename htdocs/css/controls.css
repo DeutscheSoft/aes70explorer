@@ -344,11 +344,13 @@ aes70-control-polarity > .aux-toggle.aux-active > .aux-icon {
 }
 
 
+aes70-control-timeintervalsensor,
 aes70-control-levelsensor,
 aes70-control-floatsensor,
 aes70-control-intsensor {
   height: 240px;
 }
+aes70-control-timeintervalsensor > .aux-meter,
 aes70-control-levelsensor > .aux-meter,
 aes70-control-floatsensor > .aux-meter,
 aes70-control-intsensor > .aux-meter {
