@@ -108,37 +108,50 @@ aes70-control .aux-buttons > .aux-button {
 }
 
 
-aes70-control-bitstringactuator {
+aes70-control-bitstringactuator,
+aes70-control-bitstringsensor {
   display: flex;
   flex-direction: column;
 }
-aes70-control-bitstringactuator > .aux-label {
+aes70-control-bitstringactuator > .aux-label,
+aes70-control-bitstringsensor > .aux-label {
   margin-bottom: 4px;
   align-self: flex-start;
 }
-aes70-control-bitstringactuator > .aux-buttons {
+aes70-control-bitstringactuator > .aux-buttons,
+aes70-control-bitstringsensor > .aux-buttons {
   display: grid;
   grid-gap: 2px;
 }
-aes70-control-bitstringactuator > .aux-buttons > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons > .aux-button,
+aes70-control-bitstringsensor > .aux-buttons > .aux-button {
   padding: 0;
-  margin: 0;
+  margin: 0 !important;
 }
-aes70-control-bitstringactuator > .aux-buttons.aes70-size-large > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-large > .aux-button,
+aes70-control-bitstringsensor > .aux-buttons.aes70-size-large > .aux-button {
   min-width: 40px;
   height: 40px;
 }
-aes70-control-bitstringactuator > .aux-buttons.aes70-size-medium > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-medium > .aux-button,
+aes70-control-bitstringsensor > .aux-buttons.aes70-size-medium > .aux-button {
   min-width: 32px;
   height: 32px;
 }
-aes70-control-bitstringactuator > .aux-buttons.aes70-size-small > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-small > .aux-button,
+aes70-control-bitstringsensor > .aux-buttons.aes70-size-small > .aux-button {
   min-width: 24px;
   height: 24px;
 }
-aes70-control-bitstringactuator > .aux-buttons.aes70-size-tiny > .aux-button {
+aes70-control-bitstringactuator > .aux-buttons.aes70-size-tiny > .aux-button,
+aes70-control-bitstringsensor > .aux-buttons.aes70-size-tiny > .aux-button {
   min-width: 16px;
   height: 16px;
+}
+
+
+aes70-control-bitstringsensor {
+  pointer-events: none;
 }
 
 

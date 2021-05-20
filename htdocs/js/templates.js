@@ -8,7 +8,6 @@ import './controls/OcaFreqActuator.js';
 import './controls/OcaMute.js';
 import './controls/OcaPolarity.js';
 import './controls/OcaSwitch.js';
-import './controls/OcaStringSensor.js';
 import './controls/OcaGain.js';
 import './controls/OcaDelay.js';
 import './controls/OcaFilterParametric.js';
@@ -21,6 +20,8 @@ import './controls/OcaIdentificationActuator.js';
 
 import './controls/OcaSensor.js';
 import './controls/OcaBooleanSensor.js';
+import './controls/OcaStringSensor.js';
+import './controls/OcaBitstringSensor.js';
 
 
 import './details/OcaDeviceManager.js';
@@ -49,3 +50,4 @@ import './details/OcaBooleanSensor.js';
 import './details/OcaIntSensor.js';
 import './details/OcaFloatSensor.js';
 import './details/OcaStringSensor.js';
+import './details/OcaBitstringSensor.js';
