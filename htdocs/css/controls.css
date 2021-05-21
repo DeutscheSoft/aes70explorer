@@ -453,3 +453,26 @@ aes70-control-switch > .aux-label {
   align-self: flex-start;
   margin-bottom: 4px;
 }
+
+
+aes70-control-temperaturesensor {
+  display: grid !important;
+  grid-template-areas: "label label"
+                       "icon temp";
+  grid-gap: 8px;
+}
+aes70-control-temperaturesensor > .aux-label.label {
+  grid-area: label;
+}
+aes70-control-temperaturesensor > .aux-icon {
+  grid-area: icon;
+  justify-self: end;
+  align-self: center;
+  font-size: var(--font-size-button-icon-small);
+}
+aes70-control-temperaturesensor > .aux-label.temp {
+  grid-area: temp;
+  justify-self: start;
+  align-self: center;
+  font-size: var(--font-size-large);
+}
