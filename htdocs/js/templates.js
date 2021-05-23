@@ -27,6 +27,8 @@ import './controls/OcaLevelSensor.js';
 import './controls/OcaTimeIntervalSensor.js';
 import './controls/OcaFrequencySensor.js';
 import './controls/OcaTemperatureSensor.js';
+import './controls/OcaVoltageSensor.js';
+import './controls/OcaCurrentSensor.js';
 
 
 import './details/OcaDeviceManager.js';
@@ -60,3 +62,5 @@ import './details/OcaLevelSensor.js';
 import './details/OcaTimeIntervalSensor.js';
 import './details/OcaFrequencySensor.js';
 import './details/OcaTemperatureSensor.js';
+import './details/OcaVoltageSensor.js';
+import './details/OcaCurrentSensor.js';

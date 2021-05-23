@@ -476,3 +476,48 @@ aes70-control-temperaturesensor > .aux-label.temp {
   align-self: center;
   font-size: var(--font-size-large);
 }
+
+
+aes70-control-currentsensor,
+aes70-control-voltagesensor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aes70-control-currentsensor > .aux-label.value,
+aes70-control-voltagesensor > .aux-label.value {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: var(--font-size-large);
+}
+
+
+
+
+
+
+.aux-gauge.aux-preset-gauge {
+  width: 128px;
+  height: 64px;
+}
+.aux-gauge.aux-gauge > svg {
+  width: 128px;
+  height: 128px;
+}
+.aux-gauge.aux-gauge > svg > .aux-circular > .aux-hand {
+  fill: var(--color);
+}
+.aux-gauge.aux-gauge > svg > .aux-circular > .aux-hand {
+  fill: var(--color);
+}
+.aux-gauge.aux-gauge > svg > .aux-circular > .aux-base {
+  fill: var(--background-dark);
+  stroke: none;
+}
+.aux-gauge.aux-gauge > svg > .aux-circular > .aux-value {
+  fill: var(--color-accent);
+  stroke: none;
+}
