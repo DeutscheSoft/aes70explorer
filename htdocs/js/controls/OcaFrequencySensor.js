@@ -11,8 +11,6 @@ const template = `
 class OcaFrequencySensorControl extends TemplateComponent.fromString(template) {
   constructor() {
     super();
-    this.formatValueBinding = DynamicValue.fromConstant(limitValueDigits(6));
-    
     this.labelBindings = [
       {
         src: '/Role',
@@ -25,11 +23,7 @@ class OcaFrequencySensorControl extends TemplateComponent.fromString(template) {
         src: '/Reading',
         name: 'label',
         readonly: true,
-      },
-      {
-        name: 'format',
-        readonly: true,
-        backendValue: this.formatValueBinding,
+        transformReceive: limitValueDigits(6),
       },
     ];
   }
