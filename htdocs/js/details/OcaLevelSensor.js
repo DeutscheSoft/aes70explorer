@@ -22,7 +22,7 @@ const template = `
   <aux-label %bind={{ this.MaxBind }}></aux-label>
   
   <span class="label">Reading</span>
-  <aux-label %bind={{ this.ReadingBind }} format="sprintf:%.3f"></aux-label>
+  <aux-label %bind={{ this.ReadingBind }}></aux-label>
 </div>
 `;
 
