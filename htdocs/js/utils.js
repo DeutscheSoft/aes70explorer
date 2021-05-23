@@ -114,7 +114,7 @@ export function makeImplementedBindings(arr) {
   return R;
 }
 
-export function limitValueDigits(limit, add) {
+export function limitValueDigits(limit, add = '') {
   return function (value) {
     value = parseFloat(value);
     let digits = parseInt(Math.abs(value)).toString().length;
