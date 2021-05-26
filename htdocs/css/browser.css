@@ -524,16 +524,15 @@ aes70-device {
 }
 aes70-device > .head {
   display: grid;
-  grid-template-areas: 'icon name ihost host'
-                       'icon name iport port';
+  grid-template-areas: 'icon name ihost host action'
+                       'icon name iport port action';
   background: var(--background);
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 40px 1fr auto;
+  grid-template-columns: 40px 1fr auto auto;
   grid-gap: 4px;
   position: sticky;
   top: 0;
   z-index: 10;
-  padding-right: 8px;
   transition: all var(--transition);
 }
 aes70-device.selected > .head {
@@ -589,7 +588,28 @@ aes70-device > .head > .iport {
   grid-area: iport;
   align-self: start;
 }
-
+aes70-device > .head > .aux-button {
+  background: none;
+  margin: 0;
+  padding: 0 4px;
+  height: auto;
+}
+aes70-device > .head > .aux-button > .aux-icon {
+  font-size: var(--font-size-button-icon-small);
+}
+aes70-device > .head > .add,
+aes70-device > .head > .remove {
+  grid-area: action;
+}
+aes70-device > .head > .add {
+  color: var(--color-fade);
+}
+aes70-device > .head > .remove {
+  
+}
+aes70-device > .head > .remove:hover {
+  color: var(--color-accent);
+}
 
 /* BLOCK CHILDREN */
 
