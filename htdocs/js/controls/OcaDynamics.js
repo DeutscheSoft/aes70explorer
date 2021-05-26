@@ -49,10 +49,12 @@ const template = `
 <aux-levelmeter
   %if={{ this.implementsDynamicGain }}
   %bind={{ this.gainBindings }}
-  min=-96
-  max=0
+  max=-96
+  min=0
   scale="decibel"
   label="Gain"
+  reverse=true
+  gradient="js:{'-96':'#280062', '-32':'#8b06a5', '0':'#ff6600'}"
   >
 </aux-levelmeter>
 
@@ -400,7 +402,7 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       {
         src: '/Function',
         name: 'selected',
-        transformReceive: v =>v.value,
+        transformReceive: v => v.value,
       }
     ];
     this.dynamicsBindings = [
