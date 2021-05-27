@@ -1,5 +1,5 @@
 import { collectPrefix, getBackendValue, resolve, TemplateComponent, fromSubscription } from '../../AWML/src/index.pure.js';
-import { createControlComponent } from '../template_components.js';
+import { createObjectControlComponent } from '../object_controls.js';
 
 const Selected = getBackendValue('local:selected');
 
@@ -21,7 +21,7 @@ class AES70Control extends TemplateComponent.fromString(template) {
         sync: true,
         pipe: function (b) {
           return resolve(b, async (o) => {
-            return await createControlComponent(o);
+            return await createObjectControlComponent(o);
           });
         },
       }
