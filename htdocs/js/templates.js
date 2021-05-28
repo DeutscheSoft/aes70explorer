@@ -69,3 +69,5 @@ import './object_details/OcaGainSensor.js';
 import './object_details/OcaImpedanceSensor.js';
 
 import './device_controls/Generic.js';
+
+import '../pool/index.js';
