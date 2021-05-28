@@ -1,5 +1,6 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { matchClass, registerTemplateDetails } from '../template_components.js';
+import { matchClass } from '../utils/match_class.js';
+import { registerObjectDetailTemplate } from '../object_details.js';
 
 const template = `
 <div class="grid">
@@ -67,4 +68,4 @@ class OcaImpedanceSensorDetails extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateDetails(OcaImpedanceSensorDetails, 'impedancesensor');
+registerObjectDetailTemplate(OcaImpedanceSensorDetails, 'impedancesensor');

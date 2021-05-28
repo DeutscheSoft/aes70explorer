@@ -1,5 +1,6 @@
 import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
-import { matchClass, registerTemplateControl } from '../template_components.js';
+import { matchClass } from '../utils/match_class.js';
+import { registerObjectControlTemplate } from '../object_controls.js';
 import { makeValueMinMaxBinding, limitValueDigits } from '../utils.js';
 
 const _limitValueDigitsMagnitude = limitValueDigits(5, 'Ω');
@@ -91,4 +92,4 @@ class OcaImpedanceSensorControl extends TemplateComponent.fromString(template) {
   }
 }
 
-registerTemplateControl(OcaImpedanceSensorControl, 'impedancesensor');
+registerObjectControlTemplate(OcaImpedanceSensorControl, 'impedancesensor');
