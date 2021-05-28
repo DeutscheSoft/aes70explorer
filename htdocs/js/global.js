@@ -93,6 +93,7 @@ window.AES70 = {
   },
   restoreControlsOnCanvas: function () {
     getBackendValue('storage:controls').wait().then(v => {
+      if (!v) return;
       if (typeof v !== 'object' || v.version !== controlsSerializationVersion) {
         console.warn('Ignoring old canvas storage: %o', v);
         return;
@@ -110,6 +111,9 @@ window.AES70 = {
   },
   clearCanvas: function () {
     clearCanvas();
-    getBackendValue('storage:controls').set(void 0);
+    getBackendValue('storage:controls').set({
+      version: controlsSerializationVersion,
+      list: [],
+    });
   },
 }
