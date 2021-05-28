@@ -23,7 +23,6 @@ class GenericDeviceControl extends TemplateComponent.fromString(template) {
           const [name, desc] = arr;
           return name ? name : desc.Model;
         },
-        debug: true,
       }
     ];
     this.ManufacturerBind = [
