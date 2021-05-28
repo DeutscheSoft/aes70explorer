@@ -80,7 +80,7 @@ window.AES70 = {
       start: 210,
       angle: 120,
       labels_defaults: { margin: 10, align: 'outer' },
-      hand: {width: 1, length: 15, margin: 17},
+      hand: {width: 1, length: 24, margin: 17},
     },
   },
   

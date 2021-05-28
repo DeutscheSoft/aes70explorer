@@ -503,7 +503,7 @@ aes70-control-voltagesensor > .aux-label.value {
 
 .aux-gauge.aux-preset-gauge {
   width: 128px;
-  height: 64px;
+  height: 80px;
 }
 .aux-gauge.aux-gauge > svg {
   width: 128px;
