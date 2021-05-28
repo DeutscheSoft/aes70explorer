@@ -160,7 +160,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
   }
   
   _removeControl() {
-    removeControlFromCanvas(collectPrefix(this));
+    removeControlFromCanvas(this.identifier);
     this.classList.remove('hascontrol');
     this._hasControl = false;
   }

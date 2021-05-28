@@ -115,7 +115,7 @@ class AES70Device extends templateComponent {
   }
 
   _removeControl() {
-    removeControlFromCanvas(collectPrefix(this));
+    removeControlFromCanvas(this.identifier);
     this.classList.remove('hascontrol');
     this._hasControl = false;
   }
