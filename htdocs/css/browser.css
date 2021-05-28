@@ -303,21 +303,6 @@ html {
   align-content: center;
 }
 
-#canvas::before {
-  content: "";
-  background-image: url("../images/aes70explorer_4c_white.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
-  width: 96px;
-  height: 17px;
-  opacity: 1;
-  z-index: -1;
-}
-
 
 /* DETAILS */
 
@@ -332,6 +317,20 @@ html {
   padding: 8px 16px;
   background: var(--background-fade);
   border-top: 1px solid var(--color-accent);
+}
+#details::before {
+  content: "";
+  background-image: url("../images/aes70explorer_4c_white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 96px;
+  height: 17px;
+  opacity: 1;
+  z-index: -1;
 }
 #details.block,
 #details.device {
