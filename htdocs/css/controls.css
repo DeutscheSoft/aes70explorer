@@ -78,7 +78,7 @@ aes70-control .aux-valueknob > .aux-value {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: calc(var(--line-height) / 2);
+  margin-top: calc(var(--line-height) / 2 - 4px);
 }
 .control .aux-button.edit,
 aes70-control .aux-button.edit {
@@ -98,6 +98,10 @@ aes70-control .aux-button.edit > .aux-icon {
 .control .aux-valueknob.small > .aux-value > .aux-input,
 aes70-control .aux-valueknob.small > .aux-value > .aux-input {
   font-size: var(--font-size);
+}
+.control .aux-valueknob > .aux-knob,
+aes70-control .aux-valueknob > .aux-knob {
+  margin-top: -8px;
 }
 
 .control .aux-buttons > .aux-button,
