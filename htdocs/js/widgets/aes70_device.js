@@ -1,5 +1,5 @@
 import { TemplateComponent, getBackendValue, collectPrefix, fromSubscription } from '../../AWML/src/index.pure.js';
-import { addControlToCanvas, removeControlFromCanvas } from '../layout.js';
+import { addControlToCanvas, removeControlFromCanvas, hasControlOnCanvas } from '../layout.js';
 import { getRegisteredControl } from '../template_components.js';
 
 const Selected = getBackendValue('local:selected');
@@ -17,7 +17,7 @@ const templateComponent = TemplateComponent.create({
     class=add
     icon=puzzle
     (click)={{ this.onAddClicked }}
-    %if={{ !this._hasControl }}
+    %if={{ !this.hasControl }}
   ></aux-button>
   <aux-confirmbutton timeout=3000
     class=remove
@@ -26,7 +26,7 @@ const templateComponent = TemplateComponent.create({
     (confirmed)={{ this.onRemoveConfirmed }}
     (click)={{ this.onRemoveClicked }}
     (canceled)={{ this.onRemoveCanceled }}
-    %if={{ !!this._hasControl }}
+    %if={{ !!this.hasControl }}
   ></aux-confirmbutton>
 </div>
 <aes70-block-children %if={{ this.open }} prefix={{ this.info.name + ':' }}></aes70-block-children>
@@ -49,6 +49,12 @@ class AES70Device extends templateComponent {
 
           return identifier.type === selected.type && identifier.prefix === selected.prefix;
         },
+      },
+      {
+        backendValue: hasControlOnCanvas(this.identifier),
+        readonly: true,
+        sync: true,
+        name: 'hasControl',
       }
     ];
   }
@@ -76,6 +82,9 @@ class AES70Device extends templateComponent {
     this.subscribeEvent('isSelectedChanged', (value) => {
       this.classList.toggle('selected', value);
     });
+    this.subscribeEvent('hasControlChanged', (value) => {
+      this.classList.toggle('hascontrol', value);
+    });
 
     this.onHeadClick = (ev) => {
       if (!this.isSelected) {
@@ -86,22 +95,25 @@ class AES70Device extends templateComponent {
     }
 
     this.onIconClick = (ev) => {
-      this.open = !this.open;
       ev.stopPropagation();
+      this.open = !this.open;
       this.select();
     }
     this.onAddClicked = (ev) => {
+      ev.stopPropagation();
       this._addControl();
     }
-    this.onRemoveConfirmed = () => {
+    this.onRemoveConfirmed = (ev) => {
+      ev.stopPropagation();
       this._removeControl();
     }
     this.onRemoveClicked = (ev) => {
+      ev.stopPropagation();
       const node = getRegisteredControl(this.identifier);
       if (!node) return;
       node.classList.add('scaffold');
     }
-    this.onRemoveCanceled = (e) => {
+    this.onRemoveCanceled = () => {
       const node = getRegisteredControl(this.identifier);
       if (!node) return;
       node.classList.remove('scaffold');
@@ -110,14 +122,10 @@ class AES70Device extends templateComponent {
 
   _addControl() {
     addControlToCanvas(this.identifier);
-    this.classList.add('hascontrol');
-    this._hasControl = true;
   }
 
   _removeControl() {
     removeControlFromCanvas(this.identifier);
-    this.classList.remove('hascontrol');
-    this._hasControl = false;
   }
 }
 

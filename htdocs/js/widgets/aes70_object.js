@@ -1,7 +1,7 @@
 import { collectPrefix, TemplateComponent, getBackendValue } from '../../AWML/src/index.pure.js';
 import { Bindings } from '../../AWML/src/bindings.js';
 import { fromSubscription } from '../../AWML/src/operators/from_subscription.js';
-import { addControlToCanvas, removeControlFromCanvas } from '../layout.js';
+import { addControlToCanvas, removeControlFromCanvas, hasControlOnCanvas } from '../layout.js';
 import { getRegisteredControl } from '../template_components.js';
 
 const template = `
@@ -16,7 +16,7 @@ const template = `
     class=add
     icon=puzzle
     (click)={{ this.onAddClicked }}
-    %if={{ !this._hasControl }}
+    %if={{ !this.hasControl }}
   ></aux-button>
   <aux-confirmbutton timeout=3000
     class=remove
@@ -25,7 +25,7 @@ const template = `
     (confirmed)={{ this.onRemoveConfirmed }}
     (click)={{ this.onRemoveClicked }}
     (canceled)={{ this.onRemoveCanceled }}
-    %if={{ !!this._hasControl }}
+    %if={{ !!this.hasControl }}
   ></aux-confirmbutton>
 </div>
 `;
@@ -96,6 +96,12 @@ class AES70Object extends TemplateComponent.fromString(template) {
         transformReceive: (selected) => {
           return selected && selected.type === 'object' && selected.prefix === this.identifier.prefix;
         },
+      },
+      {
+        backendValue: hasControlOnCanvas(this.identifier),
+        readonly: true,
+        sync: true,
+        name: 'hasControl',
       }
     ];
   }
@@ -151,26 +157,17 @@ class AES70Object extends TemplateComponent.fromString(template) {
       if (!node) return;
       node.classList.remove('scaffold');
     };
+    this.subscribeEvent('hasControlChanged', (value) => {
+      this.classList.toggle('hascontrol', value);
+    });
   }
   
   _addControl() {
     addControlToCanvas(this.identifier);
-    this.classList.add('hascontrol');
-    this._hasControl = true;
   }
   
   _removeControl() {
     removeControlFromCanvas(this.identifier);
-    this.classList.remove('hascontrol');
-    this._hasControl = false;
-  }
-  
-  connectedCallback() {
-    super.connectedCallback();
-    this.style.display = null;
-    this._hasControl = getRegisteredControl(this.identifier);
-    if (this._hasControl)
-      this.classList.add('hascontrol');
   }
 }
 

@@ -3,7 +3,7 @@ import { DynamicValue, combineLatest, map, getBackendValue } from './../AWML/src
 import { registerControl, unregisterControl, getRegisteredControl } from './template_components.js';
 
 const Selected = getBackendValue('local:selected');
-const ItemsOnCanvas = DynamicValue.fromConstant([]);
+export const ItemsOnCanvas = DynamicValue.fromConstant([]);
 
 function addToCanvas(node) {
   const selected = Selected.hasValue && Selected.value;
@@ -30,6 +30,19 @@ function isLinebreak(node) {
 
 function isControl(node) {
   return node && node.tagName === 'AES70-CONTROL';
+}
+
+export function hasControlOnCanvas(identifier) {
+  return map(ItemsOnCanvas, (items) => {
+    return items.some((node) => {
+      if (!isControl(node))
+        return;
+
+      const id = node.identifier;
+
+      return id.type === identifier.type && id.prefix === identifier.prefix;
+    });
+  });
 }
 
 export function removeControlFromCanvas(identifier) {
