@@ -66,3 +66,5 @@ import './object_details/OcaTemperatureSensor.js';
 import './object_details/OcaVoltageSensor.js';
 import './object_details/OcaCurrentSensor.js';
 import './object_details/OcaGainSensor.js';
+
+import './device_controls/Generic.js';

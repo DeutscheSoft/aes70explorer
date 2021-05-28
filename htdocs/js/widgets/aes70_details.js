@@ -5,7 +5,16 @@ import { createObjectDetailComponent } from '../object_details.js';
 
 const docsLink = 'http://docs.deuso.de/AES70-OCC/Control Classes/';
 const template = `
-<awml-prefix src="local:selected" transform-receive="v=>v.prefix"></awml-prefix>
+<awml-prefix src="local:selected" transform-receive="
+  (selected) => {
+    if (!selected) return ':noprefix:';
+    if (selected.type === 'device') {
+      return selected.prefix + '/DeviceManager';
+    } else {
+      return selected.prefix;
+    }
+  }
+"></awml-prefix>
 <div class=head %if={{ this.path }}>
   <aux-icon class=icon %bind={{ this.IconBind }}></aux-icon>
   <aux-label class=role %bind={{ this.RoleBind }}></aux-label>
@@ -22,7 +31,14 @@ const template = `
 const Selected = getBackendValue('local:selected');
 
 const ObjectAndSelected = switchMap(Selected, (selected) => {
-  const b = selected.prefix
+  if (selected && selected.type === 'device') {
+    selected = {
+      type: 'object',
+      prefix: selected.prefix + '/DeviceManager',
+    };
+  }
+
+  const b = selected && selected.prefix
     ? getBackendValue(selected.prefix)
     : DynamicValue.fromConstant(null);
 
@@ -102,7 +118,7 @@ class AES70Details extends TemplateComponent.fromString(template) {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (selected) => selected.type,
+        transformReceive: (selected) => selected ? selected.type : null,
       }
     ];
   }

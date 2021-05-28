@@ -1,5 +1,6 @@
-import { setPrefix, getBackendValue, resolve, TemplateComponent, fromSubscription } from '../../AWML/src/index.pure.js';
+import { setPrefix, setPrefixBlock, getBackendValue, resolve, TemplateComponent, fromSubscription } from '../../AWML/src/index.pure.js';
 import { createObjectControlComponent } from '../object_controls.js';
+import { createDeviceControlComponent } from '../device_controls.js';
 
 const Selected = getBackendValue('local:selected');
 
@@ -9,8 +10,13 @@ class AES70Control extends TemplateComponent.fromString(template) {
   set identifier(identifier) {
     this._identifier = identifier;
     this.updateHostBindings();
-    if (identifier)
+
+    if (identifier) {
       setPrefix(this, identifier.prefix);
+    } else {
+      setPrefixBlock(this);
+    }
+
   }
 
   get identifier() {
@@ -22,21 +28,32 @@ class AES70Control extends TemplateComponent.fromString(template) {
 
     if (!identifier) return null;
 
+    const objectSrc = identifier.type === 'object'
+      ? identifier.prefix
+      : (identifier.prefix + '/DeviceManager');
+
+
     return [
       {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (selected) => selected.prefix === identifier.prefix && selected.type === identifier.type,
+        transformReceive: (selected) => {
+          return selected && selected.prefix === identifier.prefix && selected.type === identifier.type;
+        }
       },
       {
-        backendValue: getBackendValue(identifier.prefix),
+        backendValue: getBackendValue(objectSrc),
         readonly: true,
         name: 'controlComponent',
         sync: true,
         pipe: function (b) {
           return resolve(b, async (o) => {
-            return await createObjectControlComponent(o);
+            if (identifier.type === 'object') {
+              return await createObjectControlComponent(o);
+            } else {
+              return await createDeviceControlComponent(o.device);
+            }
           });
         },
       }
@@ -77,7 +94,7 @@ class AES70Control extends TemplateComponent.fromString(template) {
 
     const selected = Selected.value;
 
-    return selected.type === identifier.type && selected.prefix === identifier.prefix;
+    return selected && selected.type === identifier.type && selected.prefix === identifier.prefix;
   }
 }
 

@@ -168,7 +168,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
   connectedCallback() {
     super.connectedCallback();
     this.style.display = null;
-    this._hasControl = getRegisteredControl(collectPrefix(this));
+    this._hasControl = getRegisteredControl(this.identifier);
     if (this._hasControl)
       this.classList.add('hascontrol');
   }

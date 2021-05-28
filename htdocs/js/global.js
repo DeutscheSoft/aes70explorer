@@ -1,6 +1,6 @@
 import { getBackendValue, collectPrefix } from './../AWML/src/index.pure.js';
 import { findControl } from './template_components.js';
-import { getControlsOnCanvas, addLineBreakToCanvas, addControlToCanvas, clearCanvas } from './layout.js';
+import { getControlsOnCanvas, addLineBreakToCanvas, removeLineBreakFromCanvas, addControlToCanvas, clearCanvas } from './layout.js';
 
 const controlsSerializationVersion = 1;
 
@@ -18,38 +18,7 @@ window.AES70 = {
   },
 
   removeLineBreak: function () {
-    const canvas = document.getElementById('canvas');
-    const lb = canvas.querySelector('.selected ~ aes70-line-break');
-    if (!lb)
-      return;
-    lb.parentElement.removeChild(lb);
-    getBackendValue('local:selected').wait().then(v => {
-      AES70.checkAddLineBreak(v.prefix);
-      AES70.checkRemoveLineBreak(v.prefix);
-    });
-  },
-
-  checkRemoveLineBreak: function (v) {
-    const control = findControl(v);
-    if (!control || !control.nextSibling) {
-      getBackendValue('local:canRemoveLineBreak').set(false);
-      return;
-    }
-    const hasLineBreak = control.nextSibling.tagName === 'AES70-LINE-BREAK';
-    getBackendValue('local:canRemoveLineBreak').set(hasLineBreak);
-  },
-
-  checkAddLineBreak: function (v) {
-    const control = findControl(v);
-    const canvas = document.getElementById('canvas');
-    const canAdd = (control && (
-      (control.nextSibling && control.nextSibling.tagName !== 'AES70-LINE-BREAK')
-      ||
-      !control.nextSibling
-    )) || (
-      !control && (canvas.lastChild && canvas.lastChild.tagName !== 'AES70-LINE-BREAK')
-    );
-    getBackendValue('local:canAddLineBreak').set(canAdd);
+    removeLineBreakFromCanvas();
   },
 
   closeHelp: function () {

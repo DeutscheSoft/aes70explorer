@@ -1,20 +1,27 @@
-const availableControls = new Map();
+const controlsOnCanvas = new Map();
 
-export function registerControl(path, node) {
-  if (availableControls.has(path))
-    return availableControls.get(path);
-  availableControls.set(path, node);
+function formatKey(identifier) {
+  return identifier.type + ':' + identifier.prefix;
+}
+
+export function registerControl(identifier, node) {
+  const key = formatKey(identifier);
+  if (controlsOnCanvas.has(key))
+    return controlsOnCanvas.get(key);
+  controlsOnCanvas.set(key, node);
   return node;
 }
 
-export function unregisterControl(path) {
-  return availableControls.delete(path);
+export function unregisterControl(identifier) {
+  const key = formatKey(identifier);
+  return controlsOnCanvas.delete(key);
 }
 
-export function getRegisteredControl(path) {
-  return availableControls.get(path);
+export function getRegisteredControl(identifier) {
+  const key = formatKey(identifier);
+  return controlsOnCanvas.get(key);
 }
 
-export function findControl(path) {
-  return availableControls.get(path);
+export function findControl(identifier) {
+  return getRegisteredControl(identifier);
 }

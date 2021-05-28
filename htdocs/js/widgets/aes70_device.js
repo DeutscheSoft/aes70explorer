@@ -1,5 +1,6 @@
 import { TemplateComponent, getBackendValue, collectPrefix, fromSubscription } from '../../AWML/src/index.pure.js';
 import { addControlToCanvas, removeControlFromCanvas } from '../layout.js';
+import { getRegisteredControl } from '../template_components.js';
 
 const Selected = getBackendValue('local:selected');
 
@@ -41,23 +42,41 @@ class AES70Device extends templateComponent {
         readonly: true,
         sync: true,
         name: 'isSelected',
-        transformReceive: (selected) => selected && selected.prefix === this.info.name + ':/DeviceManager',
+        transformReceive: (selected) => {
+          const identifier = this.identifier;
+          if (!identifier || !selected)
+            return false;
+
+          return identifier.type === selected.type && identifier.prefix === selected.prefix;
+        },
       }
     ];
   }
 
+  get identifier() {
+    if (!this._identifier && this.info) {
+      this._identifier = {
+        type: 'device',
+        prefix: this.info.name + ':',
+      };
+    }
+
+    return this._identifier;
+  }
+
   select() {
     if (!this.isSelected)
-      Selected.set({type:'device', prefix:this.info.name + ':/DeviceManager'});
+      Selected.set(this.identifier);
   }
 
   constructor() {
     super();
     this._icon = 'ocadevice';
+    this._identifier = null;
     this.subscribeEvent('isSelectedChanged', (value) => {
       this.classList.toggle('selected', value);
     });
-    
+
     this.onHeadClick = (ev) => {
       if (!this.isSelected) {
         this.select();
@@ -65,28 +84,40 @@ class AES70Device extends templateComponent {
         this.open = !this.open;
       }
     }
-    
+
     this.onIconClick = (ev) => {
       this.open = !this.open;
       ev.stopPropagation();
       this.select();
     }
-    this.onAddClicked = (e) => {
-      //this._addControl();
+    this.onAddClicked = (ev) => {
+      this._addControl();
     }
-    this.onRemoveConfirmed = (e) => {
-      //this._removeControl();
+    this.onRemoveConfirmed = () => {
+      this._removeControl();
     }
-    this.onRemoveClicked = (e) => {
-      //const node = getRegisteredControl(collectPrefix(this));
-      //if (!node) return;
-      //node.classList.add('scaffold');
+    this.onRemoveClicked = (ev) => {
+      const node = getRegisteredControl(this.identifier);
+      if (!node) return;
+      node.classList.add('scaffold');
     }
     this.onRemoveCanceled = (e) => {
-      //const node = getRegisteredControl(collectPrefix(this));
-      //if (!node) return;
-      //node.classList.remove('scaffold');
+      const node = getRegisteredControl(this.identifier);
+      if (!node) return;
+      node.classList.remove('scaffold');
     }
+  }
+
+  _addControl() {
+    addControlToCanvas(this.identifier);
+    this.classList.add('hascontrol');
+    this._hasControl = true;
+  }
+
+  _removeControl() {
+    removeControlFromCanvas(collectPrefix(this));
+    this.classList.remove('hascontrol');
+    this._hasControl = false;
   }
 }
 

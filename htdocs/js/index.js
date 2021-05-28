@@ -49,12 +49,7 @@ document.getElementById('canvas').addEventListener('mouseup', function (e) {
       return;
     target = target.parentElement;
   }
-  getBackendValue('local:selected').set({type:null, prefix:null});
-});
-
-getBackendValue('local:selected').subscribe(v => {
-  AES70.checkAddLineBreak(v.prefix);
-  AES70.checkRemoveLineBreak(v.prefix);
+  getBackendValue('local:selected').set(null);
 });
 
 registerValueTimer('local:tips/icons/ocadevice', ['ocadevice','ocadeviceopen'], 1500);
@@ -81,5 +76,5 @@ registerValueTimer('local:tips/icons/ocaworker', [
 
 window.setTimeout(function () {
   AES70.restoreControlsOnCanvas();
-  getBackendValue('local:selected').set({type:null, prefix:null});
+  getBackendValue('local:selected').set(null);
 }, 500);
