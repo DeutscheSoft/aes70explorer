@@ -11,7 +11,7 @@ function addToCanvas(node) {
   const selectedNode = selected && findControl(selected);
   const canvas = document.querySelector('#canvas');
 
-  canvas.insertBefore(node, selectedNode && selectedNode.nextSibling);
+  canvas.insertBefore(node, selectedNode ? selectedNode.nextSibling : null);
   ItemsOnCanvas.set(Array.from(canvas.children));
 }
 
