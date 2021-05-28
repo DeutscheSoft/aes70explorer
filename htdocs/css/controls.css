@@ -480,35 +480,24 @@ aes70-control-temperaturesensor > .aux-label.temp {
 }
 
 
-aes70-control-currentsensor,
-aes70-control-voltagesensor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-aes70-control-currentsensor > .aux-label.value,
-aes70-control-voltagesensor > .aux-label.value {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: var(--font-size-large);
-}
-
-
-
-
-
 
 .aux-gauge.aux-preset-gauge {
   width: 128px;
-  height: 80px;
+  height: 56px;
 }
-.aux-gauge.aux-gauge > svg {
+.aux-gauge.aux-preset-phase {
+  width: 48px;
+  height: 48px;
+}
+.aux-gauge.aux-preset-gauge > svg {
   width: 128px;
   height: 128px;
 }
+.aux-gauge.aux-preset-phase > svg {
+  width: 40px;
+  height: 40px;
+}
+
 .aux-gauge.aux-gauge > svg > .aux-circular > .aux-hand {
   fill: var(--color);
 }
@@ -522,4 +511,47 @@ aes70-control-voltagesensor > .aux-label.value {
 .aux-gauge.aux-gauge > svg > .aux-circular > .aux-value {
   fill: var(--color-accent);
   stroke: none;
+}
+
+aes70-control-currentsensor,
+aes70-control-voltagesensor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aes70-control-currentsensor > .aux-label.value,
+aes70-control-voltagesensor > .aux-label.value {
+  font-size: var(--font-size-large);
+}
+
+aes70-control-impedancesensor {
+  display: grid;
+  grid-template-areas: "label label"
+                      "impg phaseg"
+                      "impv phaser"
+                      "impv phased";
+  grid-gap: 0 16px;
+  align-items: center;
+}
+aes70-control-impedancesensor > .label {
+  grid-area: label;
+}
+aes70-control-impedancesensor > .magnitudegauge {
+  grid-area: impg;
+  
+}
+aes70-control-impedancesensor > .magnitudevalue {
+  grid-area: impv;
+  font-size: var(--font-size-large);
+  
+}
+aes70-control-impedancesensor > .phasegauge {
+  grid-area: phaseg;
+  
+}
+aes70-control-impedancesensor > .phaserad {
+  grid-area: phaser;
+}
+aes70-control-impedancesensor > .phasedeg {
+  grid-area: phased;
 }

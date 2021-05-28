@@ -40,7 +40,6 @@ class OcaCurrentSensorControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.valueBindings = [
-      ...makeValueMinMaxBinding('Reading'),
       {
         src: '/Reading',
         name: 'label',

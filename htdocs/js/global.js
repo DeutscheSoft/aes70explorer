@@ -82,6 +82,13 @@ window.AES70 = {
       labels_defaults: { margin: 10, align: 'outer' },
       hand: {width: 1, length: 24, margin: 17},
     },
+    phase: {
+      margin: 0,
+      thickness: 50,
+      start: 270,
+      angle: 360,
+      hand: {width: 3, length: 50, margin: 0,},
+    },
   },
   
   saveControlsOnCanvas: function () {
