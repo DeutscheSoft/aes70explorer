@@ -342,8 +342,8 @@ html {
   grid-area: canvas;
   overflow: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: safe center;
+  justify-content: safe center;
   flex-wrap: wrap;
   padding: 8px;
 }
