@@ -2,6 +2,8 @@ import { getBackendValue, collectPrefix } from './../AWML/src/index.pure.js';
 import { findControl } from './template_components.js';
 import { getControlsOnCanvas, addLineBreakToCanvas, addControlToCanvas, clearCanvas } from './layout.js';
 
+const controlsSerializationVersion = 1;
+
 window.AES70 = {
   storageDefaults: {
     "tips/show": true,
@@ -114,22 +116,31 @@ window.AES70 = {
   },
   
   saveControlsOnCanvas: function () {
-    const C = getControlsOnCanvas();
-    getBackendValue('storage:controls').set(C);
+    const value = {
+      version: controlsSerializationVersion,
+      list: getControlsOnCanvas(),
+    };
+    getBackendValue('storage:controls').set(value);
   },
   restoreControlsOnCanvas: function () {
     getBackendValue('storage:controls').wait().then(v => {
-      if (!Array.isArray(v)) return;
-      for (let i = 0, m = v.length; i < m; ++i) {
-        if (v[i] == '[LINEBREAK]')
-          addLineBreakToCanvas();
-        else
-          addControlToCanvas(v[i]);
+      if (typeof v !== 'object' || v.version !== controlsSerializationVersion) {
+        console.warn('Ignoring old canvas storage: %o', v);
+        return;
       }
+      const list = v.list;
+
+      list.forEach((control) => {
+        if (control === '[LINEBREAK]') {
+          addLineBreakToCanvas();
+        } else {
+          addControlToCanvas(control);
+        }
+      });
     });
   },
   clearCanvas: function () {
     clearCanvas();
-    getBackendValue('storage:controls').set([]);
+    getBackendValue('storage:controls').set(void 0);
   },
 }

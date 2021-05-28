@@ -49,6 +49,30 @@ function classListBinding(node) {
 }
 
 class AES70Object extends TemplateComponent.fromString(template) {
+  get identifier() {
+    if (!this._identifier) {
+      this._identifier = {
+        type: 'object',
+        prefix: collectPrefix(this),
+      };
+    }
+
+    return this._identifier;
+  }
+
+  select() {
+    Selected.set(this.identifier);
+  }
+
+  get isSelected() {
+    if (!Selected.hasValue)
+      return;
+
+    const selected = Selected.value;
+
+    return selected.type === 'object' && selected.prefix === this.identifier.prefix;
+  }
+
   getHostBindings() {
     return [
       {
@@ -69,7 +93,9 @@ class AES70Object extends TemplateComponent.fromString(template) {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (selected) => selected && selected.prefix === collectPrefix(this),
+        transformReceive: (selected) => {
+          return selected && selected.type === 'object' && selected.prefix === this.identifier.prefix;
+        },
       }
     ];
   }
@@ -94,6 +120,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this._bindings = null;
+    this._identifier = null;
 
     this.labelBindings = [{
       src: '/Role',
@@ -105,31 +132,29 @@ class AES70Object extends TemplateComponent.fromString(template) {
       transformReceive: v=>v.ClassName,
     }];
     this.onHeaderClicked = (e) => {
-      const prefix = collectPrefix(this);
-      if (Selected._value && Selected._value.prefix === prefix)
-        return;
-      Selected.set({type:'object', prefix:prefix});
-    }
+      if (!this.isSelected)
+        this.select();
+    };
     this.onAddClicked = (e) => {
       this._addControl();
-    }
+    };
     this.onRemoveConfirmed = (e) => {
       this._removeControl();
-    }
+    };
     this.onRemoveClicked = (e) => {
-      const node = getRegisteredControl(collectPrefix(this));
+      const node = getRegisteredControl(this.identifier);
       if (!node) return;
       node.classList.add('scaffold');
-    }
+    };
     this.onRemoveCanceled = (e) => {
-      const node = getRegisteredControl(collectPrefix(this));
+      const node = getRegisteredControl(this.identifier);
       if (!node) return;
       node.classList.remove('scaffold');
-    }
+    };
   }
   
   _addControl() {
-    addControlToCanvas(collectPrefix(this));
+    addControlToCanvas(this.identifier);
     this.classList.add('hascontrol');
     this._hasControl = true;
   }
@@ -138,12 +163,6 @@ class AES70Object extends TemplateComponent.fromString(template) {
     removeControlFromCanvas(collectPrefix(this));
     this.classList.remove('hascontrol');
     this._hasControl = false;
-  }
-  
-  _subscribe() {
-    return () => {
-      while (this.lastChild) this.lastChild.remove();
-    };
   }
   
   connectedCallback() {

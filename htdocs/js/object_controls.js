@@ -1,6 +1,8 @@
 import { TemplateRegistry } from './utils/template_registry.js';
 
-export const objectControlTemplateRegistry = new TemplateRegistry('aes70-control-');
+export const objectControlPrefix = 'aes70-control';
+
+export const objectControlTemplateRegistry = new TemplateRegistry(objectControlPrefix);
 
 export async function createObjectControlComponent(o) {
   const tagName = await objectControlTemplateRegistry.find(o);

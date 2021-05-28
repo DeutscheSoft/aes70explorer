@@ -36,7 +36,7 @@ export class TemplateRegistry
   }
 
   register(name, component) {
-    const tagName = this.prefix + name;
+    const tagName = this.prefix + '-' + name;
 
     if (this.templates.has(tagName))
       throw new Error(`Component with name ${tagName} already defined.`)

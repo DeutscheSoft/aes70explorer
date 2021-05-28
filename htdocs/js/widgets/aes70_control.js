@@ -1,4 +1,4 @@
-import { collectPrefix, getBackendValue, resolve, TemplateComponent, fromSubscription } from '../../AWML/src/index.pure.js';
+import { setPrefix, getBackendValue, resolve, TemplateComponent, fromSubscription } from '../../AWML/src/index.pure.js';
 import { createObjectControlComponent } from '../object_controls.js';
 
 const Selected = getBackendValue('local:selected');
@@ -6,16 +6,31 @@ const Selected = getBackendValue('local:selected');
 const template = `{{ this.controlComponent }}`;
 
 class AES70Control extends TemplateComponent.fromString(template) {
+  set identifier(identifier) {
+    this._identifier = identifier;
+    this.updateHostBindings();
+    if (identifier)
+      setPrefix(this, identifier.prefix);
+  }
+
+  get identifier() {
+    return this._identifier;
+  }
+
   getHostBindings() {
+    const identifier = this.identifier;
+
+    if (!identifier) return null;
+
     return [
       {
         backendValue: Selected,
         readonly: true,
         name: 'selectedClassName',
-        transformReceive: (selected) => selected.prefix === collectPrefix(this),
+        transformReceive: (selected) => selected.prefix === identifier.prefix && selected.type === identifier.type,
       },
       {
-        src: '',
+        backendValue: getBackendValue(identifier.prefix),
         readonly: true,
         name: 'controlComponent',
         sync: true,
@@ -41,11 +56,28 @@ class AES70Control extends TemplateComponent.fromString(template) {
   constructor() {
     super();
     this.addEventListener('click', (e) => {
-      const prefix = collectPrefix(this);
-      if (Selected._value && Selected._value.prefix === prefix)
-        return;
-      Selected.set({type:'object', prefix:prefix});
+      this.select();
     });
+    this._identifier = null;
+  }
+
+  select() {
+    if (this.identifier && !this.isSelected)
+      Selected.set(this.identifier);
+  }
+
+  get isSelected() {
+    const identifier = this.identifier;
+
+    if (!identifier)
+      return false;
+
+    if (!Selected.hasValue)
+      return false;
+
+    const selected = Selected.value;
+
+    return selected.type === identifier.type && selected.prefix === identifier.prefix;
   }
 }
 

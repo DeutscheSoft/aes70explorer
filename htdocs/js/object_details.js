@@ -1,6 +1,8 @@
 import { TemplateRegistry } from './utils/template_registry.js';
 
-export const objectDetailTemplateRegistry = new TemplateRegistry('aes70-detail-');
+export const objectDetailPrefix = 'aes70-detail';
+
+export const objectDetailTemplateRegistry = new TemplateRegistry(objectDetailPrefix);
 
 export async function createObjectDetailComponent(o) {
   const tagName = await objectDetailTemplateRegistry.find(o);

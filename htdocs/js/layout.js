@@ -1,5 +1,5 @@
 import { findControl } from './template_components.js';
-import { getBackendValue, collectPrefix } from './../AWML/src/index.pure.js';
+import { getBackendValue } from './../AWML/src/index.pure.js';
 import { registerControl, unregisterControl, getRegisteredControl } from './template_components.js';
 
 function addToCanvas(node) {
@@ -15,30 +15,34 @@ function addToCanvas(node) {
   });
 }
 
-export function addControlToCanvas(URI) {
-  const _node = getRegisteredControl(URI);
+export function addControlToCanvas(identifier) {
+  const _node = getRegisteredControl(identifier.prefix);
   if (_node) return; 
   const node = document.createElement('aes70-control');
-  node.setAttribute('prefix', URI);
+  node.identifier = identifier;
   addToCanvas(node);
-  registerControl(URI, node);
+  registerControl(identifier.prefix, node);
 }
 
-export function removeControlFromCanvas(URI) {
-  const _node = getRegisteredControl(URI);
+export function removeControlFromCanvas(identifier) {
+  const _node = getRegisteredControl(identifier.prefix);
   if (!_node) return;
   _node.remove(); 
-  unregisterControl(URI);
+  unregisterControl(identifier.prefix);
 }
 
 export function getControlsOnCanvas() {
   const C = document.getElementById('canvas').children;
   const res = [];
   for (let i = 0, m = C.length; i < m; ++i) {
-    if (C[i].tagName == 'AES70-CONTROL')
-      res.push(collectPrefix(C[i]));
-    else if (C[i].tagName == 'AES70-LINE-BREAK')
+    const component = C[i];
+    if (component.tagName == 'AES70-CONTROL') {
+      const identifier = component.identifier;
+      if (identifier)
+        res.push(identifier);
+    } else if (component.tagName == 'AES70-LINE-BREAK') {
       res.push('[LINEBREAK]');
+    }
   }
   return res;
 }
@@ -68,11 +72,12 @@ export function clearCanvas() {
     if (control.tagName == 'AES70-LINE-BREAK')
       control.remove();
     else if (control.tagName == 'AES70-CONTROL') {
-      const URI = collectPrefix(control);
-      const _node = getRegisteredControl(URI);
+      const identifier = control.identifier;
+      const prefix = identifier.prefix;
+      const _node = getRegisteredControl(prefix);
       if (!_node) return;
       _node.remove(); 
-      unregisterControl(URI);
+      unregisterControl(prefix);
     }
   });
 }
