@@ -4,7 +4,7 @@ import { registerObjectControlTemplate } from '../object_controls.js';
 import { makeValueMinMaxBinding, limitValueDigits } from '../utils.js';
 
 const _limitValueDigitsMagnitude = limitValueDigits(5, 'Ω');
-const _limitValueDigitsPhase = limitValueDigits(3, 'deg');
+const _limitValueDigitsPhase = limitValueDigits(3, 'rad');
 const _limitValueDigitsDeg = limitValueDigits(4, '°');
 
 const template = `
