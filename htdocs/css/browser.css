@@ -243,8 +243,6 @@ html {
 }
 #tips {
   position: fixed;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
   right: 0;
@@ -255,8 +253,9 @@ html {
   grid-template-columns: repeat(3, auto);
   grid-gap: 32px;
   justify-content: center;
-  align-content: center;
   align-items: center;
+  overflow-y: auto;
+  padding: 16px;
 }
 
 #tips > * {
@@ -346,7 +345,7 @@ html {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  align-content: center;
+  padding: 8px;
 }
 
 
