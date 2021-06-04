@@ -264,11 +264,26 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
       },
     ];
     this.thresholdBindings = [
-      ...makeValueMinMaxBinding(
-        'Threshold',
-        v => v.Value,
-        v => ({ Value:v, Ref:0 })
-      ),
+      {
+        src: '/Threshold',
+        name: 'value',
+        writeonly: true,
+        transformSend: v => ({ Value:v, Ref:0 }),
+      },
+      {
+        src: '/Threshold/Min',
+        name: 'min',
+      },
+      {
+        src: '/Threshold/Max',
+        name: 'max',
+      },
+      {
+        src: [ '/Threshold', '/Threshold/Min', '/Threshold/Max' ],
+        name: 'value',
+        readonly: true,
+        transformReceive: v => v[0].Value,
+      },
       {
         backendValue: this.knobPresets,
         name: 'knob.presets',
@@ -428,14 +443,6 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
         readonly: true,
       },
       {
-        src: '/Slope',
-        name: 'ratio',
-      },
-      {
-        src: '/Ratio',
-        name: 'ratio',
-      },
-      {
         src: '/KneeParameter',
         name: 'knee',
         readonly: true,
@@ -468,6 +475,21 @@ class OcaDynamicsControl extends TemplateComponent.fromString(template) {
         readonly: true,
         transformReceive: v => !v.value,
       },
+      {
+        src: ['/Slope', '/Slope/Min', '/Slope/Max'],
+        name: 'ratio',
+        transformReceive: v => v[0],
+        readonly: true,
+      },
+      {
+        src: '/Slope',
+        name: 'ratio',
+        writeonly: true,
+      },
+      //{
+        //src: '/Ratio',
+        //name: 'ratio',
+      //},
     ];
     this.attackClicked = (e) => {
       this.attack.auxWidget.value._input.focus();
