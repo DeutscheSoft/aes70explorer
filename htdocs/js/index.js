@@ -77,4 +77,5 @@ registerValueTimer('local:tips/icons/ocaworker', [
 window.setTimeout(function () {
   AES70.restoreControlsOnCanvas();
   getBackendValue('local:selected').set(null);
+  document.getElementById("loading").style.display = "none";
 }, 500);

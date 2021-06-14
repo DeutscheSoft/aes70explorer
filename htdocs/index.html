@@ -96,9 +96,120 @@
 <body>
   <div id=root>
 
-    <awml-clone id=tipsclone fetch src="storage:tips/show"
-      transform-receive="v => v ? 'templates/tips.html' : null">
-    </awml-clone>
+    <div id=loading>
+      <div id=loading1><div id=loading2></div></div>
+    </div>
+    
+    <aux-expand id=tips class="aux-drawer-right" show_button=false>
+      <awml-option type=bind name=expanded src="storage:tips/show"></awml-option>
+      
+      <img src="../images/aes70explorer_4c_white.svg" width="240" height="41">
+      
+      <div>
+        
+      </div>
+      
+      <div class="copyright">
+        <a href="https://deuso.de" target="_blank">
+          Copyright 2020 - 2021 by DeusO GmbH
+          <img src="../images/DeusO Logo.svg">
+        </a>
+      </div>
+      
+      <div>
+        <aux-icon icon="ocadeviceopen">
+          <awml-option type=bind src='local:tips/icons/ocadevice' name=icon></awml-option>
+        </aux-icon>
+        <h2>OcaDevice</h2>
+        Devices appear in the navigation to the left. Click the icon to
+        inspect the sub-tree of the device. Click on the title to show the
+        devices details in the Details pane at the bottom of the window.
+      </div>
+      
+      <div>
+        <aux-icon icon="ocablockopen">
+          <awml-option type=bind src='local:tips/icons/ocablock' name=icon></awml-option>
+        </aux-icon>
+        <h2>OcaBlock</h2>
+        Blocks appear in the subtree of devices. Click on the icon to inspect
+        the children of the block. Click on the title to show the blocks
+        details in the details pane at the bottom of the page.
+      </div>
+      
+      <div>
+        <aux-icon icon="ocaactuator">
+          <awml-option type=bind src='local:tips/icons/ocaworker' name=icon></awml-option>
+        </aux-icon>
+        <h2>OcaWorker</h2>
+        Actuators and sensors appear as child entries inside devices or blocks.
+        Click on the title to see the details and a controllable
+        widget in the details pane at the bottom of the page.
+      </div>
+      
+      <div>
+        <aux-icon icon="puzzle"></aux-icon>
+        <h2>Add Control</h2>
+        OcaWorkers can be added to the canvas in the center of the screen.
+        To add a widget for this parameter click the puzzle icon in the
+        navigation bar to the left.
+      </div>
+      
+      <div>
+        <aux-icon icon="trash"></aux-icon>
+        <h2>Remove Control</h2>
+        Controls on the canvas can be removed by clicking the trash icon in the
+        navigation bar to the left. Wait a moment after the first click and
+        click a second time to confirm the command.
+      </div>
+      
+      <div>
+        <aux-icon icon="edit"></aux-icon>
+        <h2>Edit Control</h2>
+        Some controls can be set by using the keyboard. To activate the
+        input click on the edit icon. The current value will be selected,
+        so you can start typing immediately to overwrite.
+      </div>
+      
+      <div>
+        <aux-icon icon="savecontrols"></aux-icon>
+        <h2>Save Controls</h2>
+        Save all controls and line breaks currently visible on the canvas.
+        Stored controls and line breaks will be restored as soon as the browser
+        tab is refreshed.
+      </div>
+      
+      <div>
+        <aux-icon icon="wipecontrols"></aux-icon>
+        <h2>Wipe Controls</h2>
+        Pressing this button does two things: it removes all current elements
+        (controls and line breaks) from the canvas and also resets the stored
+        controls to none.
+      </div>
+      
+      <div>
+        <aux-icon icon="addlinebreak"></aux-icon>
+        <h2>Add Line Break</h2>
+        In the sidebar to the right you'll find a button for adding line breaks
+        on the canvas. If a control is selected, the line break is added after
+        thie control, otherwise it gets appended at the end.
+      </div>
+      
+      <div>
+        <aux-icon icon="deletelinebreak"></aux-icon>
+        <h2>Remove Line Break</h2>
+        This button becomes active once a control is selected, which is followed
+        by a line break. Click the button in order to remove the line break
+        after the active control.
+      </div>
+      
+      <i></i> 
+      
+      <aux-button label="▸" icon="images/aes70explorer_4c_white.svg">
+        <awml-event type=click callback="AES70.closeHelp"></awml-event>
+      </aux-button>
+        
+    </aux-expand>
+
 
     <aes70-navigation></aes70-navigation>
     <div id=canvas></div>
