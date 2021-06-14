@@ -6,9 +6,10 @@ const Selected = getBackendValue('local:selected');
 
 const templateComponent = TemplateComponent.create({
   template: `
-<div class='head' (click)={{ this.onHeadClick }}>
+<div class='{{ this.connectedClass + ' head' }}' (click)={{ this.onHeadClick }}>
   <aux-icon class='icon' icon={{ this.open ? 'ocadeviceopen' : 'ocadevice' }} (click)={{ this.onIconClick }}></aux-icon>
-  <aux-label class='name' label='{{ this.info.name }}'></aux-label>
+  <aux-label class='name' label='{{ this.DeviceName || '(not connected)' }}'></aux-label>
+  <aux-label class='net' label='{{ this.info.name }}'></aux-label>
   <aux-icon class='ihost' icon='ip'></aux-icon>
   <aux-icon class='iport' icon='port'></aux-icon>
   <aux-label class='host' label='{{ this.info.host }}'></aux-label>
@@ -55,7 +56,20 @@ class AES70Device extends templateComponent {
         readonly: true,
         sync: true,
         name: 'hasControl',
-      }
+      },
+      {
+        src: this.info.name + ':/DeviceManager/DeviceName',
+        readonly: true,
+        sync: true,
+        name: 'DeviceName',
+      },
+      {
+        src: this.info.name + ':/DeviceManager/DeviceName',
+        readonly: true,
+        sync: true,
+        name: 'connectedClass',
+        transformReceive: v => v ? 'connected' : 'disconnected',
+      },
     ];
   }
 
@@ -78,6 +92,7 @@ class AES70Device extends templateComponent {
   constructor() {
     super();
     this._identifier = null;
+    this.connectedClass = 'disconnected';
     this.subscribeEvent('isSelectedChanged', (value) => {
       this.classList.toggle('selected', value);
     });

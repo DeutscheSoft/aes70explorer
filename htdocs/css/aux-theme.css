@@ -1,6 +1,9 @@
 @import url('../aux-widgets/styles/basics.css');
 
 :root {
+
+  --aux-main-lineheight: 1em;
+  
   --aux-button-paddinghorizontal: 16px;
   --aux-fader-handleheight: 56px;
   --aux-fader-gridgap: 4px;

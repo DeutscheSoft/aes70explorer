@@ -571,11 +571,10 @@ aes70-device {
 aes70-device > .head {
   display: grid;
   grid-template-areas: 'icon name ihost host action'
-                       'icon name iport port action';
+                       'icon net  iport port action';
   background: var(--background);
-  grid-template-rows: 1fr 1fr;
   grid-template-columns: 40px 1fr auto auto;
-  grid-gap: 4px;
+  grid-gap: 1px 4px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -591,6 +590,12 @@ aes70-device.selected > .head * {
   color: var(--color-contrast) !important;
   transition: all var(--transition);
 }
+aes70-device > .head.disconnected {
+  pointer-events: none;
+}
+aes70-device > .head.disconnected * {
+  color: var(--color-fade) !important;
+}
 aes70-device > .head > .icon {
   font-size: 32px;
 }
@@ -600,8 +605,16 @@ aes70-device.aes70-open > .head > .icon {
 aes70-device > .head > .name {
   grid-area: name;
   overflow: hidden;
-  text-overflow: ellipsize;
+  text-overflow: ellipsis;
   font-size: var(--font-size-large);
+  align-self: end;
+}
+aes70-device > .head > .net {
+  grid-area: net;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--font-size-tiny);
+  align-self: start;
 }
 aes70-device > .head > .host,
 aes70-device > .head > .port {
