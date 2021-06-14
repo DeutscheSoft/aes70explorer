@@ -37,7 +37,7 @@ const template = `
   <aux-button class=edit icon=edit (click)={{ this.freqClicked }}></aux-button>
 </div>
 
-<div %if={{ this.implementsOrder }}>
+<div class=order %if={{ this.implementsOrder }}>
   <aux-valueknob #order
     class=small
     label="Order"

@@ -272,7 +272,11 @@ aes70-control-filterclassical > .aux-label {
   grid-area: label;
   text-align: left;
 }
-aes70-control-filterclassical > .freq {
+aes70-control-filterclassical > .order > .aux-valueknob > .aux-knob {
+  margin-top: 0;
+}
+aes70-control-filterclassical > .order > .aux-valueknob > .aux-knob .aux-label {
+  font-size: 7px !important;
 }
 aes70-control-filterclassical > .switch {
   grid-area: switch;
