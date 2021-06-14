@@ -5,7 +5,7 @@ const Selected = getBackendValue('local:selected');
 const templateComponent = TemplateComponent.create({
   template: `
 <div class=head (click)={{ this.onHeadClick }}>
-  <aux-icon icon={{ this._icon }} (click)={{ this.onIconClick }} class=icon></aux-icon>
+  <aux-icon icon={{ this.open ? 'ocablockopen' : 'ocablock' }} (click)={{ this.onIconClick }} class=icon></aux-icon>
   <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
   <aux-icon icon=item class=iconm></aux-icon>
   <aux-label class=children %bind={{ this.childrenBindings }}></aux-label>
@@ -37,7 +37,6 @@ class AES70Block extends templateComponent {
 
   constructor() {
     super();
-    this._icon = 'ocablock';
     this.subscribeEvent('isSelectedChanged', (value) => {
       this.classList.toggle('selected', value);
     });

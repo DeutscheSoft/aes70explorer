@@ -7,7 +7,7 @@ const Selected = getBackendValue('local:selected');
 const templateComponent = TemplateComponent.create({
   template: `
 <div class='head' (click)={{ this.onHeadClick }}>
-  <aux-icon class='icon' icon={{ this._icon }} (click)={{ this.onIconClick }}></aux-icon>
+  <aux-icon class='icon' icon={{ this.open ? 'ocadeviceopen' : 'ocadevice' }} (click)={{ this.onIconClick }}></aux-icon>
   <aux-label class='name' label='{{ this.info.name }}'></aux-label>
   <aux-icon class='ihost' icon='ip'></aux-icon>
   <aux-icon class='iport' icon='port'></aux-icon>
@@ -77,7 +77,6 @@ class AES70Device extends templateComponent {
 
   constructor() {
     super();
-    this._icon = 'ocadevice';
     this._identifier = null;
     this.subscribeEvent('isSelectedChanged', (value) => {
       this.classList.toggle('selected', value);
