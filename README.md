@@ -8,7 +8,7 @@ initialize them, run
 
 # NodeJS Server
 
-The AES70Explorer can be run without a UI as a pure http server.
+The AES70 Explorer can be run without a UI as a pure http server.
 
 ## Installation
 
@@ -23,7 +23,7 @@ In the `src/nodejs` directory run
 
 # License
 
-The oca-browser is available under the terms of the GNU General Public License version 2.
+The AES70 Explorer is available under the terms of the GNU General Public License version 2.
 See the `COPYING` file for details.
 
 Copyright (c) 2020-2021 DeusO GmbH
