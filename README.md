@@ -1,4 +1,4 @@
-![aes70exlorer logo](images/AES70 Explorer 4C.svg)
+![aes70exlorer logo](images/AES70 Explorer Logo 4C.svg)
 # Repository setup
 
 Some dependencies are pulled into this repository as git submodules. To
