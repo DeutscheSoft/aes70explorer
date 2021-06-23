@@ -1,0 +1,17 @@
+{
+  "name": "aes70-explorer-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-2.0-only",
+  "dependencies": {},
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "electron": "^14.0.0-beta.8"
+  }
+}
