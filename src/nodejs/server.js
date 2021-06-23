@@ -1,8 +1,7 @@
 import yargs from 'yargs';
-import startHTTP from './lib/http.js';
-import startDiscovery from './lib/discovery.js';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { Backend } from './lib/backend.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const defaultHtdocs = join(dirname(__filename), "../../htdocs");
@@ -27,6 +26,10 @@ const httpOptions = {
   port: argv.port || 8080,
   htdocs: argv.htdocs || defaultHtdocs,
 };
+
+const backend = new Backend({
+  http: httpOptions
+});
 
 console.log('Starting with options', httpOptions);
 
@@ -65,33 +68,14 @@ function parseDestination(str)
   };
 }
 
-const destinations = new Map();
-
-function addDestination(destination) {
-  let name = destination.name;
-
-  if (destinations.has(name))
-    throw new Error('Destination already exists.');
-
-  destinations.set(name, destination);
-
-  return () => {
-    if (name === null) return;
-    destinations.delete(name);
-    name = null;
-  };
-}
-
 argv._.forEach((arg) => {
   const destination = parseDestination(arg);
 
   console.log('Using manual destination: %o', destination);
-  addDestination(destination);
+  backend.addDestination(destination);
 });
 
-startDiscovery(addDestination);
-
-startHTTP(httpOptions, destinations).then(
+backend.start().then(
   () => {
     console.log('Running on port %d.', httpOptions.port);
   },
