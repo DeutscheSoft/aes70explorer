@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "parcel build --no-scope-hoist htdocs/index.html"
+    "build": "parcel build --no-scope-hoist htdocs/index.html",
+    "build:electron:htdocs": "parcel build --dist-dir src/electron/htdocs --no-scope-hoist htdocs/index.html"
   },
   "keywords": [],
   "author": "",
