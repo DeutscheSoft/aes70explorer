@@ -618,7 +618,19 @@ aes70-navigation  > aes70-add-device > .container > .ok { grid-area: ok; }
 aes70-navigation  > aes70-add-device > .container > .cancel { grid-area: cancel; }
 aes70-navigation  > aes70-add-device > .container > .ok > .aux-icon { color: var(--color-ok); }
 aes70-navigation  > aes70-add-device > .container > .cancel > .aux-icon { color: var(--color-warn); }
-  
+
+
+aes70-navigation > .list > .nodevice {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  width: 80%;
+  text-transform: uppercase;
+  opacity: 0.075;
+  font-size: var(--font-size-huge);
+  text-align: center;
+}
 
 /* DEVICE */
 

@@ -5,12 +5,15 @@ import { forEachAsync } from '../utils.js';
 const template = `
 <div class=list>
   <div #scroller class=scroller></div>
+  <div class=nodevice %if={{ !this.hasDevices }}>Add a Device<br>at the Bottom</div>
 </div>
 `;
 
 class AES70Navigation extends TemplateComponent.fromString(template) {
   constructor() {
     super();
+    
+    this.hasDevices = false;
     
     forEachAsync(
       Devices,
