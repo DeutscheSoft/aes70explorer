@@ -4,9 +4,6 @@
   "description": "NodeJS standalone server for the AES70Explorer",
   "main": "server.js",
   "type": "module",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -22,12 +19,7 @@
   },
   "homepage": "https://github.com/DeutscheSoft/aes70-browser#readme",
   "dependencies": {
-    "@hapi/hapi": "^20.0.3",
-    "@hapi/inert": "^6.0.3",
-    "aes70": "^1.1.16",
-    "argparse": "^2.0.1",
-    "dnssd": "^0.4.1",
-    "hapi-plugin-websocket": "^2.3.1",
+    "aes70-explorer-nodejs-lib": "file:../nodejs-lib",
     "yargs": "^16.1.1"
   }
 }
