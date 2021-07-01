@@ -561,7 +561,7 @@ aes70-control-voltagesensor > .aux-label.value {
 }
 
 aes70-control-impedancesensor {
-  display: grid;
+  display: grid !important;
   grid-template-areas: "label label"
                       "impg phaseg"
                       "impv phaser"
