@@ -40,3 +40,5 @@
 .aux-icon.polaritytest::before              { font-family: 'AES70Browser'; content: '񗍠'; }
 .aux-icon.stop::before                      { font-family: 'AES70Browser'; content: '񗍡'; }
 .aux-icon.play::before                      { font-family: 'AES70Browser'; content: '񗍢'; }
+.aux-icon.list::before                      { font-family: 'AES70Browser'; content: '񗍣'; }
+.aux-icon.details::before                   { font-family: 'AES70Browser'; content: '񗍤'; }

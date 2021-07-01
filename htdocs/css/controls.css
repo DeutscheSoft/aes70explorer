@@ -68,18 +68,7 @@ aes70-control > * {
 }
 
 
-.control .aux-valueknob,
-aes70-control .aux-valueknob {
-  margin-bottom: var(--line-height);
-}
-.control .aux-valueknob > .aux-value,
-aes70-control .aux-valueknob > .aux-value {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: calc(var(--line-height) / 2 - 4px);
-}
+
 .control .aux-button.edit,
 aes70-control .aux-button.edit {
   background: none;
@@ -95,6 +84,45 @@ aes70-control .aux-button.edit {
 aes70-control .aux-button.edit > .aux-icon {
   font-size: var(--font-size-button-icon);
 }
+
+
+.control .aux-toggle,
+aes70-control .aux-toggle {
+  padding-left: 4px;
+}
+.control .aux-toggle::before,
+aes70-control .aux-toggle::before {
+  content: "";
+  background: var(--toggle-indicator);
+  transition: all var(--transition);
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  margin-right: var(--aux-button-paddinghorizontal);
+}
+.control .aux-toggle:hover::before,
+aes70-control .aux-toggle:hover::before {
+  background: var(--toggle-hover-indicator);
+}
+.control .aux-toggle.aux-active::before,
+aes70-control .aux-toggle.aux-active::before {
+  background: var(--toggle-active-indicator);
+}
+
+
+.control .aux-valueknob,
+aes70-control .aux-valueknob {
+  margin-bottom: var(--line-height);
+}
+.control .aux-valueknob > .aux-value,
+aes70-control .aux-valueknob > .aux-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: calc(var(--line-height) / 2 - 4px);
+}
+
 .control .aux-valueknob.small > .aux-value > .aux-input,
 aes70-control .aux-valueknob.small > .aux-value > .aux-input {
   font-size: var(--font-size);
@@ -332,7 +360,7 @@ aes70-control-polarity {
 aes70-control-identificationactuator > .aux-toggle,
 aes70-control-mute > .aux-toggle,
 aes70-control-polarity > .aux-toggle {
-  padding-left: var(--aux-button-paddinghorizontal);
+  padding-left: var(--aux-button-paddinghorizontal) !important;
   margin-top: 8px;
 }
 aes70-control-identificationactuator > .aux-toggle::before,

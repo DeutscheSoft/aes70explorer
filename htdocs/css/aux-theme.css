@@ -183,35 +183,21 @@
 }
 
 
-.aux-toggle {
-  padding-left: 4px;
+.aux-button.aux-toggle {
   background: var(--toggle-background);
   color: var(--toggle-color);
 }
-.aux-toggle:hover {
+.aux-button.aux-toggle:hover {
   background: var(--toggle-hover-background);
   color: var(--toggle-hover-color);
 }
-.aux-toggle.aux-active {
+.aux-button.aux-toggle.aux-active {
   background: var(--toggle-hover-background);
   color: var(--toggle-hover-color);
 }
-.aux-toggle::before {
-  content: "";
-  background: var(--toggle-indicator);
-  transition: all var(--transition);
-  width: 3px;
-  height: 100%;
-  border-radius: 2px;
-  margin-right: var(--aux-button-paddinghorizontal);
+.aux-button.aux-toggle.aux-active > .aux-icon {
+  color: var(--color-accent);
 }
-.aux-toggle:hover::before {
-  background: var(--toggle-hover-indicator);
-}
-.aux-toggle.aux-active::before {
-  background: var(--toggle-active-indicator);
-}
-
 
 
 .aux-value {

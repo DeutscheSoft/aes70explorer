@@ -211,9 +211,13 @@
     </aux-expand>
 
 
-    <aes70-navigation></aes70-navigation>
+    <aes70-navigation>
+      <awml-show src="storage:list/show"></awml-show>
+    </aes70-navigation>
     <div id=canvas></div>
-    <aes70-details id=details></aes70-details>
+    <aes70-details id=details>
+      <awml-show src="storage:details/show"></awml-show>
+    </aes70-details>
     <div id=sidebar>
       
       <aux-button icon=savecontrols label="Save Controls"
@@ -251,10 +255,20 @@
         </awml-option>
       </aux-button>
       
-      <aux-button icon=confirm id=showtips label="Help">
-        <awml-event type=click callback="AES70.showHelp"></awml-event>
-      </aux-button>
+      <div class=separator></div>
+      
+      <aux-toggle icon=confirm id=showtips label="Help">
+        <awml-option type=bind name=state src="storage:tips/show"></awml-option>
+      </aux-toggle>
 
+      <aux-toggle label="List" icon="list">
+        <awml-option type=bind name="state" src="storage:list/show"></awml-option>
+      </aux-toggle>
+      
+      <aux-toggle label="Details" icon="details">
+        <awml-option type=bind name="state" src="storage:details/show"></awml-option>
+      </aux-toggle>
+      
     </div>
   </div>
 </body>

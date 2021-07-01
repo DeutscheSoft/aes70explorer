@@ -190,11 +190,26 @@ html {
   bottom: 0;
   
   grid-template-columns: auto 1fr;
-  grid-template-rows: 48px 1fr 320px;
+  grid-template-rows: 48px 1fr auto;
   grid-template-areas:
       "navigation sidebar"
       "navigation canvas"
       "navigation details";
+}
+#root::after {
+  content: "";
+  background-image: url("../images/aes70explorer_4c_white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 100px;
+  height: 18px;
+  opacity: 1;
+  z-index: 100;
+  pointer-events: none;
 }
 
 #loading {
@@ -319,6 +334,7 @@ html {
   background: var(--background);
   display: flex;
   justify-content: flex-end;
+  padding: 1px;
 }
 
 #sidebar .aux-button {
@@ -327,14 +343,15 @@ html {
   background: var(--background-medium);
   margin: 1px;
 }
-#sidebar .aux-button.aux-active {
-  color: var(--button-active-color);
-  background: var(--button-active-background);
-}
 #sidebar .aux-button > .aux-icon {
   font-size: 24px;
 }
 
+#sidebar > .separator {
+  width: 1px;
+  margin: 4px 16px;
+  background: var(--color-fade);
+}
 
 /* CANVAS */ 
 
@@ -352,6 +369,7 @@ html {
 /* DETAILS */
 
 #details {
+  height: 300px;
   grid-area: details;
   display: grid;
   grid-template-areas: "head control"
@@ -362,21 +380,6 @@ html {
   padding: 8px 16px;
   background: var(--background-fade);
   border-top: 1px solid var(--color-accent);
-}
-#details::before {
-  content: "";
-  background-image: url("../images/aes70explorer_4c_white.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
-  width: 100px;
-  height: 18px;
-  opacity: 1;
-  z-index: 100;
-  pointer-events: none;
 }
 #details.block,
 #details.device {

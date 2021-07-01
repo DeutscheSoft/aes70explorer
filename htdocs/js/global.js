@@ -7,6 +7,8 @@ const controlsSerializationVersion = 1;
 window.AES70 = {
   storageDefaults: {
     "tips/show": true,
+    "details/show": true,
+    "list/show": true,
     "controls": [],
   },
   localDefaults: {
@@ -23,9 +25,6 @@ window.AES70 = {
 
   closeHelp: function () {
     getBackendValue('storage:tips/show').set(false);
-  },
-  showHelp: function () {
-    getBackendValue('storage:tips/show').set(true);
   },
 
   knobPresets: {
