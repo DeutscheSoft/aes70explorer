@@ -212,11 +212,11 @@
 
 
     <aes70-navigation>
-      <awml-show src="storage:list/show"></awml-show>
+      <awml-class src="storage:list/show" transform-receive="v=>v?'show':'hide'"></awml-class>
     </aes70-navigation>
     <div id=canvas></div>
     <aes70-details id=details>
-      <awml-show src="storage:details/show"></awml-show>
+      <awml-class src="storage:details/show" transform-receive="v=>v?'show':'hide'"></awml-class>
     </aes70-details>
     <div id=sidebar>
       
