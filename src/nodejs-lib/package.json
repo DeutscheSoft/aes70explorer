@@ -3,23 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "directories": {
     "src": "src"
   },
+  "private": true,
   "type": "module",
   "keywords": [],
-  "author": "",
-  "license": "",
   "author": "Arne Goedeke",
   "license": "GPL-2.0-only",
   "dependencies": {
-    "@hapi/hapi": "^20.0.3",
-    "@hapi/inert": "^6.0.3",
     "argparse": "^2.0.1",
     "dnssd": "^0.4.1",
-    "hapi-plugin-websocket": "^2.3.1"
+    "hapi-plugin-websocket": "^2.3.1",
+    "mime-types": "^2.1.31"
   }
 }
