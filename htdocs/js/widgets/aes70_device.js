@@ -15,19 +15,26 @@ const templateComponent = TemplateComponent.create({
   <aux-label class='host' label='{{ this.info.host }}'></aux-label>
   <aux-label class='port' label='{{ this.info.port }}'></aux-label>
   <aux-button
-    class=add
+    class=addcontrol
     icon=puzzle
     (click)={{ this.onAddClicked }}
     %if={{ !this.hasControl }}
   ></aux-button>
   <aux-confirmbutton timeout=3000
-    class=remove
+    class=removecontrol
     icon=trash
     icon_confirm=confirm
-    (confirmed)={{ this.onRemoveConfirmed }}
-    (click)={{ this.onRemoveClicked }}
-    (canceled)={{ this.onRemoveCanceled }}
+    (confirmed)={{ this.onRemoveControlConfirmed }}
+    (click)={{ this.onRemoveControlClicked }}
+    (canceled)={{ this.onRemoveControlCanceled }}
     %if={{ !!this.hasControl }}
+  ></aux-confirmbutton>
+  <aux-confirmbutton timeout=3000
+    class=removedevice
+    icon=cancel
+    icon_confirm=confirm
+    (confirmed)={{ this.onRemoveDeviceConfirmed }}
+    %if={{ !!this.isDynamic }}
   ></aux-confirmbutton>
 </div>
 <aes70-block-children %if={{ this.open }} prefix={{ this.info.name + ':' }}></aes70-block-children>
@@ -117,20 +124,27 @@ class AES70Device extends templateComponent {
       ev.stopPropagation();
       this._addControl();
     }
-    this.onRemoveConfirmed = (ev) => {
+    
+    this.onRemoveControlConfirmed = (ev) => {
       ev.stopPropagation();
       this._removeControl();
     }
-    this.onRemoveClicked = (ev) => {
+    this.onRemoveControlClicked = (ev) => {
       ev.stopPropagation();
       const node = getRegisteredControl(this.identifier);
       if (!node) return;
       node.classList.add('scaffold');
     }
-    this.onRemoveCanceled = () => {
+    this.onRemoveControlCanceled = () => {
       const node = getRegisteredControl(this.identifier);
       if (!node) return;
       node.classList.remove('scaffold');
+    }
+    
+    this.onRemoveDeviceConfirmed = (ev) => {
+      ev.stopPropagation();
+      // DO SOMETHING USEFUL
+      console.log(this.isDynamic);
     }
   }
 

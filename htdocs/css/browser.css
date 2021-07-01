@@ -627,8 +627,8 @@ aes70-device {
 }
 aes70-device > .head {
   display: grid;
-  grid-template-areas: 'icon name ihost host action'
-                       'icon net  iport port action';
+  grid-template-areas: 'icon name ihost host remove action'
+                       'icon net  iport port remove action';
   background: var(--background);
   grid-template-columns: 40px 1fr auto auto;
   grid-gap: 1px 4px;
@@ -713,17 +713,18 @@ aes70-device > .head > .aux-button {
 aes70-device > .head > .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon-small);
 }
-aes70-device > .head > .add,
-aes70-device > .head > .remove {
+aes70-device > .head > .addcontrol,
+aes70-device > .head > .removecontrol {
   grid-area: action;
 }
-aes70-device > .head > .add {
+aes70-device > .head > .addcontrol {
   color: var(--color-fade);
 }
-aes70-device > .head > .remove {
-  
+aes70-device > .head > .removedevice {
+  grid-area: remove;
 }
-aes70-device > .head > .remove:hover {
+aes70-device > .head > .removedevice:hover,
+aes70-device > .head > .removecontrol:hover {
   color: var(--color-accent);
 }
 
