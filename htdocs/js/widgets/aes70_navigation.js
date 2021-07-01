@@ -3,7 +3,9 @@ import { Devices } from '../devices.js';
 import { forEachAsync } from '../utils.js';
 
 const template = `
-<div #scroller class=scroller></div>
+<div class=list>
+  <div #scroller class=scroller></div>
+</div>
 `;
 
 class AES70Navigation extends TemplateComponent.fromString(template) {

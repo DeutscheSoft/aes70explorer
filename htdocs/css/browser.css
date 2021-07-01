@@ -530,18 +530,24 @@ html {
 
 aes70-navigation {
   grid-area: navigation;
-  min-width: 300px;
+  width: 300px;
   height: 100%;
   background: var(--background-dark);
   text-align: left;
   overflow: hidden;
-  transition: min-width var(--transition);
+  transition: width var(--transition);
+  display: flex;
+  flex-direction: column;
+  order: 0;
 }
 aes70-navigation.hide {
-  min-width: 0px;
+  width: 0px;
 }
-
-aes70-navigation > .scroller {
+aes70-navigation > .list {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+aes70-navigation > .list > .scroller {
   position: absolute;
   overflow: scroll;
   top: 0;
@@ -574,7 +580,45 @@ aes70-navigation .icon {
   margin: 0px;
   grid-area: icon;
 }
-
+aes70-navigation > aes70-add-device {
+  flex: 0 0 auto;
+  order: 1;
+  overflow: hidden;
+  background: var(--background-medium);
+}
+aes70-navigation > aes70-add-device .aux-button {
+  background: var(--background-medium);
+}
+aes70-navigation > aes70-add-device > .add {
+  display: flex;
+}
+aes70-navigation > aes70-add-device > .container {
+  display: grid;
+  grid-gap: 4px;
+  grid-template-areas:
+    "lurl lport"
+    "url port"
+    "ok cancel";
+  grid-template-columns: 1fr 100px;
+  padding: 0px;
+  height: 0px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all var(--transition);
+}
+aes70-navigation > aes70-add-device > .container.open {
+  height: 96px;
+  padding: 4px;
+}
+aes70-navigation  > aes70-add-device > .container > .lurl { grid-area: lurl; font-size: var(--font-size-small);}
+aes70-navigation  > aes70-add-device > .container > .lport { grid-area: lport; font-size: var(--font-size-small); }
+aes70-navigation  > aes70-add-device > .container > .url { grid-area: url; }
+aes70-navigation  > aes70-add-device > .container > .port { grid-area: port; }
+aes70-navigation  > aes70-add-device > .container > .ok { grid-area: ok; }
+aes70-navigation  > aes70-add-device > .container > .cancel { grid-area: cancel; }
+aes70-navigation  > aes70-add-device > .container > .ok > .aux-icon { color: var(--color-ok); }
+aes70-navigation  > aes70-add-device > .container > .cancel > .aux-icon { color: var(--color-warn); }
+  
 
 /* DEVICE */
 
