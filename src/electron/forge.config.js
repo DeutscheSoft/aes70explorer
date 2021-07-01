@@ -9,12 +9,13 @@ module.exports = {
     {
       name: "@electron-forge/maker-zip",
       platforms: [
-	"darwin", "linux", "win32"
+	"darwin"
       ]
     }
   ],
   hooks: {
     generateAssets: async (forgeConfig) => {
+      console.log('Generating electron htdocs directory.');
       const { exec } = require('child_process');
       exec('rm -rf htdocs');
       exec('cd ../../ && npm run build:electron:htdocs');
