@@ -2,7 +2,7 @@ const { app, BrowserWindow } = require('electron');
 const pServer = import('../nodejs/lib/backend.js');
 const { dirname, join } = require('path');
 
-const defaultHtdocs = join(dirname(__filename), "./htdocs");
+const defaultHtdocs = join(dirname(__filename), "../../htdocs");
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -38,12 +38,6 @@ async function startUp() {
     }
   });
   await backend.start();
-
-  // Honestly no idea right now why HAPI needs this, but otherwise
-  // it will return a 404 to the initial request.
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
 
   createWindow()
 }

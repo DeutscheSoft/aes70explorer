@@ -5,7 +5,6 @@ Some dependencies are pulled into this repository as git submodules. To
 initialize them, run
 
       git submodule update --init
-      npm ci
 
 # NodeJS Server
 
