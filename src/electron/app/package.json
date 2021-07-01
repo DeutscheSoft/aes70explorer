@@ -1,0 +1,13 @@
+{
+  "name": "aes70-explorer-electron",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "GPL-2.0-only",
+  "private": true,
+  "dependencies": {
+    "aes70-explorer-nodejs-lib": "file:../../nodejs-lib"
+  }
+}

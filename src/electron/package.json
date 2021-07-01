@@ -1,17 +1,23 @@
 {
-  "name": "aes70-explorer-electron",
+  "name": "aes70-explorer-electron-build",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dir": "npm run build:htdocs && electron-builder --dir -c electron-builder.json",
+    "build:htdocs": "parcel build --no-scope-hoist ../../htdocs/index.html --dist-dir app/htdocs",
+    "build": "npm run build:htdocs && electron-builder -c electron-builder.json"
   },
   "keywords": [],
   "author": "",
   "license": "GPL-2.0-only",
-  "dependencies": {},
+  "private": true,
+  "dependencies": {
+    "aes70-explorer-nodejs-lib": "file:../nodejs-lib"
+  },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.57",
-    "electron": "^14.0.0-beta.8"
+    "electron": "^14.0.0-beta.8",
+    "electron-builder": "^22.11.7",
+    "parcel": "^2.0.0-beta.2"
   }
 }

@@ -1,1 +1,4 @@
 /node_modules
+/app/htdocs
+/app/node_modules
+/dist

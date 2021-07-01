@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require('electron');
-const pServer = import('../nodejs/lib/backend.js');
+const pServer = import('aes70-explorer-nodejs-lib');
 const { dirname, join } = require('path');
 
-const defaultHtdocs = join(dirname(__filename), "../../htdocs");
+const defaultHtdocs = join(dirname(__filename), "htdocs");
 
 function createWindow () {
   const win = new BrowserWindow({
