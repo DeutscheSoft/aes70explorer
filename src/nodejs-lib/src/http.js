@@ -215,7 +215,7 @@ export default async function start(config, destinationsAdapter) {
       {
         const destinationName = url.substr(controlPrefix.length);
 
-        destination = destinationsAdapter.getDestinations(destinationName);
+        destination = destinationsAdapter.getDestination(destinationName);
       }
 
       if (!destination)
