@@ -144,7 +144,6 @@ class AES70Device extends templateComponent {
     
     this.onRemoveDeviceConfirmed = (ev) => {
       ev.stopPropagation();
-      // DO SOMETHING USEFUL
       deleteDevice(this.info.name);
     }
   }
