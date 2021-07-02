@@ -717,7 +717,7 @@ aes70-device > .head > .iport {
   align-self: start;
 }
 aes70-device > .head > .aux-button {
-  background: none;
+  background: none !important;
   margin: 0;
   padding: 0 4px;
   height: auto;

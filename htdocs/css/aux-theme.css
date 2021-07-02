@@ -38,7 +38,7 @@
 }
 .aux-button.aux-active {
   color: var(--button-active-color);
-  background: var(--button-active-background);
+  background: var(--button-active-background) !important;
 }
 .aux-button > .aux-icon {
   font-size: var(--font-size-button-icon-small);
@@ -192,7 +192,7 @@
   color: var(--toggle-hover-color);
 }
 .aux-button.aux-toggle.aux-active {
-  background: var(--toggle-hover-background);
+  background: var(--toggle-hover-background) !important;
   color: var(--toggle-hover-color);
 }
 .aux-button.aux-toggle.aux-active > .aux-icon {
