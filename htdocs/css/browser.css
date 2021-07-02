@@ -662,6 +662,9 @@ aes70-device.selected > .head * {
 aes70-device > .head.disconnected * {
   color: var(--color-fade) !important;
 }
+aes70-device.selected > .head.disconnected {
+  background: var(--background-selected) !important;
+}
 aes70-device > .head > .icon {
   font-size: 32px;
 }
