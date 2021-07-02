@@ -1,9 +1,10 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
+import { addDevice } from '../devices.js';
 
 const template = `
 <aux-button icon="plus" class="add" label="Add Device" (click)={{ this.onAddClick }}>
 </aux-button>
-<div class="container {{ this.open ? 'open':'close' }}">
+<div class="container {{ this.open ? 'open':'close' }} {{ this.inprogress ? 'inprogress' : '' }}">
   <aux-label label="URL" class=lurl></aux-label>
   <aux-label label="Port" class=lport></aux-label>
   <aux-value editmode=immediate class=url preset=string #url placeholder="URL or IP Address" (keyup)={{ this.inputKeyup }}></aux-value>
@@ -27,6 +28,7 @@ class AES70AddDevice extends TemplateComponent.fromString(template) {
     super();
     
     this.open = false;
+    this.inprogress = false;
     
     this.onAddClick = (ev) => {
       this.open = !this.open;
@@ -49,14 +51,30 @@ class AES70AddDevice extends TemplateComponent.fromString(template) {
         this.url.auxWidget._input.focus();
       }
     }
-    this.addDevice = () => {
-      const url = this.url.auxWidget.get('value');
-      const port = this.port.auxWidget.get('value');
-      // DO SOMETHING USEFUL
-      console.log(url, port);
-    }
   }
   
+  async addDevice() {
+    if (this.inprogress) return;
+
+    const url = this.url.auxWidget.get('value');
+    const port = this.port.auxWidget.get('value');
+
+    this.inprogress = true;
+
+    const p = addDevice(url, parseInt(port));
+
+    try {
+      await p;
+      this.url.value = '';
+      this.port.value = '';
+      if (document.activeElement)
+        document.activeElement.blur();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.inprogress = false;
+    }
+  }
 }
 
 

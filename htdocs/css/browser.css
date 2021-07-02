@@ -659,9 +659,6 @@ aes70-device.selected > .head * {
   color: var(--color-contrast) !important;
   transition: all var(--transition);
 }
-aes70-device > .head.disconnected {
-  pointer-events: none;
-}
 aes70-device > .head.disconnected * {
   color: var(--color-fade) !important;
 }

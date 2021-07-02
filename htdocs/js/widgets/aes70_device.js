@@ -1,6 +1,7 @@
 import { TemplateComponent, getBackendValue, collectPrefix, fromSubscription } from '../../AWML/src/index.pure.js';
 import { addControlToCanvas, removeControlFromCanvas, hasControlOnCanvas } from '../layout.js';
 import { getRegisteredControl } from '../template_components.js';
+import { deleteDevice } from '../devices.js';
 
 const Selected = getBackendValue('local:selected');
 
@@ -34,7 +35,7 @@ const templateComponent = TemplateComponent.create({
     icon=cancel
     icon_confirm=confirm
     (confirmed)={{ this.onRemoveDeviceConfirmed }}
-    %if={{ !!this.isDynamic }}
+    %if={{ this.info.source === 'manual' }}
   ></aux-confirmbutton>
 </div>
 <aes70-block-children %if={{ this.open }} prefix={{ this.info.name + ':' }}></aes70-block-children>
@@ -144,7 +145,7 @@ class AES70Device extends templateComponent {
     this.onRemoveDeviceConfirmed = (ev) => {
       ev.stopPropagation();
       // DO SOMETHING USEFUL
-      console.log(this.isDynamic);
+      deleteDevice(this.info.name);
     }
   }
 
