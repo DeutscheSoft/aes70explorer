@@ -5,6 +5,29 @@ const httpDefaultOptions = {
   port: 8080,
 };
 
+function isValidDestinationPort(port) {
+  return Number.isInteger(port) && port > 0 && port <= 0xffff;
+}
+
+function isValidDestinationSource(source) {
+  switch (source) {
+  case 'manual':
+  case 'static':
+  case 'mdns':
+    return true;
+  }
+}
+
+function isValidDestination(dst) {
+  return typeof dst === 'object' &&
+    typeof dst.name === 'string' &&
+    dst.name.length > 0 &&
+    isValidDestinationPort(dst.port) &&
+    typeof dst.host === 'string' && dst.host.length > 0 &&
+    dst.protocol === 'tcp' &&
+    isValidDestinationSource(dst.source);
+}
+
 export class Backend {
   get httpOptions() {
     return Object.assign(httpDefaultOptions , this.config.http);
@@ -17,10 +40,14 @@ export class Backend {
 
   async start() {
     startDiscovery((destination) => this.addDestination(destination));
-    await startHTTP(this.httpOptions, this.destinations);
+    await startHTTP(this.httpOptions, this);
   }
 
   addDestination(destination) {
+    if (!isValidDestination(destination)) {
+      throw new TypeError('Invalid destination.');
+    }
+
     const destinations = this.destinations;
 
     let name = destination.name;
@@ -35,5 +62,17 @@ export class Backend {
       destinations.delete(name);
       name = null;
     };
+  }
+
+  getDestinations() {
+    return Array.from(this.destinations.values());
+  }
+
+  hasDestination(name) {
+    return this.destinations.has(name);
+  }
+
+  getDestination(name) {
+    return this.destinations.get(name);
   }
 }

@@ -6,7 +6,35 @@ import WS from 'ws';
 import fs from 'fs';
 const { readFile, stat } = fs.promises;
 
-const controlPrefix = "/_control/";
+const controlPrefix = '/_control/';
+const destinationsPath = '/_api/destinations';
+
+function readJsonBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+
+    const firstChunk = req.read();
+
+    if (firstChunk !== null)
+      chunks.push(firstChunk);
+
+    req.on('data', (chunk) => {
+      chunks.push(chunk);
+    });
+
+    req.on('end', () => {
+      try {
+        const result = chunks.join('');
+        console.log(chunks);
+        resolve(JSON.parse(result));
+      } catch (err) {
+        reject(err);
+      }
+    });
+
+    req.on('error', reject);
+  });
+}
 
 /**
  * Start the web server.
@@ -19,12 +47,14 @@ const controlPrefix = "/_control/";
  *      the path `/_control/<NAME>` will attempt to forward to the destination
  *      with the name `<NAME>`.
  */
-export default async function start(config, destinations) {
+export default async function start(config, destinationsAdapter) {
   // FIXME
   const token = "random_secret";
   const htdocs = config.htdocs;
 
-  const server = createServer(async (req, res) => {
+  const addedDestinations = new Map();
+
+  const server = createServer((req, res) => {
     const url = new URL(req.url, 'http://localhost/');
     let path = decodeURI(url.pathname);
 
@@ -67,43 +97,108 @@ export default async function start(config, destinations) {
       );
     };
 
-    switch (path) {
-    case '/_api/token':
-        return txt(token);
-    case '/_api/destinations':
-        return json(Array.from(destinations.values()));
-    }
+    const notFound = () => {
+      return txt('Not found.', 404);
+    };
 
-    const fname = join(htdocs, path);
+    const serveFiles = async (path, req, res) => {
+      const fname = join(htdocs, path);
 
-    if (!fname.startsWith(htdocs)) {
-      return txt('', 404);
-    }
-
-    try {
-      const data = await readFile(fname, { encoding: 'binary' });
-      return respond(
-        data,
-        200,
-        Object.assign(headers, { 'Content-Type': lookup(extname(fname)) })
-      );
-    } catch (err) {}
-
-    try {
-      const stats = await stat(fname);
-
-      if (stats.isDirectory()) {
-        return respond(
-          '',
-          302,
-          Object.assign(headers, { Location: path + '/' })
-        );
+      if (!fname.startsWith(htdocs)) {
+        return txt('', 404);
       }
-    } catch (err) {}
 
-    console.log('HTTP 404 - %o not found in %o.', path, htdocs);
+      try {
+        const data = await readFile(fname, { encoding: 'binary' });
+        return respond(
+          data,
+          200,
+          Object.assign(headers, { 'Content-Type': lookup(extname(fname)) })
+        );
+      } catch (err) {}
 
-    return respond('', 404);
+      try {
+        const stats = await stat(fname);
+
+        if (stats.isDirectory()) {
+          return respond(
+            '',
+            302,
+            Object.assign(headers, { Location: path + '/' })
+          );
+        }
+      } catch (err) {}
+
+      console.log('HTTP 404 - %o not found in %o.', path, htdocs);
+
+      return notFound();
+    };
+
+    switch (req.method) {
+    case 'GET':
+      switch (path) {
+      case '/_api/token':
+          return txt(token);
+      case '/_api/destinations':
+          return json(destinationsAdapter.getDestinations());
+      }
+      break;
+    case 'PUT':
+      {
+        const invalid = () => {
+          return json({ ok: false, error: 'Invalid request.' });
+        };
+
+        if (path.startsWith(destinationsPath)) {
+          const name = path.substr(destinationsPath.length + 1);
+
+          readJsonBody(req).then((destination) => {
+            if (typeof destination !== 'object')
+              return invalid();
+
+            destination.name = name;
+            destination.source = 'manual';
+
+            if (destinationsAdapter.hasDestination(name)) {
+              return json({ ok: false, error: "Destination does already exist." });
+            }
+
+            const unsubscribe = destinationsAdapter.addDestination(destination);
+
+            addedDestinations.set(name, unsubscribe);
+
+            return json({ ok: true });
+          }).catch((err) => {
+            return json({ ok: false, error: err.toString() });
+          });
+          return;
+        }
+      }
+      return txt('Not found.', 404);
+    case 'DELETE':
+      {
+        if (path.startsWith(destinationsPath)) {
+          const name = path.substr(destinationsPath.length + 1);
+          const unsubscribe = addedDestinations.get(name);
+
+          if (!unsubscribe)
+            return notFound();
+
+          addedDestinations.delete(name);
+          unsubscribe();
+
+          return json({ ok: true });
+        }
+      }
+      return notFound();
+    default:
+      return notFound();
+    }
+
+    serveFiles(path, req, res).catch((err) => {
+      txt('Internal server error.', err);
+      console.error(err);
+    });
   });
 
   const wss = new WS.Server({
@@ -120,7 +215,7 @@ export default async function start(config, destinations) {
       {
         const destinationName = url.substr(controlPrefix.length);
 
-        destination = destinations.get(destinationName);
+        destination = destinationsAdapter.getDestinations(destinationName);
       }
 
       if (!destination)
@@ -143,8 +238,6 @@ export default async function start(config, destinations) {
       return;
     }
   });
-
-  console.log('serving files from %o %o', process.cwd, config.htdocs);
 
   return new Promise((resolve) => {
     server.listen(config.port, () => {

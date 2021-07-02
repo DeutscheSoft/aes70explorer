@@ -64,14 +64,14 @@ function parseDestination(str)
     port,
     host,
     name: host + '_' + port,
-    source: 'manual',
+    source: 'static',
   };
 }
 
 argv._.forEach((arg) => {
   const destination = parseDestination(arg);
 
-  console.log('Using manual destination: %o', destination);
+  console.log('Using static destination: %o', destination);
   backend.addDestination(destination);
 });
 

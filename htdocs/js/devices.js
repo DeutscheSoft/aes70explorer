@@ -9,6 +9,24 @@ async function fetchDevices() {
   return await response.json();
 }
 
+let triggerCallback = null;
+
+function delayOrTrigger(n) {
+  return Promise.race([
+    delay(n),
+    new Promise((resolve) => {
+      triggerCallback = resolve;
+    })
+  ]);
+}
+
+function triggerReload() {
+  if (triggerCallback) {
+    triggerCallback();
+    triggerCallback = null;
+  }
+}
+
 function subscribeFetchDevices(callback) {
   let active = true;
   let lastResult = null;
@@ -24,9 +42,9 @@ function subscribeFetchDevices(callback) {
           lastResult = result;
           callback(result);
         }
-        await delay(2000);
+        await delayOrTrigger(2000);
       } catch (err) {
-        await delay(3000);
+        await delayOrTrigger(3000);
       }
     } while (active);
   };
@@ -40,3 +58,41 @@ function subscribeFetchDevices(callback) {
 
 export const Devices = fromSubscription(subscribeFetchDevices);
 
+export async function addDevice(host, port) {
+  const name = `${host}_${port}`;
+  const response = await fetch(`/_api/destinations/${name}`, {
+    cache: 'no-store',
+    method: 'PUT',
+    body: JSON.stringify({
+      name: name,
+      port: port,
+      host: host,
+      protocol: 'tcp',
+    }),
+  });
+
+  if (!response.ok) throw new Error('Failed to add destination: ' + response.statusText);
+
+  const result = await response.json();
+
+  if (!result.ok)
+    throw new Error('Failed to add destination: ' + result.error);
+
+  triggerReload();
+}
+
+export async function deleteDevice(name) {
+  const response = await fetch(`/_api/destinations/${name}`, {
+    cache: 'no-store',
+    method: 'DELETE',
+  });
+
+  if (!response.ok) throw new Error('Failed to delete destination: ' + response.statusText);
+
+  const result = await response.json();
+
+  if (!result.ok)
+    throw new Error('Failed to delete destination: ' + result.error);
+
+  triggerReload();
+}
