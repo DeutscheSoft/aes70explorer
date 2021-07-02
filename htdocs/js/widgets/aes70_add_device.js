@@ -65,10 +65,7 @@ class AES70AddDevice extends TemplateComponent.fromString(template) {
 
     try {
       await p;
-      this.url.value = '';
-      this.port.value = '';
-      if (document.activeElement)
-        document.activeElement.blur();
+      this.url.auxWidget._input.focus();
     } catch (err) {
       console.error(err);
     } finally {
