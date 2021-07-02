@@ -1,4 +1,4 @@
-import { fromSubscription } from '../AWML/src/index.pure.js';
+import { fromSubscription, getBackendValue } from '../AWML/src/index.pure.js';
 import { isEqual, delay } from './utils.js';
 
 async function fetchDevices() {
@@ -87,7 +87,8 @@ export async function deleteDevice(name) {
     method: 'DELETE',
   });
 
-  if (!response.ok) throw new Error('Failed to delete destination: ' + response.statusText);
+  if (!response.ok)
+    throw new Error('Failed to delete destination: ' + response.statusText);
 
   const result = await response.json();
 
@@ -95,4 +96,5 @@ export async function deleteDevice(name) {
     throw new Error('Failed to delete destination: ' + result.error);
 
   triggerReload();
+  getBackendValue('local:selected').set(null);
 }
