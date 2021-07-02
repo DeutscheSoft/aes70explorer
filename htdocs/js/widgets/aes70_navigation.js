@@ -30,6 +30,10 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
       },
       (device) => device.name
     );
+    
+    Devices.subscribe((data) => {
+      this.hasDevices = data && data.length;
+    });
   }
 }
 
