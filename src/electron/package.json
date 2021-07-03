@@ -3,19 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "build:app:index": "rollup --config rollup.config.js",
     "build:dir": "npm run build:htdocs && electron-builder --dir -c electron-builder.json",
     "build:htdocs": "parcel build --no-scope-hoist ../../htdocs/index.html --dist-dir app/htdocs",
+    "prebuild": "npm run build:htdocs && npm run build:app:index",
     "build": "npm run build:htdocs && electron-builder -c electron-builder.json"
   },
   "keywords": [],
   "author": "",
   "license": "GPL-2.0-only",
   "private": true,
-  "dependencies": {
-    "aes70-explorer-nodejs-lib": "file:../nodejs-lib"
-  },
+  "dependencies": { },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.57",
     "electron": "^14.0.0-beta.8",
     "electron-builder": "^22.11.7",
     "parcel": "^2.0.0-beta.2"

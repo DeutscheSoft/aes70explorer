@@ -1,13 +1,16 @@
 {
   "name": "aes70-explorer-electron",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.0",
   "description": "",
   "main": "index.js",
   "keywords": [],
-  "author": "",
+  "author": "DeusO GmbH",
   "license": "GPL-2.0-only",
   "private": true,
+  "homepage": "http://deuso.de",
   "dependencies": {
-    "aes70-explorer-nodejs-lib": "file:../../nodejs-lib"
+    "dnssd": "^0.4.1",
+    "mime-types": "^2.1.31",
+    "ws": "^7.5.1"
   }
 }

@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron');
-const pServer = import('aes70-explorer-nodejs-lib');
+const pServer = import('../nodejs-lib/src/index.js');
 const { dirname, join } = require('path');
 
 const defaultHtdocs = join(dirname(__filename), "htdocs");
@@ -48,5 +48,3 @@ startUp().catch(
     process.exit(1);
   }
 );
-
-

@@ -2,3 +2,4 @@
 /app/htdocs
 /app/node_modules
 /dist
+/app/index.js
