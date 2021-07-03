@@ -13,7 +13,7 @@ function isValidDestinationSource(source) {
   switch (source) {
   case 'manual':
   case 'static':
-  case 'mdns':
+  case 'dnssd':
     return true;
   }
 }
