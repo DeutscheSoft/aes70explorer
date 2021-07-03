@@ -1,7 +1,7 @@
 import { createServer } from 'http';
 import { lookup } from 'mime-types';
 import { connectTCPTunnel } from './websocket_tcp_tunnel.js';
-import { extname, join, dirname } from 'path';
+import { extname, join } from 'path';
 import WS from 'ws';
 import fs from 'fs';
 const { readFile, stat } = fs.promises;
