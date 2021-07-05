@@ -23,34 +23,41 @@ import { registerValueTimer } from './value_timer.js';
 import * as AWML from '../AWML/src/index.js';
 window.AWML = AWML;
 
-
-
 import { getBackendValue, LocalStorageBackend } from '../AWML/src/index.pure.js';
 
-let canvasdown;
-document.getElementById('canvas').addEventListener('mousedown', function (e) {
-  canvasdown = e;
-});
-document.getElementById('canvas').addEventListener('mouseup', function (e) {
-  if (!canvasdown) return;
-  
-  const x1 = canvasdown.screenX;
-  const y1 = canvasdown.screenY;
-  const x2 = e.screenX;
-  const y2 = e.screenY;
-  const d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-  if (d > 5) return;
-  
-  canvasdown = null;
-  
-  let target = e.target;
-  while (target) {
-    if (target.tagName.startsWith('AES70-CONTROL')
-      || target.tagName.startsWith('AES70-OBJECT'))
-      return;
-    target = target.parentElement;
-  }
-  getBackendValue('local:selected').set(null);
+document.addEventListener('DOMContentLoaded', function() {
+  const canvas = document.getElementById('canvas');
+  let canvasdown;
+  canvas.addEventListener('mousedown', function (e) {
+    canvasdown = e;
+  });
+  canvas.addEventListener('mouseup', function (e) {
+    if (!canvasdown) return;
+
+    const x1 = canvasdown.screenX;
+    const y1 = canvasdown.screenY;
+    const x2 = e.screenX;
+    const y2 = e.screenY;
+    const d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    if (d > 5) return;
+
+    canvasdown = null;
+
+    let target = e.target;
+    while (target) {
+      if (target.tagName.startsWith('AES70-CONTROL')
+        || target.tagName.startsWith('AES70-OBJECT'))
+        return;
+      target = target.parentElement;
+    }
+    getBackendValue('local:selected').set(null);
+  });
+
+  window.setTimeout(function () {
+    AES70.restoreControlsOnCanvas();
+    getBackendValue('local:selected').set(null);
+    document.getElementById("loading").style.display = "none";
+  }, 500);
 });
 
 registerValueTimer('local:tips/icons/ocadevice', ['ocadevice','ocadeviceopen'], 1500);
@@ -74,9 +81,3 @@ registerValueTimer('local:tips/icons/ocaworker', [
   'ocatimeintervalsensor',
   'ocatemperaturesensor',
 ], 1500);
-
-window.setTimeout(function () {
-  AES70.restoreControlsOnCanvas();
-  getBackendValue('local:selected').set(null);
-  document.getElementById("loading").style.display = "none";
-}, 500);
