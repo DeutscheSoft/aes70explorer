@@ -3,3 +3,4 @@
 /app/node_modules
 /dist
 /app/index.js
+/*.DS_Store
