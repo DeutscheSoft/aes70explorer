@@ -197,21 +197,6 @@ html {
       "navigation canvas"
       "navigation details";
 }
-#root::after {
-  content: "";
-  background-image: url("../images/aes70explorer_4c_white.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
-  width: 100px;
-  height: 18px;
-  opacity: 1;
-  z-index: 100;
-  pointer-events: none;
-}
 
 #loading {
   position: fixed;
@@ -332,10 +317,15 @@ html {
 
 #sidebar {
   grid-area: sidebar;
-  background: var(--background);
   display: flex;
   justify-content: flex-end;
   padding: 1px;
+  
+  background-color: var(--background);
+  background-image: url("../images/aes70explorer_4c_white.svg");
+  background-size: 100px auto;
+  background-repeat: no-repeat;
+  background-position: 12px 10px;
 }
 
 #sidebar .aux-button {
@@ -343,6 +333,7 @@ html {
   white-space: normal;
   background: var(--background-medium);
   margin: 1px;
+  padding: var(--aux-button-paddingvertical) 12px;
 }
 #sidebar .aux-button > .aux-icon {
   font-size: 24px;
@@ -352,6 +343,12 @@ html {
   width: 1px;
   margin: 4px 16px;
   background: var(--color-fade);
+}
+
+@media (max-width: 1280px) {
+  #sidebar .aux-button > .aux-label {
+    display: none;
+  }
 }
 
 /* CANVAS */ 
