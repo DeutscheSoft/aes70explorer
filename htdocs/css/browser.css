@@ -237,6 +237,7 @@ html {
   100% { left: 0; }
 }
 
+/*
 #screensize {
   display: none;
   width: 100%;
@@ -257,6 +258,7 @@ html {
 @media (max-width: 1023px), (max-height: 670px) {
   #screensize { display: grid; }
 }
+*/
 
 /* TIPS */
 
