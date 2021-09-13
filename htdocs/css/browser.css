@@ -313,24 +313,20 @@ html {
 }
 
 #tips > .aux-button {
-  float: right;
-  padding: 12px;
-  width: auto;
-  justify-self: end;
+  justify-self: stretch;
   align-self: end;
   padding: 32px;
-  color: var(--color-accent);
+  animation: closehelp 0.75s linear alternate infinite;
+  border: 1px solid;
+}
+@keyframes closehelp {
+  0% { color: var(--color); border-color: var(--color); }
+  100% { color: var(--color-accent); border-color: var(--color-accent); }
 }
 #tips > .aux-button > .aux-icon {
-/*
-  font-size: 24px;
-  color: var(--color-accent);
-*/
-  width: 100px;
-  height: 20px;
-  order: 3;
+  font-size: 20px;
   margin: 0;
-  margin-left: 6px;
+  margin-right: 6px;
 }
 #tips > .aux-button > .aux-label {
   font-size: var(--font-size-large);
