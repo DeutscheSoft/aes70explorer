@@ -91,12 +91,14 @@ export function makeValueMinMaxBinding(src, recv, send, debug) {
         name: 'min',
         transformReceive: mrecv,
         debug: debug,
+        ignoreInteraction: true,
       },
       {
         src: src + '/Max',
         name: 'max',
         transformReceive: mrecv,
         debug: debug,
+        ignoreInteraction: true,
       },
       {
         src: [ src, src + '/Min', src + '/Max' ],
