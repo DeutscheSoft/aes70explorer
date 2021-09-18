@@ -13,10 +13,11 @@
   "author": "",
   "license": "GPL-2.0-only",
   "private": true,
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
     "electron": "^14.0.0-beta.8",
     "electron-builder": "^22.11.7",
-    "parcel": "^2.0.0-beta.2"
+    "parcel": "^2.0.0-beta.2",
+    "rollup": "^2.56.3"
   }
 }
