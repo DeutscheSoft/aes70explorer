@@ -540,7 +540,7 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   text-transform: uppercase;
-  opacity: 0.075;
+  opacity: 0.1;
   font-size: var(--font-size-huge);
 }
 
@@ -645,7 +645,7 @@ aes70-navigation > .list > .nodevice {
   transform: translateY(-50%);
   width: 80%;
   text-transform: uppercase;
-  opacity: 0.075;
+  opacity: 0.1;
   font-size: var(--font-size-huge);
   text-align: center;
 }
@@ -836,6 +836,19 @@ aes70-block-children > .loading > i:nth-child(5) {
     opacity: var(--loading-opacity-0);
   }
 }
+
+/* EMPTY */
+
+aes70-empty {
+  display: block;
+  height: 36px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 36px;
+  opacity: 0.25;
+  font-size: var(--font-size-huge);
+}
+
 
 /* BLOCK */
 

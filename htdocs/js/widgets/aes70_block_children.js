@@ -45,13 +45,18 @@ class AES70BlockChildren extends TemplateComponent.fromString(template) {
         sync: true,
         transformReceive: (a) => {
           const [ block, roleMap ] = a;
-          let nodes = [];
-
-          roleMap.forEach((o, roleName) => {
-            nodes.push(this.createChildComponent(roleName, o));
-          });
-
-          return nodes;
+          
+          if (roleMap.size) {
+            let nodes = [];
+  
+            roleMap.forEach((o, roleName) => {
+              nodes.push(this.createChildComponent(roleName, o));
+            });
+  
+            return nodes;
+          } else {
+            return [ document.createElement('aes70-empty') ];
+          }
         },
       },
     ];
