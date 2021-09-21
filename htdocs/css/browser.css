@@ -762,9 +762,80 @@ aes70-device > .head > .removecontrol:hover {
 
 aes70-block-children {
   padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+}
+aes70-block-children > .loading {
+  height: 36px;
+  overflow: hidden;
   display: block;
+  position: relative;
+  order: 1000000;
 }
 
+
+aes70-block-children > .loading {
+  --loading-delay: 0.25s;
+  --loading-distance: 16px;
+  --loading-items: 5;
+  --loading-size: 2px;
+  --loading-scale: 3;
+  --loading-color-0: var(--color);
+  --loading-color-1: var(--color);
+  --loading-opacity-0: 1;
+  --loading-opacity-1: 1;
+}
+aes70-block-children > .loading > i {
+  position: absolute;
+  top: calc(50% - var(--loading-size) / 2);
+  
+  display: block;
+  width: var(--loading-size);
+  height: var(--loading-size);
+  
+  border-radius: 50%;
+  background: white;
+  animation: loading 1.5s infinite ease-in-out;
+}
+
+aes70-block-children > .loading > i:nth-child(1) {
+  animation-delay: calc(var(--loading-delay) * 0);
+  left: calc(50% + var(--loading-size) / -2 + var(--loading-distance) * 0 - var(--loading-items) / 2 * var(--loading-distance));
+}
+aes70-block-children > .loading > i:nth-child(2) {
+  animation-delay: calc(var(--loading-delay) * 1);
+  left: calc(50% + var(--loading-size) / -2 + var(--loading-distance) * 1 - var(--loading-items) / 2 * var(--loading-distance));
+}
+aes70-block-children > .loading > i:nth-child(3) {
+  animation-delay: calc(var(--loading-delay) * 2);
+  left: calc(50% + var(--loading-size) / -2 + var(--loading-distance) * 2 - var(--loading-items) / 2 * var(--loading-distance));
+}
+aes70-block-children > .loading > i:nth-child(4) {
+  animation-delay: calc(var(--loading-delay) * 3);
+  left: calc(50% + var(--loading-size) / -2 + var(--loading-distance) * 3 - var(--loading-items) / 2 * var(--loading-distance));
+}
+aes70-block-children > .loading > i:nth-child(5) {
+  animation-delay: calc(var(--loading-delay) * 4);
+  left: calc(50% + var(--loading-size) / -2 + var(--loading-distance) * 4 - var(--loading-items) / 2 * var(--loading-distance));
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+    background: var(--loading-color-0);
+    opacity: var(--loading-opacity-0);
+  }
+  50% {
+    transform: scale(var(--loading-scale));
+    background: var(--loading-color-1);
+    opacity: var(--loading-opacity-1);
+  }
+  100% {
+    transform: scale(1);
+    background: var(--loading-color-0);
+    opacity: var(--loading-opacity-0);
+  }
+}
 
 /* BLOCK */
 

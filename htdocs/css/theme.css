@@ -27,12 +27,15 @@
   --background-control: #1e2230;
   
   --color: #ffffff;
+  --color-orange: #ff6600;
+  --color-violet: #a31a83;
+  --color-green: #17f575;
   --color-dark: #87878B;
   --color-fade: rgba(255, 255, 255, 0.33); /*#4e505e; /*#6e707e;*/
-  --color-accent: #ff6600;
+  --color-accent: var(--color-orange);
   --color-contrast: var(--background-dark);
-  --color-warn: #a31a83;
-  --color-ok: #17f575;
+  --color-warn: var(--color-violet);
+  --color-ok: var(--color-green);
   
   --color-shadow: rgba(0, 0, 0, 0.8);
   

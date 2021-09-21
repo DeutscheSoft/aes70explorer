@@ -14,8 +14,10 @@ function createChildComponent(roleName, o) {
   return component;
 }
 
-const template = `{{ this.objectNodes }}`;
-
+const template = `
+<div class='loading' %if={{!this.objectNodes}}><i></i><i></i><i></i><i></i><i></i></div>
+{{ this.objectNodes }}
+`;
 class AES70BlockChildren extends TemplateComponent.fromString(template) {
   constructor() {
     super();
