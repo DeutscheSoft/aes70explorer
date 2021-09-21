@@ -544,6 +544,10 @@ html {
   font-size: var(--font-size-huge);
 }
 
+#details .aux-label {
+  user-select: text;
+}
+
 /* NAVIGATION */
 
 aes70-navigation {
