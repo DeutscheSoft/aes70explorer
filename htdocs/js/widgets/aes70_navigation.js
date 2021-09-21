@@ -5,7 +5,7 @@ import { forEachAsync } from '../utils.js';
 const template = `
 <div class=list>
   <div #scroller class=scroller></div>
-  <div class=nodevice %if={{ !this.hasDevices }}>Add a Device<br>at the Bottom</div>
+  <div class=nodevice %if={{ !this.hasDevices }}>Searching for<br>Devices...<br><br>Add Devices<br>at the Bottom</div>
 </div>
 `;
 
