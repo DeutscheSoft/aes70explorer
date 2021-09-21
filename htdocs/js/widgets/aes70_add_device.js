@@ -5,9 +5,9 @@ const template = `
 <aux-button icon="plus" class="add" label="Add Device" (click)={{ this.onAddClick }}>
 </aux-button>
 <div class="container {{ this.open ? 'open':'close' }} {{ this.inprogress ? 'inprogress' : '' }}">
-  <aux-label label="URL" class=lurl></aux-label>
+  <aux-label label="Hostname" class=lurl></aux-label>
   <aux-label label="Port" class=lport></aux-label>
-  <aux-value editmode=immediate class=url preset=string #url placeholder="URL or IP Address" (keyup)={{ this.inputKeyup }}></aux-value>
+  <aux-value editmode=immediate class=url preset=string #url placeholder="Hostname" (keyup)={{ this.inputKeyup }}></aux-value>
   <aux-value editmode=immediate class=port preset=string #port placeholder="Port" (keyup)={{ this.inputKeyup }}></aux-value>
   <aux-button class=ok icon="ok" label="Add Device" (click)={{ this.onOKClick }}>
   </aux-button>
