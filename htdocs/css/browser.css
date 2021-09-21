@@ -313,9 +313,10 @@ html {
 }
 
 #tips > .aux-button {
-  justify-self: stretch;
-  align-self: end;
+  justify-self: center;
+  align-self: center;
   padding: 32px;
+  width: 160px;
   animation: closehelp 0.75s linear alternate infinite;
   border: 1px solid;
 }
