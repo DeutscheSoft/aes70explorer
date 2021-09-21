@@ -44,6 +44,7 @@ class AES70Block extends templateComponent {
     this.onHeadClick = (ev) => {
       if (!this.isSelected) {
         this.select();
+        this.open = true;
       } else {
         this.open = !this.open;
       }

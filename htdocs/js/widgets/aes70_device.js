@@ -111,6 +111,7 @@ class AES70Device extends templateComponent {
     this.onHeadClick = (ev) => {
       if (!this.isSelected) {
         this.select();
+        this.open = true;
       } else {
         this.open = !this.open;
       }
