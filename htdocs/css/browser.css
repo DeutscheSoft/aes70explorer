@@ -369,6 +369,9 @@ html {
   #sidebar .aux-button > .aux-label {
     display: none;
   }
+  #sidebar .aux-button > .aux-icon {
+    margin-right: 0;
+  }
 }
 
 /* CANVAS */ 
