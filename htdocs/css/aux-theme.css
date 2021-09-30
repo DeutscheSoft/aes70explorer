@@ -140,6 +140,29 @@
 }
 
 
+.aux-fileselect > .aux-filelabel {
+  margin-right: 8px;
+}
+.aux-fileselect > .aux-name {
+  padding: 0 8px;
+  background: var(--background-dark);
+  border: 1px solid var(--background-selected);
+  border-right: 0;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  line-height: var(--aux-clickable-size);
+  min-width: 128px;
+}
+.aux-fileselect > .aux-size {
+  padding: 0 8px;
+  font-size: var(--aux-main-smallfontsize);
+  background: var(--background-dark);
+  border: 1px solid var(--background-selected);
+  border-left: 0;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  line-height: var(--aux-clickable-size);
+}
 
 .aux-meter.aux-vertical {
 /*
@@ -150,6 +173,22 @@
   opacity: 0.66;
 }
 
+
+.aux-notification {
+  background: var(--background-dark);
+  display: flex;
+}
+.aux-notification > .aux-icon {
+  font-size: var(--font-size-list-icon);
+  margin-right: 8px;
+}
+.aux-notification > .aux-icon.error {
+  color: var(--color-error);
+}
+.aux-notification > div.content {
+  white-space: normal;
+  max-width: 256px;
+}
 
 .aux-scale > .aux-label {
   color: var(--color-fade);

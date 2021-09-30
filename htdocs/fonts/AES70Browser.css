@@ -45,3 +45,5 @@
 .aux-icon.plus::before                      { font-family: 'AES70Browser'; content: '񗍥'; }
 .aux-icon.cancel::before                    { font-family: 'AES70Browser'; content: '񗍦'; }
 .aux-icon.ok::before                        { font-family: 'AES70Browser'; content: '񗍧'; }
+.aux-icon.openfolder::before                { font-family: 'AES70Browser'; content: '񗍨'; }
+.aux-icon.folder::before                    { font-family: 'AES70Browser'; content: '񗍨'; }

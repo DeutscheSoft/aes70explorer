@@ -1,4 +1,5 @@
 import { getBackendValue, collectPrefix } from './../AWML/src/index.pure.js';
+import { element } from './../aux-widgets/src/utils/dom.js';
 import { findControl } from './template_components.js';
 import { getControlsOnCanvas, addLineBreakToCanvas, removeLineBreakFromCanvas, addControlToCanvas, clearCanvas } from './layout.js';
 
@@ -120,6 +121,15 @@ window.AES70 = {
     getBackendValue('storage:controls').set({
       version: controlsSerializationVersion,
       list: [],
+    });
+  },
+  notify: function (content, icon) {
+    const div = element('div',{class: 'content'});
+    div.innerHTML = content;
+    document.getElementById('notifications').auxWidget.notify({
+      timeout: 5000,
+      icon: icon,
+      content: div,
     });
   },
 }

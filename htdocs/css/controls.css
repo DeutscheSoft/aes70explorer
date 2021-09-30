@@ -311,6 +311,45 @@ aes70-control-filterclassical > .switch {
 }
 
 
+aes70-control-filterfir {
+  display: grid !important;
+  grid-template-areas: "label label label"
+                       "file file file"
+                       "resp resp resp"
+                       ". lsr sr";
+  grid-gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center !important;
+}
+aes70-control-filterfir > .aux-label.label {
+  grid-area: label;
+}
+aes70-control-filterfir > .aux-label.srate {
+  grid-area: lsr;
+  justify-self: end;
+}
+aes70-control-filterfir > .aux-value {
+  grid-area: sr;
+}
+aes70-control-filterfir > .aux-label.sfx {
+  grid-area: sfx;
+  justify-self: start;
+}
+aes70-control-filterfir > .aux-fileselect {
+  grid-area: file;
+  display: flex;
+  width: 320px;
+}
+aes70-control-filterfir > .aux-fileselect > .aux-name {
+  flex: 1 1 auto;
+}
+aes70-control-filterfir > .aux-frequencyresponse {
+  grid-area: resp;
+  width: 320px;
+  height: 128px;
+}
+
+
 aes70-control-filterparametric {
   display: grid !important;
   grid-template-areas:

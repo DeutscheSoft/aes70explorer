@@ -36,6 +36,7 @@
   --color-contrast: var(--background-dark);
   --color-warn: var(--color-violet);
   --color-ok: var(--color-green);
+  --color-error: var(--color-orange);
   
   --color-shadow: rgba(0, 0, 0, 0.8);
   
