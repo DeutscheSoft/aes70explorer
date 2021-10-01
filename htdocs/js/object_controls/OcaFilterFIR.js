@@ -61,7 +61,6 @@ function parseWAV(file) {
     var reader = new FileReader();
     reader.readAsArrayBuffer(file);
     reader.onload = function() {
-      
       // test if RIFF/WAV
       const uint8 = new Uint8Array(reader.result);
       if (String.fromCharCode(...uint8.slice(0, 4)) !== 'RIFF')
@@ -120,7 +119,7 @@ function parseWAV(file) {
 
 /*
 H(w) = Sum_0^N h(n) * ( cos(nw) - i * sin(nw) )
-     = Sum_0^N h(n) * cos(nw) + i * Sum_0^N h(n) * sin(nw) 
+     = Sum_0^N h(n) * cos(nw) + i * Sum_0^N h(n) * sin(nw)
 
 w = f / f_S * 2 * PI
 
@@ -157,7 +156,7 @@ class OcaFilterFIRControl extends TemplateComponent.fromString(template) {
     super();
     this.knobPresets = DynamicValue.fromConstant(AES70.knobPresets);
     this.formatValueBinding = DynamicValue.fromConstant(limitValueDigits(4));
-    
+
     this.labelBindings = [
       {
         src: '/Role',
@@ -179,7 +178,7 @@ class OcaFilterFIRControl extends TemplateComponent.fromString(template) {
         transformReceive: calculateResponse,
       },
     ];
-    
+
     this.fileSelected = async (e) => {
       const fsel = this.fileselect.auxWidget;
       const files = fsel.get('files');
