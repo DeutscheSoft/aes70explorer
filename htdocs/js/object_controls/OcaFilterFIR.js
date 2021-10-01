@@ -141,7 +141,9 @@ function coefToDots(coef, srate) {
       ReH += C * Math.cos(j * w);
       ImH += C * Math.sin(j * w);
     }
-    const y = Math.sqrt(Math.pow(ReH, 2) + Math.pow(ImH, 2));
+    ReH *= ReH;
+    ImH *= ImH;
+    const y = 10 * Math.log10(Math.sqrt(ReH + ImH));
     dots.push({x: F, y: y});
   }
   return dots;
@@ -186,7 +188,7 @@ class OcaFilterFIRControl extends TemplateComponent.fromString(template) {
         return;
       const file = files[0];
       let res;
-      if (file.type == 'text/csv')
+      if (file.type.startsWith('text/'))
         res = await parseCSV(file);
       else
         res = await parseWAV(file);

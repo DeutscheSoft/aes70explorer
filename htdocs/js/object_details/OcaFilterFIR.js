@@ -48,7 +48,7 @@ class OcaFilterFIRDetails extends TemplateComponent.fromString(template) {
     this.LockableBind = [{ src: '/Lockable', name: 'label', readonly: true }];
     this.EnabledBind = [{ src: '/Enabled', name: 'state', readonly: true }];
     this.CoefficientsBind = [{ src: '/Coefficients', name: 'label', readonly: true,
-      transformReceive: v => v.map(i => i.toFixed(2)).join(',') }];
+      transformReceive: v => v.map(i => i.toExponential(2)).join(',') }];
     this.LengthBind = [{ src: '/Length', name: 'label', readonly: true }];
     this.SampleRateBind = [{ src: '/SampleRate', name: 'label', readonly: true,
       transformReceive: v => v.toFixed(0) }];
