@@ -69,7 +69,8 @@ function readFileAsArrayBuffer(file) {
 }
 
 async function parseWAV(file) {
-  const uint8 = new Uint8Array(readFileAsArrayBuffer(file));
+  const data = await readFileAsArrayBuffer(file);
+  const uint8 = new Uint8Array(data);
 
   // test if RIFF/WAV
   if (String.fromCharCode(...uint8.slice(0, 4)) !== 'RIFF')
@@ -92,7 +93,8 @@ async function parseWAV(file) {
     sampleRate: srate,
   });
   // decode audio to float32
-  const floats = await context.decodeAudioData(reader.result);
+  const ab = await context.decodeAudioData(uint8.buffer);
+  const floats = ab.getChannelData(0);
 
   if (floats.length > 2048)
     throw new Error('Too many coefficients (' + floats.length + '/2048)');
@@ -187,6 +189,7 @@ class OcaFilterFIRControl extends TemplateComponent.fromString(template) {
         if (res.srate)
           await this._controlObject.SetSampleRate(res.srate);
       } catch (err) {
+        console.error(err);
         AES70.notify(err.toString(), 'error');
       }
       setTimeout((()=>{
