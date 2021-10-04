@@ -24,7 +24,7 @@ export default function start(addDestination) {
   const browser = new Browser(tcp('oca'));
   const registered = new Map();
 
-  brower.on('error', (err) => {
+  browser.on('error', (err) => {
     console.error('Error on dnssd browser: %o', err);
   });
 
