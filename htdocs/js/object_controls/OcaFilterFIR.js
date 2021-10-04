@@ -28,93 +28,79 @@ const template = `
 </aux-frequencyresponse>
 `;
 
-function parseCSV(file) {
-  return new Promise(resolve => {
+function readFileAsText(file) {
+  return new Promise((resolve, reject) => {
     var reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function() {
-      const text = reader.result;
-      let arr = text.split(/[^0-9.\-]/g);
-      arr = arr.filter(v => v !== '');
-      arr = arr.map(v => parseFloat(v));
-      if (arr.length > 2048) {
-        resolve({
-          data: [],
-          error: 'Too many coefficients (' + arr.length + '/2048)',
-        });
-      }
-      resolve({
-        data: arr,
-      });
+      resolve(reader.result);
     };
-    reader.onerror = function () {
-      resolve({
-        error: reader.error,
-        data: []
-      });
-    }
+    reader.onerror = function (err) {
+      reject(reader.error);
+    };
   });
 }
 
-function parseWAV(file) {
-  return new Promise(resolve => {
+async function parseCSV(file) {
+  const text = await readFileAsText(file);
+  let arr = text.split(/[^0-9.\-]/g);
+  arr = arr.filter(v => v !== '');
+  arr = arr.map(v => parseFloat(v));
+
+  if (arr.length > 2048)
+    throw new Error('Too many coefficients (' + arr.length + '/2048)');
+
+  return {
+    data: arr,
+  };
+}
+
+function readFileAsArrayBuffer(file) {
+  return new Promise((resolve, reject) => {
     var reader = new FileReader();
     reader.readAsArrayBuffer(file);
     reader.onload = function() {
-      // test if RIFF/WAV
-      const uint8 = new Uint8Array(reader.result);
-      if (String.fromCharCode(...uint8.slice(0, 4)) !== 'RIFF')
-        resolve({
-          data: [],
-          error: 'File is not a RIFF container',
-        });
-      if (String.fromCharCode(...uint8.slice(8, 12)) !== 'WAVE')
-        resolve({
-          data: [],
-          error: 'File is not of type WAVE',
-        });
-      if (String.fromCharCode(...uint8.slice(12, 16)) !== 'fmt ')
-        resolve({
-          data: [],
-          error: 'File is not a valid WAV file',
-        });
-      // get number of channels
-      const channels = new Uint16Array(uint8.slice(22, 24).buffer)[0];
-      // get sample rate
-      const srate = new Uint32Array(uint8.slice(24, 28).buffer)[0];
-      // create offline context
-      const context = new OfflineAudioContext({
-        numberOfChannels: channels,
-        length: channels * srate * 2048,
-        sampleRate: srate,
-      });
-      // decode audio to float32
-      context.decodeAudioData(reader.result).then(ab => {
-        const floats = ab.getChannelData(0);
-        if (floats.length > 2048) {
-          resolve({
-            data: [],
-            error: 'Too many coefficients (' + floats.length + '/2048)',
-          });
-        }
-        resolve({
-          data: floats,
-          srate: srate,
-        });
-      }, () => {
-        resolve({
-          data: [],
-          error: 'Decoding samples failed',
-        });
-      });
+      resolve(reader.result);
     };
-    reader.onerror = function (e) {
-      resolve({
-        data: [],
-        error: reader.error,
-      });
-    }
+    reader.onerror = function (err) {
+      reject(reader.error);
+    };
   });
+}
+
+async function parseWAV(file) {
+  const uint8 = new Uint8Array(readFileAsArrayBuffer(file));
+
+  // test if RIFF/WAV
+  if (String.fromCharCode(...uint8.slice(0, 4)) !== 'RIFF')
+    throw new Error('File is not a RIFF container');
+
+  if (String.fromCharCode(...uint8.slice(8, 12)) !== 'WAVE')
+    throw new Error('File is not of type WAVE');
+
+  if (String.fromCharCode(...uint8.slice(12, 16)) !== 'fmt ')
+    throw new Error('File is not a valid WAV file');
+
+  // get number of channels
+  const channels = new Uint16Array(uint8.slice(22, 24).buffer)[0];
+  // get sample rate
+  const srate = new Uint32Array(uint8.slice(24, 28).buffer)[0];
+  // create offline context
+  const context = new OfflineAudioContext({
+    numberOfChannels: channels,
+    length: channels * srate * 2048,
+    sampleRate: srate,
+  });
+  // decode audio to float32
+  const floats = await context.decodeAudioData(reader.result);
+
+  if (floats.length > 2048)
+    throw new Error('Too many coefficients (' + floats.length + '/2048)');
+
+  return {
+    data: floats,
+    srate: srate,
+  };
 }
 
 /*
@@ -187,17 +173,21 @@ class OcaFilterFIRControl extends TemplateComponent.fromString(template) {
       if (!files.length)
         return;
       const file = files[0];
-      let res;
-      if (file.type.startsWith('text/'))
-        res = await parseCSV(file);
-      else
-        res = await parseWAV(file);
-      if (res.error) {
-        AES70.notify(res.error, 'error');
-      } else {
-        this._controlObject.SetCoefficients(res.data);
+
+      try {
+        let res;
+
+        if (file.type.startsWith('text/'))
+          res = await parseCSV(file);
+        else
+          res = await parseWAV(file);
+
+        await this._controlObject.SetCoefficients(res.data);
+
         if (res.srate)
-          this._controlObject.SetSampleRate(res.srate);
+          await this._controlObject.SetSampleRate(res.srate);
+      } catch (err) {
+        AES70.notify(err.toString(), 'error');
       }
       setTimeout((()=>{
         this.fileselect.auxWidget.set('files', []);
