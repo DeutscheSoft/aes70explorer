@@ -5,8 +5,6 @@ import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
 import { coefToFreq } from '../../aux-widgets/src/utils/audiomath.js';
 import { makeValueMinMaxBinding, limitValueDigits } from '../utils.js';
 
-const PIXELS = 320;
-
 const template = `
 <aux-label class="label" %bind={{ this.labelBindings }}></aux-label>
 <aux-label class="srate" label="Sample Rate (Hz)"></aux-label>
@@ -105,10 +103,10 @@ async function parseWAV(file) {
   };
 }
 
-function coefToDots(coef, srate) {
+function coefToDots(coef, srate, pixels) {
   const dots = [];
-  for (let i = 0; i < PIXELS; ++i) {
-    const F = coefToFreq(i / PIXELS, 20, 20000);
+  for (let i = 0; i < pixels; ++i) {
+    const F = coefToFreq(i / pixels, 20, 20000);
     const w = F / srate * 2 * Math.PI;
     let ReH = 0, ImH = 0;
     for (let j = 0, m = coef.length; j < m; ++j) {
@@ -125,7 +123,10 @@ function coefToDots(coef, srate) {
 }
 
 function calculateResponse(args) {
-  return coefToDots(...args);
+  return function (graph) {
+    const pixels = graph.range_x.options.basis;
+    return coefToDots(args[0], args[1], pixels);
+  }
 }
 
 class OcaFilterFIRControl extends TemplateComponent.fromString(template) {
