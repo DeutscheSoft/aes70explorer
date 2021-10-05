@@ -105,19 +105,6 @@ async function parseWAV(file) {
   };
 }
 
-/*
-H(w) = Sum_0^N h(n) * ( cos(nw) - i * sin(nw) )
-     = Sum_0^N h(n) * cos(nw) + i * Sum_0^N h(n) * sin(nw)
-
-w = f / f_S * 2 * PI
-
-ReH(w) = Sum_0^N h(n) * cos(nw)
-ImH(w) = Sum_0^N h(n) * sin(nw)
-
-|H(w)| = Sqrt( ReH(w)^2 + ImH(w)^2 )
-
-*/
-
 function coefToDots(coef, srate) {
   const dots = [];
   for (let i = 0; i < PIXELS; ++i) {
