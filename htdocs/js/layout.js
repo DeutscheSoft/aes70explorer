@@ -52,6 +52,7 @@ export function removeControlFromCanvas(identifier) {
   unregisterControl(identifier);
   const canvas = document.querySelector('#canvas');
   ItemsOnCanvas.set(Array.from(canvas.children));
+  deselectObjectInList(identifier);
 }
 
 export function getControlsOnCanvas() {
@@ -104,6 +105,7 @@ export function clearCanvas() {
 
     if (isControl(control)) {
       const identifier = control.identifier;
+      deselectObjectInList(identifier);
       const _node = getRegisteredControl(identifier);
       if (!_node) return;
       unregisterControl(identifier);
@@ -139,3 +141,25 @@ export const CanRemoveLinebreak = map(
 
 CanAddLinebreak.subscribe((value) => getBackendValue('local:canAddLineBreak').set(value));
 CanRemoveLinebreak.subscribe((value) => getBackendValue('local:canRemoveLineBreak').set(value));
+
+
+export const getObjectInList = function (id) {
+  const O = document.querySelectorAll('aes70-navigation aes70-object');
+  for (let i = 0, m = O.length; i < m; ++i) {
+    const _id = O[i].identifier;
+    if (_id.type === id.type && _id.prefix === id.prefix)
+      return O[i];
+  }
+}
+export const deselectObjectInList = function (id) {
+  const O = getObjectInList(id);
+  if (O) {
+    O.hasControl = false;
+  }
+}
+export const selectObjectInList = function (id) {
+  const O = getObjectInList(id);
+  if (O) {
+    O.hasControl = false;
+  }
+}
