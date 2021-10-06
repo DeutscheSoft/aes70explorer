@@ -1,7 +1,7 @@
 import yargs from 'yargs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { Backend } from '../nodejs-lib/src/index.js';
+import { Backend } from './lib/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const defaultHtdocs = join(dirname(__filename), "../../htdocs");

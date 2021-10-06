@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron');
-const pServer = import('../nodejs-lib/src/index.js');
+const pServer = import('../nodejs/lib/index.js');
 const { dirname, join } = require('path');
 
 const defaultHtdocs = join(dirname(__filename), "htdocs");
