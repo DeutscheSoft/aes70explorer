@@ -239,9 +239,30 @@ export default async function start(config, destinationsAdapter) {
     }
   });
 
-  return new Promise((resolve) => {
-    server.listen(config.port, () => {
-      resolve();
+  const listen = (port) => {
+    const options = { port };
+
+    if (config.host) {
+      options.host = config.host;
+    }
+
+    return new Promise((resolve, reject) => {
+      const onError = (err) => reject(err);
+      server.on('error', onError);
+      server.listen(options, () => {
+        server.off('error', onError);
+        resolve(server.address());
+      });
     });
-  });
+  };
+
+  let startP = listen(config.port);
+
+  if (config.portFallback) {
+    startP = startP.catch((err) => {
+      return listen(0);
+    });
+  }
+
+  return startP;
 }

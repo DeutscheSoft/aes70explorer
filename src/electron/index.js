@@ -4,7 +4,7 @@ const { dirname, join } = require('path');
 
 const defaultHtdocs = join(dirname(__filename), "htdocs");
 
-function createWindow () {
+function createWindow (info) {
   const win = new BrowserWindow({
     width: 1024,
     height: 768,
@@ -14,7 +14,7 @@ function createWindow () {
 
   win.setMenuBarVisibility(false);
   win.removeMenu();
-  win.loadURL('http://localhost:8080')
+  win.loadURL('http://localhost:' + info.http.port)
   win.once('ready-to-show', () => {
     win.show()
   })
@@ -33,13 +33,14 @@ async function startUp() {
 
   backend = new Backend({
     http: {
-      port: 8080,
+      port: 0,
       htdocs: defaultHtdocs,
+      host: 'localhost',
     }
   });
-  await backend.start();
+  const info = await backend.start();
 
-  createWindow()
+  createWindow(info)
 }
 
 startUp().catch(

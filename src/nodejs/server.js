@@ -17,6 +17,10 @@ const argv = yargs(process.argv.slice(2))
       description: 'The HTTP htdocs directory (default is ./htdocs).',
       type: 'number',
     },
+    bind: {
+      description: 'The IP to listen to (default is 0.0.0.0).',
+      type: 'number',
+    },
   })
   .help()
   .alias('help', 'h')
@@ -25,6 +29,7 @@ const argv = yargs(process.argv.slice(2))
 const httpOptions = {
   port: argv.port || 8080,
   htdocs: argv.htdocs || defaultHtdocs,
+  host: argv.bind,
 };
 
 const backend = new Backend({
@@ -76,8 +81,8 @@ argv._.forEach((arg) => {
 });
 
 backend.start().then(
-  () => {
-    console.log('Running on port %d.', httpOptions.port);
+  (info) => {
+    console.log('HTTP Server running on port %d and host %o.', info.http.port, info.http.address);
   },
   (err) => {
     console.error('Failed to start HTTP server.', err);

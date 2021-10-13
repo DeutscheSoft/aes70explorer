@@ -40,7 +40,11 @@ export class Backend {
 
   async start() {
     startDiscovery((destination) => this.addDestination(destination));
-    await startHTTP(this.httpOptions, this);
+    const http = await startHTTP(this.httpOptions, this);
+
+    return {
+      http
+    };
   }
 
   addDestination(destination) {
