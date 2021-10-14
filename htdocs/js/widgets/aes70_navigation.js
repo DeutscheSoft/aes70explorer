@@ -5,7 +5,7 @@ import { forEachAsync } from '../utils.js';
 const template = `
 <div class=list>
   <div #scroller class=scroller></div>
-  <div class=nodevice %if={{ !this.hasDevices }}>Searching for<br>Devices...<br><br><span %if={{ this.manualDevices }}>Add Devices<br>at the Bottom</span></div>
+  <div class=nodevice %if={{ !this.hasDevices }}><span %if={{ this.mdns }}>Searching for<br>Devices...<br><br></span><span %if={{ this.manualDevices }}>Add Devices<br>at the Bottom</span></div>
 </div>
 <aes70-add-device %if={{ this.manualDevices }}></aes70-add-device>
 `;
@@ -14,6 +14,7 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
       {name: 'manualDevices', src: 'capabilities:manual_devices', readonly: true, sync: true},
+      {name: 'mdns', src: 'capabilities:mdns', readonly: true, sync: true},
     ];
   }
 
@@ -22,6 +23,7 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
     
     this.hasDevices = false;
     this.manualDevices = false;
+    this.mdns = false;
     
     forEachAsync(
       Devices,

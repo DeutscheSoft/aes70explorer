@@ -38,6 +38,7 @@ async function startUp() {
       host: 'localhost',
       manual_devices: true,
       license: true,
+      mdns: true,
     }
   });
   const info = await backend.start();

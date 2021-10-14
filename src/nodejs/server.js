@@ -22,7 +22,12 @@ const argv = yargs(process.argv.slice(2))
       type: 'number',
     },
     'manual-devices': {
-      description: 'Disables the ability for clients to add or remove devices.',
+      description: 'Enables the ability for clients to add or remove devices.',
+      type: 'boolean',
+      default: true,
+    },
+    mdns: {
+      description: 'Enables automatic device discovery using MDNS.',
       type: 'boolean',
       default: true,
     },
@@ -34,6 +39,7 @@ const argv = yargs(process.argv.slice(2))
 const capabilities = {
   manual_devices: !!argv['manual-devices'],
   license: false,
+  mdns: !!argv.mdns,
 };
 
 const httpOptions = {
@@ -44,7 +50,10 @@ const httpOptions = {
 };
 
 const backend = new Backend({
-  http: httpOptions
+  http: httpOptions,
+  mdns: {
+    enabled: !!argv.mdns,
+  },
 });
 
 console.log('Starting with options', httpOptions);

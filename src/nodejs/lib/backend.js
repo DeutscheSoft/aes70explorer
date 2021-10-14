@@ -5,6 +5,10 @@ const httpDefaultOptions = {
   port: 8080,
 };
 
+const mdnsDefaultOptions = {
+  enabled: true,
+};
+
 function isValidDestinationPort(port) {
   return Number.isInteger(port) && port > 0 && port <= 0xffff;
 }
@@ -30,7 +34,11 @@ function isValidDestination(dst) {
 
 export class Backend {
   get httpOptions() {
-    return Object.assign(httpDefaultOptions , this.config.http);
+    return Object.assign({}, httpDefaultOptions , this.config.http);
+  }
+
+  get mdnsOptions() {
+    return Object.assign({}, mdnsDefaultOptions, this.config.mdns || {});
   }
 
   constructor(config) {
@@ -39,7 +47,14 @@ export class Backend {
   }
 
   async start() {
-    startDiscovery((destination) => this.addDestination(destination));
+    const mdnsOptions = this.mdnsOptions;
+
+    if (mdnsOptions.enabled)
+    {
+      console.log('Starting mdns discovery.');
+      startDiscovery((destination) => this.addDestination(destination));
+    }
+
     const http = await startHTTP(this.httpOptions, this);
 
     return {
