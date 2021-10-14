@@ -92,6 +92,7 @@
 
   <awml-backend type=local name=local data="AES70.localDefaults"></awml-backend>
   <awml-backend type=localstorage name=storage data="AES70.storageDefaults"></awml-backend>
+  <awml-backend type=local name=capabilities src='/_api/capabilities'></awml-backend>
 </head>
 <body>
   <div id=root>
@@ -230,8 +231,6 @@
       <div id=logo></div>
       
       <awml-class src="storage:list/show" transform-receive="v=>v?'show':'hide'"></awml-class>
-      
-      <aes70-add-device></aes70-add-device>
       
     </aes70-navigation>
     <div id=canvas></div>
