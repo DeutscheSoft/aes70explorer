@@ -42,6 +42,10 @@ function readJsonBody(req) {
  * @param {object} config
  * @param {number} config.port
  *      HTTP Port to use.
+ * @param {string} config.host
+ *      HTTP host or IP to bind to.
+ * @param {object} config.capabilities
+ *      Capability object.
  * @param {Map<string:object>} destinations
  *      Map containing TCP forwarding destinations. WebSocket connections to
  *      the path `/_control/<NAME>` will attempt to forward to the destination
@@ -51,6 +55,7 @@ export default async function start(config, destinationsAdapter) {
   // FIXME
   const token = "random_secret";
   const htdocs = config.htdocs;
+  const capabilities = config.capabilities || {};
 
   const addedDestinations = new Map();
 
@@ -137,6 +142,8 @@ export default async function start(config, destinationsAdapter) {
     switch (req.method) {
     case 'GET':
       switch (path) {
+      case '/_api/capabilities':
+          return json(capabilities);
       case '/_api/token':
           return txt(token);
       case '/_api/destinations':
@@ -150,6 +157,9 @@ export default async function start(config, destinationsAdapter) {
         };
 
         if (path.startsWith(destinationsPath)) {
+          if (!capabilities.manual_devices)
+            return invalid();
+
           const name = path.substr(destinationsPath.length + 1);
 
           readJsonBody(req).then((destination) => {
@@ -178,6 +188,8 @@ export default async function start(config, destinationsAdapter) {
     case 'DELETE':
       {
         if (path.startsWith(destinationsPath)) {
+          if (!capabilities.manual_devices)
+            return invalid();
           const name = path.substr(destinationsPath.length + 1);
           const unsubscribe = addedDestinations.get(name);
 

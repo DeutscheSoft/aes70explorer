@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const defaultHtdocs = join(dirname(__filename), "../../htdocs");
 
 const argv = yargs(process.argv.slice(2))
-  .command('server.js', 'Starts the aes70-browser as a standalone HTTP server.', {
+  .command('serve', 'Starts the aes70-browser as a standalone HTTP server.', {
     port: {
       description: 'The HTTP port to use (default is 8080).',
       alias: 'p',
@@ -21,15 +21,26 @@ const argv = yargs(process.argv.slice(2))
       description: 'The IP to listen to (default is 0.0.0.0).',
       type: 'number',
     },
+    'manual-devices': {
+      description: 'Disables the ability for clients to add or remove devices.',
+      type: 'boolean',
+      default: true,
+    },
   })
   .help()
   .alias('help', 'h')
   .argv;
 
+const capabilities = {
+  manual_devices: !!argv['manual-devices'],
+  license: false,
+};
+
 const httpOptions = {
   port: argv.port || 8080,
   htdocs: argv.htdocs || defaultHtdocs,
   host: argv.bind,
+  capabilities,
 };
 
 const backend = new Backend({
@@ -74,6 +85,8 @@ function parseDestination(str)
 }
 
 argv._.forEach((arg) => {
+  if (arg === 'serve') return;
+
   const destination = parseDestination(arg);
 
   console.log('Using static destination: %o', destination);

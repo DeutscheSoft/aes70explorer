@@ -36,6 +36,8 @@ async function startUp() {
       port: 0,
       htdocs: defaultHtdocs,
       host: 'localhost',
+      manual_devices: true,
+      license: true,
     }
   });
   const info = await backend.start();
