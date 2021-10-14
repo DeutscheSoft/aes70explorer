@@ -6,7 +6,8 @@
     "build:app:index": "rollup --config rollup.config.js",
     "build:dir": "npm run build:htdocs && electron-builder --dir -c electron-builder.json",
     "build:htdocs": "parcel build --no-scope-hoist ../../htdocs/index.html --dist-dir app/htdocs",
-    "prebuild": "npm run build:htdocs && npm run build:app:index",
+    "build:licenseInfo": "node generate_dependencies_license_info.js > LICENSE.dependencies.html && cp LICENSE.dependencies.html app/htdocs/",
+    "prebuild": "npm run build:htdocs && npm run build:app:index && npm run build:licenseInfo",
     "build": "npm run build:htdocs && electron-builder -c electron-builder.json"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
   "devDependencies": {
     "electron": "^14.0.0-beta.8",
     "electron-builder": "^22.11.7",
+    "license-checker": "^25.0.1",
     "parcel": "^2.0.0-beta.2",
     "rollup": "^2.56.3"
   }
