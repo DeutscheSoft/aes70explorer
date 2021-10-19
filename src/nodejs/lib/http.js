@@ -2,6 +2,7 @@ import { createServer } from 'http';
 import { lookup } from 'mime-types';
 import { connectTCPTunnel } from './websocket_tcp_tunnel.js';
 import { extname, join } from 'path';
+import { randomFillSync } from 'crypto';
 import WS from 'ws';
 import fs from 'fs';
 const { readFile, stat } = fs.promises;
@@ -36,6 +37,12 @@ function readJsonBody(req) {
   });
 }
 
+function generateRandomToken() {
+  const buffer = Buffer.alloc(16);
+  randomFillSync(buffer);
+  return buffer.toString('hex');
+}
+
 /**
  * Start the web server.
  *
@@ -52,12 +59,15 @@ function readJsonBody(req) {
  *      with the name `<NAME>`.
  */
 export default async function start(config, destinationsAdapter) {
-  // FIXME
-  const token = "random_secret";
+  let token = generateRandomToken();
   const htdocs = config.htdocs;
   const capabilities = config.capabilities || {};
 
   const addedDestinations = new Map();
+
+  setInterval(() => {
+    token = generateRandomToken();
+  }, 20 * 1000);
 
   const server = createServer((req, res) => {
     const url = new URL(req.url, 'http://localhost/');
@@ -69,11 +79,6 @@ export default async function start(config, destinationsAdapter) {
 
     if (path.endsWith('/')) {
       path += 'index.html';
-    }
-
-    switch (path) {
-      case '/_control_token':
-        return txt(websocketToken);
     }
 
     const headers = {
@@ -225,7 +230,12 @@ export default async function start(config, destinationsAdapter) {
 
       if (url.startsWith(controlPrefix))
       {
-        const destinationName = url.substr(controlPrefix.length);
+        const tmp = url.substr(controlPrefix.length).split('?');
+
+        if (tmp.length !== 2 || tmp[1] !== token)
+          throw new Error('Bad token.');
+
+        const destinationName = tmp[0];
 
         destination = destinationsAdapter.getDestination(destinationName);
       }
