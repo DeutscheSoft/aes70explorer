@@ -1,4 +1,5 @@
 import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { Backend } from './lib/index.js';
@@ -6,8 +7,8 @@ import { Backend } from './lib/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const defaultHtdocs = join(dirname(__filename), "../../htdocs");
 
-const argv = yargs(process.argv.slice(2))
-  .command('serve', 'Starts the aes70-browser as a standalone HTTP server.', {
+const argv = yargs(hideBin(process.argv))
+  .options({
     port: {
       description: 'The HTTP port to use (default is 8080).',
       alias: 'p',
@@ -94,8 +95,6 @@ function parseDestination(str)
 }
 
 argv._.forEach((arg) => {
-  if (arg === 'serve') return;
-
   const destination = parseDestination(arg);
 
   console.log('Using static destination: %o', destination);
