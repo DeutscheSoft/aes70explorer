@@ -8,7 +8,7 @@
     "build:htdocs": "parcel build --no-scope-hoist ../../htdocs/index.html --dist-dir app/htdocs",
     "build:licenseInfo": "node generate_dependencies_license_info.js > LICENSE.dependencies.html && cp LICENSE.dependencies.html app/htdocs/",
     "prebuild": "npm run build:htdocs && npm run build:app:index && npm run build:licenseInfo",
-    "build": "npm run build:htdocs && electron-builder -c electron-builder.json"
+    "build": "electron-builder -c electron-builder.json"
   },
   "keywords": [],
   "author": "",
