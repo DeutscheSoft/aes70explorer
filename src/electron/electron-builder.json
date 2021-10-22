@@ -8,7 +8,7 @@
   "directories": {
     "app": "app"
   },
-  "extraFiles": [
+  "extraResources": [
     "LICENSE.dependencies.html"
   ]
 }
