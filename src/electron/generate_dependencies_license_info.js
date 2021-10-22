@@ -3,7 +3,7 @@ const { dirname, join }  = require('path');
 const { readFileSync } = require('fs');
 
 const APP_DIR = join(dirname(__filename), 'app');
-const LICENSE_CHECKER = join(dirname(__filename), 'node_modules', '.bin', 'license-checker');
+const LICENSE_CHECKER = join(dirname(__filename), 'node_modules', 'license-checker', 'bin', 'license-checker');
 
 const output = JSON.parse(
   execSync(`node ${LICENSE_CHECKER} --json`, {
