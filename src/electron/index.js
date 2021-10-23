@@ -31,15 +31,19 @@ async function startUp() {
 
   await app.whenReady()
 
+  const capabilities = {
+    manual_devices: true,
+    license: true,
+    mdns: true,
+  };
+
   backend = new Backend({
     http: {
       port: 0,
       htdocs: defaultHtdocs,
       host: 'localhost',
-      manual_devices: true,
-      license: true,
-      mdns: true,
-    }
+      capabilities,
+    },
   });
   const info = await backend.start();
 
