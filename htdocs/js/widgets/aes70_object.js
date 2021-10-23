@@ -70,7 +70,7 @@ class AES70Object extends TemplateComponent.fromString(template) {
 
     const selected = Selected.value;
 
-    return selected.type === 'object' && selected.prefix === this.identifier.prefix;
+    return selected && selected.type === 'object' && selected.prefix === this.identifier.prefix;
   }
 
   getHostBindings() {
