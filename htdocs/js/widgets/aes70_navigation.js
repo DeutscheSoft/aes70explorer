@@ -1,5 +1,5 @@
 import { TemplateComponent } from '../../AWML/src/index.pure.js';
-import { Devices } from '../devices.js';
+import { Devices, makeDestinationKey } from '../devices.js';
 import { forEachAsync } from '../utils.js';
 
 const template = `
@@ -38,7 +38,7 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
           element.remove();
         };
       },
-      (device) => device.name
+      makeDestinationKey
     );
     
     Devices.subscribe((data) => {

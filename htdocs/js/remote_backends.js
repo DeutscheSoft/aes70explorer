@@ -1,4 +1,4 @@
-import { Devices } from './devices.js';
+import { Devices, makeDestinationKey } from './devices.js';
 import { forEachAsync, isEqual, callUnsubscribe } from './utils.js';
 import { AES70Backend } from '../AWML/src/backends/aes70.js';
 import { registerBackendType } from '../AWML/src/components/backend.js';
@@ -25,9 +25,10 @@ registerBackendType('aes70-with-token', TokenBackend);
 forEachAsync(
   Devices,
   (device) => {
+    const key = makeDestinationKey(device);
     const backend = document.createElement('AWML-BACKEND');
-    backend.setAttribute('src', '/_control/' + device.name);
-    backend.setAttribute('name', device.name);
+    backend.setAttribute('src', '/_control/' + key);
+    backend.setAttribute('name', key);
     backend.setAttribute('type', 'aes70-with-token');
 
     document.head.appendChild(backend);
@@ -36,5 +37,5 @@ forEachAsync(
       backend.remove();
     };
   },
-  (device) => device.name
-  );
+  makeDestinationKey
+);

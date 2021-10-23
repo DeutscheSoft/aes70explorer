@@ -1,7 +1,7 @@
 import { TemplateComponent, getBackendValue, collectPrefix, fromSubscription } from '../../AWML/src/index.pure.js';
 import { addControlToCanvas, removeControlFromCanvas, hasControlOnCanvas } from '../layout.js';
 import { getRegisteredControl } from '../template_components.js';
-import { deleteDevice } from '../devices.js';
+import { deleteDevice, makeDevicePrefix } from '../devices.js';
 
 const Selected = getBackendValue('local:selected');
 
@@ -38,7 +38,7 @@ const templateComponent = TemplateComponent.create({
     %if={{ this.info.source === 'manual' }}
   ></aux-confirmbutton>
 </div>
-<aes70-block-children %if={{ this.open }} prefix={{ this.info.name + ':' }}></aes70-block-children>
+<aes70-block-children %if={{ this.open }} prefix={{ this.devicePrefix + ':' }}></aes70-block-children>
 `,
   properties: [ 'isSelected' ],
 });
@@ -66,13 +66,13 @@ class AES70Device extends templateComponent {
         name: 'hasControl',
       },
       {
-        src: this.info.name + ':/DeviceManager/DeviceName',
+        src: makeDevicePrefix(this.info) + ':/DeviceManager/DeviceName',
         readonly: true,
         sync: true,
         name: 'DeviceName',
       },
       {
-        src: this.info.name + ':/DeviceManager/DeviceName',
+        src: makeDevicePrefix(this.info) + ':/DeviceManager/DeviceName',
         readonly: true,
         sync: true,
         name: 'connectedClass',
@@ -85,7 +85,7 @@ class AES70Device extends templateComponent {
     if (!this._identifier && this.info) {
       this._identifier = {
         type: 'device',
-        prefix: this.info.name + ':',
+        prefix: makeDevicePrefix(this.info) + ':',
       };
     }
 
@@ -95,6 +95,16 @@ class AES70Device extends templateComponent {
   select() {
     if (!this.isSelected)
       Selected.set(this.identifier);
+  }
+
+  set info(info) {
+    super.info = info;
+    if (info)
+      super.devicePrefix = makeDevicePrefix(this.info);
+  }
+
+  get info() {
+    return super.info;
   }
 
   constructor() {

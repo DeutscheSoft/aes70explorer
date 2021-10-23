@@ -69,17 +69,17 @@ export class Backend {
 
     const destinations = this.destinations;
 
-    let name = destination.name;
+    let key = [ destination.source, destination.host, destination.port ].join('-');
 
-    if (destinations.has(name))
+    if (destinations.has(key))
       throw new Error('Destination already exists.');
 
-    destinations.set(name, destination);
+    destinations.set(key, destination);
 
     return () => {
-      if (name === null) return;
+      if (key === null) return;
       destinations.delete(name);
-      name = null;
+      key = null;
     };
   }
 

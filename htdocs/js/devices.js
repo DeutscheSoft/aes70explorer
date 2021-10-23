@@ -56,6 +56,14 @@ function subscribeFetchDevices(callback) {
   };
 }
 
+export function makeDestinationKey(destination) {
+  return [ destination.source, destination.host, destination.port ].join('-');
+}
+
+export function makeDevicePrefix(device) {
+  return makeDestinationKey(device);
+}
+
 export const Devices = fromSubscription(subscribeFetchDevices);
 
 export async function addDevice(host, port) {
