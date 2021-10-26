@@ -26,7 +26,6 @@ function readJsonBody(req) {
     req.on('end', () => {
       try {
         const result = chunks.join('');
-        console.log(chunks);
         resolve(JSON.parse(result));
       } catch (err) {
         reject(err);
@@ -41,6 +40,18 @@ function generateRandomToken() {
   const buffer = Buffer.alloc(16);
   randomFillSync(buffer);
   return buffer.toString('hex');
+}
+
+function handleError(cb) {
+  return (req, res) => {
+    try {
+      return cb(req, res);
+    } catch (err) {
+      res.writeHead(503, { 'Content-Type': 'text/plain' });
+      res.end('Internal Server Error', 'utf-8');
+      console.error('HTTP error: %o', err);
+    }
+  };
 }
 
 /**
@@ -69,7 +80,7 @@ export default async function start(config, destinationsAdapter) {
     token = generateRandomToken();
   }, 20 * 1000);
 
-  const server = createServer((req, res) => {
+  const server = createServer(handleError((req, res) => {
     const url = new URL(req.url, 'http://localhost/');
     let path = decodeURI(url.pathname);
 
@@ -216,7 +227,7 @@ export default async function start(config, destinationsAdapter) {
       txt('Internal server error.', err);
       console.error(err);
     });
-  });
+  }));
 
   const wss = new WS.Server({
     clientTracking: false,
@@ -259,6 +270,14 @@ export default async function start(config, destinationsAdapter) {
       socket.destroy();
       return;
     }
+  });
+
+  server.on('error', (err) => {
+    console.error('HTTP server error: %o', err);
+  });
+
+  wss.on('error', (err) => {
+    console.error('WS server error: %o', err);
   });
 
   const listen = (port) => {

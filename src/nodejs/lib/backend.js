@@ -78,7 +78,7 @@ export class Backend {
 
     return () => {
       if (key === null) return;
-      destinations.delete(name);
+      destinations.delete(key);
       key = null;
     };
   }
