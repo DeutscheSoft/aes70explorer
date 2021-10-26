@@ -636,18 +636,17 @@ aes70-control-impedancesensor > .phasedeg {
 
 aes70-device-control-generic {
   width: 100vw;
-  display: flex;
-  align-items: center;
+  text-align: left;
   border-bottom: 1px solid var(--color-accent);
 }
 aes70-device-control-generic > .manufacturer {
   font-size: var(--font-size-huge);
   color: var(--color-accent);
-  margin-right: 16px;
+  margin-right: 8px;
 }
 aes70-device-control-generic > .label {
   font-size: var(--font-size-large);
-  margin-right: 16px;
+  margin-right: 8px;
 }
 aes70-device-control-generic > .version {
   color: var(--color-fade);
@@ -656,9 +655,9 @@ aes70-device-control-generic > .version::before {
   content: "v";
 }
 aes70-device-control-generic > .serial {
-  flex: 1 1 100%;
   text-align: right;
   color: var(--color-fade);
+  float: right;
 }
 aes70-device-control-generic > .serial::before {
   content: "#";
