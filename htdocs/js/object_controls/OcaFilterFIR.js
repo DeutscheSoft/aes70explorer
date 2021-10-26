@@ -2,6 +2,7 @@ import { TemplateComponent, DynamicValue } from '../../AWML/src/index.pure.js';
 import { matchClass } from '../utils/match_class.js';
 import { registerObjectControlTemplate } from '../object_controls.js';
 import { sprintf } from '../../aux-widgets/src/utils/sprintf.js';
+import { error } from '../../aux-widgets/src/utils/log.js';
 import { coefToFreq } from '../../aux-widgets/src/utils/audiomath.js';
 import { makeValueMinMaxBinding, limitValueDigits } from '../utils.js';
 
@@ -166,12 +167,14 @@ class OcaFilterFIRControl extends TemplateComponent.fromString(template) {
 
       try {
         let res;
-
-        if (file.type.startsWith('text/'))
+        if (file.name.endsWith('.csv'))
           res = await parseCSV(file);
-        else
+        else if (file.name.endsWith('.wav'))
           res = await parseWAV(file);
-
+        else {
+          error('Only WAV and CSV files allowed.');
+          return;
+        }
         await this._controlObject.SetCoefficients(res.data);
 
         if (res.srate)
