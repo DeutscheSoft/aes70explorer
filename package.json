@@ -1,6 +1,6 @@
 {
   "name": "aes70-explorer-build",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "description": "",
   "scripts": {
     "build": "parcel build --no-scope-hoist htdocs/index.html"
