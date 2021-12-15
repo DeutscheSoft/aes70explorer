@@ -21,6 +21,9 @@ In the `src/nodejs` directory run
 
       node server.js [tcp:<IP>:<PORT>]
 
+It is possible to disable mdns discovery and the ability for clients to add
+manual devices using the web interface with command line options.
+
 # License
 
 The AES70 Explorer is available under the terms of the GNU General Public License version 2.
