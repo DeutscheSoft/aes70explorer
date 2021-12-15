@@ -1,6 +1,6 @@
 {
   "productName": "AES70 Explorer",
-  "copyright": "Copyright © 2021 DeusO GmbH",
+  "copyright": "Copyright \u00a9 2021 DeusO GmbH",
   "appId": "de.deuso.aes70explorer.electron",
   "linux": {
     "target": "zip"
