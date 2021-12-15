@@ -39,7 +39,8 @@ async function startUp() {
 
   backend = new Backend({
     http: {
-      port: 0,
+      port: 8080,
+      portFallback: true,
       htdocs: defaultHtdocs,
       host: 'localhost',
       capabilities,
