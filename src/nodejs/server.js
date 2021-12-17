@@ -16,11 +16,11 @@ const argv = yargs(hideBin(process.argv))
     },
     htdocs: {
       description: 'The HTTP htdocs directory (default is ./htdocs).',
-      type: 'number',
+      type: 'string',
     },
     bind: {
       description: 'The IP to listen to (default is 0.0.0.0).',
-      type: 'number',
+      type: 'string',
     },
     'manual-devices': {
       description: 'Enables the ability for clients to add or remove devices.',
