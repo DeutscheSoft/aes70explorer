@@ -105,27 +105,27 @@
       </p>
     </div>
 -->
-    
+
     <div id=loading>
       <div id=loading1><div id=loading2></div></div>
     </div>
-    
+
     <aux-expand id=tips class="aux-drawer-right" show_button=false>
       <awml-option type=bind name=expanded src="storage:tips/show"></awml-option>
-      
+
       <img src="images/aes70explorer_4c_white.svg" width="240" height="41">
-        
+
       <div>
-        
+
       </div>
-      
+
       <div class="copyright">
         <a href="https://deuso.de" target="_blank">
-          Copyright 2020 - 2021 by DeusO GmbH
+          Copyright 2020 - 2022 by DeusO GmbH
           <img src="images/DeusO Logo.svg">
         </a>
       </div>
-      
+
       <div>
         <aux-icon icon="ocadeviceopen">
           <awml-option type=bind src='local:tips/icons/ocadevice' name=icon></awml-option>
@@ -135,7 +135,7 @@
         inspect the sub-tree of the device. Click on the title to show the
         devices details in the Details pane at the bottom of the window.
       </div>
-      
+
       <div>
         <aux-icon icon="ocablockopen">
           <awml-option type=bind src='local:tips/icons/ocablock' name=icon></awml-option>
@@ -145,7 +145,7 @@
         the children of the block. Click on the title to show the blocks
         details in the details pane at the bottom of the page.
       </div>
-      
+
       <div>
         <aux-icon icon="ocaactuator">
           <awml-option type=bind src='local:tips/icons/ocaworker' name=icon></awml-option>
@@ -155,7 +155,7 @@
         Click on the title to see the details and a controllable
         widget in the details pane at the bottom of the page.
       </div>
-      
+
       <div>
         <aux-icon icon="puzzle"></aux-icon>
         <h2>Add Control</h2>
@@ -163,7 +163,7 @@
         To add a widget for this parameter click the puzzle icon in the
         navigation bar to the left.
       </div>
-      
+
       <div>
         <aux-icon icon="trash"></aux-icon>
         <h2>Remove Control</h2>
@@ -171,7 +171,7 @@
         navigation bar to the left. Wait a moment after the first click and
         click a second time to confirm the command.
       </div>
-      
+
       <div>
         <aux-icon icon="edit"></aux-icon>
         <h2>Edit Control</h2>
@@ -179,7 +179,7 @@
         input click on the edit icon. The current value will be selected,
         so you can start typing immediately to overwrite.
       </div>
-      
+
       <div>
         <aux-icon icon="savecontrols"></aux-icon>
         <h2>Save Controls</h2>
@@ -187,7 +187,7 @@
         Stored controls and line breaks will be restored as soon as the browser
         tab is refreshed.
       </div>
-      
+
       <div>
         <aux-icon icon="wipecontrols"></aux-icon>
         <h2>Wipe Controls</h2>
@@ -195,7 +195,7 @@
         (controls and line breaks) from the canvas and also resets the stored
         controls to none.
       </div>
-      
+
       <div>
         <aux-icon icon="addlinebreak"></aux-icon>
         <h2>Add Line Break</h2>
@@ -203,7 +203,7 @@
         on the canvas. If a control is selected, the line break is added after
         thie control, otherwise it gets appended at the end.
       </div>
-      
+
       <div>
         <aux-icon icon="deletelinebreak"></aux-icon>
         <h2>Remove Line Break</h2>
@@ -211,71 +211,22 @@
         by a line break. Click the button in order to remove the line break
         after the active control.
       </div>
-      
+
       <div>
         <aux-icon icon="cancel"></aux-icon>
         <h2>Remove Device</h2>
         If a device was added manually via the Add Device dialog, it can be
-        removed from the list again by clicking this button. 
-      </div> 
-      
+        removed from the list again by clicking this button.
+      </div>
+
       <aux-button label="Close Help" icon="close">
         <awml-event type=click callback="AES70.closeHelp"></awml-event>
       </aux-button>
-        
+
     </aux-expand>
 
+    <div id="header">
 
-    <aes70-navigation>
-      
-      <div id=logo></div>
-      
-      <awml-class src="storage:list/show" transform-receive="v=>v?'show':'hide'"></awml-class>
-      
-    </aes70-navigation>
-    <div id=canvas></div>
-    <aes70-details id=details>
-      <awml-class src="storage:details/show" transform-receive="v=>v?'show':'hide'"></awml-class>
-    </aes70-details>
-    <div id=sidebar>
-      
-      <aux-button icon=savecontrols label="Save Controls"
-        >
-        <awml-event type=click callback="AES70.saveControlsOnCanvas"></awml-event>
-      </aux-button>
-      
-      <aux-confirmbutton
-        icon=wipecontrols
-        label="Wipe Controls"
-        icon_confirm="confirm"
-        >
-        <awml-event type=confirmed callback="AES70.clearCanvas"></awml-event>
-      </aux-confirmbutton>
-      
-      <aux-button icon=addlinebreak label="Add Line Break"
-        >
-        <awml-event type=click callback="AES70.addLineBreak"></awml-event>
-        <awml-option
-          type=bind
-          name=disabled
-          src="local:canAddLineBreak"
-          transform-receive="v=>!v">
-        </awml-option>
-      </aux-button>
-
-      <aux-button icon=deletelinebreak label="Remove Line Break"
-        >
-        <awml-event type=click callback="AES70.removeLineBreak"></awml-event>
-        <awml-option
-          type=bind
-          name=disabled
-          src="local:canRemoveLineBreak"
-          transform-receive="v=>!v">
-        </awml-option>
-      </aux-button>
-      
-      <div class=separator></div>
-      
       <aux-toggle icon=confirm id=showtips label="Help">
         <awml-option type=bind name=state src="storage:tips/show"></awml-option>
       </aux-toggle>
@@ -283,12 +234,31 @@
       <aux-toggle label="List" icon="list">
         <awml-option type=bind name="state" src="storage:list/show"></awml-option>
       </aux-toggle>
-      
+
       <aux-toggle label="Details" icon="details">
         <awml-option type=bind name="state" src="storage:details/show"></awml-option>
       </aux-toggle>
-      
+
+      <aux-toggle label="Edit" icon="gear">
+        <awml-option type=bind name="state" src="storage:edit/show"></awml-option>
+      </aux-toggle>
+
     </div>
+
+    <aes70-navigation>
+
+      <div id="logo"></div>
+
+      <awml-class src="storage:list/show" transform-receive="v=>v?'show':'hide'"></awml-class>
+
+    </aes70-navigation>
+    <div id="canvas"></div>
+    <aes70-details id=details>
+      <awml-class src="storage:details/show" transform-receive="v=>v?'show':'hide'"></awml-class>
+    </aes70-details>
+    <aes70-edit id="sidebar">
+      <awml-class src="storage:edit/show" transform-receive="v=>v?'show':'hide'"></awml-class>
+    </aes70-edit>
   </div>
   <aux-notifications id="notifications"></aux-notifications>
 </body>

@@ -10,6 +10,7 @@ window.AES70 = {
     "tips/show": true,
     "details/show": true,
     "list/show": true,
+    "edit/show": false,
     "controls": [],
   },
   localDefaults: {
