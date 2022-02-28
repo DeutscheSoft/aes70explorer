@@ -72,7 +72,7 @@ window.AES70 = {
       show_labels: true,
     },
   },
-  
+
   gaugePresets: {
     gauge: {
       margin: 10,
@@ -90,7 +90,7 @@ window.AES70 = {
       hand: {width: 3, length: 50, margin: 0,},
     },
   },
-  
+
   saveControlsOnCanvas: function () {
     const value = {
       version: controlsSerializationVersion,
@@ -108,7 +108,7 @@ window.AES70 = {
       const list = v.list;
 
       list.forEach((control) => {
-        if (control === '[LINEBREAK]') {
+        if (control.type === 'linebreak') {
           addLineBreakToCanvas();
         } else {
           addControlToCanvas(control);

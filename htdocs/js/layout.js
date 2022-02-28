@@ -65,7 +65,7 @@ export function getControlsOnCanvas() {
       if (identifier)
         res.push(identifier);
     } else if (isLinebreak(component)) {
-      res.push('[LINEBREAK]');
+      res.push({type: 'linebreak'});
     }
   }
   return res;
