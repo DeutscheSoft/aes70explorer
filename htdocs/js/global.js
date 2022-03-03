@@ -136,7 +136,10 @@ window.AES70 = {
       if (!name || !struct) return;
       getBackendValue('storage:restore').set(name);
       if (typeof struct !== 'object' || struct.version !== controlsSerializationVersion) {
-        console.warn('Ignoring old canvas storage: %o', v);
+        console.warn('Ignoring old canvas storage: %o. Updating to latest structure, dropping the stored interface.', name);
+        struct.version = 2;
+        struct.list = {};
+        getBackendValue('storage:controls').set(struct);
         return;
       }
       const list = struct.list[name];
