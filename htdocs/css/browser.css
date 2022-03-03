@@ -338,14 +338,18 @@ html {
 #header {
   grid-area: header;
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   padding: 1px;
+  padding-left: 300px;
 
   background-color: var(--background-fade);
   background-image: url("../images/aes70explorer_4c_white.svg");
   background-size: 100px auto;
   background-repeat: no-repeat;
   background-position: 12px center;
+}
+#header > * {
+  flex: 0 1 auto;
 }
 
 #header .aux-button {
@@ -357,6 +361,18 @@ html {
 }
 #header .aux-button > .aux-icon {
   font-size: 24px;
+}
+
+#header > #interface {
+  width: 240px;
+  height: 100%;
+}
+#header > #interface > .aux-button {
+  height: 100%;
+}
+
+#header > .spacer {
+  flex: 1 1 auto;
 }
 
 #header > .separator {

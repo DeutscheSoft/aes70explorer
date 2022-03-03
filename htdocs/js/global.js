@@ -1,9 +1,9 @@
-import { getBackendValue, collectPrefix } from './../AWML/src/index.pure.js';
+import { getBackendValue, collectPrefix, ListValue } from './../AWML/src/index.pure.js';
 import { element } from './../aux-widgets/src/utils/dom.js';
 import { findControl } from './template_components.js';
 import { getControlsOnCanvas, addLineBreakToCanvas, removeLineBreakFromCanvas, addControlToCanvas, clearCanvas } from './layout.js';
 
-const controlsSerializationVersion = 1;
+const controlsSerializationVersion = 2;
 
 window.AES70 = {
   storageDefaults: {
@@ -11,7 +11,9 @@ window.AES70 = {
     "details/show": true,
     "list/show": true,
     "edit/show": false,
-    "controls": [],
+    "interface": "My Interface",
+    "restore": null,
+    "controls": { version: controlsSerializationVersion, list: {} },
   },
   localDefaults: {
     "canRemoveLineBreak": false,
@@ -92,37 +94,67 @@ window.AES70 = {
     },
   },
 
-  saveControlsOnCanvas: function () {
-    const value = {
-      version: controlsSerializationVersion,
-      list: getControlsOnCanvas(),
-    };
-    getBackendValue('storage:controls').set(value);
+  deleteInterface: function () {
+    const lv = new ListValue([
+      getBackendValue('storage:controls'),
+      getBackendValue('storage:interface'),
+      getBackendValue('storage:restore')
+    ]);
+    lv.wait().then(arr => {
+      const [struct, name, restore] = arr;
+      if (!name || !struct) return;
+      delete struct.list[name];
+      getBackendValue('storage:controls').set(struct);
+      if (name === restore)
+        getBackendValue('storage:restore').set(null);
+    });
   },
-  restoreControlsOnCanvas: function () {
-    getBackendValue('storage:controls').wait().then(v => {
-      if (!v) return;
-      if (typeof v !== 'object' || v.version !== controlsSerializationVersion) {
+  saveInterface: function () {
+    const controls = getControlsOnCanvas();
+    const lv = new ListValue([
+      getBackendValue('storage:controls'),
+      getBackendValue('storage:interface')
+    ]);
+    lv.wait().then(arr => {
+      const [struct, name] = arr;
+      if (!name || !struct) return;
+      getBackendValue('storage:restore').set(name);
+      struct.list[name] = controls;
+      getBackendValue('storage:controls').set(struct);
+    });
+  },
+  loadInterface: function (iface) {
+    clearCanvas();
+    const I = typeof iface === 'string' ? iface : 'storage:interface';
+    const lv = new ListValue([
+      getBackendValue('storage:controls'),
+      getBackendValue(I)
+    ]);
+
+    lv.wait().then(arr => {
+      const [ struct, name ] = arr;
+      if (!name || !struct) return;
+      getBackendValue('storage:restore').set(name);
+      if (typeof struct !== 'object' || struct.version !== controlsSerializationVersion) {
         console.warn('Ignoring old canvas storage: %o', v);
         return;
       }
-      const list = v.list;
-
-      list.forEach((control) => {
-        if (control.type === 'linebreak') {
-          addLineBreakToCanvas();
-        } else {
-          addControlToCanvas(control);
-        }
-      });
+      const list = struct.list[name];
+      if (!list) {
+        console.warn('Interface not found: %o', name);
+      } else {
+        list.forEach((control) => {
+          if (control.type === 'linebreak') {
+            addLineBreakToCanvas();
+          } else {
+            addControlToCanvas(control);
+          }
+        });
+      }
     });
   },
   clearCanvas: function () {
     clearCanvas();
-    getBackendValue('storage:controls').set({
-      version: controlsSerializationVersion,
-      list: [],
-    });
   },
   notify: function (content, icon) {
     const div = element('div',{class: 'content'});

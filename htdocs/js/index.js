@@ -56,12 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   window.setTimeout(function () {
-    AES70.restoreControlsOnCanvas();
+    AES70.loadInterface('storage:restore');
     getBackendValue('local:selected').set(null);
     document.getElementById("loading").style.display = "none";
   }, 500);
 });
 
+registerValueTimer('local:tips/icons/interface', ['folder','trash', 'savecontrols'], 1500);
 registerValueTimer('local:tips/icons/ocadevice', ['ocadevice','ocadeviceopen'], 1500);
 registerValueTimer('local:tips/icons/ocablock', ['ocablock','ocablockopen'], 1500);
 registerValueTimer('local:tips/icons/ocaworker', [

@@ -181,11 +181,12 @@
       </div>
 
       <div>
-        <aux-icon icon="savecontrols"></aux-icon>
-        <h2>Save Controls</h2>
-        Save all controls and line breaks currently visible on the canvas.
-        Stored controls and line breaks will be restored as soon as the browser
-        tab is refreshed.
+        <aux-icon icon="savecontrols">
+          <awml-option type=bind src='local:tips/icons/interface' name=icon></awml-option>
+        </aux-icon>
+        <h2>Interfaces</h2>
+        Store, restore and delete your control setups. The last interface will
+        be restored when the application is re-opened.
       </div>
 
       <div>
@@ -227,6 +228,56 @@
 
     <div id="header">
 
+      <aux-combobox id="interface">
+        <awml-option type="bind" name="entries" src="storage:controls"
+          transform-receive="v => Object.keys(v.list)"></awml-option>
+        <awml-option type="bind" name="value" src="storage:interface"></awml-option>
+      </aux-combobox>
+
+      <aux-button icon="folder">
+        <awml-option type="bind" name="disabled" src="storage:interface,storage:controls"
+          transform-receive="a => !a[1].list[a[0]]"></awml-option>
+        <awml-event type=click callback="AES70.loadInterface"></awml-event>
+      </aux-button>
+
+      <aux-confirmbutton icon=savecontrols icon_confirm="confirm">
+        <awml-option type="bind" name="confirm" src="storage:interface,storage:controls"
+          transform-receive="a => !!a[1].list[a[0]]"></awml-option>
+        <awml-option type="bind" name="disabled" src="storage:interface"
+          transform-receive="a => !a"></awml-option>
+        <awml-event type=confirmed callback="AES70.saveInterface"></awml-event>
+      </aux-confirmbutton>
+
+      <aux-confirmbutton icon="trash" icon_confirm="confirm">
+        <awml-option type="bind" name="disabled" src="storage:interface,storage:controls"
+        transform-receive="a => !a[1].list[a[0]]"></awml-option>
+        <awml-event type=confirmed callback="AES70.deleteInterface"></awml-event>
+      </aux-confirmbutton>
+
+      <div class="spacer"></div>
+
+      <aux-confirmbutton
+        icon=wipecontrols
+        label="Wipe Controls"
+        icon_confirm="confirm"
+        >
+        <awml-event type=confirmed callback="AES70.clearCanvas"></awml-event>
+      </aux-confirmbutton>
+
+      <aux-button icon=addlinebreak label="Add Line Break"
+        >
+        <awml-event type=click callback="AES70.addLineBreak"></awml-event>
+        <awml-show src="local:canAddLineBreak"></awml-show>
+      </aux-button>
+
+      <aux-button icon=deletelinebreak label="Remove Line Break"
+        >
+        <awml-event type=click callback="AES70.removeLineBreak"></awml-event>
+        <awml-show src="local:canRemoveLineBreak"></awml-show>
+      </aux-button>
+
+      <div class="spacer"></div>
+
       <aux-toggle icon=confirm id=showtips label="Help">
         <awml-option type=bind name=state src="storage:tips/show"></awml-option>
       </aux-toggle>
@@ -239,9 +290,9 @@
         <awml-option type=bind name="state" src="storage:details/show"></awml-option>
       </aux-toggle>
 
-      <aux-toggle label="Edit" icon="gear">
+      <!--aux-toggle label="Edit" icon="gear">
         <awml-option type=bind name="state" src="storage:edit/show"></awml-option>
-      </aux-toggle>
+      </aux-toggle-->
 
     </div>
 
