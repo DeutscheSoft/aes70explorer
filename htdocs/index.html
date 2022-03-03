@@ -234,7 +234,7 @@
         <awml-option type="bind" name="value" src="storage:interface"></awml-option>
       </aux-combobox>
 
-      <aux-button icon="folder">
+      <aux-button icon="reload">
         <awml-option type="bind" name="disabled" src="storage:interface,storage:controls"
           transform-receive="a => !a[1].list[a[0]]"></awml-option>
         <awml-event type=click callback="AES70.loadInterface"></awml-event>

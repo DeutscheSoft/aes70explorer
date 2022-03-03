@@ -48,3 +48,6 @@
 .aux-icon.openfolder::before                { font-family: 'AES70Browser'; content: '񗍨'; }
 .aux-icon.folder::before                    { font-family: 'AES70Browser'; content: '񗍨'; }
 .aux-icon.gear::before                      { font-family: 'AES70Browser'; content: '񗍩'; }
+.aux-icon.refresh::before                   { font-family: 'AES70Browser'; content: '񗍪'; }
+.aux-icon.reload::before                    { font-family: 'AES70Browser'; content: '񗍪'; }
+.aux-icon.recycle::before                   { font-family: 'AES70Browser'; content: '񗍪'; }
