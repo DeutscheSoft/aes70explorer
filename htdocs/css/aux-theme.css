@@ -46,7 +46,10 @@
 .aux-button.aux-horizontal.aux-has-icon.aux-has-label > .aux-icon {
   margin-right: 8px;
 }
-
+.head .aux-button {
+  background: var(--button-background-transparent);
+  font-size: var(--font-size-button-icon);
+}
 
 .aux-chart {
   background: var(--background-dark);
@@ -138,6 +141,10 @@
 .aux-fader.aux-vertical > .aux-value {
   justify-self: stretch;
 }
+.aux-fader > .aux-track > .aux-handle:focus {
+    outline: 1px solid var(--color-accent);
+    outline-offset: 4px;
+}
 
 
 .aux-fileselect > .aux-filelabel {
@@ -200,6 +207,10 @@
   padding-right: 8px;
   padding-left: 12px;
 }
+.aux-select:focus {
+  outline: 1px solid var(--color-accent);
+  outline-offset: -1px;
+}
 .aux-button.aux-select > .aux-icon {
   margin-left: 8px !important;
 }
@@ -212,6 +223,13 @@
 .aux-selectlist > .aux-selectentry.aux-active {
   background: var(--color-accent);
   color: var(--color-contrast);
+}
+.aux-selectlist > .aux-selectentry:focus {
+  outline: 1px solid var(--color);
+  outline-offset: -1px;
+}
+.aux-selectlist > .aux-selectentry.aux-active:focus {
+  outline-color: var(--color);
 }
 
 
@@ -240,8 +258,16 @@
 .aux-button.aux-toggle.aux-active > .aux-icon {
   color: var(--color-accent);
 }
+.aux-button:focus {
+  outline: 1px solid var(--color-accent);
+  outline-offset: -1px;
+}
 
-
+.selected > .head > .aux-button:focus,
+.selected > .head > .aux-button:focus {
+  outline: 1px solid var(--color);
+  outline-offset: -1px;
+}
 .aux-value {
     
 }
@@ -258,4 +284,9 @@
   color: var(--color);
   font-size: var(--font-size-large);
   border: none;
+}
+
+.aux-valueknob .aux-knob > svg:focus {
+  outline: 1px solid var(--color-accent);
+  outline-offset: -1px;
 }

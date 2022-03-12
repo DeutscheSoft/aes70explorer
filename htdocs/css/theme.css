@@ -25,6 +25,7 @@
   --background-odd: #121214;
   --background-selected: #2C2F3D;
   --background-control: #1e2230;
+  --background-transparent: rgba(0, 0, 0, 0.0);
   
   --color: #ffffff;
   --color-orange: #ff6600;
@@ -50,6 +51,7 @@
   
   
   --button-background: var(--background-dark);
+  --button-nav-background: var(--background-transparent);
   --button-color: var(--color);
   --button-hover-background: var(--background-dark);
   --button-hover-color: var(--color-accent);

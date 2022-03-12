@@ -5,7 +5,7 @@ const Selected = getBackendValue('local:selected');
 const templateComponent = TemplateComponent.create({
   template: `
 <div class=head (click)={{ this.onHeadClick }}>
-  <aux-icon icon={{ this.open ? 'ocablockopen' : 'ocablock' }} (click)={{ this.onIconClick }} class=icon></aux-icon>
+  <aux-button icon={{ this.open ? 'ocablockopen' : 'ocablock' }} (click)={{ this.onIconClick }} class=icon></aux-button>
   <aux-label class=label %bind={{ this.labelBindings }}></aux-label>
   <aux-icon icon=item class=iconm></aux-icon>
   <aux-label class=children %bind={{ this.childrenBindings }}></aux-label>

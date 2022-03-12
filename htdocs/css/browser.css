@@ -620,7 +620,7 @@ aes70-navigation > .list > .scroller {
 }
 
 aes70-navigation .head {
-  height: 36px;
+  height: 40px;
   display: grid;
   grid-template-areas:
     "icon label";
@@ -727,7 +727,8 @@ aes70-device > .head.disconnected * {
 aes70-device.selected > .head.disconnected {
   background: var(--background-selected) !important;
 }
-aes70-device > .head > .icon {
+aes70-device > .head > .icon,
+aes70-device > .head > .aux-button > .icon {
   font-size: 32px;
 }
 aes70-device.aes70-open > .head > .icon {

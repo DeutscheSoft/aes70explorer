@@ -8,7 +8,7 @@ const Selected = getBackendValue('local:selected');
 const templateComponent = TemplateComponent.create({
   template: `
 <div class='{{ this.connectedClass + ' head' }}' (click)={{ this.onHeadClick }}>
-  <aux-icon class='icon' icon={{ this.open ? 'ocadeviceopen' : 'ocadevice' }} (click)={{ this.onIconClick }}></aux-icon>
+  <aux-button class='icon' icon={{ this.open ? 'ocadeviceopen' : 'ocadevice' }} (click)={{ this.onIconClick }}></aux-button>
   <aux-label class='name' label='{{ this.DeviceName || '(not connected)' }}'></aux-label>
   <aux-label class='net' label='{{ this.info.name }}'></aux-label>
   <aux-icon class='ihost' icon='ip'></aux-icon>
