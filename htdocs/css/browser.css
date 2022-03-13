@@ -727,8 +727,11 @@ aes70-device > .head.disconnected * {
 aes70-device.selected > .head.disconnected {
   background: var(--background-selected) !important;
 }
+aes70-device > .head > .aux-button .aux-icon {
+  font-size: var(--font-size-button-icon-small);
+}
 aes70-device > .head > .icon,
-aes70-device > .head > .aux-button > .icon {
+aes70-device > .head > .aux-button:first-child > .aux-icon {
   font-size: 32px;
 }
 aes70-device.aes70-open > .head > .icon {
@@ -784,9 +787,6 @@ aes70-device > .head > .aux-button {
   margin: 0;
   padding: 0 4px;
   height: auto;
-}
-aes70-device > .head > .aux-button > .aux-icon {
-  font-size: var(--font-size-button-icon-small);
 }
 aes70-device > .head > .addcontrol,
 aes70-device > .head > .removecontrol {
