@@ -3,7 +3,7 @@
 :root {
 
   --aux-main-lineheight: 1em;
-  
+
   --aux-button-paddinghorizontal: 16px;
   --aux-fader-handleheight: 56px;
   --aux-fader-gridgap: 4px;
@@ -76,7 +76,7 @@
 }
 
 .aux-circular {
-  
+
 }
 .aux-circular > .aux-base {
   fill: var(--background-dark);
@@ -200,6 +200,18 @@
   color: var(--color-fade);
 }
 
+.aux-scroller > .aux-scrollbar::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  bottom: 4px;
+  right: 2px;
+  border-radius: 2px;
+  background: var(--color-fade);
+}
+
 
 
 .aux-select {
@@ -268,7 +280,7 @@
   outline-offset: -1px;
 }
 .aux-value {
-    
+
 }
 .aux-value > .aux-input {
   background: var(--background-dark);

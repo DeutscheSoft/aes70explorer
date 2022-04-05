@@ -609,13 +609,13 @@ aes70-navigation > .list {
   flex: 1 1 auto;
   overflow: hidden;
 }
-aes70-navigation > .list > .scroller {
+aes70-navigation > .list > .aux-scroller {
   position: absolute;
-  overflow: scroll;
+  overflow: hidden;
   top: 0;
   left: 0;
-  bottom: calc(-1 * var(--aux-scrollbar-size));
-  right: calc(-1 * var(--aux-scrollbar-size));
+  bottom: 0;
+  right: 0;
   margin: 0;
 }
 

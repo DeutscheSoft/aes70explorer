@@ -4,7 +4,7 @@ import { forEachAsync } from '../utils.js';
 
 const template = `
 <div class=list>
-  <div #scroller class=scroller></div>
+  <aux-scroller #scroller scroll_x="false" (click)={{ this.onClick }}></aux-scroller>
   <div class=nodevice %if={{ !this.hasDevices }}><span %if={{ this.mdns }}>Searching for<br>Devices...<br><br></span><span %if={{ this.manualDevices }}>Add Devices<br>at the Bottom</span></div>
 </div>
 <aes70-add-device %if={{ this.manualDevices }}></aes70-add-device>
@@ -20,11 +20,17 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
 
   constructor() {
     super();
-    
+
     this.hasDevices = false;
     this.manualDevices = false;
     this.mdns = false;
-    
+
+    this.onClick = e => {
+      setTimeout(() => {
+        this.scroller.auxWidget.resize();
+      }, 100);
+    }
+
     forEachAsync(
       Devices,
       (info) => {
@@ -32,7 +38,7 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
 
         element.info = info;
 
-        this.scroller.appendChild(element);
+        this.scroller.firstChild.appendChild(element);
 
         return () => {
           element.remove();
@@ -40,7 +46,7 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
       },
       makeDestinationKey
     );
-    
+
     Devices.subscribe((data) => {
       this.hasDevices = data && data.length;
     });
