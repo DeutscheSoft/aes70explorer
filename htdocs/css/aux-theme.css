@@ -31,7 +31,10 @@
   background: var(--button-background);
   color: var(--button-color);
   border-radius: var(--border-radius);
-  transition: all var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border var(--transition);
 }
 .aux-button:hover {
   color: var(--button-hover-indicator);
