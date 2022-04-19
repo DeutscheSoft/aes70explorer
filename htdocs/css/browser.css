@@ -442,9 +442,7 @@ html {
   transition: all var(--transition);
 }
 #details.hide {
-  height: 0px;
-  padding: 0px;
-  border-top-width: 0px;
+  height: 40px;
 }
 #details.block,
 #details.device {
@@ -511,6 +509,7 @@ html {
   justify-content: center;
   margin-right: 16px;
 }
+#details.hide > .control,
 #details.block > .control,
 #details.device > .control {
   display: none;
