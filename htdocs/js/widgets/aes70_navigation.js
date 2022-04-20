@@ -4,7 +4,7 @@ import { forEachAsync } from '../utils.js';
 
 const template = `
 <div class=list>
-  <aux-scroller #scroller scroll_x="false" (click)={{ this.onClick }}></aux-scroller>
+  <aux-scroller #scroller scroll_x="false" (pointerup)={{ this.onClick }}></aux-scroller>
   <div class=nodevice %if={{ !this.hasDevices }}><span %if={{ this.mdns }}>Searching for<br>Devices...<br><br></span><span %if={{ this.manualDevices }}>Add Devices<br>at the Bottom</span></div>
 </div>
 <aes70-add-device %if={{ this.manualDevices }}></aes70-add-device>
