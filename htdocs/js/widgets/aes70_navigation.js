@@ -27,7 +27,7 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
 
     this.onClick = e => {
       setTimeout(() => {
-        this.scroller.auxWidget.resize();
+        this.scroller.auxWidget.triggerResize();
       }, 100);
     }
 
