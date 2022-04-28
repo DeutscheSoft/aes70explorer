@@ -1,11 +1,11 @@
 {
   "name": "aes70-explorer-build",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0",
   "description": "",
   "scripts": {},
   "keywords": [],
   "author": "",
   "license": "GPL-2.0-only",
   "type": "module",
-  "devDependencies": { }
+  "devDependencies": {}
 }
