@@ -5,6 +5,11 @@ const { readFileSync } = require('fs');
 const APP_DIR = join(dirname(__filename), 'app');
 const LICENSE_CHECKER = join(dirname(__filename), 'node_modules', 'license-checker', 'bin', 'license-checker');
 
+// We need to install dependencies in order to generate license information.
+execSync('npm ci', {
+  cwd: APP_DIR
+});
+
 const output = JSON.parse(
   execSync(`node ${LICENSE_CHECKER} --json`, {
     cwd: APP_DIR
@@ -40,7 +45,7 @@ dependencies.forEach((info) => {
     .map((line) => {
       if (line.length <= 80)
         return line;
-        
+
       const words = line.split(/\s+/);
       line = '';
 
