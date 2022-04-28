@@ -5,7 +5,7 @@
   "scripts": {
     "build:app:index": "rollup --config rollup.config.js",
     "build:dir": "npm run build:htdocs && electron-builder --dir -c electron-builder.json",
-    "build:htdocs": "parcel build --no-scope-hoist ../../htdocs/index.html --dist-dir app/htdocs",
+    "build:htdocs": "parcel build --no-autoinstall --no-scope-hoist ../../htdocs/index.html --dist-dir app/htdocs",
     "build:licenseInfo": "(cd app && npm ci) && node generate_dependencies_license_info.js > LICENSE.dependencies.html && cp LICENSE.dependencies.html app/htdocs/",
     "build:licenseChromium": "cp node_modules/electron/dist/LICENSES.chromium.html app/htdocs/",
     "build:licenseElectron": "cp node_modules/electron/dist/LICENSE app/htdocs/LICENSE.electron.txt",
