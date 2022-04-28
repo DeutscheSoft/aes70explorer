@@ -2,16 +2,13 @@
   "name": "aes70-explorer-build",
   "version": "1.0.0-alpha.9",
   "description": "",
-  "scripts": {
-    "build": "parcel build --no-scope-hoist htdocs/index.html"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "GPL-2.0-only",
   "type": "module",
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.0.0-beta.2",
-    "@parcel/transformer-webmanifest": "^2.0.0-beta.2",
-    "parcel": "^2.0.0-beta.2"
+    "@parcel/transformer-webmanifest": "^2.0.0-beta.2"
   }
 }
