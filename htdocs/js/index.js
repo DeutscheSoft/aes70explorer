@@ -17,6 +17,7 @@ import './widgets/aes70_details.js';
 import './widgets/aes70_add_device.js';
 import './widgets/aes70_empty.js';
 import './widgets/aes70_edit.js';
+import './widgets/aes70_licenses.js';
 
 import { findControl } from './template_components.js';
 import { registerValueTimer } from './value_timer.js';
