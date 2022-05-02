@@ -20,31 +20,34 @@ const template = `
 class AES70AddDevice extends TemplateComponent.fromString(template) {
   static getHostBindings() {
     return [
-      
+
     ];
   }
-  
+
   constructor() {
     super();
-    
+
     this.open = false;
     this.inprogress = false;
-    
+
     this.onAddClick = (ev) => {
       this.open = !this.open;
       if (this.open)
         this.url.auxWidget._input.focus();
+      this.dispatchEvent(new Event('visibility', {
+        bubbles: false,
+      }));
     }
-    
+
     this.onOKClick = (ev) => {
       this.open = false;
       this.addDevice();
     }
-    
+
     this.onCancelClick = (ev) => {
       this.open = false;
     }
-    
+
     this.inputKeyup = (ev) => {
       if(ev.key === "Enter") {
         this.addDevice();
@@ -52,7 +55,7 @@ class AES70AddDevice extends TemplateComponent.fromString(template) {
       }
     }
   }
-  
+
   async addDevice() {
     if (this.inprogress) return;
 

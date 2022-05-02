@@ -7,7 +7,7 @@ const template = `
   <aux-scroller #scroller scroll_x="false" (pointerup)={{ this.onClick }}></aux-scroller>
   <div class=nodevice %if={{ !this.hasDevices }}><span %if={{ this.mdns }}>Searching for<br>Devices...<br><br></span><span %if={{ this.manualDevices }}>Add Devices<br>at the Bottom</span></div>
 </div>
-<aes70-add-device %if={{ this.manualDevices }}></aes70-add-device>
+<aes70-add-device %if={{ this.manualDevices }} (visibility)={{ this.addVisibility }}></aes70-add-device>
 `;
 
 class AES70Navigation extends TemplateComponent.fromString(template) {
@@ -29,6 +29,10 @@ class AES70Navigation extends TemplateComponent.fromString(template) {
       setTimeout(() => {
         this.scroller.auxWidget.triggerResize();
       }, 100);
+    }
+
+    this.addVisibility = e => {
+      setTimeout(() => this.scroller.auxWidget.triggerResize(), 500);
     }
 
     forEachAsync(
