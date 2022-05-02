@@ -707,7 +707,7 @@ aes70-device > .head {
   grid-gap: 1px 4px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 11;
   transition: all var(--transition);
 }
 aes70-device.selected > .head {
@@ -905,6 +905,30 @@ aes70-block > .head {
   transition: all var(--transition);
   grid-template-areas: "icon label iconm members";
   grid-template-columns: 40px 1fr auto;
+  position: sticky;
+  top: 41px;
+  z-index: 10;
+}
+aes70-block aes70-block > .head {
+  top: 82px;
+}
+aes70-block aes70-block aes70-block > .head {
+  top: 123px;
+}
+aes70-block aes70-block aes70-block aes70-block > .head {
+  top: 164px;
+}
+aes70-block aes70-block aes70-block aes70-block aes70-block > .head {
+  top: 205px;
+}
+aes70-block aes70-block aes70-block aes70-block aes70-block aes70-block > .head {
+  top: 246px;
+}
+aes70-block aes70-block aes70-block aes70-block aes70-block aes70-block aes70-block > .head {
+  top: 287px;
+}
+aes70-block aes70-block aes70-block aes70-block aes70-block aes70-block aes70-block aes70-block > .head {
+  top: 328px;
 }
 aes70-block.selected > .head {
   background: var(--color-accent);
