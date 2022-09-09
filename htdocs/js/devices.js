@@ -34,7 +34,7 @@ function subscribeFetchDevices(callback) {
   const run = async () => {
     do {
       try {
-        const result = await fetchDevices(); 
+        const result = await fetchDevices();
         if (!active) break;
 
         if (!isEqual(result, lastResult))
