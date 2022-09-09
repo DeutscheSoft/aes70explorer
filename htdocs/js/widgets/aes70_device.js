@@ -98,11 +98,6 @@ class AES70Device extends templateComponent {
       Selected.set(this.identifier);
   }
 
-  async connectedCallback() {
-
-    TemplateComponent.prototype.connectedCallback.call(this);
-  }
-
   async initialState() {
     const I = this.info;
     this.open = await getNavState(`${I.source}-${I.host}-${I.port}:`);
