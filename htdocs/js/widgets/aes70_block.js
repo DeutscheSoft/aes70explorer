@@ -1,4 +1,5 @@
 import { collectPrefix, TemplateComponent, getBackendValue, fromSubscription } from '../../AWML/src/index.pure.js';
+import { handleNavState, getNavState } from '../utils/navstate.js';
 
 const Selected = getBackendValue('local:selected');
 
@@ -35,12 +36,17 @@ class AES70Block extends templateComponent {
       Selected.set({type:'block', prefix:collectPrefix(this)});
   }
 
+  async connectedCallback() {
+    this.open = await getNavState(collectPrefix(this));
+    TemplateComponent.prototype.connectedCallback.call(this);
+  }
+
   constructor() {
     super();
     this.subscribeEvent('isSelectedChanged', (value) => {
       this.classList.toggle('selected', value);
     });
-    
+
     this.onHeadClick = (ev) => {
       if (!this.isSelected) {
         this.select();
@@ -48,14 +54,15 @@ class AES70Block extends templateComponent {
       } else {
         this.open = !this.open;
       }
+      handleNavState(collectPrefix(this), this.open);
     }
-    
+
     this.onIconClick = (ev) => {
       this.open = !this.open;
       ev.stopPropagation();
       this.select();
     }
-    
+
     this.labelBindings = [
       {
         name: 'label',

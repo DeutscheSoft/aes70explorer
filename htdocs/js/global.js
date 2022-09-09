@@ -14,6 +14,7 @@ window.AES70 = {
     "interface": "My Interface",
     "restore": null,
     "controls": { version: controlsSerializationVersion, list: {} },
+    "navstate": {},
   },
   localDefaults: {
     "canRemoveLineBreak": false,

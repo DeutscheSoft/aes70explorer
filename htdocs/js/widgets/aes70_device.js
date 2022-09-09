@@ -2,6 +2,7 @@ import { TemplateComponent, getBackendValue, collectPrefix, fromSubscription } f
 import { addControlToCanvas, removeControlFromCanvas, hasControlOnCanvas } from '../layout.js';
 import { getRegisteredControl } from '../template_components.js';
 import { deleteDevice, makeDevicePrefix } from '../devices.js';
+import { handleNavState, getNavState } from '../utils/navstate.js';
 
 const Selected = getBackendValue('local:selected');
 
@@ -97,10 +98,21 @@ class AES70Device extends templateComponent {
       Selected.set(this.identifier);
   }
 
+  async connectedCallback() {
+
+    TemplateComponent.prototype.connectedCallback.call(this);
+  }
+
+  async initialState() {
+    const I = this.info;
+    this.open = await getNavState(`${I.source}-${I.host}-${I.port}:`);
+  }
+
   set info(info) {
     super.info = info;
     if (info)
       super.devicePrefix = makeDevicePrefix(this.info);
+    this.initialState();
   }
 
   get info() {
@@ -125,6 +137,8 @@ class AES70Device extends templateComponent {
       } else {
         this.open = !this.open;
       }
+      const I = this.info;
+      handleNavState(`${I.source}-${I.host}-${I.port}:`, this.open);
     }
 
     this.onIconClick = (ev) => {
@@ -136,7 +150,7 @@ class AES70Device extends templateComponent {
       ev.stopPropagation();
       this._addControl();
     }
-    
+
     this.onRemoveControlConfirmed = (ev) => {
       ev.stopPropagation();
       this._removeControl();
@@ -152,7 +166,7 @@ class AES70Device extends templateComponent {
       if (!node) return;
       node.classList.remove('scaffold');
     }
-    
+
     this.onRemoveDeviceConfirmed = (ev) => {
       ev.stopPropagation();
       deleteDevice(this.info.name);
