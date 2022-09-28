@@ -1,6 +1,6 @@
 import { createServer } from 'http';
 import { lookup } from 'mime-types';
-import { connectTCPTunnel } from './websocket_tcp_tunnel.js';
+import { connectTunnel } from './tunnel.js';
 import { extname, join } from 'path';
 import { randomFillSync } from 'crypto';
 import WS from 'ws';
@@ -257,10 +257,11 @@ export default async function start(config, destinationsAdapter) {
       const connectOptions = {
         host: destination.host,
         port: destination.port,
+        protocol: destination.protocol,
       };
 
       console.log('Connecting to %o', connectOptions);
-      await connectTCPTunnel(connectOptions, () => {
+      await connectTunnel(connectOptions, () => {
         return new Promise((resolve) => {
           wss.handleUpgrade(request, socket, head, resolve);
         });

@@ -57,7 +57,7 @@ function subscribeFetchDevices(callback) {
 }
 
 export function makeDestinationKey(destination) {
-  return [ destination.source, destination.host, destination.port ].join('-');
+  return [ destination.source, destination.protocol, destination.host, destination.port ].join('-');
 }
 
 export function makeDevicePrefix(device) {

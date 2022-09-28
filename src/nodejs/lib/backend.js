@@ -28,7 +28,7 @@ function isValidDestination(dst) {
     dst.name.length > 0 &&
     isValidDestinationPort(dst.port) &&
     typeof dst.host === 'string' && dst.host.length > 0 &&
-    dst.protocol === 'tcp' &&
+    (dst.protocol === 'tcp' || dst.protocol === 'udp') &&
     isValidDestinationSource(dst.source);
 }
 
@@ -69,7 +69,7 @@ export class Backend {
 
     const destinations = this.destinations;
 
-    let key = [ destination.source, destination.host, destination.port ].join('-');
+    let key = [ destination.source, destination.protocol, destination.host, destination.port ].join('-');
 
     if (destinations.has(key))
       throw new Error('Destination already exists.');
