@@ -31,7 +31,7 @@ class WebSocketTCPTunnel extends Events {
 
   _onWebSocketData(data) {
     if (typeof data === 'string') {
-      this.emit('error', new TypeError('Received unexpected TEST frame.'));
+      this.emit('error', new TypeError('Received unexpected TEXT frame.'));
       this.close();
       return;
     }
@@ -66,15 +66,15 @@ export function connectTCPTunnel(connectOptions, getWebSocket) {
       let tcpConnection;
 
       tcpConnection = createConnection(connectOptions, async () => {
-        // websocket was closed
         tcpConnection.off('error', onConnectError);
 
         const ws = await getWebSocket();
 
-        if (tcpConnection.readyState !== 'open') {
+        if (ws.readyState !== ws.OPEN) {
           // connection has been lost while getting websocket
+          console.log('WebSocket is closed: %o', ws.readyState);
           ws.close();
-          reolve(null);
+          resolve(null);
         } else {
           const tunnel = new WebSocketTCPTunnel(ws, tcpConnection);
 
