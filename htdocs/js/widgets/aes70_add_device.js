@@ -7,8 +7,10 @@ const template = `
 <div class="container {{ this.open ? 'open':'close' }} {{ this.inprogress ? 'inprogress' : '' }}">
   <aux-label label="Hostname" class=lurl></aux-label>
   <aux-label label="Port" class=lport></aux-label>
+  <aux-label label="Protocol" class=lprotocol></aux-label>
   <aux-value editmode=immediate class=url preset=string #url placeholder="Hostname" (keyup)={{ this.inputKeyup }}></aux-value>
   <aux-value editmode=immediate class=port preset=string #port placeholder="Port" (keyup)={{ this.inputKeyup }}></aux-value>
+  <aux-toggle class=protocol label="TCP" #protocol label_active="UDP"></aux-toggle>
   <aux-button class=ok icon="ok" label="Add Device" (click)={{ this.onOKClick }}>
   </aux-button>
   <aux-button class=cancel icon="cancel" label="Cancel" (click)={{ this.onCancelClick }}>
@@ -61,10 +63,11 @@ class AES70AddDevice extends TemplateComponent.fromString(template) {
 
     const url = this.url.auxWidget.get('value');
     const port = this.port.auxWidget.get('value');
+    const protocol = this.protocol.auxWidget.get('state') ? 'udp' : 'tcp';
 
     this.inprogress = true;
 
-    const p = addDevice(url, parseInt(port));
+    const p = addDevice(url, parseInt(port), protocol);
 
     try {
       await p;

@@ -657,10 +657,10 @@ aes70-navigation > aes70-add-device > .container {
   display: grid;
   grid-gap: 4px;
   grid-template-areas:
-    "lurl lport"
-    "url port"
-    "ok cancel";
-  grid-template-columns: 1fr 100px;
+    "lurl lport lprot"
+    "url port prot"
+    "ok cancel cancel";
+  grid-template-columns: 1fr 80px 48px;
   padding: 0px;
   height: 0px;
   overflow: hidden;
@@ -673,8 +673,10 @@ aes70-navigation > aes70-add-device > .container.open {
 }
 aes70-navigation  > aes70-add-device > .container > .lurl { grid-area: lurl; font-size: var(--font-size-small);}
 aes70-navigation  > aes70-add-device > .container > .lport { grid-area: lport; font-size: var(--font-size-small); }
+aes70-navigation  > aes70-add-device > .container > .lprotocol { grid-area: lprot; font-size: var(--font-size-small); }
 aes70-navigation  > aes70-add-device > .container > .url { grid-area: url; }
 aes70-navigation  > aes70-add-device > .container > .port { grid-area: port; }
+aes70-navigation  > aes70-add-device > .container > .protocol { grid-area: prot; height: var(--aux-value-height); color: white !important }
 aes70-navigation  > aes70-add-device > .container > .ok { grid-area: ok; }
 aes70-navigation  > aes70-add-device > .container > .cancel { grid-area: cancel; }
 aes70-navigation  > aes70-add-device > .container > .ok > .aux-icon { color: var(--color-ok); }

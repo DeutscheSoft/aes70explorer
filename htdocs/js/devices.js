@@ -66,7 +66,8 @@ export function makeDevicePrefix(device) {
 
 export const Devices = fromSubscription(subscribeFetchDevices);
 
-export async function addDevice(host, port) {
+export async function addDevice(host, port, protocol) {
+  protocol = protocol || 'tcp';
   const name = `${host}_${port}`;
   const response = await fetch(`/_api/destinations/${name}`, {
     cache: 'no-store',
