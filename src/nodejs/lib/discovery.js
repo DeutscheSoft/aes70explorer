@@ -1,4 +1,4 @@
-import { Browser, tcp } from 'dnssd';
+import { Browser, ServiceType } from 'dnssd';
 import { isIPv4 } from 'net';
 
 function findIPv4Address(service) {
@@ -21,29 +21,42 @@ function createDestination(service) {
 }
 
 export default function start(addDestination) {
-  const browser = new Browser(tcp('oca'));
+  const tcpBrowser = new Browser(ServiceType.tcp('oca'));
+  const udpBrowser = new Browser(ServiceType.udp('oca'));
   const registered = new Map();
 
-  browser.on('error', (err) => {
+  const onError = (err) => {
     console.error('Error on dnssd browser: %o', err);
-  });
+  };
 
-  browser
-    .on('serviceUp', (service) => {
-      if (service.type.protocol !== 'tcp') return;
-      console.log('Service %o', service);
-      registered.set(service.fullname, addDestination(createDestination(service)));
-    })
-    .on('serviceDown', (service) => {
-      if (service.type.protocol !== 'tcp') return;
-      const fullname = service.fullname;
+  const onServiceUp = (service) => {
+    if (service.type.protocol !== 'tcp') return;
+    console.log('Service %o', service);
+    registered.set(service.fullname, addDestination(createDestination(service)));
+  };
 
-      const sub = registered.get(fullname);
+  const onServiceDown = (service) => {
+    if (service.type.protocol !== 'tcp' &&
+        service.type.protocol !== 'udp') return;
+    const fullname = service.fullname;
 
-      if (sub) {
-        registered.delete(fullname);
-        sub();
-      }
-    })
+    const sub = registered.get(fullname);
+
+    if (sub) {
+      registered.delete(fullname);
+      sub();
+    }
+  };
+
+  tcpBrowser.on('error', onError);
+  udpBrowser.on('error', onError);
+
+  tcpBrowser
+    .on('serviceUp', onServiceUp)
+    .on('serviceDown', onServiceDown)
+    .start();
+  udpBrowser
+    .on('serviceUp', onServiceUp)
+    .on('serviceDown', onServiceDown)
     .start();
 };
