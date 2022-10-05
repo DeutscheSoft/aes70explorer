@@ -68,6 +68,8 @@ export const Devices = fromSubscription(subscribeFetchDevices);
 
 export async function addDevice(host, port, protocol) {
   protocol = protocol || 'tcp';
+  if (protocol !== 'tcp' && protocol !== 'udp')
+    throw new TypeError(`Invalid protocol ${protocol}.`);
   const name = `${host}_${port}`;
   const response = await fetch(`/_api/destinations/${name}`, {
     cache: 'no-store',
@@ -76,7 +78,7 @@ export async function addDevice(host, port, protocol) {
       name: name,
       port: port,
       host: host,
-      protocol: 'tcp',
+      protocol,
     }),
   });
 
