@@ -2,10 +2,16 @@
   "name": "aes70-explorer-build",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "build:electron:htdocs": "parcel build --no-autoinstall --no-scope-hoist htdocs/index.html --dist-dir src/electron/app/htdocs"
+  },
   "keywords": [],
   "author": "",
   "license": "GPL-2.0-only",
   "type": "module",
-  "devDependencies": {}
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.8.0",
+    "@parcel/transformer-webmanifest": "^2.8.0",
+    "parcel": "^2.8.0"
+  }
 }

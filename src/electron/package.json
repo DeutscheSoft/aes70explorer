@@ -5,7 +5,7 @@
   "scripts": {
     "build:app:index": "rollup --config rollup.config.js",
     "build:dir": "npm run build:htdocs && electron-builder --dir -c electron-builder.json",
-    "build:htdocs": "parcel build --no-autoinstall --no-scope-hoist ../../htdocs/index.html --dist-dir app/htdocs",
+    "build:htdocs": "cd ../.. && npm run build:electron:htdocs",
     "build:licenseInfo": "node generate_dependencies_license_info.js > LICENSE.dependencies.html && cp LICENSE.dependencies.html app/htdocs/",
     "build:licenseChromium": "cp node_modules/electron/dist/LICENSES.chromium.html app/htdocs/",
     "build:licenseElectron": "cp node_modules/electron/dist/LICENSE app/htdocs/LICENSE.electron.txt",
@@ -16,15 +16,11 @@
   "author": "",
   "license": "GPL-2.0-only",
   "private": true,
-  "dependencies": { },
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.0.0-beta.2",
-    "@parcel/transformer-webmanifest": "^2.0.0-beta.2",
-    "terser": "5.13",
-    "electron": "^14.0.0-beta.8",
-    "electron-builder": "^22.11.7",
+    "electron": "^21.0.1",
+    "electron-builder": "^23.6.0",
     "license-checker": "^25.0.1",
-    "parcel": "^2.0.0-beta.2",
-    "rollup": "^2.56.3"
+    "rollup": "^3.2.5",
+    "terser": "^5.15.1"
   }
 }
