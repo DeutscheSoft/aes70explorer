@@ -61,6 +61,7 @@ class AES70Block extends templateComponent {
       this.open = !this.open;
       ev.stopPropagation();
       this.select();
+      handleNavState(collectPrefix(this), this.open);
     }
 
     this.labelBindings = [
